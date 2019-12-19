@@ -12,7 +12,15 @@
 <view class='cell'>
   <view class='name'>职务：{{privilegedPeople.position}}</view>
 </view>
-<view class='cell'>
+<view class='cell'  wx:if="{{type=='1'}}">
+  <view class='name'>状态：{{privilegedPeople.privilegedStatus=='FREEZE'?'正常':'冻结'}}</view>
+  <view class='lock' bindtap='lockPerson' data-status='{{item.privilegedStatus}}'>{{privilegedPeople.privilegedStatus=='FREEZE'?'冻结':'解冻'}}</view>
+</view>
+<view class='cell'  wx:if="{{type=='2'}}">
+  <view class='name'>状态：{{privilegedPeople.legalStatus=='0'?'正常':'冻结'}}</view>
+  <view class='lock' bindtap='lockPerson' data-status='{{item.privilegedStatus}}'>{{privilegedPeople.legalStatus=='1'?'冻结':'解冻'}}</view>
+</view>
+<view class='cell'  wx:if="{{type=='3'}}">
   <view class='name'>状态：{{privilegedPeople.privilegedStatus=='FREEZE'?'正常':'冻结'}}</view>
   <view class='lock' bindtap='lockPerson' data-status='{{item.privilegedStatus}}'>{{privilegedPeople.privilegedStatus=='FREEZE'?'冻结':'解冻'}}</view>
 </view>

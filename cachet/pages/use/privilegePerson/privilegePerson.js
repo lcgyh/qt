@@ -14,7 +14,7 @@ Page({
     inputShowed: true,
     inputVal: "",
     cellArray: [],
-    type:'1'
+    type: '1'
   },
 
   /**
@@ -36,7 +36,7 @@ Page({
       url: '',
       text: "新装人员"
     }]
-    if (type=='1'){
+    if (type == '1') {
       this.getDepartmentList()
     }
     if (type == '2') {
@@ -49,7 +49,7 @@ Page({
       title: types[Number(type) - 1].text
     })
     this.setData({
-      type: type || '1'
+      type: type
     })
   },
 
@@ -57,11 +57,7 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
-    
-    // this.getDepartmentList();
-  },
+  onReady: function () { },
 
   /**
    * 生命周期函数--监听页面显示
@@ -152,41 +148,42 @@ Page({
   },
 
   //查询新装人员列表
-  getinstallpeopleList: function () {
-    const _this = this
-    lwx.request({
-      url: "installpeople.list",
-      // data:{
-      //   // companyId: _globle.companyId
-      // },
-      style: 'get'
-    }).then(res => {
-      if (res.data.code == '0') {
-        console.log(res)
-        const appInstallPeopleList = res.data.appInstallPeopleList || []
-        _this.setData({
-          cellArray: appInstallPeopleList
-        })
-      } else {
-        console.log('333333');
-      }
-    }).catch(err => {
-      console.log('err' + err);
-    })
-  },
+  // getinstallpeopleList: function () {
+  //   const _this = this
+  //   lwx.request({
+  //     url: "installpeople.list",
+  //     // data:{
+  //     //   // companyId: _globle.companyId
+  //     // },
+  //     style: 'get'
+  //   }).then(res => {
+  //     if (res.data.code == '0') {
+  //       console.log(res)
+  //       const appInstallPeopleList = res.data.appInstallPeopleList || []
+  //       _this.setData({
+  //         cellArray: appInstallPeopleList
+  //       })
+  //     } else {
+  //       console.log('333333');
+  //     }
+  //   }).catch(err => {
+  //     console.log('err' + err);
+  //   })
+  // },
 
   //跳转详情
   checkDetail: function (e) {
     console.log('e', e)
     const id = e.currentTarget.dataset.id
+    const type = this.data.type
     wx.navigateTo({
-      url: `../privilegePersonDetail/privilegePersonDetail?privilegedPeopleId=${id}&type=${this.data.type}`,
+      url: `../privilegePersonDetail/privilegePersonDetail?privilegedPeopleId=${id}&type=${type}`,
     })
   },
   //新增用户
   add: function (e) {
     wx.navigateTo({
-      url: '../addPrivilegePerson/addPrivilegePerson?type=${this.data.type}',
+      url: `../addPrivilegePerson/addPrivilegePerson?type=${this.data.type}`,
     })
   },
 })

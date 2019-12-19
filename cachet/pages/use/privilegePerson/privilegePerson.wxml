@@ -13,11 +13,11 @@
 </view> -->
 
 <view class='cellBox' wx:for="{{cellArray}}" wx:key="cellArray">
-  <view data-id='{{item.appInstallPeopleId}}' bindtap="checkDetail" data-id="{{item.appInstallPeopleId}}">
+  <view data-id="{{type=='1'?item.appInstallPeopleId:item.legalPeopleId}}" bindtap="checkDetail">
     <view class='cell'>
-    <view class="row">
-      <view class='name'>{{item.name}}</view>
-      <view class='department'>{{item.orgName}}</view>
+      <view class="row">
+        <view class='name'>{{item.name}}</view>
+        <view class='department'>{{item.orgName}}</view>
       </view>
       <image class='row_right' src='../../../images/row_right.png' mode='aspectFill'></image>
     </view>

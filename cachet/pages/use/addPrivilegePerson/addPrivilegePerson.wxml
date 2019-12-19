@@ -13,9 +13,9 @@
 <view class='bumen'>
   <view class='name'>人员</view>
   <view class="pickV">
-    <picker bindchange="bindPickerChange" value="{{staffindex}}" range-key='name'  range="{{staffList}}" partyId='{{staffList[index].partyId}}' >
+    <picker bindchange="bindPickerChange" value="{{staffindex}}" range-key='name'  range="{{staffList}}" partyId='{{staffList[staffindex].partyId}}' >
       <view class="picker">
-        {{staffList[index].name}}
+        {{staffList[staffindex].name}}
       </view>
     </picker>
   </view>

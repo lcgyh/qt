@@ -11,7 +11,8 @@ Page({
    */
   data: {
     privilegedPeopleId: null,
-    privilegedPeople: {}
+    privilegedPeople: {},
+    type: '1'
   },
 
   /**
@@ -19,9 +20,42 @@ Page({
    */
   onLoad: function (options) {
     const type = options.type
-    if (options.privilegedPeopleId) {
-      this.getPeopleInfo(options.privilegedPeopleId)
+    const types = [{
+      type: '1',
+      url: '',
+      text: "特权人员详情"
+    }, {
+      type: '2',
+      url: '',
+      text: "法务人员详情"
+    }, {
+      type: '3',
+      url: '',
+      text: "新装人员详情"
+    }]
+    if (type == '1') {
+      if (options.privilegedPeopleId) {
+        this.getPeopleInfo(options.privilegedPeopleId)
+      }
     }
+    if (type == '2') {
+      if (options.privilegedPeopleId) {
+        this.getlegalpeopleInfo(options.privilegedPeopleId)
+      }
+    }
+    if (type == '3') {
+      if (options.privilegedPeopleId){
+        this.getinstallpeopleInfo(options.privilegedPeopleId)
+      }
+    }
+
+    wx.setNavigationBarTitle({
+      title: types[Number(type) - 1].text
+    })
+    this.setData({
+      type: type
+    })
+
   },
 
 
@@ -102,13 +136,41 @@ Page({
     })
   },
 
+  //法务人员详情
+  getlegalpeopleInfo: function (id) {
+    const _this = this
+    lwx.request({
+      url: 'legalpeople.find',
+      data: {
+        legalPeopleId: id
+      }
+    }).then(res => {
+      const resData = res.data || {}
+      if (resData.code == '0') {
+        _this.setData({
+          privilegedPeopleId: id,
+          privilegedPeople: resData.legalPeople || {}
+        })
+      } else {
 
+      }
+    }).catch(err => {
+      wx.hideLoading()
+      wx.showToast({
+        title: '加载数据失败',
+        mask: true,
+        icon: 'none'
+      })
+    })
+  },
+  
   //删除特权人
-  deletePerson: function (e) {
-    console.log(e)
+  deletePerson: function () {
     var that = this;
+    const type = that.data.type
+    let text = type == '1' ? '删除后此人不能在使用特权进行用章' :'删除后此人不能在使用特权进行用章'
     wx.showModal({
-      title: '删除后此人不能在使用特权进行用章',
+      title: text,
       content: '确定删除？',
       confirmText: "是",
       success: res => {
@@ -122,12 +184,27 @@ Page({
   },
   deletePeople: function () {
     const _this = this
+    const type = _this.data.type
+    console.log('type--',type)
     const privilegedPeopleId = _this.data.privilegedPeopleId
-    lwx.request({
-      url: 'installpeople.delete',
-      data: {
+    let data={}
+    let url=''
+    if (type == '1'){
+      data={
         privilegedPeopleId: privilegedPeopleId
       }
+      url ='installpeople.delete'
+    }
+    if (type == '2') {
+      data = {
+        legalPeopleId: privilegedPeopleId
+      }
+      url = 'legalpeople.delete'
+    }
+
+    lwx.request({
+      url: url,
+      data: data
     }).then(res => {
       const resData = res.data || {}
       if (resData.code == '0') {

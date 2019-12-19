@@ -9,17 +9,39 @@ Page({
    */
   data: {
     organizations: [],
-    orgId:null,
-    staffList:[],
+    orgId: null,
+    staffList: [],
+    partyId: null,
     index: 0,
-    staffindex:0,
+    staffindex: 0,
+    type: '1'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const type = options.type
+    console.log('type', type)
+    const types = [{
+      type: '1',
+      url: '',
+      text: "新增特权人员"
+    }, {
+      type: '2',
+      url: '',
+      text: "新增法务人员"
+    }, {
+      type: '3',
+      url: '',
+      text: "新增新装人员"
+    }]
+    wx.setNavigationBarTitle({
+      title: types[Number(type) - 1].text
+    })
+    this.setData({
+      type: type
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -70,7 +92,7 @@ Page({
 
   },
   //请求部门列表
-  getorganizations:function(){
+  getorganizations: function () {
     const that = this
     lwx.request({
       url: "organization.list",
@@ -84,7 +106,7 @@ Page({
         that.setData({
           organizations: resData.organizations || [],
           orgId: resData.organizations[0].organizationId
-        },function(){
+        }, function () {
           that.getstaffs()
         })
       } else {
@@ -94,33 +116,37 @@ Page({
       console.log('err' + err);
     })
   },
-  bindChange: function (e){
+  bindChange: function (e) {
     console.log(e)
     var that = this;
     let index = e.detail.value;
     that.setData({
       index: index,
-      orgId: e.target.dataset.organizationid
-    },function(){
+      orgId: e.target.dataset.organizationid,
+    }, function () {
       that.getstaffs()
     })
   },
 
   //请求该部门下员工信息
-  getstaffs:function(){
+  getstaffs: function () {
     const that = this
+    console.log('that.data.type', that.data.type)
     lwx.request({
-      url: "staff.list",
+      url: "staff.list.type",
       data: {
         companyId: _globle.user.companyId,
-        orgId: that.data.orgId
+        orgId: that.data.orgId,
+        type: that.data.type == '1' ? 'NO_TQ' : (that.data.type == '2' ? 'NO_FW' : (that.data.type == '3' ? 'NO_AZ' : null))
       }
     }).then(res => {
       const resData = res.data || {}
       console.log('resData', resData)
+      const staffLis = resData.staffList || []
       if (resData.code == '0') {
         that.setData({
-          staffList: resData.staffList || []
+          staffList: staffLis,
+          partyId: staffLis[0].partyId
         })
       } else {
         console.log('错误');
@@ -139,13 +165,13 @@ Page({
     })
   },
   //确认操作
-  makeSure:function(){
+  makeSure: function () {
     const that = this
     lwx.request({
       url: "installpeople.add",
       data: {
         companyId: _globle.user.companyId,
-        partyId: that.data.partyId || 1
+        partyId: that.data.partyId
       }
     }).then(res => {
       const resData = res.data || {}
@@ -155,7 +181,11 @@ Page({
           title: '',
           content: '新增成功',
           confirmText: "是",
-          success: res => {}
+          success: res => {
+            wx.navigateBack({
+              delta: 1
+            })
+          }
         })
       } else {
         console.log('错误');
