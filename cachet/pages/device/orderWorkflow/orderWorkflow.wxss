@@ -1,0 +1,37 @@
+/* pages/device/orderWorkflow/orderWorkflow.wxss */
+.worKflowCell {
+  width: 100vw;
+  background: white;
+  height: 132px;
+  margin-top: 10px;
+  padding-left: 10px;
+}
+.cell{
+  height: 44px;
+  line-height: 44px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #f7f7f7;
+}
+.nameCell{
+  height: 44px;
+  line-height: 44px;
+  width: 100vw;
+  display: flex;
+  border-bottom: 1px solid #f7f7f7;
+}
+
+.selectBtn {
+  color: white;
+  background: red;
+  height: 40px;
+  width: 150px;
+  border-radius: 5px;
+  margin-top: 80px;
+  line-height: 40px;
+  text-align: center;
+}
+.box{
+  margin-right: 20px;
+}

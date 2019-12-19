@@ -1,0 +1,49 @@
+<view>
+  <view class='details paddingright'>
+    <view class='item'>
+      <view>印章名称</view>
+      <input type='text' placeholder='请输入印章名' name='value' class='name_value' value='{{sealInfo.name}}' bindinput="setName"/>
+    </view>
+    <navigator url='../custos/custos'>
+      <view class='item row_right'>
+        <view>保管员</view>
+        <view class='colorred'>{{sealInfo.partyName}}</view>
+      </view>
+    </navigator>
+    <view class='item'>
+      <view>紧急申请最大次数</view>
+      <input type='text' placeholder='请输入申请次数' value="{{sealInfo.limit}}" name='value' class='name_value' bindinput="setLimit"/>
+    </view>
+    <view class='item'>
+      <view>强制拍照</view>
+      <switch checked="{{sealInfo.isForcedPhoto === 'Y' ? checked : ''}}" bindchange="switch1Change"/>
+    </view>
+    <navigator url='../special/special'>
+      <view class='item row_right'>
+        <view>特批人员</view>
+        <view class='colorred'>{{special.name}}</view>
+      </view>
+    </navigator>
+
+    <view class='peopebox'>
+      <!-- <view class='title'><text>审批人员</text>流程未设置</view> -->
+      <view class='title'><text>审批人员</text></view>
+      <view class='flexbox'>
+          <view class='people_list1' wx:for="{{assessorList}}" wx:key="index">
+            <view class='porosole'>
+                <view class='cirle'>{{item.name}}</view>
+                <text class='delate delate_people' catchtap='delateParty' data-id="{{index}}">X</text>
+            </view>
+            <text>{{item.name}}</text>
+          </view>
+          <view class='people_list1'>
+            <view class='cirle_gray' catchtap='selectParty'>+</view>
+          </view>
+      </view>
+    </view>
+
+  </view>
+  <view class='storemanbtn'>
+    <button catchtap="fromCommit">确认绑定</button>
+  </view>
+</view>

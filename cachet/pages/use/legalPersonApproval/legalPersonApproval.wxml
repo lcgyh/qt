@@ -1,0 +1,19 @@
+<!--pages/use/legalPersonApproval/legalPersonApproval.wxml-->
+<view class='listView'>
+  <view class='cengk_box' wx:for="{{array}}" wx:key="cardlist">
+    <view data-applyId='{{item.applyId}}' data-applyVerifyId="{{item.applyVerifyId}}" bindtap="checkDetail">
+      <view class='listItem'>
+      <view class="column">
+        <text class='item' style="color:#333" decode="{{true}}">{{item.sealName}}&emsp;&emsp;&emsp;{{item.type}}</text>
+        <view class='item'>申请人:{{item.name}}</view>
+        <view class='item'>申请时间：{{item.applyTimes}}</view>
+        </view>
+        <view class="row">
+        <view class='status' style="color:red" wx:if="{{item.applyStatusStr == '待审批'}}">{{applyStatusStr}}</view>
+        <view class='status' wx:if="{{item.applyStatusStr != '待审批'}}">{{applyStatusStr}}</view>
+           <image class='row_right' src='../../../images/row_right.png' mode='aspectFill'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

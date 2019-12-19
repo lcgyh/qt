@@ -1,0 +1,7 @@
+.index_number{display: flex;justify-content: space-between;padding:30rpx;font-size: 30rpx;color: #333;background: #fff;margin: 10rpx 0;}
+.index_number image{width: 30rpx;height: 30rpx;display: inline-block;margin-right: 20rpx;}
+.icon_content{background: #fff;width: 100%;margin: 10rpx 0;padding: 30rpx;box-sizing: border-box;}
+.icon_content .icon_box{display: flex;flex-wrap:wrap;}
+.icon_content .icon_item {display: flex;flex-direction: column;width:170rpx;text-align: center;}
+.icon_content .icon_item image{width: 80rpx;height: 80rpx;margin:30rpx auto 16rpx;}
+.icon_content .title{font-size: 30rpx;color: #333;}

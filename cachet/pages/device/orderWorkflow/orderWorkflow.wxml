@@ -1,0 +1,19 @@
+<!--pages/device/orderWorkflow/orderWorkflow.wxml-->
+<block wx:for="{{array}}" wx:key="{{item.key}}" bindtap='select' >
+  <view class="worKflowCell">
+    <view class="cell">
+      {{item.name}}
+      <switch class="box" type="checkbox" bindchange="switchChange" data-index="{{index}}" checked="{{item.check}}"></switch>
+    </view>
+    <view class="cell">
+      {{item.level}}
+    </view>
+    <view class="nameCell">
+      <view style="margin-right:10px;" wx:for="{{item.person}}" wx:key="{{i.key}}" wx:for-item="i">{{i}}</view>
+    </view>
+  </view>
+</block>
+
+<view class='centerView'>
+  <view class='selectBtn' bindtap='keepit'>保存</view>
+</view>

@@ -1,0 +1,44 @@
+<!--pages/auditing/auditing.wxml-->
+<view class='applydetails'>
+  <view class='top'>
+    <image src='{{applyDetail.portrait}}' class='people'/>
+    <view class='name_box'>
+      <text class='font_size30 color333'>{{applyDetail.partyName}}</text>
+    </view>
+  </view>
+  <view class='top_text top_line'>
+    <view><text class='left'>申请类型</text><text class='right'>{{applyDetail.applyType}}</text></view>
+    <view><text class='left'>申请印章</text><text class='right'>{{applyDetail.sealName}}</text></view>
+    <view><text class='left'>申请时间</text><text class='right'>{{applyDetail.applyTime}}</text></view>
+    <view><text class='left' wx:if="{{applyDetail.times}}">申请次数</text><text class='right' wx:if="{{applyDetail.times}}">{{applyDetail.times}}次</text></view>
+    <view><text class='left' wx:if="{{applyDetail.takeStartTime}}">领取时间</text><text class='right'>{{applyDetail.takeStartTime}}</text></view>
+    <view><text class='left' wx:if="{{applyDetail.takeEndTime}}">归还时间</text><text class='right'>{{applyDetail.takeEndTime}}</text></view>
+    <view><text class='left' wx:if="{{applyDetail.address}}">外带地址</text><text class='right'>{{applyDetail.address}}</text></view>
+    <view><text class='left'>用处说明</text><text class='right'>{{applyDetail.cause}}</text></view>
+    <view>
+        <view><text class='left'>相关证明</text></view>
+        <view class="img_box">
+          <image  wx:for="{{applyDetail.vouchers}}" wx:key="index" src="{{item}}"  mode="aspectFill" catchtap="previewImage" class="pic img"></image>
+        
+        </view>
+    </view>
+  </view>
+
+
+  <form class='formbox' bindsubmit='onSubmit'>
+    <view class='radio_box '>
+      <radio-group class="radio-group" bindchange="onRadioChange">
+        <label class="radio" wx:for="{{items}}" wx:key="{{index}}">
+          <radio value="{{item.key}}" checked="{{item.checked}}"/>{{item.name}}
+        </label>
+      </radio-group>
+    </view>
+    <view class='why line_top' >
+      <text class='color333'wx:if="{{result=='REJECT'}}">拒绝理由:</text><text class='color333' wx:else>审核备注:</text>
+      <textarea placeholder="{{result=='REJECT' ?'请输入拒绝理由':'备注信息'}}" name="textarea" class='text_why' auto-height value='{{text_why}}' bindinput="textareaValue"/>
+    </view>
+    <view class='storemanbtn'>
+      <button form-type='submit'>确认提交</button>
+    </view>
+  </form>
+</view>

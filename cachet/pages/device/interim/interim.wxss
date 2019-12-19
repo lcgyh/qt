@@ -1,0 +1,5 @@
+/* pages/manage/add/add.wxss */
+.name_value{text-align: right;flex: 1;padding-left: 20rpx;}
+.storemanbtn button{
+  margin: 10rpx 0rpx;
+}

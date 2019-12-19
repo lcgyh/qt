@@ -1,0 +1,78 @@
+<block wx:if="{{loadSuccess}}">
+  <view class='new_manage'>
+    <image src='{{personInfo.portrait}}' class='image_header'/>
+    <view class='center'>
+      <view class='title'>
+        {{personInfo.name}}
+      </view>
+      <view class='color999'>
+        {{personInfo.position}}
+      </view>
+    </view>
+    <view class='right'>
+      <view class='colorred'>{{statusName}}</view>
+    </view>
+  </view>
+  <view>
+    <view class='nav_block'>
+      <view class='why_title'>申请事由</view>
+      <view class='color999'>{{cause}}</view>
+    </view>
+
+    <view class='nav_block'>
+      <view>使用印章</view>
+      <view class='color999'>{{sealName}}</view>
+    </view>
+
+    <view class='nav_block'>
+      <view>设备编号</view>
+      <view class='color999 code_box'>{{devicesCode}}</view>
+    </view>
+
+    <view class='nav_block'>
+      <view>使用时间</view>
+      <view class='color999'>{{useTime}}</view>
+    </view>
+    <view class='nav_block' wx:if="{{address}}">
+      <view>使用地点</view>
+      <view class='color999'>{{address}}</view>
+    </view>
+
+    <view class='nav_block' wx:if="{{censorStatusName}}">
+      <view>核查状态</view>
+      <view class='color999'>{{censorStatusName}}</view>
+    </view>
+
+    <view class='nav_block' wx:if="{{censorPartyName}}">
+      <view>核查人</view>
+      <view class='color999'>{{censorPartyName}}</view>
+    </view>
+
+    <view class='nav_block'>
+      <view>申请资料</view>
+      <view class='photo_box'>
+        <view class="imgBox" wx:for="{{applyVoucherList}}" wx:key="index">
+          <image src="{{item}}"  mode="aspectFill" catchtap="previewApplyImage" class="pic"></image>
+        </view>
+      </view>
+    </view>
+
+    <view class='nav_block'>
+      <view><text class='colorred'>*</text>使用证明</view>
+      <scroll-view class='photo_box' scroll-x="true">
+        <view  class="imgBox" wx:for="{{voucherList}}" wx:key="index">
+          <image src="{{item}}" mode="aspectFill" class="pic" data-src="{{item}}" bindtap="previewImage"></image>
+	      </view>
+        <view class="imgBox" wx:for="{{tempFilePaths}}" wx:key="index">
+          <image src="{{item}}"  mode="aspectFill" catchtap="previewImage" class="pic"></image>
+        </view> 
+        <image src='/images/add_photo.jpg' catchtap='chosePhoto' wx:if="{{tempFilePaths.length < 1}}" class="add_img"/>
+      </scroll-view>
+    </view>
+  </view>
+
+  <block wx:if="{{devicesId && censorStatus === 'WAIT'}}">
+    <view class='use_btn' catchtap='censor' wx:if="{{devicesId}}">核查通过</view>
+  </block>
+
+</block>

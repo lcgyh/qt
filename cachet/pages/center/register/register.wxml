@@ -1,0 +1,162 @@
+<!--pages/center/register/register.wxml-->
+
+<view class='selectRegisterView' wx:if="{{!isSelect}}">
+  <view class='centerView text'>请选择您要注册的账户类型</view>
+  <view class='centerView'>
+    <view class='selectBtn' bindtap='selectCompanty'>公司账号</view>
+  </view>
+  <view class='centerView'>
+    <view class='selectBtn' bindtap='selectPersonal'>个人账号</view>
+  </view>
+</view>
+<!-- 公司注册 -->
+<view class="backView" wx:if="{{registerSelect == 1}}">
+  <view class='compantyView'>
+    <view class='leftView'>*公司名称</view>
+    <input class='rightView' type='text' placeholder="请输入名称" value="{{companty.companyName}}" bindblur="companyNameInput" />
+  </view>
+  <view class='compantyView'>
+    <view class='leftView'>*信用代码</view>
+    <input class='rightView' type='text' placeholder="请输入10位信用代码" value="{{companty.creditCode}}" bindblur="creditCodeInput" />
+  </view>
+  <!-- <view class='compantyView'>
+    <view class='leftView'>*所在地区</view>
+    <view class="area">
+      <picker bindtap="selectArea" value="{{companty.provinceId}}" range="{{array}}">
+        <view>省</view>
+      </picker>
+      <image class="row_right" src="../../../images/sanjiao.png"></image>
+    </view>
+    <view class="area">
+      <picker style="margin-left:2vw" value="{{companty.cityId}}" range="{{array}}">
+        市
+      </picker>
+      <image class="row_right" src="../../../images/sanjiao.png"></image>
+    </view>
+    <view class="area">
+      <picker style="margin-left:2vw" value="{{companty.areaId}}" range="{{array}}">
+        区县
+      </picker>
+      <image class="row_right" src="../../../images/sanjiao.png"></image>
+    </view>
+  </view> -->
+  <view class='compantyView'>
+    <view class='leftView'>营业期限</view>
+    <view class="openTime" bindtap="selectOpenTime">
+      开始营业
+      <image class="row_right" src="../../../images/sanjiao.png"></image>
+    </view>
+    <view class="openTime" bindtap="selectOpenTime">
+      营业结束
+      <image class="row_right" src="../../../images/sanjiao.png"></image>
+    </view>
+  </view>
+  <view class='compantyView'>
+    <view class='leftView'>经营范围</view>
+    <textarea class='textAreaView' type='text' placeholder="字数限制100字" value="{{companty.businessScope}}" bindblur="businessScopeInput"></textarea>
+  </view>
+  <view class='compantyView'>
+    <view class='leftView'>*营业执照</view>
+    <image class='businessLicense' src="{{businessLicence}}" bindtap="onUpload" data-idCard="businessLicenseUrl">></image>
+  </view>
+  <view class='compantyView'>
+    <view class='leftView'>*法人姓名</view>
+    <input class='rightView' type='text' placeholder="请输入姓名" value="{{companty.legalPerson}}" bindblur="legalPersonInput" />
+  </view>
+  <view class='compantyView'>
+    <view class='leftView'>*身份证号</view>
+    <input class='rightView' type='text' placeholder="请输入法人身份证号" value="{{companty.idcard}}" bindblur="idcardInput" />
+  </view>
+  <!-- 身份证 -->
+  <view class='compantyView'>
+    <view class='leftView'>*法人身份证</view>
+    <view class="center">
+      <image class='businessLicense' src="{{idcardFront}}" bindtap="onUpload" data-idCard="front"></image>
+      <view class="idText">正面照</view>
+    </view>
+    <view class="center">
+
+      <image class='businessLicense' src="{{idcardBack}}" bindtap="onUpload" data-idCard="back"></image>
+      <view class="idText">反面照</view>
+    </view>
+  </view>
+  <view class='compantyView'>
+    <view class='leftView'>*登录账号</view>
+    <input class='rightView' type='text' placeholder="请输入11位手机号码" value="{{companty.userLoginId}}" bindblur="userLoginIdInput" />
+  </view>
+  <view class="centerText"> 为确保印章正常使用，请输入您当前使用的手机号</view>
+  <view class='compantyView'>
+    <view class='leftView'>*登录密码</view>
+    <input class='rightView' type='text' placeholder="请输入6-8位登录密码" value="{{companty.passWord}}" bindblur="passWordInput" />
+  </view>
+  <view class='compantyView'>
+    <view class='leftView'>*确认密码</view>
+    <input class='rightView' type='text' placeholder="请再次输入登录密码" value="{{companty.passWordCode}}" bindblur="passWordCodeInput" />
+  </view>
+  <view class='compantyView'>
+    <view class='leftView'>邀请码</view>
+    <input class='rightView' type='text' placeholder="请输入6位邀请码" value="{{companty.inviteNumber}}" bindblur="inviteNumberInput" />
+  </view>
+  <view class="centerView">
+    <view class="submitBtn selectBtn" bindtap="submitCompanty">提交注册</view>
+  </view>
+</view>
+
+
+<!-- 个人注册 -->
+<view class="backView" wx:if="{{registerSelect == 2}}">
+  <view class='compantyView'>
+    <view class='leftView'>*姓名</view>
+    <input class='rightView' type='text' placeholder="请输入姓名" value="{{user.legalPerson}}" bindblur="usernameInput" />
+  </view>
+  <view class='compantyView'>
+    <view class='leftView'>*姓别</view>
+    <radio-group bindchange="checkboxChange" class="sexSelect">
+      <label style="height:1px" wx:for="{{items}}" wx:key="{{items.name}}">
+        <radio value="{{item.value}}" checked="{{item.checked}}" />{{item.name}}
+      </label>
+    </radio-group>
+  </view>
+
+  <view class='compantyView'>
+    <view class='leftView'>*身份证号</view>
+    <input class='rightView' type='text' placeholder="请输入本人身份证号" value="{{user.idcard}}" bindblur="idcardInput" />
+  </view>
+
+  <!-- 身份证 -->
+  <view class='compantyView'>
+    <view class='leftView'>*个人身份证</view>
+    <view class="center">
+      <image class='businessLicense' src="{{idcardFront}}" bindtap="onUpload" data-idCard="front"></image>
+      <view class="idText">正面照</view>
+    </view>
+    <view class="center">
+
+      <image class='businessLicense' src="{{idcardBack}}" bindtap="onUpload" data-idCard="back"></image>
+      <view class="idText">反面照</view>
+    </view>
+  </view>
+  <view class='compantyView'>
+    <view class='leftView'>*登录账号</view>
+    <input class='rightView' type='text' placeholder="请输入11位手机号码" value="{{user.userLoginId}}" bindblur="userLoginIdInput" />
+  </view>
+  <view class="centerText"> 为确保印章正常使用，请输入您当前使用的手机号</view>
+  <view class='compantyView'>
+    <view class='leftView'>*登录密码</view>
+    <input class='rightView' type='text' placeholder="请输入6-8位登录密码" value="{{user.passWord}}" bindblur="passWordInput" />
+  </view>
+  <view class='compantyView'>
+    <view class='leftView'>*确认密码</view>
+    <input class='rightView' type='text' placeholder="请再次输入登录密码" value="{{user.passWordCode}}" bindblur="passWordCodeInput" />
+  </view>
+  <view class='compantyView'>
+    <view class='leftView'>加入公司</view>
+    <view class='rightView'>扫码登录
+      <image class='rowRight' src='../../../images/row_right.png' mode='aspectFill'></image>
+
+    </view>
+  </view>
+  <view class="centerView">
+    <view class="submitBtn selectBtn" bindtap="submitUser">提交注册</view>
+  </view>
+</view>

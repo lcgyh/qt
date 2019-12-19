@@ -1,0 +1,24 @@
+<!--pages/device/privilegeDetail/privilegeDetail.wxml-->
+<view class="listItem black">{{detail.sealName}}</view>
+<view class="listItem ">连接状态:{{detail.btStatus}}</view>
+<view class="listItem ">保管员:{{detail.name}}</view>
+<view class="listItem ">特权人:{{detail.privilegePerson}}</view>
+<view class="listItem ">您的指纹:{{detail.fingerprintStatus}}
+  <image class='row_right' src='../../../images/row_right.png' mode='aspectFill'></image>
+</view>
+<view class="listItem ">失效日期:{{detail.overTime}}</view>
+<view class='cell'>
+  <view class='name'>锁定状态：锁定</view>
+  <view class='delete' bindtap='deletePerson' data-name='{{item.name}}'>解锁</view>
+</view>
+<view class='cell'>
+  <view class='name'>当前版本1.0.1</view>
+  <view class='delete' bindtap='deletePerson' data-name='{{item.name}}'>升级</view>
+</view>
+<view class='cell'>
+  <view class='name'>印章记录同步</view>
+  <view class='delete' bindtap='deletePerson' data-name='{{item.name}}'>同步</view>
+</view>
+<view class='centerView'>
+  <view class='selectBtn' bindtap='selectPersonal'>开始用章</view>
+</view>

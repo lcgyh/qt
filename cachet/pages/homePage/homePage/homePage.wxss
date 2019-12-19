@@ -1,0 +1,6 @@
+/* pages/homePage/homePage/homePage.wxss */
+.QRcode{
+  width: 50vw;
+  height:50vw;
+  margin: 150px auto;
+}

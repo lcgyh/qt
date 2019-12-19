@@ -1,0 +1,10 @@
+/* pages/device/testdetails/testdetails.wxss */
+.new_manage{padding:30rpx;box-sizing: border-box;background: #fff; }
+.image_header{width: 100rpx;height: 100rpx;border-radius: 50%;border: 1rpx solid #f2f2f2;}
+.why_title{width:200rpx;}
+.text_why,.photo_box{width: 500rpx;text-align: right;}
+.photo_box image{width: 100rpx;height: 100rpx;}
+.add_img{margin: 10rpx;}
+.imgBox{width: 100rpx;height: 100rpx;float: right;margin: 10rpx;position: relative;}
+image.deletePic{width:40rpx;height:40rpx;position: absolute;top: -10rpx;right:-10rpx;}
+.placeright{text-align: right;}

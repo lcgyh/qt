@@ -1,0 +1,87 @@
+/* pages/use/privilegePerson/privilegePerson.wxss */
+
+.row_right {
+  height: 12px;
+  width: 12px;
+  line-height: 50px;
+  margin-right: 12px;
+  margin-top: 19px;
+}
+
+.topView {
+  width: 100vw;
+  height: 50px;
+  display: flex;
+}
+
+.pickV {
+  width: 20vw;
+  background: white;
+  line-height: 50px;
+  text-align: center;
+  border: 1rpx solid #eee;
+}
+
+.searchBar {
+  border: 1rpx solid #eee;
+  left: 0px;
+  width: 80vw;
+  right: 100px;
+  background: white;
+}
+
+.cellBox {
+  height: 50px;
+  width: 100vw;
+  border-bottom: 2px solid #eee;
+  background: white;
+}
+
+.cell {
+  line-height: 50px;
+  display: flex;
+justify-content: space-between;
+}
+
+.cell .name {
+  width: 80px;
+  color: #333;
+  margin-left: 20px;
+}
+
+.cell .department {
+  margin-left: 20px;
+}
+
+.cell .delete {
+  color: red;
+  /* margin-right: 12px; */
+  position: fixed;
+  float: right;
+  right: 12px;
+}
+
+.bottomView {
+  border-top: 1px solid #eee;
+  height: 44px;
+  background: white;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.totalNum {
+  margin-left: 20px;
+  line-height: 44px;
+}
+
+.add {
+  background: red;
+  color: white;
+  height: 44px;
+  line-height: 44px;
+  width: 70px;
+  text-align: center;
+}

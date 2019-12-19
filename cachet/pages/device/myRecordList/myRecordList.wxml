@@ -1,0 +1,24 @@
+<!--pages/device/myRecordList/myRecordList.wxml-->
+<view class="navbar">
+  <view class="navbarItem" wx:for="{{navbar}}" wx:key="{{item.key}}" bindtap='tapBar' data-index="{{index}}" style="color:{{item.color}}">
+    {{item.name}}
+  </view>
+</view>
+<view class='listView'>
+  <view class='cengk_box' wx:for="{{list}}" wx:key="cardlist">
+    <view data-id='{{item.applyId}}' bindtap='checkDetail' data-devicesId="{{item.devicesActId}}">
+      <view class='listItem'>
+        <view class="column">
+        <view class='item'>{{item.sealName}}</view>
+        <view class='item'>保管员：{{item.custosName}}</view>
+        <view class='item'>申请时间：{{item.applyTimes}}</view>
+      </view>
+      <view class="row">
+        <view class='status'>{{item.applyTypeStr}}</view>
+        <image class='row_right' src='../../../images/row_right.png' mode='aspectFill'></image>
+      </view>
+    </view>
+  </view>
+</view>
+</view>
+<view class="empty" wx:if="{{list.length == 0}}">暂无数据</view>

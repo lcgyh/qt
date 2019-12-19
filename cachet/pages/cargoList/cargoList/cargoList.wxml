@@ -1,0 +1,77 @@
+<view class="navbar">
+  <view class="navbarItem" wx:for="{{navbar}}" wx:key="{{item.key}}" bindtap='tapBar' data-index="{{index}}" style="color:{{item.color}}">
+    {{item.name}}
+  </view>
+  <view class='line' style='margin-left: {{lineLeft}};'></view>
+</view>
+<!-- 全部 -->
+<view class='listView' wx:if="{{selectIndex == 0}}">
+  <view class='cengk_box' wx:for="{{navbar}}" wx:key="cardlist">
+    <view data-id='{{item.id}}'>
+      <view class='listItem'>
+        <view class='item'>设备编号：11123192868sxx</view>
+        <view class='item'>型号：11123192sxxkhihkh</view>
+        <view class='item'>版本：1.223</view>
+        <view class='status'>待发货</view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 待发货 -->
+<view class='listView' wx:if="{{selectIndex == 1}}">
+  <view class='cengk_box' wx:for="{{navbar}}" wx:key="cardlist">
+    <view data-id='{{item.id}}'>
+      <view class='listItem'>
+        <view class='item'>设备编号：11123192868sxx</view>
+        <view class='item'>型号：11123192sxxkhihkh</view>
+        <view class='item'>版本：1.223</view>
+        <view class='status'></view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 已发货 -->
+<view class='listView' wx:if="{{selectIndex == 2}}">
+  <view class='cengk_box' wx:for="{{navbar}}" wx:key="cardlist">
+    <view data-id='{{item.id}}'>
+      <view class='listItem'>
+        <view class='item'>设备编号：11123192868sxx</view>
+        <view class='item'>型号：11123192sxxkhihkh</view>
+        <view class='sendTime'>
+          <view class='item'>版本：1.223</view>
+          <view class='sendTimeText'>发货时间：2019.09.07</view>
+        </view>
+        <image class='row_right' src='../../../images/row_right.png' mode='aspectFill'></image>
+        <view class='status'></view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 已绑定 -->
+<view class='listView' wx:if="{{selectIndex == 3}}">
+  <view class='cengk_box' wx:for="{{navbar}}" wx:key="cardlist">
+    <view data-id='{{item.id}}'>
+      <view class='listItem'>
+        <view class='item'>印章名称：财务章</view>
+        <view class='item'>买家公司名称：北京字节跳动股份有限公司</view>
+        <view class='item'>绑定时间：2019.12.04</view>
+        <image class='row_right' src='../../../images/row_right.png' mode='aspectFill'></image>
+        <view class='status'></view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 已失效 -->
+<view class='listView' wx:if="{{selectIndex == 4}}">
+  <view class='cengk_box' wx:for="{{navbar}}" wx:key="cardlist">
+    <view data-id='{{item.id}}'>
+      <view class='listItem'>
+        <view class='item'>印章名称：财务章</view>
+        <view class='item'>买家公司名称：北京字节跳动股份有限公司</view>
+        <view class='item'>失效时间：2019.12.04</view>
+        <image class='row_right' src='../../../images/row_right.png' mode='aspectFill'></image>
+        <view class='status'></view>
+      </view>
+    </view>
+  </view>
+</view>

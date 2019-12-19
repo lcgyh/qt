@@ -1,0 +1,96 @@
+.new_manage{padding:30rpx;box-sizing: border-box;background: #fff; }
+.use_btn{width: 90%;margin:80rpx auto 40rpx;background: #e9221f;color: #fff;text-align: center;height:80rpx;line-height:80rpx;border-radius:8rpx;font-size: 30rpx;}
+.maleft_20{margin-left: 20rpx;}
+.poto {display: flex;justify-content:center;padding: 30rpx;box-sizing: border-box;flex-wrap: wrap;}
+.poto image{width:160rpx;height:160rpx;margin:20rpx;}
+
+
+.devices-info-container{
+  margin: 0 20rpx;
+}
+
+.seal-info{
+  display: flex;
+  align-items: center;
+  margin: 20rpx 0;
+  border-top: 1rpx solid #cccccc;
+  border-bottom: 1rpx solid #cccccc;
+}
+
+.seal-info-icon{
+  margin: 30rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border: 1rpx solid #888888;
+  border-radius: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #888888;
+}
+
+.seal-info-body{
+  flex: 2;
+}
+
+.seal-info-name{
+  font-size: 36rpx;
+}
+
+.seal-info-expire{
+  font-size: 22rpx;
+  padding-top: 20rpx;
+}
+
+.seal-info-status{
+  flex: 0.5;
+}
+
+.devices-info{
+  margin: 10rpx 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.devices-info-item{
+  display: flex;
+  align-items: center;
+  border-top: 1rpx solid #cccccc;
+  border-bottom: 1rpx solid #cccccc;
+  padding: 20rpx 10rpx;
+  margin: 5rpx 0;
+}
+
+.devices-info-item-title{
+  flex: 1;
+  font-size: 36rpx;
+  color: #000;
+}
+
+.devices-info-item-content{
+  flex: 3;
+  font-size: 24rpx;
+  color: #888888;
+}
+
+.btns-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 40rpx 0;
+}
+
+.btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 600rpx;
+  height: 80rpx;
+  border: 1rpx solid #888888;
+  border-radius: 20rpx;
+  color: #888888;
+  font-size: 32rpx;
+  margin: 20rpx 0;
+}

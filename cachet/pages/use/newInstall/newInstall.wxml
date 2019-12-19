@@ -1,0 +1,30 @@
+<!--pages/use/newInstall/newInstall.wxml-->
+<!-- <view class='topView'>
+  <view class="pickV">
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      <view class="picker">
+        {{array[index]}} ▲
+      </view>
+    </picker>
+  </view>
+  <view>
+    <mp-searchbar ext-class="searchBar" search="{{search}}" placeholder="员工名称" cancel='false'></mp-searchbar>
+  </view>
+</view> -->
+
+<view class='cellBox' wx:for="{{cellArray}}" wx:key="cellArray">
+  <view data-id='{{item.id}}'>
+    <view class='cell'>
+     <view class="row">
+      <view class='name'>{{item.name}}</view>
+      <view class='department'>{{item.department}}</view>
+      </view>
+      <view class='delete' bindtap='deletePerson' data-name='{{item.name}}'>删除</view>
+    </view>
+  </view>
+</view>
+<view class='bottomView'>
+  <view class='totalNum'>共：22人</view>
+  <view class='add' bindtap="add">新增</view>
+</view>
+<view class="empty" wx:if="{{cellArray.length == 0}}">暂无数据</view>

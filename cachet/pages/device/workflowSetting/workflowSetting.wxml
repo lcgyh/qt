@@ -1,0 +1,35 @@
+<!--pages/device/workflowSetting/workflowSetting.wxml-->
+<view class="worKflowCell">
+  <view>默认流程</view>
+  <switch class="switch" color="red" checked="{{switch1Checked}}" bindchange="switchChange" data-name="1"></switch>
+</view>
+<view class="worKflowCellT">
+  <view>{{defaultData.level}}</view>
+  <view style="margin-left:20px;">{{defaultData.person}}</view>
+</view>
+
+<view class="worKflowCell">
+  <view class="topView">
+    <view>顺序流程</view>
+    <view style="margin-left:20px;">{{orderArrayData.name}}</view>
+  </view>
+  <switch class="switch" color="red" checked="{{switch2Checked}}" bindchange="switchChange" data-name="2"></switch>
+</view>
+<view class="worKflowCell" style="margin-top:1px;">
+  <view class="topView">
+    <view>{{orderArrayData.level}}</view>
+    <view style="margin-left:20px;">{{orderArrayData.person}}</view>
+  </view>
+  <view class="changeBtn" bindtap="changeWorkflow">更换流程</view>
+</view>
+
+<view class="worKflowCell">
+  <view class="topView">
+    <view>特批流程</view>
+    <view style="margin-left:20px;">{{specialData.person}}</view>
+  </view>
+  <switch class="switch" color="red" checked="{{switch3Checked}}" bindchange="switchChange" data-name="3"></switch>
+</view>
+<view class="worKflowCellB">
+<view class="changeBtn" style="margin-right: 10px;" bindtap="changeWorkflow2">更换流程</view>
+</view>

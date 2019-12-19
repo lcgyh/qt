@@ -1,0 +1,17 @@
+
+.record_list{
+  font-size: 30rpx;
+  color: #666;
+}
+
+.item_block{
+  background-color: #fff;
+  padding: 40rpx 50rpx 40rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+}
+
+.opt-text :hover{
+  color: red;
+}

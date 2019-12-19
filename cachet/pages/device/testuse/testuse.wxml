@@ -1,0 +1,25 @@
+<block wx:if="{{loadSuccess}}">
+
+  <view class='new_manage'>
+    <view class='left'>{{devicesInfo.iconText}}</view>
+    <view class='center'>
+      <view class='title'>{{devicesInfo.sealName}}</view>
+      <view class='color999'>失效日期：{{devicesInfo.expireDate}}</view>
+    </view>
+    <view class='right'>
+      <view class='colorred'>{{devicesInfo.statusName}}</view>
+    </view>
+  </view>
+  <view>
+    <view class='nav_block'>
+      <view>设备编号</view>
+      <view class='color999'>{{devicesInfo.devicesCode}}</view>
+    </view>
+    <view class='nav_block'>
+      <view>版本号</view>
+      <view class='color999'>{{devicesInfo.version}}</view>
+    </view>
+    <view class='use_btn' catchtap='onUseTest'>立即使用</view>
+  </view>
+</block>
+

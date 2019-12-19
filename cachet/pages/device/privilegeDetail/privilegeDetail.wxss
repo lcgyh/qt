@@ -1,0 +1,76 @@
+/* pages/device/privilegeDetail/privilegeDetail.wxss */
+page{
+  background: white;
+}
+.listItem {
+  width: 100vw;
+  /* height: 44px; */
+  border-bottom: 1px solid #999;
+  line-height: 44px;
+  padding-left: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.item {
+  height: 24px;
+  line-height: 24px;
+  margin-left: 10px;
+}
+
+.black {
+  color: #333;
+}
+
+.listImage {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  margin-top: 2px;
+}
+
+.selectBtn {
+  color: white;
+  background: red;
+  height: 40px;
+  width: 150px;
+  border-radius: 5px;
+  margin-top: 80px;
+  line-height: 40px;
+  text-align: center;
+}
+.row_right {
+  height: 20px;
+  width: 20px;
+  line-height: 72px;
+  position: fixed;
+  float: right;
+  right: 10px;
+  margin-top: 10px;
+}
+.cell .name {
+  width: 60%;
+  color: #333;
+  margin-left: 20px;
+}
+
+.cell .delete {
+  background: red;
+  color: white;
+  height: 26px;
+  width: 40px;
+  line-height: 26px;
+  position: fixed;
+  float: right;
+  right: 12px;
+  border-radius: 5px;
+  margin-top: 7px;
+  text-align: center;
+}
+.cell {
+  line-height: 40px;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #999;
+}

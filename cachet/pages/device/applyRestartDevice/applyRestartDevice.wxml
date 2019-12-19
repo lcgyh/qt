@@ -1,0 +1,16 @@
+<!--pages/device/applyRestartDevice/applyRestartDevice.wxml-->
+<view class="info">提示：点击提交申请之后，管理员将会收到该条重装申请。在管理员同意之后，您即可进行印章的重装，重装只可以修改印章类型，不可以修改其他信息。
+</view>
+<view class="detaiLItem">申请人: 王小二</view>
+<view class="detaiLItem">印章名称:财务章</view>
+<!-- <view class="detaiLItem">重装理由:卡号时打卡沙克斯多好看是大手大脚按时打卡稍等会是假的好撒大声地阿斯达阿斯达阿斯达adad啊奥术大师打算打算大声道啊是大声道看阿斯达拉洛克撒旦教了</view> -->
+
+<textarea class="detaiLItem" placeholder="填写重装理由" value="{{reson}}" bindblur="reson"></textarea>
+
+<view class='centerView'>
+  <view class='selectBtn' bindtap='selectPersonal' wx:if="{{status == 'start'}}">提交申请</view>
+  <view class='selectBtn' bindtap='selectPersonal' style="background:#999" wx:if="{{status == 'wait'}}">提交申请中...</view>
+  <view class='selectBtn' bindtap='selectPersonal' wx:if="{{status == 'startSetting'}}">开始设置印章信息</view>
+</view>
+
+<image class="passImage" src="../../../images/pass.png" mode="aspectFill" wx:if="{{status == 'startSetting'}}"></image>

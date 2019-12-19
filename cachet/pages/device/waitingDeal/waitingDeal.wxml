@@ -1,0 +1,21 @@
+<!--pages/device/waitingDeal/waitingDeal.wxml-->
+<view class='listView'>
+  <view class='cengk_box' wx:for="{{list}}" wx:key="cardlist">
+    <view data-id='{{item.id}}' data-type="{{item.type}}" data-applystatus="{{item.applyStatusStr}}" data-applytype="{{item.applyType}}" data-applyId="{{item.applyId}}" data-applyVerifyId="{{item.applyVerifyId}}" data-devicesId = "{{item.devicesId}}"  data-partyid="{{item.partyId}}" bindtap="checkDetail">
+      <view class='listItem'>
+        <view class="column">
+          <view class='item'>{{item.sealName}}</view>
+          <view class='item'>申请人：{{item.name}}</view>
+          <view class='item'>申请时间：{{item.applyTimes}}</view>
+        </view>
+        <view class="row">
+          <view class='status' wx:if="{{item.type == 'TYPE_INSTALL'}}">重装</view>
+          <view class='status' wx:if="{{item.type == 'TYPE_APPLY' && item.applyStatusStr}}">{{item.applyStatusStr}}</view>
+          <view class='status' wx:if="{{item.type == 'TYPE_APPLY' && !item.applyStatusStr}}">{{item.applyTypeStr}}</view>
+          <image class='row_right' src='../../../images/row_right.png' mode='aspectFill'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="empty" wx:if="{{list.length == 0}}">暂无数据</view>

@@ -1,0 +1,59 @@
+<block wx:if="{{loadSuccess}}">
+  <view class='new_manage'>
+    <view class='left'>{{sealInfo.iconText}}</view>
+    <view class='center'>
+      <view class='title'>{{sealInfo.sealName}}</view>
+      <view class='color999'>保管员：{{sealInfo.custosPartyName}}</view>
+    </view>
+  </view>
+  <view>
+    <view class='nav_block'>
+      <view>设备编号</view>
+      <view class='color999'>{{devicesInfo.devicesCode}}</view>
+    </view>
+    
+    <view class='nav_block'>
+      <view>申请人</view>
+      <view class='color999'>{{apply.partyName}}</view>
+    </view>
+
+    <view class='nav_block'>
+      <view>申请类型</view>
+      <view class='color999'>{{apply.applyTypeName}}</view>
+    </view>
+
+    <view class='nav_block'>
+      <view>申请时间</view>
+      <view class='color999'>{{apply.applyTime}}</view>
+    </view>
+
+    <view class='nav_block'>
+        <view>申请资料</view>
+        <view class="img_box">
+          <image  wx:for="{{apply.vouchers}}" wx:key="index" src="{{item.url}}"  mode="aspectFill" catchtap="previewImage" class="pic img"></image>
+        </view>
+    </view>
+
+    <view class='nav_block'>
+      <view>审批状态</view>
+      <view class='color999'>{{apply.statusName}}</view>
+    </view>
+
+    <view class='nav_block' wx:if="{{apply.applyType === 'USED_APPLY'}}">
+      <view>申请次数</view>
+      <view class='color999'>{{total}}</view>
+    </view>
+
+    <view class='nav_block' wx:if="{{apply.applyType === 'USED_APPLY'}}">
+      <view>剩余次数</view>
+      <view class='color999'>{{surplus}}</view>
+    </view>
+
+    <view class='nav_block' wx:if="{{apply.applyType === 'TAKE_APPLY'}}">
+      <view>有效时间</view>
+      <view class='color999'>{{startTime}} 至 {{expireTime}}</view>
+    </view>
+
+    <view class='use_btn' catchtap='use' wx:if="{{!hasUsed && sealInfo.sealStatus === 'ENABLE'}}">{{apply.applyType === 'TAKE_APPLY' ? '立即领取' : '立即使用'}}</view>
+    </view>
+</block>

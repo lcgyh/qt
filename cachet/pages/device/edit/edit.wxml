@@ -1,0 +1,11 @@
+<view>
+  <view class='details paddingright'>
+    <view class='item'>
+      <view>印章名称</view>
+      <input type='text' placeholder='请输入印章名' name='value' class='name_value' value='{{sealName}}' bindinput="setName"/>
+    </view>
+  </view>
+  <view class='storemanbtn'>
+    <button catchtap="submit">提交</button>
+  </view>
+</view>

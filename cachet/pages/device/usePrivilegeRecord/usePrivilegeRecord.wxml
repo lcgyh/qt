@@ -1,0 +1,19 @@
+<!--pages/device/usePrivilegeRecord/usePrivilegeRecord.wxml-->
+<view class='listView'>
+  <view class='cengk_box' wx:for="{{array}}" wx:key="cardlist">
+    <view data-id='{{item.id}}'>
+      <view class='listItem'>
+        <view class="column">
+          <view class='item'>财务章</view>
+          <view class='item'>使用人呢：张晓梅</view>
+        </view>
+        <view class="row">
+          <view class='status'>{{item}}</view>
+          <image class='row_right' src='../../../images/row_right.png' mode='aspectFill'></image>
+        </view>
+
+      </view>
+    </view>
+  </view>
+</view>
+<view class="empty" wx:if="{{array.length == 0}}">暂无数据</view>

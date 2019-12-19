@@ -1,0 +1,10 @@
+<view class='login_box' wx:if="{{loadSuccess}}">
+  <view class='qrcode_box'>
+    <view class='title'>{{sealName}}</view>
+    <image src='{{imagesrc}}' class='ewm_content' catchlongtap='selfUse'/>
+    <view class='line'></view>
+    <view class='text' wx:if="{{type === 'USED_APPLY'}}">剩余次数:{{total}}/{{surplus}}次</view>
+    <view class='text' wx:if="{{type === 'TAKE_APPLY'}}">失效时间：{{startTime}} {{endDate}}</view>
+    <view class='text'>印章保管员：{{custOs}}</view>
+  </view>
+</view>

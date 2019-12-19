@@ -1,0 +1,24 @@
+<view class="navbar">
+  <!-- 
+  <view class="navbar-item">
+    <text class="navbar-text {{type === 'remain' ? 'active' : ''}}" catchtap='switchNav' data-type="remain">待办</text>
+  </view>
+  <view class="navbar-item">
+    <text class="navbar-text {{type === 'notice' ? 'active' : ''}}" catchtap='switchNav' data-type="notice">通知</text>
+  </view>
+  -->
+</view>
+<view class='swiper_box' wx:if="{{LoadSuccess}}">
+  <swiper autoplay="true" interval="5000" duration="1000" bindchange="getCurrent" circular="true">
+    <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+      <swiper-item style='height:{{heightimg}}px' class='swiperItem'>
+        <image src="{{item.url}}" class="slide-image" width="355" height="150" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="dots">
+    <text>{{dot}}</text>/
+    <text>{{imgUrls.length}}</text>
+  </view>
+</view>
+

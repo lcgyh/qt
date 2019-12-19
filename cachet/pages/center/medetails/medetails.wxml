@@ -1,0 +1,33 @@
+<form class='formbox' bindsubmit='onSubmit'>
+  <view class='nav_block '>
+    <view>头像</view>
+    <image src='{{party.portrait || "/images/people.png"}}' class='hearderimg' mode='scaleToFill'></image>
+  </view>
+  <view class='nav_block '>
+    <view>登陆账户</view>
+    <view class='martop_4 color999'>{{party.loginName}}</view>
+  </view>
+  <view class='nav_block '>
+    <view>姓名</view>
+    <input type="text" class='name' placeholder='请输入姓名' value='{{party.name}}' name='usename'/>
+  </view>
+  <view class='nav_block row_right'>
+    <view>性别</view>
+    <picker bindchange="genderChange" value="{{index}}" range="{{genders}}" range-key="name">
+      <view class="picker">
+        {{gender.name}}
+      </view>
+    </picker>
+  </view>
+  <view class='nav_block '>
+    <view>手机号</view>
+    <input type="text" class='name' placeholder='请输入手机号码' value='{{party.mobile}}' name='mobile'/>
+  </view>
+  <view class='nav_block '>
+    <view>邮箱</view>
+    <input type="text" class='name' placeholder='请输入邮箱地址' value='{{party.email}}' name='email'/>
+  </view>
+  <view class='storemanbtn'>
+      <button form-type='submit'>确认修改</button>
+  </view>
+</form>

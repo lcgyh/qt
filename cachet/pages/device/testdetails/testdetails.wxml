@@ -1,0 +1,42 @@
+<view class='new_manage'>
+  <image src='/images/logo.png' class='image_header'/>
+  <view class='center'>
+    <view class='title'>
+      张三三
+    </view>
+    <view class='color999'>
+      系统管理员
+    </view>
+  </view>
+  <view class='right'>
+    <view class='colorred'>待上传</view>
+  </view>
+</view>
+<view>
+  <view class='nav_block'>
+    <view class='why_title'>申请事由</view>
+    <view class='color999'>的手机号大事件啊哈大厦将颠卡是多久啊是健康的好阿斯顿哈说</view>
+  </view>
+  <view class='nav_block'>
+    <view>使用时间</view>
+    <view class='color999'>2019-10-20</view>
+  </view>
+  <view class='nav_block'>
+    <view>使用地点</view>
+    <view class='color999'>上海浦东新区</view>
+  </view>
+  <view class='nav_block'>
+    <view><text class='colorred'>*</text>相关证明</view>
+    <view class='photo_box' >
+      <view class="imgBox" wx:for="{{imgBox}}" wx:key="index">
+        <image src="{{item}}"  data-src="{{item}}" mode="aspectFill" bindtap="previewImage" class="pic"></image>
+        <image src="/images/icon_removeImg.png" class="deletePic" data-src="{{item}}" catchtap='deletePic' ></image>
+      </view> 
+    <image src='/images/add_photo.jpg' bindtap='chosePhoto' wx:if="{{imgBox.length<8}}" class="add_img"/>
+    </view>
+  </view>
+  <view class='storemanbtn'>
+    <button >提交</button>
+  </view>
+</view>
+

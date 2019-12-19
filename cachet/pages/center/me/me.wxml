@@ -1,0 +1,68 @@
+<!--pages/me/me.wxml-->
+<view class='bgfff'>
+  <view class='me_top'>
+    <view class='header_img' catchtap='chose_avatar'>
+      <image wx:if='{{party.portrait}}' src='{{party.portrait}}'></image>
+      <image wx:else src='/images/people.png'></image>
+    </view>
+    <text class='font_size30' wx:if="{{party.name}}">{{party.name}}</text>
+    <text class='font_size30' wx:if="{{!party.name}}">未登录</text>
+  </view>
+  <image bindtap="showQRcode" class="qrcode" src='/images/qrcode.png'></image>
+</view>
+
+<navigator url='../company/company' wx:if="{{party.companyName}}">
+  <view class='nav_block row_right titleText'>
+    <view class='left'>
+      <text class='iconfont icon-gongsi'></text>
+      <view>{{party.companyName}}</view>
+    </view>
+  </view>
+</navigator>
+<!-- <view class='nav_block row_right titleText' catchtap='goSetnews'>
+  <view class='left'>
+    <text class='iconfont icon-gerenxinxi'></text>
+    <view>个人信息</view>
+  </view>
+</view> -->
+<view class='nav_block row_right titleText' catchtap='myShare'>
+  <view class='left'>
+    <image class='leftImgae' src="/images/share_icon.png"></image>
+    <view>我的分享</view>
+  </view>
+</view>
+<view class='nav_block row_right titleText' catchtap='helpCenter'>
+  <view class='left'>
+    <image class='leftImgae' src="/images/bangzhu.png"></image>
+    <view>帮助中心</view>
+  </view>
+</view>
+<view class='nav_block row_right titleText' catchtap='feedback'>
+  <view class='left'>
+    <text class='iconfont icon-gerenxinxi'></text>
+    <view>意见反馈</view>
+  </view>
+</view>
+
+<view class='nav_block titleText' catchtap='login_out' wx:if="{{party.isLogin}}">
+  <view class='left'>
+    <text class='iconfont icon-tuichu'></text>
+    <view>退出登录</view>
+  </view>
+</view>
+
+<view class='nav_block titleText' catchtap='lonin' wx:if="{{!party.isLogin}}">
+  <view class='left'>
+    <text class='iconfont icon-tuichu'></text>
+    <view>登录</view>
+  </view>
+</view>
+
+<view class='bg' wx:if="{{chose}}" catchtap='hide_chose'></view>
+<view class='chose_box' wx:if="{{chose}}">
+  <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">使用微信图像</button>
+  <view class='choes_image' catchtap='onUpload'>选择相册或者拍照</view>
+</view>
+
+<!-- //用户未登录时的蒙版 -->
+<view class="unLoadView" catchtap='goLogin' wx:if="{{!party.isLogin}}"></view>

@@ -1,0 +1,6 @@
+<scroll-view>
+  <view wx:for='{{actList}}'  class='item row_right' data-actid="{{item.actId}}" catchtap='toDetail'>
+    <view>{{item.sealName}}</view>
+    <view class='color666'>{{item.useTime}}</view>
+  </view>
+</scroll-view>

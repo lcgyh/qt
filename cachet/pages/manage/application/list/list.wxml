@@ -1,0 +1,37 @@
+<!--pages/peopledetails/peopledetails.wxml-->
+<view>
+<view class='storeman_search'>
+ <view class='content'>
+    <view class='left'>
+      <image src='/images/search.png' class='search_icon'/>
+      <picker mode="date" value="{{startTime}}" bindchange="bindDateChange" name="bespeak_picker" class='color99'>  
+        <view class="picker">{{startTime || bespeak_date}}</view>  
+       </picker> 
+       至
+       <picker mode="date" value="{{endTime}}" bindchange="bindDateChange2" name="bespeak_picker2" class='color99'>  
+        <view class="picker">{{endTime || bespeak_date2}}</view>  
+       </picker> 
+    </view>
+    <text class='search_btn' catchtap='searchData'>搜索</text>
+  </view>
+</view>
+<scroll-view scroll-y>
+  <navigator wx:for="{{manage_list}}" url='../details/details?applyId={{item.applyId}}' hover-class='none' wx:key="{{item.applyId}}">
+    <view class='manage_list row_right' >
+      <view class='left'>
+        <text class='font_size30 color333'>{{item.alias}}</text>
+        <text>编号:{{item.applyId}}</text>
+      </view>
+      <view class='right'>
+        <text><text class='r_left' wx:if="{{item.numbers!=null}}">{{item.numbers}}次 </text><text class='font_size30 {{item.color}}'>{{item.status}}</text></text>
+        <text>{{item.applyTime}}</text>
+      </view>
+    </view>
+  </navigator>
+  <view class="loadingtips">
+      <view wx:if="{{noMore}}">
+        <text>没有更多内容了</text>
+      </view>
+  </view>
+</scroll-view>
+</view>

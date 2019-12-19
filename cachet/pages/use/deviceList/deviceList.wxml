@@ -1,0 +1,36 @@
+<block wx:if="{{loadSuccess}}">
+  <view class='new_manage'>
+    <view class='left'>
+      {{sealInfo.iconText}}
+    </view>
+    <view class='center'>
+      <view class='title'>
+        {{sealInfo.name}}
+      </view>
+      <view class='color999'>
+        保管员:{{sealInfo.partyName}}
+      </view>
+    </view>
+    <view class='right' style='color:red;'>请选择设备</view>
+  </view>
+  <scroll-view class='scroll_list'>
+    <navigator hover-class='none' wx:for="{{devicesList}}" wx:key="alias" url='../deviceDetail/deviceDetail?devicesId={{item.devicesId}}&sealId={{sealId}}&useId={{useId}}&type={{type}}'>
+      <view class='new_manage row_right'>
+        <view class='center'>
+          <view class='title'>
+            编号:{{item.alias}}
+          </view>
+          <view class='color999'>
+            失效日期：{{item.expireDate}}
+          </view>
+        </view>
+        <view class='right'>
+          <view class='colorgreen'>{{item.devicesStatus}}</view>
+        </view>
+      </view>
+    </navigator>
+    <view class='nodata' wx:if="{{devicesList.length < 1}}">
+      暂无设备
+    </view>
+  </scroll-view>
+</block>

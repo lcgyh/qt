@@ -1,0 +1,50 @@
+page {
+  background: #fff;
+}
+
+.scroll_list {
+  padding: 0rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.listView {
+  /* padding-top: 44px; */
+  width: 100%;
+}
+
+.row_right {
+  height: 20px;
+  width: 20px;
+  margin-right: 12px;
+  margin-top: 26px;
+}
+
+.rightNumber {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  margin-top: 26px;
+  border-radius: 10px;
+  background: red;
+  text-align: center;
+  color: white;
+}
+
+.listItem {
+  width: 100vw;
+  height: 72px;
+  background-color: white;
+  display: flex;
+  border-bottom: 2px solid #f7f7f7;
+  justify-content: space-between;
+}
+
+.item {
+  height: 24px;
+  line-height: 24px;
+  margin-left: 10px;
+}
+
+.balck {
+  color: #333;
+}

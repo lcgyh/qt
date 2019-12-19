@@ -1,0 +1,6 @@
+/* pages/manage/manage.wxss */
+.scroll_box{height: 1600rpx}
+.manage_list{width: 100%;padding:20rpx 54rpx 20rpx 30rpx;box-sizing: border-box;margin-top:10rpx;display: flex;justify-content: space-between;font-size: 24rpx;color: #999;}
+.manage_list .left,.manage_list .right{display: flex;flex-direction: column; }
+.manage_list .left text,.manage_list .right text{line-height: 40rpx;}
+.manage_list .right{text-align: right;}

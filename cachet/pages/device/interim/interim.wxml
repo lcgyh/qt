@@ -1,0 +1,22 @@
+<view>
+  <view class='details paddingright'>
+    
+    <navigator url='../interimperson/interimperson'>
+      <view class='nav_block row_right'>
+        <view><text class='colorred'>*</text>保管员</view>
+        <view class='colorred'>{{interim.partyName || '请选择'}}</view>
+      </view>
+    </navigator>
+
+    <view class='nav_block row_right'>
+      <view><text class='colorred'>*</text>失效时间</view>
+      <picker mode="date" start="{{start}}" bindchange='changeTime' data-name="expireTime" class='color999'>  
+        <view class="picker color999">{{expireTime || '请选择'}}</view>  
+      </picker> 
+    </view>
+  </view>
+  <view class='storemanbtn' wx:if="{{editAble}}">
+    <button catchtap="fromCommit">确认设置</button>
+    <button wx:if="{{releaseAble}}" catchtap="release">解除授权</button>
+  </view>
+</view>

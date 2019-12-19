@@ -1,0 +1,23 @@
+<form bindsubmit="formSubmit">
+<view class='padding_100'>
+  <view class='nav_block row_right'>
+    <view><text class='colorred'>*</text>公司印章</view>
+    <navigator url='../../apply/choosecach/choosecach' hover-class='none'>
+    <view class='martop_4 color999'>请选择</view>
+      <!-- <view class='martop_4 color999' wx:if="{{alias ==''}}">请选择</view> -->
+      <!-- <view class='martop_4 color999' wx:else>{{alias}}</view> -->
+    </navigator>
+  </view>
+  <view class='nav_block'>
+    <view><text class='colorred'>*</text>申请次数</view>
+    <input placeholder="请输入申请次数" name="times"  value="{{times}}" class='text_why' bindinput="times_change"></input>
+  </view>
+  <view class='nav_block'>
+    <view><text class='colorred'>*</text>申请事由</view>
+    <textarea placeholder="请输入申请理由" name="textarea" class='text_why' auto-height bindblur="text_value" value="{{cause}}" placeholder-class="placeright"/>
+  </view>  
+</view>
+<view class='storemanbtn'>
+  <button form-type="submit">提交</button>
+</view>
+</form>

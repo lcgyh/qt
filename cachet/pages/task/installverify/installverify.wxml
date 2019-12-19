@@ -1,0 +1,19 @@
+<view class='applydetails'>
+  <view class='top'>
+    <image src='{{portrait}}' class='people'/>
+    <view class='name_box'>
+      <text class='font_size30 color333'>{{partyName}}</text>
+    </view>
+    <view class='name_box flex_end font_size30'>{{position || '未设置'}}</view>
+  </view>
+  <view class='top_text top_line'>
+    <view><text class='left'>印章名称</text><text class='right'>{{sealName}}</text></view>
+    <view><text class='left'>印章编号</text><text class='right'>{{devicesCode}}</text></view>
+    <view><text class='left'>安装类型</text><text class='right'>{{typeName}}</text></view>
+    <view><text class='left'>申请时间</text><text class='right'>{{applyTime}}</text></view>
+  </view>
+
+  <view class='use_btn' data-result='PASSED' catchtap='verify'>同意</view>
+  <view class='use_btn' data-result='REJECT' catchtap='verify'>拒绝</view>
+
+</view>

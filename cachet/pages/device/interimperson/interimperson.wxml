@@ -1,0 +1,26 @@
+<view class='padding_100'>
+  <view class='storeman_search'>
+    <view class='content'>
+      <view class='left'>
+        <image src='/images/search.png' class='search_icon'/>
+        <input type='text' placeholder='请输入员工登录名' name='search_value' bindinput="searchvalue"/>
+      </view>
+      <text class='search_btn' catchtap="searchList">搜索</text>
+    </view>
+  </view>
+  <view wx:if="{{nobody}}" class='no_people'>暂未搜索到该员工</view>
+  <view class='storeman_list {{showlist ? "noboeder" :""}}' wx:if="{{showlist}}" >
+    <view class='paddingleft40 {{item.partyId == choseselect ? "selectitem":""}}' wx:for="{{partyInfos}}" wx:key="{{item.partyId}}" data-partyId="{{item.partyId}}" catchtap="chosePeople" data-select="{{item.partyId}}" data-name="{{item.name}}">
+      <view class='list_block'>
+        <image src='{{item.portrait == null || item.portrait == "" ? "/images/people.png" : item.portrait}}'/>
+        <view class='name_box'>
+          <text class='font_size30 color333'>{{item.name}}</text>
+          <text class='font_size24 color999'>{{item.position =='' || item.position ==null ? '未设置' : item.position }}</text>
+        </view>
+        <view class='font_size28 color333'>
+          {{item.loginName}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

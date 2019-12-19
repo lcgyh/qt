@@ -1,0 +1,5 @@
+/* pages/addcach/addcach.wxss */
+.login_form {padding:40rpx;box-sizing: border-box;}
+.login_form label{color: #666;}
+.login_form .inputView input{width: 72%;}
+.submit{width: 580rpx;}

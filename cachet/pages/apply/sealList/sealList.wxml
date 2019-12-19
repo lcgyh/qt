@@ -1,0 +1,15 @@
+<view catchtap='navToApply' wx:for="{{seals}}" data-id="{{item.sealId}}" data-sealname="{{item.sealName}}" data-usespecial="{{item.useSpecial}}"  wx:key="{{item.sealId}}">
+  <view class='new_manage'>
+    <view class='left' style="margin-left:12px;">
+      {{item.iconText}}
+    </view>
+    <view class='center'>
+      <view class='title'>
+        {{item.sealName}}
+      </view>
+      <view class='color999'>
+        保管员：{{item.custosName}}
+      </view>
+    </view>
+  </view>
+</view>

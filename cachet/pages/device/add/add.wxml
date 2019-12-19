@@ -1,0 +1,39 @@
+<form bindsubmit="formSubmit" wx:if="{{loadSuccess}}">
+  <view class='padding_100'>
+    <view class='nav_block row_right'>
+      <view>名称印章</view>
+      <navigator url='../../manage/newlist/newlist' hover-class='none'>
+      <view class='martop_4 color999'>{{sealName || '请选择'}}</view>
+      </navigator>
+    </view>
+    <view class='nav_block'>
+      <view>设备编号</view>
+      <view class='color999'>{{code}}</view>
+    </view>
+
+    <view class='nav_block'>
+      <view>设备标识</view>
+      <input type='text' placeholder='请输入设备标识' name='alias' class='name_value right'/>
+    </view>
+
+    <view class='nav_block'>
+      <view>型号</view>
+      <view class='color999'>{{model}}</view>
+    </view>
+    <view class='nav_block'>
+      <view>版本号</view>
+      <view class='color999'>{{version}}</view>
+    </view>
+    <view class='nav_block'>
+      <view>出厂日期</view>
+      <view class='color999'>{{productDate}}</view>
+    </view>
+    <view class='nav_block'>
+      <view>失效日期</view>
+      <view class='color999'>{{expireDate}}</view>
+    </view>
+  </view>
+  <view class='storemanbtn'>
+    <button form-type="submit">添加设备</button>
+  </view>
+</form>

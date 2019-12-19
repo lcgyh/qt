@@ -1,0 +1,21 @@
+<!--pages/manage/manage.wxml-->
+<scroll-view class="scroll_box" scroll-y="true" lower-threshold="50" bindscrolltolower="onScrollLower" style="height:{{scrollHeight}}px;">
+  <navigator wx:for="{{devicesList}}" url='../details/details?devicesId={{item.devicesId}}' hover-class='none' wx:key="{{devicesId}}" wx:data-id="{{devicesId}}">
+    <view class='manage_list row_right' >
+      <view class='left'>
+        <text class='font_size30 color333'>{{item.name}}</text>
+        <text>编号:{{item.devicesId}}</text>
+      </view>
+      <view class='right'>
+        <text class='font_size30 {{item.color}}'>{{item.statusName}}</text>
+        <text>失效:{{item.expireTime}}</text>
+      </view>
+    </view>
+  </navigator>
+  <view class="loadingtips">
+      <view wx:if="{{nodata}}">
+        <text>没有更多内容了</text>
+      </view>
+  </view>
+</scroll-view>
+

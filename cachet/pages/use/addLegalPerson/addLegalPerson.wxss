@@ -1,0 +1,38 @@
+/* pages/use/addLegalPerson/addLegalPerson.wxss */
+.bumen {
+  display: flex;
+  width: 100vw;
+  height: 50px;
+  margin-top: 50px;
+}
+
+.name {
+  width: 60px;
+  text-align: center;
+  line-height: 50px;
+  color: #333;
+}
+
+.pickV {
+  width: 70%;
+  line-height: 50px;
+  border-radius: 5rpx;
+  border: 2rpx solid #eee;
+  padding-left: 12px;
+}
+
+.makeSureView {
+  display: flex;
+  justify-content: center;
+}
+
+.makeSure {
+  width: 88px;
+  background: red;
+  color: white;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 100px;
+  border-radius: 5rpx;
+  text-align: center;
+}

@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-cells": "../../../weui-miniprogram/cells/cells",
+    "mp-form": "../../../weui-miniprogram/form/form"
+  },
+  "navigationBarTitleText": "注册"
+}

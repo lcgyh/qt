@@ -1,0 +1,25 @@
+<!--pages/use/addPrivilegePerson/addPrivilegePerson.wxml-->
+
+<view class='bumen'>
+  <view class='name'>部门</view>
+  <view class="pickV">
+    <picker range="{{organizations}}" range-key='name' value="{{index}}" data-organizationId='{{organizations[index].organizationId}}' bindchange="bindChange">
+      <view class="picker">
+        {{organizations[index].name}}
+      </view>
+    </picker>
+  </view>
+</view>
+<view class='bumen'>
+  <view class='name'>人员</view>
+  <view class="pickV">
+    <picker bindchange="bindPickerChange" value="{{staffindex}}" range-key='name'  range="{{staffList}}" partyId='{{staffList[index].partyId}}' >
+      <view class="picker">
+        {{staffList[index].name}}
+      </view>
+    </picker>
+  </view>
+</view>
+<view class='makeSureView'>
+<view class='makeSure' bindtap="makeSure">确认</view>
+</view>

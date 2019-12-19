@@ -1,0 +1,17 @@
+
+<navigator hover-class='none' wx:for="{{taskList}}" wx:key="applyId" url='{{baseUrl}}?verifyId={{item.verifyId}}&type={{item.type}}'>
+  <view class='item_box row_right'>
+    <view class="item_block">
+      <view class='new_viewleft'>
+        <text>{{item.name}}</text>
+        <text class="item-des">{{item.description}}</text>
+      </view>
+      <text class='colorred actiontitle'>{{item.statusName}}</text>
+    </view>
+  </view>
+</navigator>
+<view class="loadingtips">
+  <view wx:if="{{noMore}}">
+    <text>没有更多内容了</text>
+  </view>
+</view>

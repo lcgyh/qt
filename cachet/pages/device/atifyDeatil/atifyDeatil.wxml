@@ -1,0 +1,118 @@
+<!--pages/device/atifyDeatil/atifyDeatil.wxml-->
+<view class="listItem black">申请人:{{detail.name}}</view>
+<view class="listItem ">申请印章:{{detail.sealName}}</view>
+<view class="listItem " wx:if="{{detail.applyTypeStr}}">申请类型:{{detail.applyTypeStr}}</view>
+<view class="listItem " wx:if="{{detail.applyTimess}}">申请使用次数:{{detail.applyTimess}}</view>
+<view class="listItem " wx:if="{{detail.takeStartTimes}}">开始时间:{{detail.takeStartTimes}}</view>
+<view class="listItem " wx:if="{{detail.takeEndTimes}}">结束时间:{{detail.takeEndTimes}}</view>
+<view class="listItem ">申请事由:{{detail.cause}}</view>
+<view class="listItem " wx:if="{{detail.takeDestination}}">外带地址:{{detail.takeDestination}}</view>
+<view class="listItem " wx:if="{{!applyImageUrl}}">申请资料:未上传</view>
+<view class="listItem " wx:if="{{applyImageUrl}}">申请资料:
+  <view style="height:44px;" wx:for="{{applyImageUrl}}" wx:key="{{item}}">
+    <image class="listImage" src="{{item}}" mode="scaleToFill" data-pic="{{item}}"></image>
+  </view>
+</view>
+<view class="listItem" wx:if="{{title == '待核查'}}">
+  <view>使用证明:</view>
+  <view class="imageCell">
+    <view style="height:44px;" wx:for="{{hechaImageUrl}}" wx:key="{{item}}">
+      <image class="listImage" src="{{item}}" mode="scaleToFill" bindtap="onUpload" data-index="{{index}}"></image>
+    </view>
+  </view>
+</view>
+<view class="listItem " wx:if="{{detail.names}}">拒绝人:{{detail.names}}</view>
+<view class="listItem " wx:if="{{detail.lastUpdatedStampss}}">拒绝时间:{{detail.lastUpdatedStampss}}</view>
+
+<view class="titleText" wx:if="{{processData.length > 0 }}">顺序审批</view>
+<view class='order_process' wx:if="{{processData.length > 0 }}">
+  <view class='process_wrap' wx:for="{{processData}}" wx:key="">
+    <view class='process'>
+      <view class='process_line' style="background:{{item.start}}"></view>
+      <view class='process_icon' style="background:{{item.icon}}">{{index+1}}</view>
+      <view class='process_line' style="background:{{item.end}}"></view>
+    </view>
+    <text class='process_name'>{{item.name}}</text>
+  </view>
+</view>
+
+<view class="titleText" wx:if="{{special.length > 0 }}">特殊审批</view>
+<view class='order_process' wx:if="{{special.length > 0 }}">
+  <view class='process_wrap' wx:for="{{special}}" wx:key="">
+    <view class='process'>
+      <view class='process_line' style="background:{{item.start}}"></view>
+      <view class='process_icon' style="background:{{item.icon}}">{{index+1}}</view>
+      <view class='process_line' style="background:{{item.end}}"></view>
+    </view>
+    <text class='process_name'>{{item.name}}</text>
+  </view>
+</view>
+
+<view class="titleText" wx:if="{{iwLegalNames.length > 0 }}">法务审批</view>
+<view class='order_process'  wx:if="{{iwLegalNames.length > 0 }}">
+  <view class='process_wrap' wx:for="{{iwLegalNames}}" wx:key="">
+    <view class='process'>
+      <view class='process_line' style="background:{{item.start}}"></view>
+      <view class='process_icon' style="background:{{item.icon}}">{{index+1}}</view>
+      <view class='process_line' style="background:{{item.end}}"></view>
+    </view>
+    <text class='process_name'>{{item.name}}</text>
+  </view>
+</view>
+
+<view class="titleText" wx:if="{{bigissueg.length > 0 }}">重大事项申请</view>
+<view class='order_process'  wx:if="{{bigissueg.length > 0 }}">
+  <view class='process_wrap' wx:for="{{bigissueg}}" wx:key="">
+    <view class='process'>
+      <view class='process_line' style="background:{{item.start}}"></view>
+      <view class='process_icon' style="background:{{item.icon}}">{{index+1}}</view>
+      <view class='process_line' style="background:{{item.end}}"></view>
+    </view>
+    <text class='process_name'>{{item.name}}</text>
+  </view>
+</view>
+
+<view class='listItem' wx:if="{{title == '常规申请' || title == '时段申请' || title == '法务审批'}}">
+  <checkbox-group bindchange="checkboxChange" class="selectView">
+    <label wx:for="{{items}}" wx:key="{{items.name}}">
+      <checkbox class="checkbox" disabled="{{item.disabled}}" value="{{item.value}}" checked="{{item.checked}}" />{{item.name}}
+    </label>
+  </checkbox-group>
+</view>
+
+<view class="listItem " wx:if="{{title == '已撤销'}}">撤销理由:{{detail.verifyResult}}</view>
+
+<view class="apply" wx:if="{{title == '常规申请' || title == '时段申请'}}">
+  <view class='refuse' bindtap='refuse'>拒绝</view>
+  <view class='agree' bindtap='agree'>同意</view>
+</view>
+
+<view class='centerView' wx:if="{{title == '待批准'}}">
+  <view class='selectBtn' bindtap='apply'>撤销申请</view>
+</view>
+<modal class="modal" wx:if="{{!hiddenModal}}" title="填写撤销理由" confirm-text="确定" cancel-text="取消" bindconfirm="modalconfirm" bindcancel="modalcancel">
+  <view class="input-line">
+    <input placeholder='请输入撤销理由' maxlength="50" bindinput='input' type="text" type="text" value="{{ textvalue }}" />
+  </view>
+</modal>
+<view class="centerView" wx:if="{{title == '已拒绝'}}">
+  <view class="refuseBtn">已拒绝</view>
+</view>
+
+<view class='centerView' wx:if="{{title == '待核查'}}">
+  <view class='selectBtn' bindtap='save'>保存</view>
+</view>
+
+<view class="apply" wx:if="{{title == '法务审批'}}">
+  <view class='refuse' bindtap='fawuRefuse'>拒绝</view>
+  <view class='agree' bindtap='fawuAgree'>同意</view>
+</view>
+
+<view class='centerView' wx:if="{{title == '已批准'}}">
+  <view class='selectBtn' >立即使用</view>
+</view>
+
+<view class="apply" wx:if="{{title == '重大事项审批'}}">
+  <view class='refuse' bindtap='zhongdaRefuse'>拒绝</view>
+  <view class='agree' bindtap='zhongdaAgree'>同意</view>
+</view>

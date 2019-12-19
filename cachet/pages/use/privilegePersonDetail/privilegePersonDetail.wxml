@@ -1,0 +1,19 @@
+<!--pages/use/privilegePersonDetail/privilegePersonDetail.wxml-->
+<view class='cell'>
+  <view class='name'>{{privilegedPeople.name}}</view>
+  <view class='delete' bindtap='deletePerson' data-name='{{item.name}}'>删除</view>
+</view>
+<view class='cell'>
+  <view class='name'>账号：{{privilegedPeople.mobile}}</view>
+</view>
+<view class='cell'>
+  <view class='name'>部门：{{privilegedPeople.orgName}}</view>
+</view>
+<view class='cell'>
+  <view class='name'>职务：{{privilegedPeople.position}}</view>
+</view>
+<view class='cell'>
+  <view class='name'>状态：{{privilegedPeople.privilegedStatus=='FREEZE'?'正常':'冻结'}}</view>
+  <view class='lock' bindtap='lockPerson' data-status='{{item.privilegedStatus}}'>{{privilegedPeople.privilegedStatus=='FREEZE'?'冻结':'解冻'}}</view>
+</view>
+

@@ -1,0 +1,59 @@
+<!--pages/applydetails/applydetails.wxml-->
+<view class='applydetails'>
+  <view class='top'>
+    <image src='{{applyDetail.portrait}}' class='people'/>
+    <view class='name_box'>
+      <text class='font_size30 color333'>{{applyDetail.partyName}}</text>
+      <text class='font_size24 {{applyDetail.color}}'>{{applyDetail.statusName}}</text>
+    </view>
+    <image wx:if="{{applyDetail.statusIcon}}" src='{{applyDetail.statusIcon}}' class='state'/>
+  </view>
+  <view class='top_text'>
+    <view>
+      <text class='left'>申请类型</text>
+      <text class='right'>{{applyDetail.applyTypeName}}</text>
+    </view>
+    <view>
+      <text class='left'>申请印章</text>
+      <text class='right'>{{applyDetail.devicesName}}</text>
+    </view>
+    <view wx:if="{{applyDetail.applyTime}}">
+      <text class='left'>申请次数</text>
+      <text class='right'>{{applyDetail.applyTime}}次</text>
+    </view>
+    <view wx:if="{{applyDetail.startTime}}">
+      <text class='left'>提取时间</text>
+      <text class='right'>{{applyDetail.startTime}}</text>
+    </view>
+    <view wx:if="{{applyDetail.endTime}}">
+      <text class='left'>归还时间</text>
+      <text class='right'>{{applyDetail.endTime}}</text>
+    </view>
+    <view wx:if="{{applyDetail.address}}">
+      <text class='left'>外带地址</text>
+      <text class='right'>{{applyDetail.address}}</text>
+    </view>
+    <view>
+      <text class='left'>申请说明</text>
+      <text class='right'>{{applyDetail.cause}}</text>
+    </view>
+  </view>
+
+</view>
+<view class='applydetails'>
+  <view class='top noborder' wx:for="{{applyDetail.verifys}}" wx:key="index">
+    <view class='image_header'><image src='{{item.portrait}}' class='people'/></view>
+    <view class='name_box font_size24 '>
+      <view class='data'>
+        <text class='font_size30 color333'>{{item.partyName}}</text>
+        <view class='color999'>{{item.time}}</view>
+      </view>
+      <text>{{item.position}}</text>
+      <text class='color333 {{item.color}}'>{{item.result}}</text>
+      <text class='color333' wx:if="{{item.remark}}">{{item.remark}}</text>
+    </view>
+    
+  </view>
+</view>
+<view class='use_btn' catchtap='edit' wx:if="{{applyDetail.status === 'REJECT' || applyDetail.status === 'RETRACT'}}">编辑</view>
+<view class='use_btn' catchtap='retract' wx:if="{{applyDetail.status === 'PENDING'}}">撤回</view>

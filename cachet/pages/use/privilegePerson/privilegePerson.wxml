@@ -1,0 +1,34 @@
+<!-- pages/use/privilegePerson/privilegePerson.wxml -->
+<!-- <view class='topView'>
+  <view class="pickV">
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      <view class="picker">
+        {{array[index]}} ▲
+      </view>
+    </picker>
+  </view>
+  <view>
+    <mp-searchbar ext-class="searchBar" search="{{search}}" placeholder="员工名称" cancel='false'></mp-searchbar>
+  </view>
+</view> -->
+
+<view class='cellBox' wx:for="{{cellArray}}" wx:key="cellArray">
+  <view data-id='{{item.appInstallPeopleId}}' bindtap="checkDetail" data-id="{{item.appInstallPeopleId}}">
+    <view class='cell'>
+    <view class="row">
+      <view class='name'>{{item.name}}</view>
+      <view class='department'>{{item.orgName}}</view>
+      </view>
+      <image class='row_right' src='../../../images/row_right.png' mode='aspectFill'></image>
+    </view>
+  </view>
+</view>
+
+
+
+<view class='bottomView'>
+  <view class='totalNum'>共：{{cellArray.length}}人</view>
+  <view class='add' bindtap="add">新增</view>
+</view>
+
+<view class="empty" wx:if="{{cellArray.length == 0}}">暂无数据</view>

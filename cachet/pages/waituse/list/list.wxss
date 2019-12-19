@@ -1,0 +1,26 @@
+.navbar {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+}
+.navbar-item {
+    flex: 1.0;
+    text-align: center;
+    font-size: 28rpx;
+    color: #999;
+    margin-bottom: -1px;
+}
+.navbar-text {
+    display: block;
+    width:86px;
+    padding: 10px;
+    margin: auto;
+}
+.navbar-text.active {
+    border-bottom: 2px solid #e9221f;
+    color: #e9221f;
+    font-weight: bold;
+}
+/* pages/manage/newlist/newlist.wxss */
+page{background: #fff;}
+.scroll_list{padding:0rpx 30rpx;box-sizing: border-box;}

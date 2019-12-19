@@ -1,0 +1,41 @@
+<block wx:if="{{loadSuccess}}">
+  <view>
+    <view class='nav_block'>
+      <view>设备名称</view>
+      <view class='color999'>{{devicesCode}}</view>
+    </view>
+    <view class='nav_block'>
+      <view>协议版本</view>
+      <view class='color999'>{{devicesInfo.protocolVersion || ''}}</view>
+    </view>
+    <view class='nav_block'>
+      <view>是否安装</view>
+      <view class='color999'>{{devicesInfo.initialised === 1 ? '是':'否'}}</view>
+    </view>
+    <view class='nav_block'>
+      <view>固件版本</view>
+      <view class='color999'>{{devicesInfo.majorVersion}}.{{devicesInfo.subVersion}}.{{devicesInfo.minorVersion}}</view>
+    </view>
+	
+	<view class='nav_block'>
+      <view>设备状态</view>
+      <view class='color999'>{{operationStatus.devicesStatus || ''}}</view>
+    </view>
+	
+	<view class='nav_block'>
+      <view>运行状态</view>
+      <view class='color999'>{{operationStatus.operationStatus || ''}}</view>
+    </view>
+
+	<view class='nav_block'>
+      <view>错误信息</view>
+      <view class='color999'>{{errorInfo.mes || ''}}</view>
+      <view></view>
+    </view>
+    
+    <view wx:if="{{hasUpdate}}" class='use_btn' catchtap='update'>升级</view>
+    <view wx:else class="use_btn" catchtap='checkUpdate'>检查升级</view>
+    <view class='use_btn' catchtap='releaseError' wx:if="{{operationStatus.operationStatus === '异常'}}">解除锁定</view>
+    <view class='use_btn' catchtap='syncStatus' wx:if="{{needSync}}">同步状态</view>
+  </view>
+</block>

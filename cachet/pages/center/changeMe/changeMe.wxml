@@ -1,0 +1,117 @@
+<!--pages/center/changeMe/changeMe.wxml-->
+<!-- 更改公司信息 -->
+<view class="backView" wx:if="{{registerSelect == 1}}">
+  <view class='compantyView'>
+    <view class='leftView'>*公司名称</view>
+    <input class='rightView' type='text' placeholder="请输入名称" value="{{user.legalPerson}}" bindblur="mobileInput" />
+  </view>
+  <view class='compantyView'>
+    <view class='leftView'>*信用代码</view>
+    <input class='rightView' type='text' placeholder="请输入10位信用代码" value="{{user.legalPerson}}" bindblur="mobileInput" />
+  </view>
+  <!-- <view class='compantyView'>
+    <view class='leftView'>*所在地区</view>
+    <view class="area">
+      <picker bindtap="selectArea" value="{{index}}" range="{{array}}">
+        <view>省</view>
+      </picker>
+      <image class="row_right" src="../../../images/sanjiao.png"></image>
+    </view>
+    <view class="area">
+      <picker style="margin-left:2vw" value="{{index}}" range="{{array}}">
+        市
+      </picker>
+      <image class="row_right" src="../../../images/sanjiao.png"></image>
+    </view>
+    <view class="area">
+      <picker style="margin-left:2vw" value="{{index}}" range="{{array}}">
+        区县
+      </picker>
+      <image class="row_right" src="../../../images/sanjiao.png"></image>
+    </view>
+  </view> -->
+  <view class='compantyView'>
+    <view class='leftView'>营业期限</view>
+    <view class="openTime" bindtap="selectOpenTime">
+      开始营业
+      <image class="row_right" src="../../../images/sanjiao.png"></image>
+    </view>
+    <view class="openTime" bindtap="selectOpenTime">
+      营业结束
+      <image class="row_right" src="../../../images/sanjiao.png"></image>
+    </view>
+  </view>
+  <view class='compantyView'>
+    <view class='leftView'>经营范围</view>
+    <textarea class='textAreaView' type='text' placeholder="字数限制100字" value="{{user.legalPerson}}" bindblur="mobileInput"></textarea>
+  </view>
+  <view class='compantyView'>
+    <view class='leftView'>*营业执照</view>
+    <image class='businessLicense' src="{{businessLicence}}" bindtap="onUpload" data-idCard="businessLicenseUrl">></image>
+  </view>
+  <view class='compantyView'>
+    <view class='leftView'>*法人姓名</view>
+    <input class='rightView' type='text' placeholder="请输入姓名" value="{{user.legalPerson}}" bindblur="mobileInput" />
+  </view>
+  <view class='compantyView'>
+    <view class='leftView'>*身份证号</view>
+    <input class='rightView' type='text' placeholder="请输入法人身份证号" value="{{user.legalPerson}}" bindblur="mobileInput" />
+  </view>
+  <!-- 身份证 -->
+  <view class='compantyView'>
+    <view class='leftView'>*法人身份证</view>
+    <view class="center">
+      <image class='businessLicense' src="{{idcardFront}}" bindtap="onUpload" data-idCard="front"></image>
+      <view class="idText">正面照</view>
+    </view>
+    <view class="center">
+
+      <image class='businessLicense' src="{{idcardBack}}" bindtap="onUpload" data-idCard="back"></image>
+      <view class="idText">反面照</view>
+    </view>
+  </view>
+  
+  <view class="centerView">
+    <view class="submitBtn selectBtn">确认修改</view>
+  </view>
+</view>
+
+
+<!-- 个人信息更改 -->
+<view class="backView" wx:if="{{registerSelect == 2}}">
+  <view class='compantyView'>
+    <view class='leftView'>*姓名</view>
+    <input class='rightView' type='text' placeholder="请输入姓名" value="{{user.name}}" bindblur="legalPersonInput" />
+  </view>
+  <view class='compantyView'>
+    <view class='leftView'>*姓别</view>
+    <radio-group bindchange="checkboxChange" class="sexSelect">
+      <label style="height:1px" wx:for="{{items}}" wx:key="{{items.name}}">
+        <radio value="{{item.value}}" checked="{{item.checked}}" />{{item.name}}
+      </label>
+    </radio-group>
+  </view>
+
+  <view class='compantyView'>
+    <view class='leftView'>*身份证号</view>
+    <input class='rightView' type='text' placeholder="请输入本人身份证号" value="{{user.idcard}}" bindblur="idcardInput" />
+  </view>
+
+  <!-- 身份证 -->
+  <view class='compantyView'>
+    <view class='leftView'>*本人身份证</view>
+    <view class="center">
+      <image class='businessLicense' src="{{idcardFront}}" bindtap="onUpload" data-idCard="front"></image>
+      <view class="idText">正面照</view>
+    </view>
+    <view class="center">
+
+      <image class='businessLicense' src="{{idcardBack}}" bindtap="onUpload" data-idCard="back"></image>
+      <view class="idText">反面照</view>
+    </view>
+  </view>
+  
+  <view class="centerView">
+    <view class="submitBtn selectBtn" bindtap="submitUser">确认修改</view>
+  </view>
+</view>

@@ -1,0 +1,17 @@
+<!--pages/addcach/addcach.wxml-->
+<view>
+  <form bindsubmit="formSubmit">
+    <view class='login_form'>
+        <view class="inputView">
+          <label>印章编号:</label>
+          <input type='text' placeholder='请输入印章编号' name='devicesId' value='{{number}}' disabled/>
+        </view>
+        <view class="inputView">
+        <label>印章名称:</label>
+          <input type='text' placeholder='请输入印章名称' name='alias' value='{{form_info}}'/>
+        </view>
+        
+        <button  class='submit' form-type='submit'>绑定</button>
+      </view>
+    </form>
+</view>

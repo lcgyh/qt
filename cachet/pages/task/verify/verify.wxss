@@ -1,0 +1,35 @@
+/* pages/auditing/auditing.wxss */
+.formbox .radio_box{display: flex;padding:30rpx 40rpx 30rpx 0;}
+.formbox .radio_box .radio{margin-right: 30rpx;}
+.formbox .why{display: flex;padding: 30rpx 40rpx 30rpx 0;margin-top: 4rpx;}
+.formbox .why text{
+  width:120rpx;
+  /* margin-top:10rpx; */
+}
+
+.formbox .line_top{
+  display: flex;
+  align-items: center;
+  border-top: 1rpx solid #dedede;
+}
+
+.text_why{
+  vertical-align: middle;
+}
+
+.navbar {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+}
+
+.img{
+  width:80rpx;
+  height:80rpx;
+  margin-left: 10rpx;
+}
+
+.img_box{
+  display: flex;
+  align-items: center;
+}

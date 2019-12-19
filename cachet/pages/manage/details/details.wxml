@@ -1,0 +1,72 @@
+<!--pages/details/details.wxml-->
+<view class='details'>
+  <block>
+   <view class='item' wx:if="{{devicesInfo.statusName =='待绑定'}}">
+      <view>印章名称</view>
+      <view class='color666'>未设置</view>
+    </view>
+    <view class='item' wx:else>
+      <view>印章名称</view>
+      <view class='color666'>{{devicesInfo.alias}}</view>
+    </view>
+  </block>
+  <view class='item'>
+    <view>设备编号</view>
+    <view class='color666'>{{devicesInfo.devicesId}}</view>
+  </view>
+  <view class='item noborder'>
+    <view>失效时间</view>
+    <view class='color666'>{{devicesInfo.expireDate}}</view>
+  </view>
+</view>
+<view class='details paddingright'>
+  <block>
+    <navigator url='{{statusUrl}}'>
+      <view class='item {{statusUrl?"row_right" : ""}}'>
+        <view>状态</view>
+        <view class='colorred'>{{devicesInfo.statusName}}</view>
+      </view>
+    </navigator>
+  </block>
+  <block>
+    <navigator url='../storeman/storeman?devicesId={{devicesInfo.devicesId}}' wx:if="{{devicesInfo.manager =='' || devicesInfo.manager == null}}">
+      <view class='item row_right'>
+        <view>保管员</view>
+        <view class='colorred'>去设置</view>
+      </view>
+    </navigator>
+    <view class='item' wx:else>
+      <view>保管员</view>
+      <view class='color666'>{{devicesInfo.manager}}</view>
+    </view>
+  </block>
+ <block>
+  <navigator url='../workflow/workflow?devicesId={{devicesInfo.devicesId}}' wx:if="{{devicesInfo.workflow =='' || devicesInfo.workflow == null}}">
+    <view class='item row_right'>
+      <view>审批流程</view>
+      <view class='colorred'>去设置</view>
+    </view>
+  </navigator>
+  <view class='item' wx:else>
+    <view>审批流程</view>
+    <view class='color666'>{{devicesInfo.workflow}}</view>
+  </view>
+ </block>
+  <navigator url='../record/record?devicesId={{devicesInfo.devicesId}}'>
+    <view class='item row_right'>
+      <view>使用总次数</view>
+      <view class='color666'>{{devicesInfo.useTimes}}</view>
+    </view>
+  </navigator>
+  <navigator url='../application/list/list?devicesId={{devicesInfo.devicesId}}'>
+    <view class='item noborder row_right'>
+      <view>被申请总次数</view>
+      <view class='color666'>{{devicesInfo.applyTimes}}</view>
+    </view>
+  </navigator>
+</view>
+
+<view class='bottom' wx:if="{{showOpenBtn}}">
+  <view class='use_btn' catchtap='openDevices'>开启使用</view>
+</view>
+<view class='float_mask' wx:if="{{showMask}}"></view>

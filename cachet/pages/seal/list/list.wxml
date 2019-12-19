@@ -1,0 +1,48 @@
+<view class='padding_100 new_list'>
+  <view class='storeman_search'>
+    <view class='content'>
+      <view class='left'>
+        <image src='/images/search.png' class='search_icon'/>
+        <input type='text' placeholder='请输入印章名' name='search_value' bindinput="searchvalue"/>
+      </view>
+      <!-- <button  class='search_btn' form-type='submit'>搜索</button> -->
+      <text class='search_btn' catchtap="searchList">搜索</text>
+    </view>
+  </view>
+  <scroll-view class='scroll_list' scroll-y="true" lower-threshold="50" bindscrolltolower="onScrollLower" style="height:{{scrollHeight}}px;">
+  <block>
+    <navigator hover-class='none' wx:for="{{seals}}" url='../detail/detail?sealId={{item.sealId}}' wx:key="{{item.sealId}}">
+      <view class='new_manage'>
+        <view class='left'>
+          {{item.iconText}}
+        </view>
+        <view class='center'>
+          <view class='title'>
+            {{item.sealName}}
+          </view>
+          <view class='color999'>
+            保管员：{{item.custosPartyName}}
+          </view>
+        </view>
+        <view class='right'>
+          <view class='number'>
+              {{item.devicesNum}}
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </block>
+  <view class="loadingtips">
+      <view wx:if="{{nodata}}">
+        <text>没有更多内容了</text>
+      </view>
+  </view>
+</scroll-view>
+<view class='storemanbtn' wx:if="{{userType === 0}}">
+  <navigator url='../add/add' hover-class='none'>
+  <view class='link'>
+    添加印章
+  </view>
+  </navigator>
+</view>
+</view>

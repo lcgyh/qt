@@ -1,0 +1,9 @@
+/* pages/storeman/storeman.wxss */
+.storeman_list .paddingleft40{padding-left: 40rpx;}
+.storeman_list{background: #fff;overflow: hidden;border-bottom: 1rpx solid #eee;}
+.noboeder{border-bottom:none;}
+.storeman_list .list_block {display: flex;padding: 20rpx 0;border-bottom: 1rpx solid #eee;justify-content: space-between;padding-right: 40rpx;box-sizing: border-box;margin-bottom: -1rpx;}
+.storeman_list .list_block image{width: 80rpx;height: 80rpx;border-radius: 50%;}
+.storeman_list .name_box{display:flex;flex-direction:column;width:400rpx;align-content:center;flex:1;padding:0 20rpx;}
+.no_people{padding:30rpx;text-align:center;color:#999;font-size:30rpx;}
+.selectitem{background: #f1f1f1}

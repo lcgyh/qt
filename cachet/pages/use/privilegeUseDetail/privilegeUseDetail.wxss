@@ -1,0 +1,55 @@
+/* pages/use/privilegeUseDetail/privilegeUseDetail.wxss */
+.listItem {
+  width: 100vw;
+  border-bottom: 0.5px solid #999;
+  line-height: 44px;
+  padding-left: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  color: #333;
+  justify-content: space-between;
+}
+
+.item {
+  height: 24px;
+  line-height: 24px;
+  margin-left: 10px;
+}
+
+.listImage {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  margin-top: 2px;
+}
+
+.selectBtn {
+  color: white;
+  background: red;
+  height: 40px;
+  width: 150px;
+  border-radius: 5px;
+  margin-top: 80px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.right {
+  color: #999;
+  margin-right: 25px;
+}
+
+.showPicker {
+  background: white;
+  width: 100vw;
+  height: 300px;
+  margin-bottom: 0px;
+}
+
+.imageCell{
+  display: flex;
+  flex-direction:row-reverse;
+  justify-content: flex-start;
+  flex-wrap:wrap-reverse;
+  margin-right: 24px;
+}
