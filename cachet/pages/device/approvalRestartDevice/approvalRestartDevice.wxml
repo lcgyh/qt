@@ -1,7 +1,7 @@
 <!-- approvalRestartDevice -->
-<view class="detaiLItem">申请人: {{devices.name}}</view>
-<view class="detaiLItem">印章名称:{{devices.sealName}}</view>
-<view class="detaiLItem">重装理由:{{devices.verifyRemark}}</view>
+<view class="detaiLItem">申请人: 王小二</view>
+<view class="detaiLItem">印章名称:财务章</view>
+<view class="detaiLItem">重装理由:卡号时打卡沙克斯多好看是大手大脚按时打卡稍等会是假的好撒大声地阿斯达阿斯达阿斯达adad啊奥术大师打算打算大声道啊是大声道看阿斯达拉洛克撒旦教了</view>
 <view class="apply" >
   <view class='refuse' bindtap='refuse' >拒绝</view>
   <view class='agree' bindtap='agree' >同意</view>

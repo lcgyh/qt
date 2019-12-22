@@ -23,6 +23,7 @@ Page({
     devicesList: [],
     detail: {},
     sealid: '',
+    sealPrivilegesNames: []
   },
 
   /**
@@ -63,6 +64,7 @@ Page({
   },
   loadData: function() {
     var that = this;
+    var sealPrivilegesNames = [];
     lwx.request({
       url: "devices.info",
       data: {
@@ -71,20 +73,12 @@ Page({
     }).then(res => {
 
       if (res.data.code == '0') {
-        const resData = res.data || {}
-        const seal = resData.seal || {}
-        const sealPrivileges = seal.sealPrivileges || []
-        const workflowTypes = seal.workflowTypes || []
-        const sealPrivilegesArr = sealPrivileges.map((item)=>{
-          return item.name
-        })
-        const workflowTypesArr = workflowTypes.map((item) => {
-          return item.workflowTypeStr
-        })
-        seal.sealPrivilegesStr = sealPrivilegesArr.join("/")
-        seal.workflowTypesStr = workflowTypesArr.join("/")
+        for (var dic in res.data.seal.sealPrivileges) {
+          sealPrivilegesNames.push(dic.name)
+        }
         that.setData({
-          detail: seal
+          detail: res.data.seal,
+          sealPrivilegesNames: sealPrivilegesNames
         })
       } else {
         wx.showToast({
@@ -218,10 +212,5 @@ Page({
    */
   onShareAppMessage: function() {
 
-  },
-
-  // 锁定状态变更
-  lockStateUpdate:function(e){
-    console.log(e)
   }
 })

@@ -12,7 +12,7 @@ Page({
     isSelect: false,
     array: ['选择部门', '销售', '财务', '技术', '后勤'],
     index: 0,
-    // registerSelect: '1',
+    registerSelect: '2',
     items: [{
         name: '男',
         value: 'MALE'

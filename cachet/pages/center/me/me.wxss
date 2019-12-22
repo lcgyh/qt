@@ -72,13 +72,8 @@
 
 .iconfont {
   font-size: 38rpx;
-  margin-right: 10px;
+  margin-right: 10rpx;
   color: #e9221f;
-}
-
-.leftImgae {
-  width: 19px;
-  height: 19px;
 }
 
 .icon-tuichu {

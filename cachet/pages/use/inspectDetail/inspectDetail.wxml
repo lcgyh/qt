@@ -1,16 +1,15 @@
 <!--pages/use/inspectDetail/inspectDetail.wxml-->
+<!--pages/device/atifyDeatil/atifyDeatil.wxml-->
 <view class="listItem black">申请人:{{detail.name}}</view>
 <view class="listItem ">申请印章:{{detail.sealName}}</view>
-<view class="listItem ">申请类型:{{detail.applyTypeStr}}</view>
+<view class="listItem ">申请类型:{{detail.type}}</view>
 <view class="listItem " wx:if="{{detail.number}}">申请使用次数:{{detail.number}}</view>
-<view class="listItem " wx:if="{{detail.takeStartTimes}}">开始时间:{{detail.takeStartTimes}}</view>
-<view class="listItem " wx:if="{{detail.takeEndTimes}}">结束时间:{{detail.takeEndTimes}}</view>
-<view class="listItem ">申请事由:{{detail.cause}}</view>
-<view class="listItem ">外带地点:{{detail.cause}}</view>
-<!-- <view class="listItem ">申请事由:{{detail.cause}}</view> -->
-<view class="listItem " wx:if="{{detail.contractUrl}}">申请资料:未上传</view>
+<view class="listItem ">开始时间:{{detail.starTime}}</view>
+<view class="listItem ">结束时间:{{detail.overTime}}</view>
+<view class="listItem ">申请事由:{{detail.applyReason}}</view>
+<view class="listItem ">申请资料:未上传</view>
 <view class="listItem ">申请资料:
-  <view style="height:44px;" wx:for="{{detail.contractUrl}}" wx:key="{{item}}">
+  <view style="height:44px;" wx:for="{{detail.applyInfo}}" wx:key="{{item}}">
     <image class="listImage" src="{{item}}" mode="scaleToFill" bindtap="zoomPic" data-pic="{{item}}"></image>
   </view>
 </view>

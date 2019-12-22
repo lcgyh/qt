@@ -35,27 +35,20 @@ Page({
     overTime: "",
     selectStart: '',
     cause: "",
-    applyInfo: [{
-      fileUrl: "../../../images/add_photo.jpg",
-      fileType: ''
-    }],
+    applyInfo: "../../../images/add_photo.jpg",
     items: [{
         name: '内部使用',
-        value: '0'
+        value: 1
       },
       {
         name: '外带使用',
-        value: '1'
+        value: 2
       },
     ],
-    specialItem: [{
-      name: '特批',
-      value: 'Y',
-    }, ],
-    periodType: '0',
+    periodType: 1,
     outSideAddress: '',
     isSelect: false,
-    isOutSide: true,
+    isOutSide: false,
     //  时间选择
     years: years,
     year: date.getFullYear(),
@@ -75,8 +68,7 @@ Page({
     overhour: 1,
     value: [9999, 1, 1],
     isShowPicker: false,
-    useSpecial: 'N',
-    useSpecialStr: 'N',
+    useSpecial:''
   },
 
   /**
@@ -96,8 +88,10 @@ Page({
   //提交
   save: function() {
     var that = this;
-    var applyImgs = that.data.applyInfo.slice();;
-    applyImgs.splice(0, 1);
+    var applyInfo = that.data.applyInfo;
+    if (applyInfo == '../../../images/add_photo.jpg'){
+      applyInfo == ''
+    }
     var data = {
       companyId: _globle.user.companyId,
       partyId: _globle.user.partyId,
@@ -107,12 +101,10 @@ Page({
       takeStartTime: that.data.startyear + '-' + that.data.startmonth + '-' + that.data.startday + '-' + that.data.starthour + ':00',
       takeEndTime: that.data.overyear + '-' + that.data.overmonth + '-' + that.data.overday + '-' + that.data.overhour + ':00',
       periodType: that.data.periodType,
-      applyImgs: applyImgs,
+      voucherUrls:[applyInfo],
       cause: that.data.cause,
-      useSpecial: that.data.useSpecialStr
-    }
-    if (that.data.periodType == '1') {
-      data.take_destination = that.data.outSideAddress;
+      take_destination: that.data.outSideAddress,
+      useSpecial: that.data.useSpecial
     }
     lwx.request({
       url: 'apply.save',
@@ -122,13 +114,10 @@ Page({
       if (res.data.code == '0') {
         wx.showToast({
           title: '提交成功',
-          icon: 'none',
+          icon: 'none',  
         })
-        setTimeout(function() {
-          wx.navigateBack({
-            delta: 1,
-          })
-        }, 1000)
+       wx.navigateBack({
+       })
       } else {
         wx.showToast({
           title: res.data.message,
@@ -137,7 +126,7 @@ Page({
         })
       }
     }).catch(err => {
-
+      console.log(err)
       wx.hideLoading()
       wx.showToast({
         title: '加载数据失败',
@@ -157,66 +146,40 @@ Page({
     })
   },
   onUpload: function(e) {
-    var that = this;
-    if (e.currentTarget.dataset.index == 0) {
-      lwx.chooseImage({
-        count: 1,
-        sourceType: ['album', 'camera']
-      }).then(res => {
-        if (!res.tempFilePaths[0]) {
-          throw new Error('未选择图片')
-        }
-        wx.showLoading({
-          title: '图片上传...',
-          mask: true
-        })
-        wx.uploadFile({
-          url: _globle.unLoginUrl + 'app/upload' + ".htm",
-          filePath: res.tempFilePaths[0],
-          name: 'imgFile',
-          header: {
-            "content-type": "multipart/form-data"
-          },
-          formData: {
-            type: 'xiaochengxu',
-          },
-          success: function(res) {
-            var data = JSON.parse(res.data)
-            wx.hideLoading()
-            if (data.code == '0') {
-              var dic = {
-                fileUrl: data.result[0],
-                fileType: data.result[data.result.length - 1]
-              }
-              that.data.applyInfo.push(dic)
-              that.setData({
-                applyInfo: that.data.applyInfo
-              })
-            } else {
-              reject('上传图片失败')
-            }
-          },
-          fail: function(err) {
-            wx.hideLoading()
-          }
-        })
-      }).catch(err => {
-        console.log(err)
-        wx.hideLoading()
-      })
-    } else {
-      var urls = [];
-      var urlarray = [];
-      urls = that.data.applyInfo.slice();;
-      urls.splice(0, 1);
-      for (var i = 0; i < urls.length; i++) {
-        urlarray.push(urls[i].fileUrl);
+    let that = this;
+    // if (e.currentTarget.dataset.index === 0) {
+    lwx.chooseImage({
+      count: 1,
+      sourceType: ['album', 'camera']
+    }).then(res => {
+      if (!res.tempFilePaths[0]) {
+        throw new Error('未选择图片')
       }
-      wx.previewImage({
-        current: urlarray[e.currentTarget.dataset.index - 1], // 当前显示图片的http链接
-        urls: urlarray // 需要预览的图片http链接列表
+      wx.showLoading({
+        title: '图片上传...',
+        mask: true
       })
-    }
+      return lwx.uploadFile({
+        url: 'app/upload',
+        imgFile: res.tempFilePaths[0],
+      })
+    }).then(res => {
+      wx.hideLoading()
+      that.setData({
+        applyInfo: res
+      })
+    }).catch(err => {
+      console.log(err)
+      wx.hideLoading()
+    })
+    // } 
+    // else {
+    //   var array = [that.data.applyInfo];
+    //   wx.previewImage({
+    //     current: that.data.applyInfo, // 当前显示图片的http链接
+    //     urls: array // 需要预览的图片http链接列表
+    //   })
+    // }
   },
   changeType: function() {
     var isSelect = !this.data.isSelect;
@@ -232,20 +195,10 @@ Page({
       isOutSide: this.data.isOutSide
     })
   },
-  //特批
-  specialBoxChange: function(e) {
-    var useSpecialStr = 'N'
-    if (e.detail.value[0] == 'Y') {
-      useSpecialStr = 'Y'
-    }
-    this.setData({
-      useSpecialStr: useSpecialStr
-    })
-  },
   checkboxChange: function(e) {
     // this.data.useType = e.detail.value;
     var isOutSide = false;
-    if (e.detail.value == '0') {
+    if (e.detail.value == '1') {
       var isOutSide = true;
     } else {
       this.data.outSideAddress = '';
@@ -259,7 +212,7 @@ Page({
   outSideAddress: function(e) {
     this.setData({
       outSideAddress: e.detail.value,
-
+      
     })
   },
   bindChange: function(e) {

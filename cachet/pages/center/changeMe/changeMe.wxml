@@ -9,7 +9,7 @@
     <view class='leftView'>*信用代码</view>
     <input class='rightView' type='text' placeholder="请输入10位信用代码" value="{{user.legalPerson}}" bindblur="mobileInput" />
   </view>
-  <!-- <view class='compantyView'>
+  <view class='compantyView'>
     <view class='leftView'>*所在地区</view>
     <view class="area">
       <picker bindtap="selectArea" value="{{index}}" range="{{array}}">
@@ -29,7 +29,7 @@
       </picker>
       <image class="row_right" src="../../../images/sanjiao.png"></image>
     </view>
-  </view> -->
+  </view>
   <view class='compantyView'>
     <view class='leftView'>营业期限</view>
     <view class="openTime" bindtap="selectOpenTime">

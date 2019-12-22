@@ -2,11 +2,13 @@ import {
   userLogin,
   getUserInfo
 } from './utils/userUtil.js'
-import { _globle } from './utils/globle.js'
+import {
+  _globle
+} from './utils/globle.js'
 
 import lwx from './utils/lwx.js'
 App({
-  onLaunch: function () {
+  onLaunch: function() {
     // 展示本地存储能力
     var that = this;
     var logs = wx.getStorageSync('logs') || []

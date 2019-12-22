@@ -1,4 +1,4 @@
-<!-- <view wx:if="{{loadSuccess}}">
+<view wx:if="{{loadSuccess}}">
   <view class='storeman_search'>
     <view class='content'>
       <view class='left'>
@@ -8,7 +8,7 @@
       <text class='search_btn' catchtap="search">搜索</text>
     </view>
   </view>
-</view> -->
+</view>
 
 <view class='listView'>
   <view class='cengk_box' wx:for="{{devicesList}}" wx:key="devicesList">
@@ -32,5 +32,3 @@
     </view>
   </view>
 </view>
-
-<view class="empty" wx:if="{{devicesList.length == 0}}">暂无数据</view>

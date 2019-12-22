@@ -17,7 +17,7 @@ Page({
     timeCountDownTop: '获取验证码',
     isdisables: false
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
     // console.log(options.backUrl, options.backUrl === 'undefined')
     // if (options.backUrl && options.backUrl !== 'undefined') {
     //   this.backUrl = options.backUrl;
@@ -29,18 +29,18 @@ Page({
       this.out_time = option.type
     }
   },
-  bintusername: function (e) {
+  bintusername: function(e) {
     this.setData({
       username: e.detail.value
     })
   },
-  bintSmscode: function (e) {
+  bintSmscode: function(e) {
     this.setData({
       smsCode: e.detail.value
     })
   },
 
-  userNameInputEnd: function (e) {
+  userNameInputEnd: function(e) {
     console.log(e)
     this._userName = e.detail.value
 
@@ -48,7 +48,7 @@ Page({
       return;
     }
   },
-  generateVerifyCode: function () {
+  generateVerifyCode: function() {
     if (this._userName == '' || !this._userName) {
       wx.showToast({
         title: '手机号不能为空',
@@ -98,7 +98,7 @@ Page({
               content: '不要频繁操作',
               confirmText: "好",
               showCancel: false,
-              success: res => { }
+              success: res => {}
             })
           }
         },
@@ -109,10 +109,10 @@ Page({
       })
     }
   },
-  onUnload: function () {
+  onUnload: function() {
     clearInterval(this._timeCounter)
   },
-  formSubmit: function (e) {
+  formSubmit: function(e) {
     console.log(e)
     let phone = e.detail.value.username
     let passwords = e.detail.value.password
@@ -138,50 +138,57 @@ Page({
       mask: true
     })
     new Promise((resoval, reject) => {
-      getOpenId(res => {
-        _globle.user.openId = res.openId;
-        _globle.user.unionId = res.unionId || '';
-        resoval();
-      })
-    }).then(res => {
-      wx.request({
-        url: _globle.unLoginUrl + 'app/login.htm',
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded',
-        },
-        data: {
-          username: phone,
-          openId: _globle.user.openId,
-          unionId: _globle.user.unionId,
-          // openSms: smsCode,
-          openSms: 'false'
-        },
-        success: res => {
-          wx.hideLoading()
-          if (res.data.code == '0') {
-            wx.removeStorageSync('sessionid');
-            wx.setStorageSync("sessionid", res.data.sessionId);
-            _globle.user = res.data.party.person
-            _globle.user.isLogin = true;
-            wx.switchTab({
-              url: '/pages/homePage/homePage/homePage'
-            })
-          } else {
-            wx.showModal({
-              title: '提示',
-              content: res.data.message,
-              confirmText: "好",
-              showCancel: false,
-              success: res => { }
-            })
-          }
-        },
-        fail: err => {
-          console.log(err)
-          throw err;
+      if (!_globle.user.openId) {
+        try {
+          getOpenId(res => {
+            _globle.user.openId = res.openId;
+            _globle.user.unionId = res.unionId || '';
+            resoval();
+          })
+        } catch (err) {
+          reject(err);
+          console.log('err' + err)
         }
-      })
+      }
+    }).then(res => {
+        wx.request({
+            url: _globle.unLoginUrl + 'app/login.htm',
+            method: 'POST',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+            },
+            data: {
+              username: phone,
+              openId: _globle.user.openId,
+              unionId: _globle.user.unionId,
+              // openSms: smsCode,
+              openSms: 'false'
+            },
+            success: res => {
+              wx.hideLoading()
+              if (res.data.code == '0') {
+                wx.removeStorageSync('sessionid');
+                wx.setStorageSync("sessionid", res.data.sessionId);
+                _globle.user = res.data.party.person
+                _globle.user.isLogin = true;
+                wx.switchTab({
+                  url: '/pages/homePage/homePage/homePage'
+                })
+              }else{            
+              wx.showModal({
+                title: '提示',
+                content: res.data.message,
+                confirmText: "好",
+                showCancel: false,
+                success: res => {}
+              })
+            }
+          },
+          fail: err => {
+            console.log(err)
+            throw err;
+          }
+        })
 
 
       // var data = {
@@ -220,5 +227,5 @@ Page({
       //   wx.hideLoading()
       // })
     })
-  }
+}
 })

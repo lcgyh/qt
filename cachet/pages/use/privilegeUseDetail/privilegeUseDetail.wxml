@@ -1,4 +1,5 @@
 <!--pages/use/privilegeUseDetail/privilegeUseDetail.wxml-->
+<!--pages/device/applySealDetail/applySealDetail.wxml-->
 <view class="listItem">使用人:
   <view class='right'>{{detail.name}}</view>
 </view>

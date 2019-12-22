@@ -1,26 +1,26 @@
 const forNav = {
   sealInstal: {
-    iconPath: "../../images/xinzhuang.png",
+    iconPath: "../../images/icon_index_6.png",
     text: "印章新装",
     url: "../device/deviceInstall/deviceInstall"
   },
   sealList: {
-    iconPath: "../../images/yinzhangliebiao.png",
+    iconPath: "../../images/icon_index_6.png",
     text: "印章列表",
     url: "../device/list/list"
   },
   applyUse: {
-    iconPath: "../../images/zhang.png",
+    iconPath: "../../images/icon_index_6.png",
     text: "申请使用",
     url: "../apply/index/index"
   },
   waitThings: {
-    iconPath: "../../images/daiban.png",
+    iconPath: "../../images/icon_index_6.png",
     text: "待办事项",
     url: "../device/waitingDeal/waitingDeal"
   },
   law: {
-    iconPath: "../../images/fawu.png",
+    iconPath: "../../images/icon_index_6.png",
     text: "法务审批",
     url: "../use/legalPersonApproval/legalPersonApproval"
   },
@@ -30,17 +30,17 @@ const forNav = {
     url: "../device/myRecordList/myRecordList"
   },
   makeSureList: {
-    iconPath: "../../images/hechajilu.png",
+    iconPath: "../../images/icon_index_6.png",
     text: "核查记录",
     url: "../use/inspectRecordList/inspectRecordList"
   },
   privilegeUse: {
-    iconPath: "../../images/zhiwen.png",
+    iconPath: "../../images/icon_index_6.png",
     text: "特权使用",
     url: "../device/usePrivilegeList/usePrivilegeList"
   },
   privilegeRecordList: {
-    iconPath: "../../images/tequanjilu.png",
+    iconPath: "../../images/icon_index_6.png",
     text: "特权记录",
     url: "../device/usePrivilegeRecord/usePrivilegeRecord"
   },
@@ -49,19 +49,19 @@ const forNav = {
 const pmList = {
   "title": "人员管理",
   navlist: [{
-    iconPath: "../../images/tequanrenyuan.png",
+    iconPath: "../../images/icon_index_6.png",
     text: "特权人员",
-    url: "../use/privilegePerson/privilegePerson?type=1"
+    url: "../use/privilegePerson/privilegePerson"
   },
   {
-    iconPath: "../../images/fawurenyuan.png",
+    iconPath: "../../images/icon_index_6.png",
     text: "法务人员",
-    url: "../use/privilegePerson/privilegePerson?type=2"
+    url: "../use/legalPerson/legalPerson"
   },
   {
-    iconPath: "../../images/anzhuangrenyuan.png",
+    iconPath: "../../images/icon_index_6.png",
     text: "新装人员",
-    url: "../use/privilegePerson/privilegePerson?type=3"
+    url: "../use/newInstall/newInstall"
   }],
 };
 //法人
@@ -102,11 +102,11 @@ const storeKeeper = [{
 
 
 module.exports = {
-  LEGAL_PERSON: legalPerson,
-  ADMIN: sonManager,
-  PRIVILEGE: privilegePerson,
-  LEGING: lawPerson,
-  INSTALL_PERSON: installPerson,
-  STAFF: worker,
-  CUSTODY : storeKeeper,
+  legalPerson: legalPerson,
+  sonManager: sonManager,
+  privilegePerson: privilegePerson,
+  lawPerson: lawPerson,
+  installPerson: installPerson,
+  worker: worker,
+  storeKeeper: storeKeeper,
 }

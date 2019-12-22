@@ -29,19 +29,20 @@ Page({
     }).then(res => {
       console.log(res)
       if (res.data.code == '0') {
-        that.setData({
-          array: res.data.privilegedUseList || []
-        })
+        // that.setData({
+        //   list: res.data.iVerifyAndInstalls
+        // })
       } else {
         console.log('错误');
       }
     }).catch(err => {
       console.log('err' + err);
     })
+
   },
   checkDetail: function() {
     wx.navigateTo({
-      url: '../sealDetail/sealDetail',
+      url: '../privilegeDetail/privilegeDetail',
     })
   },
   /**

@@ -1,27 +1,19 @@
 <!--pages/use/privilegePersonDetail/privilegePersonDetail.wxml-->
 <view class='cell'>
-  <view class='name'>{{privilegedPeople.name}}</view>
+  <view class='name'>王妃</view>
   <view class='delete' bindtap='deletePerson' data-name='{{item.name}}'>删除</view>
 </view>
 <view class='cell'>
-  <view class='name'>账号：{{privilegedPeople.mobile}}</view>
+  <view class='name'>账号：12483275471</view>
 </view>
 <view class='cell'>
-  <view class='name'>部门：{{privilegedPeople.orgName}}</view>
+  <view class='name'>部门：财务部</view>
 </view>
 <view class='cell'>
-  <view class='name'>职务：{{privilegedPeople.position}}</view>
+  <view class='name'>职务：会计长</view>
 </view>
-<view class='cell'  wx:if="{{type=='1'}}">
-  <view class='name'>状态：{{privilegedPeople.privilegedStatus=='FREEZE'?'正常':'冻结'}}</view>
-  <view class='lock' bindtap='lockPerson' data-status='{{item.privilegedStatus}}'>{{privilegedPeople.privilegedStatus=='FREEZE'?'冻结':'解冻'}}</view>
-</view>
-<view class='cell'  wx:if="{{type=='2'}}">
-  <view class='name'>状态：{{privilegedPeople.legalStatus=='0'?'正常':'冻结'}}</view>
-  <view class='lock' bindtap='lockPerson' data-status='{{item.privilegedStatus}}'>{{privilegedPeople.legalStatus=='1'?'冻结':'解冻'}}</view>
-</view>
-<view class='cell'  wx:if="{{type=='3'}}">
-  <view class='name'>状态：{{privilegedPeople.privilegedStatus=='FREEZE'?'正常':'冻结'}}</view>
-  <view class='lock' bindtap='lockPerson' data-status='{{item.privilegedStatus}}'>{{privilegedPeople.privilegedStatus=='FREEZE'?'冻结':'解冻'}}</view>
+<view class='cell'>
+  <view class='name'>状态：正常</view>
+  <view class='lock' bindtap='lockPerson' data-name='{{item.name}}'>冻结</view>
 </view>
 

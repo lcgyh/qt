@@ -1,7 +1,7 @@
 <!--pages/center/feedback/feedback.wxml-->
 
-<textarea class='textAreaView' type='text' placeholder="字数限制100字" bindinput='textareaChange'></textarea>
+<textarea class='textAreaView' type='text' placeholder="字数限制100字" value="{{feebackText}}"></textarea>
 
 <view class="centerView">
-  <view class="selectBtn" bindtap="feedbackSubmit">提交</view>
+  <view class="selectBtn">提交</view>
 </view>

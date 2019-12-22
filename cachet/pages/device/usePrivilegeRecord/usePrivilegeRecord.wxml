@@ -16,4 +16,3 @@
     </view>
   </view>
 </view>
-<view class="empty" wx:if="{{array.length == 0}}">暂无数据</view>

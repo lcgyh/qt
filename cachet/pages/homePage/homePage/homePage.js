@@ -61,6 +61,13 @@ Page({
     that.creatEWM();
   },
   creatEWM: function() {
+    // qrcode({
+    //   width: this.data.windowW * 0.5,
+    //   height: this.data.windowH * 0.5,
+    //   canvasId: 'myQrcode',
+    //   text: '这是个二维码'
+    // })
+
     qrcode({
       width: 190,
       height: 190,
@@ -74,6 +81,10 @@ Page({
       }
     })
   },
+
+  
+
+
   /**
    * 生命周期函数--监听页面隐藏
    */

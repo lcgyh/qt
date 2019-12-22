@@ -51,7 +51,7 @@ Page({
       party: _globle.user,
       nav: this.getNav(),
     })
-     // this.loadVerifyList()
+    // this.loadVerifyList()
     wx.getSystemInfo({
       success: res => {
         // console.log(res)
@@ -67,7 +67,7 @@ Page({
     // this.loadData()
     this.setData({
       party: _globle.user,
-      nav: this.getNav(),
+      // nav: this.getNav(),
       _islogin: _globle.user.isLogin
     })
     // wx.setNavigationBarTitle({
@@ -79,21 +79,18 @@ Page({
     let nav = []
     var sealArray = [];
     var pmArray = [];
-    const type = _globle.user.roles;
-    if (type){
-      for (let val of type) {
-        if (navdata.hasOwnProperty(val)) {
-          navdata[val].forEach(item => {
-            if (item.title == '印章管理') {
-              sealArray = sealArray.concat(item.navlist);
-            } else if (item.title == '人员管理') {
-              pmArray = item.navlist;
-            }
-          })
-        }
+    const type = ['legalPerson','lawPerson', 'sonManager', 'privilegePerson'];
+    for (let val of type) {
+      if (navdata.hasOwnProperty(val)) {
+        navdata[val].forEach(item => {
+          if (item.title == '印章管理') {
+            sealArray = sealArray.concat(item.navlist);
+          } else if (item.title == '人员管理') {
+            pmArray = item.navlist;
+          }
+        })
       }
     }
-   
     function unique(arr) {
       return Array.from(new Set(arr))
     }

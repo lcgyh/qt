@@ -15,12 +15,12 @@
           <view class='item'>申请人：{{item.name}}</view>
           <view class='item'>申请时间：{{item.applyTime}}</view>
         </view>
-        <view class="row">
-          <view class='shenqingStatus'>{{item.applyTypeStr }}
-          </view>
-          <image class='row_right' src='../../../images/row_right.png' mode='aspectFill'></image>
+        <view class='shuzhe_box' style="margin-left:30px;">
+          <view class='shenqingStatus'>{{item.applyTypeStr
+}}</view>
         </view>
-
+        <image class='row_right' src='../../../images/row_right.png' mode='aspectFill'></image>
+        <view class='status'></view>
       </view>
     </view>
   </view>
@@ -34,20 +34,20 @@
   <view class="detaiLItem" wx:if="{{detail.isForcedPhoto == 'Y'}}">强制拍照:已开启</view>
   <view class="detaiLItem" wx:if="{{detail.isForcedPhoto == 'N'}}">强制拍照:已关闭</view>
   <view class="detaiLItem">保管员:{{detail.custosName}}</view>
-  <view class="detaiLItem">特权人:{{detail.sealPrivilegesStr}}</view>
-  <view class="detaiLItem">审批类型:{{detail.workflowTypesStr}}</view>
-  <view class="detaiLItem">失效日期：{{detail.expireDates}}</view>
+  <view class="detaiLItem">特权人:{{detail.sealPrivilegesNames}}</view>
+  <view class="detaiLItem">审批类型:{{detail.workflowTypes}}</view>
+  <view class="detaiLItem">失效日期：{{detail.expireDate}}</view>
   <view class='cell' wx:if="{{detail.sealStatus == 'ENABLE'}}">
     <view class='name'>印章状态：正常</view>
-    <view class='delete' bindtap='disable' data-disable='DISABLE'>冻结</view>
+    <view class='delete' bindtap='disable'  data-disable='DISABLE'>冻结</view>
   </view>
-  <view class='cell' wx:if="{{detail.sealStatus == 'DISABLE'}}">
+   <view class='cell' wx:if="{{detail.sealStatus == 'DISABLE'}}">
     <view class='name'>印章状态：锁定</view>
-    <view class='delete' bindtap='disable' data-disable='ENABLE'>解冻</view>
+    <view class='delete' bindtap='disable'  data-disable='ENABLE'>解冻</view>
   </view>
   <view class='cell'>
-    <view class='name'>锁定状态：{{detail.devicesStatusStr}}</view>
-    <!-- <view class='delete' bindtap='lockStateUpdate' data-name='{{item.name}}'>{{devicesStatus=='UNLOCKED'?'锁定':'解锁'}}   </view> -->
+    <view class='name'>锁定状态：锁定</view>
+    <view class='delete' bindtap='deletePerson' data-name='{{item.name}}'>解锁</view>
   </view>
   <view class='cell'>
     <view class='name'>当前版本：{{detail.version}}</view>

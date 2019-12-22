@@ -1,4 +1,4 @@
-<!-- pages/use/privilegePerson/privilegePerson.wxml -->
+pages/use/privilegePerson/privilegePerson.wxml
 <!-- <view class='topView'>
   <view class="pickV">
     <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
@@ -13,11 +13,11 @@
 </view> -->
 
 <view class='cellBox' wx:for="{{cellArray}}" wx:key="cellArray">
-  <view data-id="{{type=='1'?item.appInstallPeopleId:item.legalPeopleId}}" bindtap="checkDetail">
+  <view data-id='{{item.id}}' bindtap="checkDetail" data-id="{{item.id}}">
     <view class='cell'>
-      <view class="row">
-        <view class='name'>{{item.name}}</view>
-        <view class='department'>{{item.orgName}}</view>
+    <view class="row">
+      <view class='name'>{{item.name}}</view>
+      <view class='department'>{{item.department}}</view>
       </view>
       <image class='row_right' src='../../../images/row_right.png' mode='aspectFill'></image>
     </view>
@@ -27,8 +27,6 @@
 
 
 <view class='bottomView'>
-  <view class='totalNum'>共：{{cellArray.length}}人</view>
+  <view class='totalNum'>共：22人</view>
   <view class='add' bindtap="add">新增</view>
 </view>
-
-<view class="empty" wx:if="{{cellArray.length == 0}}">暂无数据</view>

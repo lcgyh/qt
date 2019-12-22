@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    array: [],
+    array: ['部门', '销售', '财务', '技术', '后勤'],
     index: 0,
     inputShowed: true,
     inputVal: "",

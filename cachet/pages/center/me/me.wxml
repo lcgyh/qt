@@ -6,7 +6,6 @@
       <image wx:else src='/images/people.png'></image>
     </view>
     <text class='font_size30' wx:if="{{party.name}}">{{party.name}}</text>
-    <text class='font_size30' wx:if="{{!party.name}}">未登录</text>
   </view>
   <image bindtap="showQRcode" class="qrcode" src='/images/qrcode.png'></image>
 </view>
@@ -19,21 +18,21 @@
     </view>
   </view>
 </navigator>
-<!-- <view class='nav_block row_right titleText' catchtap='goSetnews'>
+<view class='nav_block row_right titleText' catchtap='goSetnews'>
   <view class='left'>
     <text class='iconfont icon-gerenxinxi'></text>
     <view>个人信息</view>
   </view>
-</view> -->
+</view>
 <view class='nav_block row_right titleText' catchtap='myShare'>
   <view class='left'>
-    <image class='leftImgae' src="/images/share_icon.png"></image>
+    <text class='iconfont icon-gerenxinxi'></text>
     <view>我的分享</view>
   </view>
 </view>
 <view class='nav_block row_right titleText' catchtap='helpCenter'>
   <view class='left'>
-    <image class='leftImgae' src="/images/bangzhu.png"></image>
+    <text class='iconfont icon-gerenxinxi'></text>
     <view>帮助中心</view>
   </view>
 </view>

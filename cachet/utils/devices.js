@@ -48,6 +48,7 @@ class devices {
   connect() {
 
     this._connecting = true
+
     return this._openBluetoothAdapter().then(res => {
       console.log('打开适配器')
       return this._startBluetoothDevicesDiscovery()
@@ -135,13 +136,17 @@ class devices {
             result.initialised = hwiarray[3]
             result.speaker = hwiarray[4]
           }
+
           result.majorVersion = dv.getInt8(3)
           result.subVersion = dv.getUint8(4)
           result.minorVersion = dv.getUint8(5)
           let hwType = dv.getUint8(6)
           let hwTypeArray = decimalToBinary(hardWareInfo, 8)
+
           result.hwType = binaryToDecimal(hwTypeArray.slice(0, 3))
+
           result.devNameLength = dv.getUint8(7)
+
           result.devicesName = ''
           for (let i = 8; i < 40; i++) {
             try {
@@ -183,6 +188,7 @@ class devices {
     if (!this._deviceId || !this._services.service1.serviceId || !this._services.service1.characteristics[1]) {
       throw new Error('设备服务参数错误')
     }
+
     return new Promise((resolve, reject) => {
       wx.readBLECharacteristicValue({
         deviceId: this._deviceId,
@@ -199,6 +205,7 @@ class devices {
       return new Promise((resolve, reject) => {
         wx.onBLECharacteristicValueChange(function(res) {
           console.log('返回报文', res)
+
           let dv = new DataView(res.value)
           let result = {}
           let pushStatus = dv.getInt8(0)
@@ -209,6 +216,7 @@ class devices {
               result.pushStatus = pushStatusArray[0]
             }
           }
+
           let originStatus = dv.getUint8(1)
           if (originStatus !== null) {
             let originStatusArray = decimalToBinary(originStatus, 8)
@@ -216,6 +224,7 @@ class devices {
               result.originStatus = originStatusArray[0]
             }
           }
+
           let unlockStatus = dv.getUint8(2)
           console.log(unlockStatus)
           if (unlockStatus !== null) {
@@ -224,6 +233,7 @@ class devices {
               result.unlockStatus = unlockStatusArray[0]
             }
           }
+
           let batteryStatus = dv.getUint8(3)
           if (batteryStatus !== null) {
             let batteryStatusArray = decimalToBinary(batteryStatus, 8)
@@ -232,6 +242,8 @@ class devices {
               result.batteryPercent = binaryToDecimal(batteryStatusArray.slice(0, 6))
             }
           }
+
+
           let camStatus = dv.getUint8(4)
           if (camStatus !== null) {
             let camStatusArray = decimalToBinary(camStatus, 8)
@@ -240,6 +252,7 @@ class devices {
               result.picCount = binaryToDecimal(camStatusArray.slice(4, 7))
             }
           }
+
           result.touchStatus = dv.getUint16(5)
           result.touchMax = dv.getUint16(7)
           let buttonStatus = dv.getUint8(9)
@@ -249,7 +262,9 @@ class devices {
               result.buttonStatus = buttonStatusArray[0]
             }
           }
+
           result.sealCnt = dv.getUint32(10)
+
           result.taskId = ''
           for (let i = 10; i < 50; i++) {
             try {
@@ -380,6 +395,7 @@ class devices {
   }
 
   setOperationCommand(options) {
+
     console.log(options)
     if (!this._connectStatus && !this._connecting) {
       return this.connect().then(() => this.setOperationCommand(options))
@@ -389,6 +405,7 @@ class devices {
       throw new Error('设备服务参数错误')
     }
     console.log(1)
+
     // 0x01: 设置设备名称
     // 0x02: 设置印章解锁
     // 0x03: 解除印章错误锁定
@@ -408,12 +425,15 @@ class devices {
       )) {
       throw new Error('操作类型错误')
     }
+
     console.log(2)
     return new Promise((resolve, reject) => {
       console.log(3)
+
       let sign = this.createPassword(options.sign, options.rand1, options.rand2)
       console.log(sign)
       let signArray = hexString2Bytes(sign)
+
       let buffer = new ArrayBuffer(2 + signArray.length)
       let bufArray = new Uint8Array(buffer)
       bufArray[0] = options.type
@@ -421,6 +441,8 @@ class devices {
       console.log(options.sign, options.rand1, options.rand2)
       bufArray[1] = signArray.length
       copyArray(signArray, bufArray, 2)
+
+
       if (options.type == 7 && options.data) {
         console.log('开始设置升级参数')
         let ssid = options.data.ssid
@@ -430,13 +452,17 @@ class devices {
         let ssidArray = stringToUint8Array(ssid)
         let passwordArray = stringToUint8Array(password)
         let urlArray = stringToUint8Array(url)
+
         let dataLength = 219 + signArray.length
         if (dataLength > 255) {
           throw new Error('data is too long')
         }
+
         console.log(ssid, password, url)
+
         buffer = new ArrayBuffer(dataLength + 5)
         bufArray = new Uint8Array(buffer)
+
         bufArray[0] = options.type
         bufArray[1] = dataLength + 3
         bufArray[2] = ssidArray.length
@@ -461,6 +487,7 @@ class devices {
         copyArray(signArray, bufArray, 219)
       }
       console.log(new Uint8Array(buffer))
+
       wx.writeBLECharacteristicValue({
         deviceId: this._deviceId,
         serviceId: this._services.service2.serviceId,
@@ -480,11 +507,13 @@ class devices {
       })
     })
   }
+
   createPassword(sign, rand1, rand2) {
     sign = sign || 'aabbd853d6294876a484'
     if (!rand1 || !rand2) {
       throw new Error('随机码为空')
     }
+
     let signarray = []
     for (let i = 0; i < sign.length; i++) {
       signarray.push(sign.charCodeAt(i))
@@ -507,6 +536,7 @@ class devices {
       })
       return;
     }
+
     switch (code) {
       case 0:
         return '无'
@@ -528,13 +558,13 @@ class devices {
         return 'OTA固件分区表错误'
       case 9:
         return 'OTA擦出flash错误'
-      case 'A':
+      case 10:
         return 'OTA DNS错误'
-      case 'B':
+      case 11:
         return 'OTA服务器连接错误'
-      case 'C':
+      case 12:
         return 'OTA固件校验错误'
-      case 'D':
+      case 13:
         return 'OTA固件下载错误'
       default:
         return '未知错误'

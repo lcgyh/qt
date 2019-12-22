@@ -32,7 +32,7 @@ const lwx = {
           if (res.data.code == '0') {
             resolve(res);
           } else if (res.data.code == 'E_300'){
-            _globle.user = { isLogin:false};
+            _globle.user.isLogin = false;
             wx.showToast({
               title: '账号未登录',
             })
@@ -42,7 +42,7 @@ const lwx = {
             })
           }else{
             wx.showToast({
-              title: res.data.message,
+              title: '请求失败',
               icon: 'none',
             })
           }
@@ -56,6 +56,7 @@ const lwx = {
     })
   },
   chooseImage: function(datas) {
+    console.log(datas)
     return new Promise((resolve, reject) => {
       wx.chooseImage({
         ...datas,
@@ -91,7 +92,7 @@ const lwx = {
         success: function(res) {
           var data = JSON.parse(res.data)　
           if (data.code == '0') {
-            resolve(data.result[0]);
+            resolve(data.result[0])
           } else {
             reject('上传图片失败')
           }

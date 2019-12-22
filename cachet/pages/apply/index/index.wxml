@@ -28,13 +28,6 @@
 <view class="listItem " wx:if="{{!isOutSide && isSelect}}">外带地点:
   <input class='rightInputReson' bindblur='outSideAddress' value="{{outSideAddress}}" placeholder="填写外带地点" wx:if="{{!isShowPicker}}">{{outSideAddress}}</input>
 </view>
-<view class='listItem' wx:if="{{useSpecial=='Y'}}">
-  <checkbox-group bindchange="specialBoxChange">
-    <label wx:for="{{specialItem}}" wx:key="{{items.name}}">
-      <checkbox class="checkbox" value="{{item.value}}" />{{item.name}}
-    </label>
-  </checkbox-group>
-</view>
 <view class="listItem ">申请使用次数:
   <input class='rightInput' placeholder="请填写使用次数" bindblur='times' value="{{times}}" wx:if="{{!isShowPicker}}">{{times}}</input>
 </view>
@@ -44,10 +37,11 @@
 <view class="listItem">
   <view>申请资料:</view>
   <view class="imageCell">
-    <view style="height:44px;" wx:for="{{applyInfo}}" wx:key="{{item.fileUrl}}">
-      <image class="listImage" src="{{item.fileUrl}}" mode="scaleToFill" bindtap="onUpload" data-index="{{index}}"></image>
+    <view style="height:44px;" >
+      <image class="listImage" src="{{applyInfo}}" mode="scaleToFill" bindtap="onUpload"  ></image>
     </view>
   </view>
+
 </view>
 <view class='centerView'>
   <view class='selectBtn' bindtap='save'>申请使用</view>
@@ -70,4 +64,5 @@
   <view class="sureBtnView">
     <view class="sureBtn" bindtap="makerSureTime">确定</view>
   </view>
+
 </view>

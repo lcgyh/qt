@@ -6,12 +6,12 @@
 </view>
 <view class='listView'>
   <view class='cengk_box' wx:for="{{list}}" wx:key="cardlist">
-    <view data-id='{{item.applyId}}' bindtap='checkDetail' data-devicesId="{{item.devicesActId}}">
+    <view data-id='{{item.applyId}}' bindtap='checkDetail'>
       <view class='listItem'>
         <view class="column">
         <view class='item'>{{item.sealName}}</view>
         <view class='item'>保管员：{{item.custosName}}</view>
-        <view class='item'>申请时间：{{item.applyTimes}}</view>
+        <view class='item'>申请时间：{{item.applyTime}}</view>
       </view>
       <view class="row">
         <view class='status'>{{item.applyTypeStr}}</view>

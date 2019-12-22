@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    array: []
+    array: ["常规申请", "时段申请", "重大事项审批", "法务审批", "法务审批", "重装"]
   },
 
   /**
@@ -28,6 +28,7 @@ loadList:function(){
   }).then(res => {
     if (res.data.code == '0') {
       console.log(res)
+  
     } else {
       console.log('333333');
     }

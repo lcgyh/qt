@@ -101,6 +101,7 @@ LPage({
           title: '领取成功',
           mask: true
         })
+
         wx.switchTab({
           url: '/pages/index/index',
         })
@@ -112,6 +113,7 @@ LPage({
       if (!this._devices){
         this._devices = new devices(this._devicesCode)
       }
+
       // 读取设备状态
       let errMsg = '使用失败'
       let rand1 = 0
@@ -135,12 +137,14 @@ LPage({
           title: '使用印章',
           mask: true
         })
+
         let latitude = ''
         let longitude = ''
         if (_globle.location){
           latitude = _globle.location.latitude || ''
           longitude = _globle.location.longitude || ''
         }
+
         return lwx.request({
           url: '/use/use',
           data: {

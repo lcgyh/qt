@@ -27,4 +27,3 @@
   <view class='totalNum'>共：22人</view>
   <view class='add' bindtap="add">新增</view>
 </view>
-<view class="empty" wx:if="{{cellArray.length == 0}}">暂无数据</view>

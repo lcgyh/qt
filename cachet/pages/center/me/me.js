@@ -156,12 +156,9 @@ Page({
 
   },
 
-
-  //初始化蓝牙
   showQRcode:function(){
-   
-  },
 
+  },
   chose_avatar: function() {
     this.setData({
       chose: true

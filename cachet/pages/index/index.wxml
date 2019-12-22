@@ -55,8 +55,8 @@
       </view>
     </view>
   </view>
-  <!-- <view class="switchStatus" wx:if="{{!selectStatus}}" bindtap='switchStatus'>发货</view>
-  <view class="switchStatus" wx:if="{{selectStatus}}" bindtap='switchStatus'>办公</view> -->
+  <view class="switchStatus" wx:if="{{!selectStatus}}" bindtap='switchStatus'>发货</view>
+  <view class="switchStatus" wx:if="{{selectStatus}}" bindtap='switchStatus'>办公</view>
 </block>
 
 <block wx:if="{{!_islogin}}">

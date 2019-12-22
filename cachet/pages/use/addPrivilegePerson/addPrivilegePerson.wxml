@@ -3,23 +3,24 @@
 <view class='bumen'>
   <view class='name'>部门</view>
   <view class="pickV">
-    <picker range="{{organizations}}" range-key='name' value="{{index}}" data-organizationId='{{organizations[index].organizationId}}' bindchange="bindChange">
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
       <view class="picker">
-        {{organizations[index].name}}
+        {{array[index]}}
       </view>
     </picker>
   </view>
 </view>
+
 <view class='bumen'>
   <view class='name'>人员</view>
   <view class="pickV">
-    <picker bindchange="bindPickerChange" value="{{staffindex}}" range-key='name'  range="{{staffList}}" partyId='{{staffList[staffindex].partyId}}' >
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
       <view class="picker">
-        {{staffList[staffindex].name}}
+        {{array[index]}}
       </view>
     </picker>
   </view>
 </view>
 <view class='makeSureView'>
-<view class='makeSure' bindtap="makeSure">确认</view>
+<view class='makeSure'>确认</view>
 </view>

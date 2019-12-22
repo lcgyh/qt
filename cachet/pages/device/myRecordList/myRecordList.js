@@ -13,7 +13,7 @@ Page({
         name: '待批准',
         selected: false,
         applyStatus: 'PENDING',
-        ensorStatus: "",
+        ensorStatus: ""
       },
       {
         name: '已批准',
@@ -55,22 +55,19 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {},
+  onLoad: function(options) {
+    this.loadData();
+  },
   loadData: function() {
     var that = this;
-    var data = {
-      partyId: _globle.user.partyId,
-      companyId: _globle.user.companyId,
-      censorStatus: that.data.censorStatus,
-      applyStatus: that.data.applyStatus,
-    }
-    if (that.data.applyStatus == 'PENDING'){
-      data.pendingStatus = 'PENDINGOR';
-      data.applyStatus = ''
-    }
     lwx.request({
       url: "applys.list",
-      data: data
+      data: {
+        partyId: _globle.user.partyId,
+        companyId: _globle.user.companyId,
+        censorStatus: that.data.censorStatus,
+        applyStatus: that.data.applyStatus
+      }
     }).then(res => {
       if (res.data.code == '0') {
         that.setData({
@@ -93,31 +90,19 @@ Page({
         })
         break;
       case '已批准':
-        wx.navigateTo({
-          url: "../atifyDeatil/atifyDeatil?title=已批准&id=" + e.currentTarget.dataset.id,
-        })
+        console.log('已批准')
         break;
       case '待核查':
         console.log('待核查')
-        wx.navigateTo({
-          url: "../atifyDeatil/atifyDeatil?title=待核查&devicesId=" + e.currentTarget.dataset.devicesid + "&status='WAIT'",
-        })
         break;
       case '已核查':
-        wx.navigateTo({
-          url: "../atifyDeatil/atifyDeatil?title=已核查&devicesId=" + e.currentTarget.dataset.devicesid + "&status='CHECKED'",
-        })
+        console.log('已核查')
         break;
       case '已拒绝':
         console.log('已拒绝')
-        wx.navigateTo({
-          url: "../atifyDeatil/atifyDeatil?title=已拒绝&id=" + e.currentTarget.dataset.id,
-        })
         break;
       case '已撤销':
-        wx.navigateTo({
-          url: "../atifyDeatil/atifyDeatil?title=已撤销&id=" + e.currentTarget.dataset.id,
-        })
+        console.log('已撤销')
         break;
       default:
         console.log('啥也不是')
@@ -154,7 +139,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    this.loadData();
+
   },
 
   /**

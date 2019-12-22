@@ -1,7 +1,7 @@
 <!--pages/device/waitingDeal/waitingDeal.wxml-->
 <view class='listView'>
   <view class='cengk_box' wx:for="{{list}}" wx:key="cardlist">
-    <view data-id='{{item.id}}' data-type="{{item.type}}" data-applystatus="{{item.applyStatusStr}}" data-applytype="{{item.applyType}}" data-applyId="{{item.applyId}}" data-applyVerifyId="{{item.applyVerifyId}}" data-devicesId = "{{item.devicesId}}"  data-partyid="{{item.partyId}}" bindtap="checkDetail">
+    <view data-id='{{item.id}}' data-type="{{item.type}}" data-applystatus="{{item.applyStatusStr}}" data-applytype="{{item.applyType}}" data-applyId="{{item.applyId}}" data-applyVerifyId="{{item.applyVerifyId}}" data-devicesId = "{{item.devicesId}}"bindtap="checkDetail">
       <view class='listItem'>
         <view class="column">
           <view class='item'>{{item.sealName}}</view>
@@ -13,6 +13,7 @@
           <view class='status' wx:if="{{item.type == 'TYPE_APPLY' && item.applyStatusStr}}">{{item.applyStatusStr}}</view>
           <view class='status' wx:if="{{item.type == 'TYPE_APPLY' && !item.applyStatusStr}}">{{item.applyTypeStr}}</view>
           <image class='row_right' src='../../../images/row_right.png' mode='aspectFill'></image>
+
         </view>
       </view>
     </view>

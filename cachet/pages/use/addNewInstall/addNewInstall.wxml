@@ -3,15 +3,15 @@
 <view class='bumen'>
   <view class='name'>部门</view>
   <view class="pickV">
-    <picker bindchange="bindPickerChange" value="{{array[index].id}}" range-key="{{'name'}}" range="{{array}}" >
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
       <view class="picker">
-        {{array[index].name}}
+        {{array[index]}}
       </view>
     </picker>
   </view>
 </view>
 
-<!-- <view class='bumen'>
+<view class='bumen'>
   <view class='name'>人员</view>
   <view class="pickV">
     <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
@@ -20,7 +20,7 @@
       </view>
     </picker>
   </view>
-</view> -->
+</view>
 <view class='makeSureView'>
-  <view class='makeSure'>确认</view>
+<view class='makeSure'>确认</view>
 </view>

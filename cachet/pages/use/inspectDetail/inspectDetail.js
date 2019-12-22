@@ -31,9 +31,7 @@ Page({
       },
     }).then(res => {
       if (res.data.code == '0') {
-        that.setData({
-          detail: res.data.devicesAct
-        })
+        console.log(res)
       } else {
         console.log('333333');
       }
@@ -45,21 +43,13 @@ Page({
   pass: function() {
     var that = this;
     lwx.request({
-      url: "devices.act.censor.update",
+      url: "devices.act.info",
       data: {
         devicesActId: that.data.devicesActId
       },
     }).then(res => {
       if (res.data.code == '0') {
-        wx.showToast({
-          title: '审核成功',
-          icon: 'none',
-        })
-        setTimeout(function () {
-        wx.navigateBack({
-          delta: 1,
-        })
-        }, 1000)
+        console.log(res)
       } else {
         console.log('333333');
       }

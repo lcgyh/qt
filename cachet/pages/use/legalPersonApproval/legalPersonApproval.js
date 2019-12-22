@@ -34,11 +34,6 @@ Page({
       console.log('err' + err);
     })
   },
-  checkDetail: function(e) {
-    wx.navigateTo({
-      url: '../../device/atifyDeatil/atifyDeatil?applyId=' + e.currentTarget.dataset.applyid + '&applyVerifyId=' + e.currentTarget.dataset.applyverifyid + '&title=法务审批',
-    })
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -48,7 +48,6 @@ page {
   flex-wrap: nowrap;
   padding: 10rpx 10rpx 20rpx 10rpx;
   background-color: #fff;
-  border-bottom: 1px solid #999;
 }
 
 .process_wrap {
@@ -116,58 +115,4 @@ page {
 .modal.text {
   width: 90rpx;
   color: #ffa004;
-}
-
-.apply {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 50px;
-}
-
-.refuse {
-  color: red;
-  background: white;
-  height: 40px;
-  width: 80px;
-  border-radius: 5px;
-  margin-top: 80px;
-  line-height: 40px;
-  text-align: center;
-  border: 1rpx solid red;
-}
-
-.selectView {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-}
-
-.agree {
-  color: white;
-  background: red;
-  height: 40px;
-  width: 80px;
-  border-radius: 5px;
-  margin-top: 80px;
-  line-height: 40px;
-  text-align: center;
-}
-
-.refuseBtn {
-  width: 80px;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-  border: 1px solid #999;
-  color: #999;
-  border-radius: 5px;
-  margin-top: 80px;
-}
-
-.imageCell {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-start;
-  flex-wrap: wrap-reverse;
-  margin-right: 24px;
 }

@@ -9,21 +9,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    devicesId: '',
-    partyId: '',
-    devices: {}
+    devicesId: ''
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    wx.setNavigationBarTitle({
-      title: '印章重装审批',
-    })
     this.setData({
-      devicesId: options.devicesId,
-      partyId: options.partyId
+      devicesId: options.devicesId
     })
     this.loadData();
   },
@@ -33,14 +26,13 @@ Page({
       url: "devices.install.info",
       data: {
         devicesId: that.data.devicesId,
-        partyId: that.data.partyId
+        partyId: _globle.user.partyId
       }
     }).then(res => {
       console.log(res)
       if (res.data.code == '0') {
-        that.setData({
-          devices: res.data.devices
-        })
+
+
       } else {
         console.log('错误');
       }
@@ -59,6 +51,7 @@ Page({
     }).then(res => {
       console.log(res)
       if (res.data.code == '0') {
+
 
       } else {
         console.log('错误');

@@ -33,3 +33,9 @@
   margin-right: 15px;
 }
 
+.empty {
+  text-align: center;
+  margin-top: 45vh;
+  width: 100vw;
+  color: gainsboro;
+}

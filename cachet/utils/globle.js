@@ -14,11 +14,10 @@ export const _globle = {
   // devUrl: 'http://192.168.1.6:8080',
   // devUrl: 'https://api.gzws-rcz.com',
   // devUrl: 'https://api.hui-seal.com',
-  devUrl: 'https://api.hui-seal.com/appRest/apprest.htm',
-  //devUrl: 'http://192.168.6.123:8080/appRest/apprest.htm', //测试地址登录后的
+  // devUrl: 'http://192.168.6.101:8086',
+  devUrl: 'http://192.168.6.123:8080/appRest/apprest.htm', //测试地址登录后的
   // devUrl:'http://192.168.6.109:8086/apprest.htm',
-  //unLoginUrl: 'http://192.168.6.123:8080/appRest/', //测试地址登录前的
-  unLoginUrl: 'https://api.hui-seal.com/appRest/', //测试地址登录前的
+  unLoginUrl: 'http://192.168.6.123:8080/appRest/', //测试地址登录前的
   env: 'dev',
   clientId: 'xiaochengxu',
   clientSecret: 'xiaochengxu',

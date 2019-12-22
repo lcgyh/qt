@@ -16,7 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    // this.loadData();
+    this.loadData();
   },
   loadData: function() {
     var that = this;
@@ -41,22 +41,17 @@ Page({
       // 重装
       str = '重装';
       wx.navigateTo({
-        url: '../approvalRestartDevice/approvalRestartDevice?devicesId=' + e.currentTarget.dataset.devicesid + '&partyId=' + e.currentTarget.dataset.partyid,
+        url: '../approvalRestartDevice/approvalRestartDevice?devicesId='+ e.currentTarget.dataset.devicesid,
       })
+      
     } else {
       if (e.currentTarget.dataset.applystatus) {
         if (e.currentTarget.dataset.applystatus == "法务审批") {
           //法务审批
           str = '法务审批';
-          wx.navigateTo({
-            url: '../atifyDeatil/atifyDeatil?applyVerifyId=' + e.currentTarget.dataset.applyverifyid + '&applyId=' + e.currentTarget.dataset.applyid + '&title=法务审批',
-          })
         } else {
           //重大事项审批
           str = '重大事项审批';
-          wx.navigateTo({
-            url: '../atifyDeatil/atifyDeatil?applyVerifyId=' + e.currentTarget.dataset.applyverifyid + '&applyId=' + e.currentTarget.dataset.applyid + '&title=重大事项审批',
-          })
         }
       } else {
         if (e.currentTarget.dataset.applytype == "USED_APPLY") {
@@ -68,9 +63,6 @@ Page({
         } else {
           //时段申请
           str = '时段申请';
-          wx.navigateTo({
-            url: '../atifyDeatil/atifyDeatil?applyVerifyId=' + e.currentTarget.dataset.applyverifyid + '&applyId=' + e.currentTarget.dataset.applyid + '&title=时段申请',
-          })
         }
       }
     }
@@ -87,7 +79,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    this.loadData();
 
   },
 
