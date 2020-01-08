@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "专题活动",
+    "onReachBottomDistance": 50,
+    "usingComponents": {
+        "i-toast": "../../../components/toast/index",
+        "i-loading": "../../../components/loading/index",
+        "i-icon": "../../../components/icon/index"
+    }
+}

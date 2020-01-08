@@ -1,0 +1,18 @@
+<view class="i-sticky-item itemIndex{{index}}">
+    <view wx:if="{{noTitle}}">
+        <slot name="noTitle"></slot>
+    </view>
+    <view class="i-sticky-item-header i-class {{isFixed===true?'i-sticky-fixed':''}} {{showHeadFoot===true?'i-sticky-bottom-fixed':''}}" wx:else>
+        <view class="i-sticky-title">
+            <slot name="title"></slot>
+        </view>
+    </view>
+    <view class="i-index-item-content">
+        <slot name="content"></slot>
+    </view>
+    <view class="i-sticky-item-footer {{isFootFixed===true?'foot-sticky-fixed':''}}">
+        <view class="foot-fixed-title index{{index}}" style="border-top-width: {{noTitle?0:1}}px;">
+            <slot name="footBottom"></slot>
+        </view>
+    </view>
+</view>

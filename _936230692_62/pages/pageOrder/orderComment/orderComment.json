@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "评价晒单",
+    "usingComponents": {
+        "i-rate": "../../../components/rate/index",
+        "i-toast": "../../../components/toast/index",
+        "i-loading": "../../../components/loading/index",
+        "i-icon": "../../../components/icon/index"
+    }
+}

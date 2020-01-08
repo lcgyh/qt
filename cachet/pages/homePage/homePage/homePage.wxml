@@ -1,5 +1,0 @@
-<!--pages/homePage/homePage/homePage.wxml-->
-<view>
-<canvas class="QRcode" canvas-id="myQrcode">
-</canvas>
-</view>

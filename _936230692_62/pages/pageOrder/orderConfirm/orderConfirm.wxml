@@ -1,0 +1,237 @@
+<view wx:if="{{showMask}}">
+    <view class="anounce-tips" wx:if="{{allInfo.qbyMessage}}">{{allInfo.qbyMessage}}</view>
+    <view class="choose-send" wx:if="{{assignType!=0}}">
+        <view bindtap="showDelivers" class="choose-send-title" style="margin-right: {{allInfo.isInstantDelivery==1?60:190}}rpx;">配送方式<i-icon color="#444444" size="18" type="feedback"></i-icon>
+        </view>
+        <view class="choose-send-tab">
+            <van-tabs active="{{send_active}}" bind:change="sendChange" bind:disabled="clickDisabled" type="card">
+                <van-tab disabled="{{assignType!=2}}" title="门店自提"></van-tab>
+                <van-tab title="快递邮寄"></van-tab>
+                <van-tab disabled="{{assignType!=2}}" title="即时配送" wx:if="{{allInfo.isInstantDelivery==1}}"></van-tab>
+            </van-tabs>
+        </view>
+    </view>
+    <view class="send-content">
+        <view class="tab-content" wx:if="{{send_active==0}}">
+            <view class="tab-content-tips" wx:if="{{allInfo.reminMsg}}">{{allInfo.reminMsg}}</view>
+            <view class="tab-content-store">
+                <view class="tab-content-store-title">自提地址</view>
+                <view class="store-name">服务门店：{{allInfo.shopVo.name}}</view>
+                <view class="store-time">自提时间：{{allInfo.shopVo.openTime}}</view>
+                <view class="store-address">门店地址：{{allInfo.shopVo.address}}</view>
+            </view>
+            <view class="color-line">
+                <image mode="widthFix" src="/images/color_line.png"></image>
+            </view>
+        </view>
+        <view class="tab-content" wx:elif="{{send_active==1}}">
+            <view class="tab-content-tips" wx:if="{{allInfo.reminMsg}}">{{allInfo.reminMsg}}</view>
+            <view bindtap="chooseAddress" class="tab-content-all" data-id="{{receiveAddressInfo.receiveId}}">
+                <view class="tab-content-noaddress" wx:if="{{receiveAddressInfo==null}}">
+                    <image mode="aspectFit" src="/images/feedback_add.png"></image>
+                    新增收货地址
+                </view>
+                <view class="tab-content-info" wx:else>
+                    <view class="address-content" style="color: #666666">
+                        <view style="display: flex;">
+                            <text class="name" style="margin-right: 40rpx;">{{receiveAddressInfo.receiveName}}
+                            </text>
+                            <text class="phone">{{receiveAddressInfo.receiveMobile}}</text>
+                        </view>
+                        <view class="address-name">{{receiveAddressInfo.addressDetail}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="color-line" wx:if="{{receiveAddressInfo!=null}}">
+                <image mode="widthFix" src="/images/color_line.png"></image>
+            </view>
+        </view>
+        <view class="tab-content" wx:elif="{{send_active==2}}">
+            <view class="tab-content-tips" wx:if="{{allInfo.reminMsg}}">{{allInfo.reminMsg}}</view>
+            <view bindtap="chooseAddress" class="tab-content-all" data-id="{{receiveAddressInfo.receiveId}}">
+                <view class="tab-content-noaddress" wx:if="{{receiveAddressInfo==null}}">
+                    <i-icon color="#333333" size="20" type="add"></i-icon>新增收货地址
+                </view>
+                <view class="tab-content-info" wx:else>
+                    <view class="out-tips" wx:if="{{receiveAddressInfo.distanceOver==1}}">此地址超出了配送范围</view>
+                    <view class="address-content" style="color: {{receiveAddressInfo.distanceOver==1?'#C9C9C9':'#666666'}};">
+                        <view style="display: flex;">
+                            <text class="name" style="margin-right: 40rpx;">{{receiveAddressInfo.receiveName}}
+                            </text>
+                            <text class="phone">{{receiveAddressInfo.receiveMobile}}</text>
+                        </view>
+                        <view class="address-name">{{receiveAddressInfo.addressDetail}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="color-line" wx:if="{{receiveAddressInfo!=null}}">
+                <image mode="widthFix" src="/images/color_line.png"></image>
+            </view>
+        </view>
+        <view bindtap="goRealName" class="real-name-box" wx:if="{{assignType==0}}">
+            <view class="real-name" wx:if="{{cardInfo}}">
+                <text class="real-name-hd">{{cardInfo.name}}</text>{{cardInfo.cardNo}}</view>
+            <view bindtap="goRealName" class="real-name" wx:else>
+                <text>实名信息</text>
+                <text class="real-name-ft">请填写身份证信息</text>
+            </view>
+            <view class="online-tips">
+                海关规定，订单的实名信息中姓名，要与实际付款的银行卡对应的姓名或第三方支付平台认证的姓名保持一致，否则无法清关发货。
+            </view>
+        </view>
+    </view>
+    <view class="detail-box">
+        <view class="detail-goods">
+            <view class="goods-box" wx:for="{{goodsInfo}}" wx:for-index="indx" wx:for-item="it" wx:key="{{indx}}">
+                <view class="detail-title">{{it.wsName}}<text hidden="{{send_active==0}}">发货</text>
+                </view>
+                <view class="goods-list">
+                    <view class="goods-block" wx:for="{{it.pdSpuList}}" wx:key="item.name">
+                        <view class="goods-img">
+                            <image mode="aspectFit" src="{{fileDomain}}{{item.mainPicUrl}}?x-oss-process=image/resize,m_lfit,w_600,h_0/quality,q_100"></image>
+                        </view>
+                        <view class="order-content">
+                            <view style="flex:1;">
+                                <view class="goods-title">{{item.name}}</view>
+                                <view class="goods-tpye">{{item.displayName==''||item.displayName==null?'':item.displayName}}</view>
+                            </view>
+                            <view class="price-number">
+                                <view class="goods-price">
+                                    <text>￥</text>{{item.showPrice}}</view>
+                                <view class="goods-number">
+                                    <text wx:if="{{item.giftQty>0}}">（含赠品{{item.giftQty}}件）</text>
+                                    <text>×{{item.qty}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="gift-list-box">
+        <view class="giftList" wx:if="{{giftList.length>0}}">
+            <view class="giftList-title">赠品（共{{allInfo.giftQty}}件）</view>
+            <view class="giftList-content" wx:for="{{giftList}}" wx:key="{{index}}">
+                <text class="gift-icon">赠品</text>
+                <text class="gift-name">{{item.pdName}}</text>
+                <text class="gift-qty">x{{item.qty}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="detail-summary">
+        <view class="detail-summary-box">
+            <view class="summary">
+                <view class="summary-title">商品原价</view>
+                <view class="summary-value">￥{{allInfo.amountSum}}</view>
+            </view>
+            <view class="summary" style="margin-top: 30rpx" wx:if="{{allInfo.activityAmount>0}}">
+                <view class="summary-title">活动优惠</view>
+                <view class="summary-value nouse">-￥{{allInfo.activityAmount}}</view>
+            </view>
+            <view bindtap="chooseCoupon" class="summary middle">
+                <view class="summary-title">优惠券</view>
+                <view class="summary-value {{hasUsed?'':'nouse'}}">{{coupon}}</view>
+            </view>
+            <view class="summary send-price" wx:if="{{assignType==0}}">
+                <view class="summary-title">税费</view>
+                <view class="summary-value">已包税</view>
+            </view>
+            <view class="summary send-price" wx:if="{{send_active==1||send_active==2}}">
+                <view class="summary-title">邮费</view>
+                <block wx:if="{{receiveAddressInfo}}">
+                    <view wx:if="{{send_price==-1}}">
+                        <view class="summary-value">到付</view>
+                    </view>
+                    <view wx:else>
+                        <view class="summary-value">{{send_price==0?'包邮':'￥'+send_price}}</view>
+                        <view class="send-need" wx:if="{{send_price!=0}}">{{needText}}</view>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </view>
+    <view class="freeExpress-box" wx:if="{{send_price>0&&allInfo.freeExpressCardInfo}}">
+        <view bindtap="showFreeExpress" class="free-express-box">
+            <view class="free-express all-arrow all-arrow-main all-arrow-small">
+                <block wx:if="{{useFree==0}}">
+                    <text>免邮卡特权</text>
+                    <text></text>
+                    <text>不使用</text>
+                </block>
+                <block wx:else>
+                    <text>免邮卡特权</text>
+                    <text>{{'L'+allInfo.freeExpressCardInfo.level+'等级会员专享：免邮特权'}}</text>
+                    <text>-￥{{send_price}}</text>
+                </block>
+            </view>
+        </view>
+    </view>
+    <view class="agreement-box">提交订单则代表您同意<text bindtap="goAgreement">《{{allInfo.userAgreementName}}》</text>
+    </view>
+    <view class="confirm-button" style="padding-bottom: {{isIphoneX==1?34:0}}px;">
+        <view class="out-distance-tips" wx:if="{{send_price==-1}}">由于您的收货地址较为偏远，商品将采用到付的方式为您邮寄</view>
+        <view class="confirm-button-box">
+            <view class="order-total">
+                <view>（共{{allInfo.skuSize}}件商品）</view>
+                <view>需支付：</view>
+                <view>
+                    <text>￥</text>{{lastPrice}}</view>
+            </view>
+            <view bindtap="createOrderAjax" class="confirm">提交订单</view>
+        </view>
+    </view>
+</view>
+<van-popup bind:close="showDelivers" catchtouchmove="ture" show="{{showDelivers}}">
+    <view class="delivers-content">
+        <block wx:for="{{allInfo.deliveryDesList}}" wx:key="{{index}}">
+            <view class="delivers-content-title">{{item.deliveryTitle}}</view>
+            <view class="delivers-content-intro">{{item.deliveryContent}}</view>
+        </block>
+    </view>
+</van-popup>
+<van-popup catchtouchmove="ture" show="{{showClearGift}}">
+    <view class="clearGift-content">
+        <view class="clearGift-content-title">部分赠品库存不足或不满足出库条件，不能赠送，请移除后再下单</view>
+        <view class="clearGift-content-goodList">
+            <scroll-view scrollY="{{true}}" style="height: 400rpx;">
+                <view class="clearGift-content-block" wx:for="{{saveClearGiftList}}" wx:key="{{index}}">
+                    <view class="clearGift-img">
+                        <image src="{{fileDomain+item.pic}}"></image>
+                    </view>
+                    <view class="clearGift-goodDetail">
+                        <view style="flex: 1;">
+                            <view class="clearGift-name">
+                                <text>赠品</text>{{item.spuName}}</view>
+                            <view class="clearGift-displayName">{{item.displayName?item.displayName:''}}</view>
+                        </view>
+                        <view class="clearGift-qty">x{{item.qty}}</view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="clearGift-button-wrap">
+            <view bindtap="goBack">返回上一页</view>
+            <text class="clearGift-button-line"></text>
+            <view bindtap="removeGift">移除赠品</view>
+        </view>
+    </view>
+</van-popup>
+<van-popup bind:close="showFreeExpress" catchtouchmove="ture" position="bottom" show="{{showFreeExpress}}">
+    <view class="freeExpress-content">
+        <view bindtap="chooseUse" class="freeExpress-cell" data-use="0">
+            <view class="freeExpress-cell-title">不使用</view>
+            <image class="free-icon" mode="widthFix" src="{{useFree==0?icon.check:icon.uncheck}}"></image>
+        </view>
+        <view bindtap="chooseUse" class="freeExpress-cell" data-use="1">
+            <view class="freeExpress-cell-title">
+                <view>免邮特权卡</view>
+                <view class="cell-title-info">{{allInfo.freeExpressCardInfo.levelStr}}</view>
+            </view>
+            <image class="free-icon" mode="widthFix" src="{{useFree==1?icon.check:icon.uncheck}}"></image>
+        </view>
+        <view class="freeExpress-tips">{{allInfo.freeExpressCardInfo.msg}}</view>
+    </view>
+</van-popup>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

@@ -1,0 +1,350 @@
+page {
+    background-color: #f9faf9;
+}
+
+.me-header {
+    position: relative;
+    padding: 0 32rpx;
+    background-image: url("https://qcampfile.oss-cn-shanghai.aliyuncs.com/me_bg.png");
+    background-size: cover;
+}
+
+.message {
+    height: 40rpx;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.message>view {
+    width: 40prx;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.message>view>image {
+    width: 40rpx;
+    height: auto;
+}
+
+.me-info {
+    display: flex;
+    align-items: center;
+}
+
+.me-avatar {
+    border-radius: 50%;
+    width: 110rpx;
+    height: 110rpx;
+    margin-right: 24rpx;
+    overflow: hidden;
+    background-color: #FFFFFF;
+}
+
+.me-avatar>image {
+    width: 100%;
+    height: 100%;
+}
+
+.me-detail {
+    display: flex;
+    flex-direction: column;
+    font-size: 42rpx;
+    color: #FFFFFF;
+}
+
+.me-detail-name {
+    font-size: 32rpx;
+    min-height: 46rpx;
+}
+
+.me-detail-info {
+    display: flex;
+    align-items: center;
+    margin-top: 20rpx;
+    position: relative;
+}
+
+.me-detail-info>view {
+    background-color: rgba(255,255,255,0.2);
+    border: 0.5px solid rgba(255,255,255,0.4);
+    border-radius: 100rpx;
+    font-size: 22rpx;
+    padding: 2rpx 16rpx;
+    margin-right: 20rpx;
+}
+
+.me-info-level {
+    display: flex;
+    align-items: center;
+}
+
+.me-info-level>image {
+    width: 24rpx;
+    height: auto;
+    margin-right: 4rpx;
+    position: relative;
+}
+
+.me-info-grow>text {
+    position: relative;
+    padding-right: 18rpx;
+}
+
+.me-special {
+    display: flex;
+    align-items: center;
+    margin-top: 40rpx;
+    padding-bottom: 20rpx;
+}
+
+.me-special-cell {
+    flex: 1;
+    height: 82rpx;
+    display: flex;
+    flex-direction: column;
+    color: #FFFFFF;
+    justify-content: center;
+    align-items: center;
+}
+
+.me-special-cell>view:first-child {
+    font-size: 36rpx;
+}
+
+.me-special-cell>view:last-child {
+    font-size: 22rpx;
+}
+
+.me-member {
+    width: 100%;
+    min-height: 86rpx;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+}
+
+.me-member>image {
+    width: 100%;
+    height: auto;
+}
+
+.me-order-box,.me-function-box {
+    padding: 0 32rpx;
+}
+
+.me-order-box {
+    margin-top: 32rpx;
+}
+
+.me-order,.me-function {
+    padding: 32rpx 0;
+    background-color: #FFFFFF;
+    border-radius: 20rpx;
+    position: relative;
+}
+
+.me-order-title {
+    display: flex;
+    align-items: center;
+    font-size: 32rpx;
+    color: #464646;
+    padding: 0 32rpx;
+    font-weight: bold;
+}
+
+.me-order-title>view {
+    position: relative;
+    padding-right: 20rpx;
+    font-size: 24rpx;
+    color: #999999;
+    flex: 1;
+    text-align: right;
+    font-weight: normal;
+}
+
+.me-order-content {
+    margin-top: 20rpx;
+    display: flex;
+    align-items: center;
+}
+
+.me-order-content>view {
+    flex: 1;
+    min-height: 102rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.me-order-icon {
+    width: 70rpx;
+    height: auto;
+}
+
+.me-order-text {
+    font-size: 22rpx;
+    color: #333333;
+}
+
+.me-order-dot {
+    position: absolute;
+    right: 50%;
+    top: 2rpx;
+    margin-right: -46rpx;
+    color: #FFFFFF;
+    background-color: #00C4B3;
+    border-radius: 200px;
+    font-size: 16rpx;
+    width: 26rpx;
+    height: 26rpx;
+    text-align: center;
+    line-height: 26rpx;
+}
+
+.me-ad {
+    padding: 0 32rpx;
+    overflow: hidden;
+    margin-top: 32rpx;
+    font-size: 0;
+}
+
+.me-ad>image {
+    width: 100%;
+    height: 100%;
+    border-radius: 20rpx;
+}
+
+.me-function-box {
+    margin-top: 32rpx;
+}
+
+.me-function-title {
+    font-size: 32rpx;
+    color: #464646;
+    padding: 0 32rpx;
+    font-weight: bold;
+}
+
+.me-function-content {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20rpx;
+}
+
+.me-function-content>view {
+    width: 25%;
+    height: 140rpx;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20rpx 8px 0;
+    position: relative;
+}
+
+.me-function-icon {
+    width: 70rpx;
+    height: auto;
+}
+
+.me-function-text {
+    font-size: 22rpx;
+    color: #333333;
+}
+
+.me-function-dot {
+    position: absolute;
+    top: -6rpx;
+    left: 32rpx;
+    background-color: #00C4B3;
+    border-radius: 16rpx;
+    font-size: 18rpx;
+    color: #FFFFFF;
+    padding: 0 10rpx;
+    max-width: 70%;
+    min-width: 30rpx;
+    height: 30rpx;
+    line-height: 30rpx;
+}
+
+.me-function-dot-name {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.sjx {
+    position: absolute;
+    left: 20rpx;
+    width: 0;
+    height: 0;
+    border-top: 5px solid #00C4B3;
+    border-right: 0 solid transparent;
+    border-left: 8px solid transparent;
+}
+
+.customer-talk {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+}
+
+.customer-talk:after {
+    border: none!important;
+}
+
+.customer-talk>text {
+    height: 32rpx;
+    line-height: 32rpx;
+    font-size: 22rpx;
+    color: #333333;
+}
+
+.me-version {
+    padding: 32rpx 0;
+    font-size: 22rpx;
+    color: #D2D2D2;
+    text-align: center;
+}
+
+.tips-cover {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0,0,0,.7);
+}
+
+.tips-cover>image {
+    width: 70%;
+    height: auto;
+    border-radius: 30rpx;
+}
+
+.tips-cover>view {
+    width: 450rpx;
+    height: 80rpx;
+    text-align: center;
+    line-height: 80rpx;
+    color: #FFFFFF;
+    border: 0.5px dashed #FFFFFF;
+    border-radius: 200px;
+    font-size: 32rpx;
+    margin-top: 60rpx;
+}

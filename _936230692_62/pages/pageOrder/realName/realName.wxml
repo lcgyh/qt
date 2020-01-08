@@ -1,0 +1,53 @@
+<view style="margin: 0 40rpx;">
+    <view class="input-box">
+        <view class="input-title">支付人姓名</view>
+        <input bindinput="nameinput" class="input-content" confirmType="next" maxlength="20" placeholder="请填写付款银行卡对应的真实姓名" type="text" value="{{name}}"></input>
+    </view>
+    <view class="input-box">
+        <view class="input-title">支付人身份证号</view>
+        <input bindinput="idcardinput" class="input-content" confirmType="done" maxlength="18" placeholder="请填写真实的身份证号" type="idcard" value="{{idcard}}"></input>
+    </view>
+    <view class="online-tips">
+        <image mode="aspectFit" src="/images/feedback.png"></image>
+        <text>海关规定，订单的实名信息中姓名，要与实际付款的银行卡对应的姓名或第三方支付平台认证的姓名保持一致，否则无法清关发货。</text>
+    </view>
+    <view class="input-box">
+        <view class="input-title">身份证正反面照片</view>
+        <view class="idcard-img">
+            <view bindtap="uploadUserImg" data-type="on">
+                <image class="onImg" mode="aspectFit" src="{{fileDomain+onImg}}" wx:if="{{onImg}}"></image>
+                <view class="camera-upload" wx:else>
+                    <image mode="aspectFit" src="/images/camera_upload.png"></image>
+                    <view>上传身份证<text>人像面</text>
+                    </view>
+                </view>
+                <view class="upload-cover" wx:if="{{onPrograss>0&&onPrograss<=99.99}}">{{onPrograss}}%</view>
+            </view>
+            <view bindtap="uploadUserImg" data-type="off">
+                <image class="offImg" mode="aspectFit" src="{{fileDomain+offImg}}" wx:if="{{offImg}}"></image>
+                <view class="camera-upload" wx:else>
+                    <image mode="aspectFit" src="/images/camera_upload.png"></image>
+                    <view>上传身份证<text>国徽面</text>
+                    </view>
+                </view>
+                <view class="upload-cover" wx:if="{{offPrograss>0&&offPrograss<=99.99}}">{{offPrograss}}%</view>
+            </view>
+        </view>
+    </view>
+    <view class="online-tips">
+        <image mode="aspectFit" src="/images/feedback.png"></image>
+        <text>部分海外直邮商品需要您提供身份证正反面照片用于海关报关身份证，图片支持png，jpg格式</text>
+    </view>
+    <view class="input-box" style="padding-bottom: 80px;">
+        <view class="input-title">为什么要实名认证</view>
+        <view class="real-name-intro">
+            <view>1、根据海关规定，购买跨境商品需要办理清关手续，请您配合实名认证，以确保您购买的商品顺利通过海关检查。（Qtools承诺所传身份证明只用于办理跨境商品的清关手续，不作他途使用，其他任何人均无法查看）</view>
+            <view>2、实名认证的规则：购买跨境商品需填写Qtools账号注册人的真实姓名、身份证号码及与实名一致的手机号。</view>
+        </view>
+    </view>
+    <view bindtap="saveRealName" class="real-name-save" style="padding-bottom: {{isIphoneX==1?34:0}}px">
+        <view>保存</view>
+    </view>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

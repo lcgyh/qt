@@ -1,0 +1,111 @@
+<view class="page" wx:if="{{showMask}}">
+    <view class="header">
+        <view class="head">
+            <view class="member">
+                <image mode="widthFix" src="/images/me/member{{memberLevelInfo.memberLevel}}.png" wx:if="{{memberLevelInfo.memberLevel}}"></image>{{levelName}}</view>
+            <view bindtap="goExplain" class="value-tips">成长值说明</view>
+        </view>
+        <view class="grow-value-box">
+            <view class="grow-value">{{memberLevelInfo.userGrowthValue}}</view>
+            <view class="grow-value-time">统计范围：{{memberLevelInfo.growthStatisticsTimeStr}}</view>
+        </view>
+        <view class="grow-value-slider-box">
+            <view class="grow-value-slider">
+                <view class="slider-value" style="width: {{sliderWidth}}%;"></view>
+            </view>
+            <view class="grow-value-txt">
+                <view>0</view>
+                <view>{{memberLevelInfo.memberLevel===1?'':'保级 '+memberLevelInfo.growthThreshold+'/'}}{{memberLevelInfo.memberLevel===4?'最高等级':'升级 '+memberLevelInfo.growthUpgrade}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="mission-box">
+        <view class="mission-title all-line all-line-bottom all-line-gray">
+            <view class="mission-title-txt">获取成长值</view>
+            <view bindtap="goDetail" class="mission-title-tips all-arrow all-arrow-small all-arrow-gray">成长值明细</view>
+        </view>
+        <view class="tab-wrap">
+            <van-tabs animated sticky swipeable border="{{false}}">
+                <van-tab title="消费购物">
+                    <view class="position" style="min-height:{{windowHeight}}px">
+                        <view class="mission-cell" wx:for="{{shoppingTask}}" wx:key="{{index}}">
+                            <view bindtap="showPop" class="cell-info-box" data-item="{{item}}">
+                                <view class="cell-icon">
+                                    <image mode="widthFix" src="{{fileDomain+item.taskPic}}"></image>
+                                </view>
+                                <view class="cell-txt">
+                                    <view class="cell-txt-title">{{item.title}}</view>
+                                    <view class="cell-txt-info">{{item.subTitleField1?item.subTitleField1:''}}<text>{{item.subTitleField2?item.subTitleField2:''}}</text>{{item.subTitleField3?item.subTitleField3:''}}</view>
+                                </view>
+                            </view>
+                            <button class="cell-button {{item.whetherFinished?'yes':'no'}}" data-can="{{item.whetherFinished}}" data-taskId="{{item.growthTaskId}}" data-type="{{item.linkType}}" hoverClass="none" openType="share" wx:if="{{item.linkType==3||item.linkType==4}}">
+                                <view wx:if="{{item.whetherFinished}}">{{item.buttonTextAfter}}</view>
+                                <view wx:else>{{item.buttonTextBefore}}</view>
+                            </button>
+                            <view bindtap="goEvent" class="cell-button {{item.whetherFinished?'yes':'no'}}" data-can="{{item.whetherFinished}}" data-linkInfo="{{item.linkInfo}}" data-linkType="{{item.linkType}}" wx:else>
+                                <view wx:if="{{item.whetherFinished}}">{{item.buttonTextAfter}}</view>
+                                <view wx:else>{{item.buttonTextBefore}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </van-tab>
+                <van-tab title="每日活跃">
+                    <view class="position" style="min-height:{{windowHeight}}px">
+                        <view class="mission-cell" wx:for="{{activeTask}}" wx:key="{{index}}">
+                            <view bindtap="showPop" class="cell-info-box" data-item="{{item}}">
+                                <view class="cell-icon">
+                                    <image mode="widthFix" src="{{fileDomain+item.taskPic}}"></image>
+                                </view>
+                                <view class="cell-txt">
+                                    <view class="cell-txt-title">{{item.title}}</view>
+                                    <view class="cell-txt-info">{{item.subTitleField1?item.subTitleField1:''}}<text>{{item.subTitleField2?item.subTitleField2:''}}</text>{{item.subTitleField3?item.subTitleField3:''}}</view>
+                                </view>
+                            </view>
+                            <button class="cell-button {{item.whetherFinished?'yes':'no'}}" data-can="{{item.whetherFinished}}" data-taskId="{{item.growthTaskId}}" data-type="{{item.linkType}}" hoverClass="none" openType="share" wx:if="{{item.linkType==3||item.linkType==4}}">
+                                <view wx:if="{{item.whetherFinished}}">{{item.buttonTextAfter}}</view>
+                                <view wx:else>{{item.buttonTextBefore}}</view>
+                            </button>
+                            <view bindtap="goEvent" class="cell-button {{item.whetherFinished?'yes':'no'}}" data-can="{{item.whetherFinished}}" data-linkInfo="{{item.linkInfo}}" data-linkType="{{item.linkType}}" wx:else>
+                                <view wx:if="{{item.whetherFinished}}">{{item.buttonTextAfter}}</view>
+                                <view wx:else>{{item.buttonTextBefore}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </van-tab>
+                <van-tab title="完善信息">
+                    <view class="position" style="min-height:{{windowHeight}}px">
+                        <view class="mission-cell" wx:for="{{completeInfoTask}}" wx:key="{{index}}">
+                            <view bindtap="showPop" class="cell-info-box" data-item="{{item}}">
+                                <view class="cell-icon">
+                                    <image mode="widthFix" src="{{fileDomain+item.taskPic}}"></image>
+                                </view>
+                                <view class="cell-txt">
+                                    <view class="cell-txt-title">{{item.title}}</view>
+                                    <view class="cell-txt-info">{{item.subTitleField1?item.subTitleField1:''}}<text>{{item.subTitleField2?item.subTitleField2:''}}</text>{{item.subTitleField3?item.subTitleField3:''}}</view>
+                                </view>
+                            </view>
+                            <button class="cell-button {{item.whetherFinished?'yes':'no'}}" data-can="{{item.whetherFinished}}" data-taskId="{{item.growthTaskId}}" data-type="{{item.linkType}}" hoverClass="none" openType="share" wx:if="{{item.linkType==3||item.linkType==4}}">
+                                <view wx:if="{{item.whetherFinished}}">{{item.buttonTextAfter}}</view>
+                                <view wx:else>{{item.buttonTextBefore}}</view>
+                            </button>
+                            <view bindtap="goEvent" class="cell-button {{item.whetherFinished?'yes':'no'}}" data-can="{{item.whetherFinished}}" data-linkInfo="{{item.linkInfo}}" data-linkType="{{item.linkType}}" wx:else>
+                                <view wx:if="{{item.whetherFinished}}">{{item.buttonTextAfter}}</view>
+                                <view wx:else>{{item.buttonTextBefore}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </van-tab>
+            </van-tabs>
+        </view>
+    </view>
+</view>
+<van-popup bind:close="hidePop" catchtouchmove="ture" show="{{showPop}}">
+    <view bindtap="hidePop" class="task-pop-wrap">
+        <image class="task-pop-img" mode="widthFix" src="{{fileDomain+taskInfo.taskPic}}"></image>
+        <view class="task-pop-title">{{taskInfo.title}}</view>
+        <view class="task-pop-subtitle">{{taskInfo.subTitleField1?taskInfo.subTitleField1:''}}<text>{{taskInfo.subTitleField2?taskInfo.subTitleField2:''}}</text>{{taskInfo.subTitleField3?taskInfo.subTitleField3:''}}</view>
+        <view class="task-pop-rule">{{taskInfo.ruleDesc}}</view>
+    </view>
+</van-popup>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

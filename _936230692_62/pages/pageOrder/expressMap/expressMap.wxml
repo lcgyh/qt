@@ -1,0 +1,26 @@
+<view wx:if="{{showMask}}">
+    <view class="map-box" wx:if="{{noPostion==0}}">
+        <map id="myMap" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" polyline="{{polyline}}" scale="15" subkey="UBFBZ-HEYKU-OIIVP-2QWSF-HQ2MV-JQBIC"></map>
+        <cover-view bindtap="refreshMap" class="refreshButton">
+            <cover-image mode="aspectFit" src="/images/refresh.png"></cover-image>
+        </cover-view>
+        <cover-view class="info-block">
+            <cover-view style="height: 160rpx;">
+                <cover-view class="stateText">{{stateText}}</cover-view>
+                <cover-view class="orderMark">{{orderMark}}</cover-view>
+            </cover-view>
+            <cover-view class="express-man">
+                <cover-view class="express-man-name">{{name}}</cover-view>
+                <cover-view bindtap="contact" class="express-man-button" data-mobile="{{mobile}}">呼叫</cover-view>
+            </cover-view>
+        </cover-view>
+    </view>
+    <view class="no-rider-infomation" wx:else>
+        <view style="display: flex;justify-content: center;">
+            <image mode="widthFix" src="/images/rider_empty.png" style="width: 300rpx;height: auto;"></image>
+        </view>
+        <view style="margin-top: 30rpx;text-align: center;">订单已完成，无法查看骑手位置</view>
+    </view>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

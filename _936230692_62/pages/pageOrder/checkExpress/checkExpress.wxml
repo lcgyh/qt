@@ -1,0 +1,27 @@
+<view wx:if="{{showMask}}">
+    <view class="noticebar" wx:if="{{expressList.length>1}}">由于订单中商品较多已为你拆成多个包裹派送</view>
+    <view class="tab-box" wx:if="{{expressList.length>1}}">
+        <van-tabs active="{{active}}" bind:change="expressChange" border="{{false}}" lineWidth="40">
+            <van-tab title="{{titleText[index]}}" wx:for="{{expressList}}" wx:key="index"></van-tab>
+        </van-tabs>
+    </view>
+    <view class="express-list-block" wx:if="{{active==indx}}" wx:for="{{expressList}}" wx:for-index="indx" wx:for-item="it" wx:key="indx">
+        <view class="express-number" wx:if="{{it.expressNo}}">物流单号：{{it.expressNo}}</view>
+        <view class="express-company" wx:if="{{it.expressCompany}}">国内承运人：{{it.expressCompany}}</view>
+        <view class="express-list" wx:if="{{it.expressInfos.length>0}}">
+            <view class="line"></view>
+            <view class="express-block" wx:for="{{it.expressInfos}}" wx:key="{{index}}">
+                <view class="block"></view>
+                <view class="left-block">
+                    <text>{{item.createTime}}</text>
+                </view>
+                <view class="right-block">
+                    <view class="express-new-title" wx:if="{{item.state}}">{{item.state}}</view>
+                    <view class="express-new">{{item.context}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

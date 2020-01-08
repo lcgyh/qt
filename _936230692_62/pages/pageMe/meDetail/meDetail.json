@@ -1,0 +1,12 @@
+{
+    "navigationBarTitleText": "个人信息",
+    "usingComponents": {
+        "i-cell-group": "../../../components/cell-group/index",
+        "i-cell": "../../../components/cell/index",
+        "van-area": "../../../components/area/index",
+        "van-popup": "../../../components/popup/index",
+        "i-toast": "../../../components/toast/index",
+        "i-loading": "../../../components/loading/index",
+        "i-icon": "../../../components/icon/index"
+    }
+}

@@ -1,0 +1,111 @@
+.feedback-pages {
+    padding: 90rpx 40rpx 0;
+}
+
+.feedback-pages image {
+    width: 100%;
+    height: 100%;
+}
+
+.feedback-pages textarea {
+    width: 100%;
+    font-size: 26rpx;
+    color: #464646;
+    text-align: justify;
+    text-align-last: left;
+    line-height: 32rpx;
+    padding-bottom: 30rpx;
+}
+
+.feedback-pages .row-one {
+    border-bottom: 1px solid #9B9B9B;
+    position: relative;
+}
+
+.feedback-pages .font-len {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 20rpx;
+    color: #464646;
+}
+
+.feedback-pages .upload-wrap {
+    padding-top: 120rpx;
+}
+
+.feedback-pages .file-list,.feedback-pages .upload {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.feedback-pages .file-list .file {
+    width: 154rpx;
+    height: 154rpx;
+    background: rgba(19,19,19,0.50);
+    position: relative;
+    margin: 0 30rpx 30rpx 0;
+    padding: 10rpx;
+    border-radius: 24rpx;
+}
+
+.feedback-pages .file-list .file progress {
+    position: absolute;
+    top: 73rpx;
+    left: 0;
+}
+
+.feedback-pages .file .icon-close {
+    width: 32rpx;
+    height: 32rpx;
+    position: absolute;
+    right: -14rpx;
+    top: -14rpx;
+}
+
+.feedback-pages .icon-close image {
+    vertical-align: top;
+}
+
+.feedback-pages .upload {
+    width: 174rpx;
+    height: 174rpx;
+    background: #FFFFFF;
+    border: 1px solid #9B9B9B;
+    box-shadow: 0 20rpx 30rpx 0 #F9F9F9;
+    border-radius: 24rpx;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.feedback-pages .upload .icon-add {
+    width: 52rpx;
+    height: 52rpx;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.feedback-pages .submit-btn {
+    width: 100%;
+    border-radius: 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    font-size: 40rpx;
+    color: #E1DCC7;
+    height: 110rpx;
+    line-height: 110rpx;
+    background: #464646;
+}
+
+.tips {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 180rpx;
+    font-size: 20rpx;
+    color: #E1DCC7;
+    text-align: center;
+}

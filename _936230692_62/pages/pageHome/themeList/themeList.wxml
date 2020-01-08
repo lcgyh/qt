@@ -1,0 +1,15 @@
+<view wx:if="{{showMask}}">
+    <view class="themeList">
+        <view bindtap="goEvent" class="theme-block" data-pageCode="{{item.pageCode}}" wx:for="{{list}}" wx:key="{{index}}">
+            <view class="theme-img">
+                <image lazyLoad="{{true}}" mode="widthFix" src="{{fileDomain+item.listPagePicUrl}}"></image>
+            </view>
+            <view class="theme-text">
+                <view class="theme-title">{{item.themeName}}</view>
+                <view class="theme-subtitle">{{item.description}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

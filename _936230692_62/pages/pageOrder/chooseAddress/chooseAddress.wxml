@@ -1,0 +1,35 @@
+<view wx:if="{{showMask}}">
+    <view class="address-list" wx:if="{{addressList.length>0}}">
+        <view bindtap="pickAddress" class="address-block" data-distanceOver="{{item.distanceOver}}" data-index="{{index}}" wx:for="{{addressList}}" wx:key="{{index}}">
+            <view class="noTitle" wx:if="{{item.noTitle&&send_type==2}}">{{item.noTitle}}</view>
+            <view class="address-allInfo">
+                <view class="address-radio">
+                    <view>
+                        <checkbox checked="{{item.receiveId==receiveId}}" disabled="{{send_type==2&&item.distanceOver==1}}" value="1"></checkbox>
+                    </view>
+                    <image mode="widthFix" src="/images/default_address.png" wx:if="{{item.myDefault}}"></image>
+                    <image mode="widthFix" src="/images/default_address_no.png" wx:elif="{{item.showGrid}}"></image>
+                </view>
+                <view class="address-info">
+                    <view style="flex: 1;">
+                        <view class="address-name" style="color: {{send_type==2&&item.distanceOver==1?'#C9C9C9':'#666666'}};">
+                            <view>{{item.receiveName}}</view>
+                            <view>{{item.receiveMobile}}</view>
+                        </view>
+                        <view class="address" style="color: {{send_type==2&&item.distanceOver==1?'#C9C9C9':'#666666'}};">{{item.addressDetail}}</view>
+                    </view>
+                    <view catchtap="edit" class="edit-button" data-index="{{index}}" wx:if="{{send_type==1}}">编辑</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="empty-box" wx:else>
+        <view class="empty-image">
+            <image mode="aspectFit" src="/images/address_empty.png" style="width:300rpx;height: 300rpx;"></image>
+        </view>
+        <view class="empty-text" style="margin: 40rpx 0 6rpx 0;">您没有收货地址</view>
+    </view>
+    <view bindtap="goAddAddress" class="button" style="bottom: {{isIphoneX==1?34:0}}px">新建收货地址</view>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

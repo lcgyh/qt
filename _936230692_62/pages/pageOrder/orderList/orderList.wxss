@@ -1,0 +1,263 @@
+page {
+    background-color: #f8f9f8;
+}
+
+.van-tab {
+    color: #464646;
+    font-size: 26rpx!important;
+    height: 44px;
+    overflow: hidden;
+}
+
+.van-tab.van-tab--active {
+    color: #00C4B3;
+}
+
+.van-tabs__line {
+    background-color: #00C4B3!important;
+}
+
+.order-list {
+    padding: 32rpx;
+}
+
+.order-box {
+    margin-bottom: 24rpx;
+    padding: 0 32rpx;
+    box-shadow: 2px 2px 10px 0 rgba(0,0,0,0.05);
+    border-radius: 40rpx;
+    background-color: #FFFFFF;
+}
+
+.order-title {
+    display: flex;
+    align-items: center;
+    height: 80rpx;
+}
+
+.selfpick {
+    width: 60rpx;
+    height: 30rpx;
+    margin-right: 20rpx;
+}
+
+.order-store {
+    width: 65%;
+    font-family: PingFangHK-Regular;
+    font-size: 28rpx;
+    color: #4A4A4A;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.order-status {
+    flex: 1;
+    display: flex;
+    font-size: 26rpx;
+    align-items: center;
+    justify-content: flex-end;
+    white-space: nowrap;
+}
+
+.countDown {
+    position: relative;
+}
+
+.time-box,.txt-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.order-pay {
+    color: #DD8282;
+}
+
+.order-wait {
+    color: #DDC682;
+}
+
+.order-success {
+    color: #6BD5A4;
+}
+
+.order-cancel {
+    color: #9B9B9B;
+}
+
+.order-pay-img {
+    width: 28rpx;
+    height: auto;
+    margin-right: 10rpx;
+}
+
+.order-detail {
+    padding-bottom: 30rpx;
+    border-bottom: 0.5px solid #EEECEC;
+}
+
+.order-de-wrap {
+    display: flex;
+}
+
+.goods-img {
+    width: 180rpx;
+    height: 180rpx;
+    border: 1px solid #EEECEC;
+    border-radius: 10rpx;
+    margin-right: 20rpx;
+    box-shadow: 0 10rpx 10rpx 0 #F9F9F9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.goods-img image {
+    width: 95%;
+    height: 95%;
+    border-radius: 10rpx;
+}
+
+.goods-img-list {
+    width: 100%;
+    height: 190rpx;
+}
+
+.goods-img-list-item {
+    dislay: inline-block;
+    width: 180rpx;
+    height: 180rpx;
+    border: 1px solid #EEECEC;
+    border-radius: 10rpx;
+    margin-right: 20rpx;
+    overflow: hidden;
+    box-shadow: 0 10rpx 10rpx 0 #F9F9F9;
+}
+
+.goods-img-list-item image {
+    width: 95%;
+    height: 95%;
+    border-radius: 10rpx;
+}
+
+.order-content {
+    flex: 1;
+}
+
+.goods-title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 24rpx;
+    color: #333333;
+    font-family: PingFangHK-Regular;
+}
+
+.goods-tpye {
+    margin-top: 10rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 24rpx;
+    color: #C9C9C9;
+}
+
+.goods-price {
+    font-size: 32rpx;
+    color: #333333;
+    font-weight: bold;
+}
+
+.goods-price>text {
+    font-size: 16rpx;
+    font-weight: normal;
+}
+
+.order-corporation {
+    display: flex;
+    width: 100%;
+    height: 90rpx;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.order-corporation>view.view_detail {
+    font-family: PingFangHK-Regular;
+    font-size: 24rpx;
+    color: #4A4A4A;
+}
+
+.order-corporation>view.view_detail>text {
+    font-family: Futura-Medium;
+    font-size: 32rpx;
+    color: #333333;
+}
+
+.order-corporation>view.view_pay {
+    width: 140rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+    border: 1px solid #00C4B3;
+    border-radius: 50px;
+    font-family: PingFangHK-Regular;
+    font-size: 24rpx;
+    color: #00C4B3;
+    margin-left: 20rpx;
+}
+
+.view_gl {
+    flex: 1;
+    font-size: 40rpx;
+    color: #E2E2E2;
+    opacity: 0.5;
+}
+
+.view_pay {
+    color: #00C4B3;
+}
+
+.empty-box {
+    position: fixed;
+    top: 44px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.empty-image {
+    margin-top: -200rpx;
+    margin-bottom: 15rpx;
+}
+
+.empty-text {
+    font-size: 26rpx;
+    color: rgba(70,70,70,.5);
+    text-align: center;
+}
+
+.empty-navigator {
+    margin-top: 40rpx;
+    display: flex;
+    font-size: 32rpx;
+    line-height: 40rpx;
+}
+
+.empty-navigator>view {
+    margin: 0 25rpx;
+    color: #E2E2E2;
+    font-size: 40rpx!important;
+}
+
+.empty-navigator navigator.hangout {
+    color: #00C4B3;
+    border-radius: 100rpx;
+    border: 0.5px solid #00C4B3;
+    font-size: 24rpx;
+    padding: 6rpx 30rpx;
+}

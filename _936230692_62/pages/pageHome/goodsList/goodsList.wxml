@@ -1,0 +1,39 @@
+<view wx:if="{{showMask}}">
+    <view class="search-box" wx:if="{{showPageType==3}}">
+        <view class="search-input-box">
+            <input bindblur="blur" bindconfirm="confirm" bindfocus="focus" bindinput="searchinput" class="{{isfocus?'focus':'unfocus'}}" confirmType="search" cursorSpacing="100" focus="{{isfocus}}" placeholder="请输入想要的产品名称" type="text" value="{{searchValue}}"></input>
+        </view>
+        <view bindtap="clear" class="clear" style="color:{{isfocus?'#464646':'#d8d8d8'}}" wx:if="{{searchValue.length>0}}">
+            <text>清除</text>
+        </view>
+        <view bindtap="confirm" class="search-icon">
+            <view style="border-left: 1px solid #EFEFEF;padding-right: 30rpx;height: 40rpx;"></view>
+            <i-icon color="{{isfocus?'#464646':'#d8d8d8'}}" size="24" type="search"></i-icon>
+        </view>
+    </view>
+    <view class="classify-title" wx:if="{{showPageType==4}}">
+        <van-tabs active="{{classify_active}}" bind:change="classifyChange" border="{{false}}" lineWidth="20" wx:if="{{classifyList.length>0}}">
+            <van-tab title="{{item.categoryName}}" wx:for="{{classifyList}}" wx:key="{{index}}"></van-tab>
+        </van-tabs>
+    </view>
+    <block wx:if="{{goodsList.length>0}}">
+        <good-block customStyle="padding-top:{{topPadding}}px;" fileDomain="{{fileDomain}}" iClass="shopping-list" list="{{goodsList}}"></good-block>
+        <view class="footer" wx:if="{{isShowSlogin}}">没有更多商品了</view>
+    </block>
+    <view class="empty-box" wx:else>
+        <block wx:if="{{showPageType==3}}">
+            <view class="empty-image" wx:if="{{hasSearch==1}}">
+                <image mode="widthFix" src="/images/result_empty.png" style="width:300rpx;height: auto;"></image>
+            </view>
+            <view class="empty-text" wx:if="{{hasSearch==1}}">没有找到搜索的商品</view>
+        </block>
+        <block wx:else>
+            <view class="empty-image">
+                <image mode="widthFix" src="/images/result_empty.png" style="width:300rpx;height: auto;"></image>
+            </view>
+            <view class="empty-text">没有商品哦</view>
+        </block>
+    </view>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

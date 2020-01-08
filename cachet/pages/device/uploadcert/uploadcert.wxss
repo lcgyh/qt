@@ -1,5 +1,0 @@
-.new_manage{padding:30rpx;box-sizing: border-box;background: #fff; }
-.use_btn{width: 90%;margin:80rpx auto 40rpx;background: #e9221f;color: #fff;text-align: center;height:80rpx;line-height:80rpx;border-radius:8rpx;font-size: 30rpx;}
-.maleft_20{margin-left: 20rpx;}
-.poto {display: flex;justify-content:center;padding: 30rpx;box-sizing: border-box;flex-wrap: wrap;}
-.poto image{width:160rpx;height:160rpx;margin:20rpx;}

@@ -1,0 +1,119 @@
+page {
+    background-color: #f8f9f8;
+}
+
+.coupon-list {
+    padding: 0 32rpx 60rpx;
+}
+
+.coupon-block {
+    background: #FFFFFF;
+    border-radius: 16rpx;
+    margin-top: 24rpx;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.coupon-block-top-left {
+    flex: 1;
+    padding: 32rpx;
+    border-right: 0.5px dashed rgba(153,153,153,0.5);
+    position: relative;
+}
+
+.circle {
+    background-color: #f8f9f8;
+    width: 20rpx;
+    height: 20rpx;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 10;
+    right: -10rpx;
+}
+
+.circle-top {
+    top: -10rpx;
+}
+
+.circle-bottom {
+    bottom: -10rpx;
+}
+
+.coupon-title {
+    font-size: 32rpx;
+    color: #333333;
+    font-weight: bold;
+}
+
+.coupon-time {
+    font-size: 22rpx;
+    color: #999999;
+}
+
+.coupon-block-top-right {
+    padding: 32rpx;
+    width: 180rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.coupon-unit {
+    font-size: 30rpx;
+    color: #EC7A7F;
+    font-weight: normal;
+    position: absolute;
+    left: -30rpx;
+    top: 2rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+}
+
+.coupon-value {
+    font-size: 90rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-weight: bold;
+    color: #EC7A7F;
+    position: relative;
+}
+
+.coupon-rule {
+    font-size: 22rpx;
+    text-align: center;
+    margin-top: 10rpx;
+    color: #666666;
+}
+
+.coupon-tips {
+    font-size: 18rpx;
+    color: #999999;
+    margin-top: 24rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.empty-box {
+    margin-top: 200rpx;
+    text-align: center;
+    font-size: 28rpx;
+    color: rgba(70,70,70,.5);
+}
+
+.empty-box .empty-icon {
+    width: 310rpx;
+    margin-bottom: 40rpx;
+}
+
+.empty-box .tips-text {
+    display: inline-block;
+    font-size: 26rpx;
+    color: #00C4B3;
+    margin-top: 40rpx;
+    border-radius: 100rpx;
+    padding: 10rpx 40rpx;
+    border: 0.5px solid #00C4B3;
+}

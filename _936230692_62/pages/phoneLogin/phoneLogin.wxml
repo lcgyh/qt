@@ -1,0 +1,36 @@
+<navigationBar backHome="{{false}}" backgroundColor="transparent" bindgoBack="goBack" navImg="/images/return_login.png" statusBarHeight="{{statusBarHeight}}" title="" windowWidth="{{windowWidth}}"></navigationBar>
+<view class="container">
+    <image class="login-bg" mode="widthFix" src="/images/login_bg.png"></image>
+    <view class="login-container">
+        <view class="logo" style="top: {{statusBarHeight+6}}px">
+            <image mode="widthFix" src="/images/qtools.png"></image>
+        </view>
+        <view class="login-title">登录</view>
+        <view class="login-content">
+            <view class="next-mobile">
+                <block wx:if="{{status===1}}">
+                    <view class="next-mobile-title">您的手机号</view>
+                    <view class="next-mobile-mobile">{{mobile}}</view>
+                </block>
+            </view>
+            <view class="login-mobile {{mobile.length>0?'active':'inactive'}}" wx:if="{{status===0}}">
+                <input bindinput="mobileInput" maxlength="11" placeholder="输入手机号码" placeholderClass="input-holder" type="number" value="{{mobile}}"></input>
+            </view>
+            <view class="login-mobile {{identifyCode.length>0?'active':'inactive'}}" wx:elif="{{status===1}}">
+                <input bindinput="codeInput" maxlength="4" placeholder="输入验证码" placeholderClass="input-holder" type="number" value="{{identifyCode}}"></input>
+            </view>
+            <view class="login-button" wx:if="{{status===0}}">
+                <view class="login-tips">初次登录即为注册</view>
+                <view bindtap="goNext" class="login-next {{mobile.length===11?'active':'inactive'}}">下一步</view>
+            </view>
+            <view class="login-button" wx:elif="{{status===1}}">
+                <view bindtap="reCode" class="login-tips" style="color:{{recode?'#00C4B3':'#9B9B9B'}}">
+                    <i-count-down bindcallback="countDownFinish" clearTimer="{{clearTimer}}" countdownClass="countDown" target="{{targetTime}}" wx:if="{{showCountDown}}"></i-count-down>{{getCodeText}}
+                </view>
+                <view bindtap="finish" class="login-next {{identifyCode.length===4?'nextActive':'nextInactive'}}">完成</view>
+            </view>
+        </view>
+    </view>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

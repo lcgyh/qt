@@ -1,0 +1,5 @@
+<view class="login-wrap" style="{{customStyle}}" wx:if="{{show}}">
+    <image mode="widthFix" src="/images/nologin.png"></image>
+    <view class="login-wrap-tips">你还未登录哦！请登录后查看</view>
+    <view bindtap="goLogin" class="login-wrap-btn">去登录</view>
+</view>

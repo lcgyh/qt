@@ -1,0 +1,42 @@
+.i-input-number {
+    color: #495060;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.i-input-number view.i-input-number-minus,.i-input-number view.i-input-number-plus {
+    text-align: center;
+    width: 50rpx;
+    height: 50rpx;
+    box-sizing: border-box;
+    vertical-align: middle;
+    font-size: 14px;
+    border: 0.5px solid #666666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 50rpx;
+    border-radius: 50%;
+}
+
+.i-input-number .i-input-number-text {
+    width: 140rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    border-radius: 40px;
+    border: 0.5px solid #666666;
+    color: #00C4B3;
+    margin: 0 15rpx;
+    font-family: PingFangHK-Regular;
+    font-size: 24rpx;
+    color: #4A4A4A;
+    text-align: center;
+    min-height: 0;
+}
+
+.i-input-number-disabled {
+    border-color: #f9f9f9!important;
+    color: #9B9B9B!important;
+    background-color: #f9f9f9!important;
+}

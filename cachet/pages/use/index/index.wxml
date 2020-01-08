@@ -1,2 +1,0 @@
-
-  <camera wx:if="isIos" mode="scanCode" bindscancode="successHandle"></camera>

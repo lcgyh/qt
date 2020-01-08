@@ -1,0 +1,21 @@
+<view>
+    <view class="detail-list" wx:if="{{list.length>0}}">
+        <view class="detail-block" wx:for="{{list}}" wx:for-index="indx" wx:for-item="it" wx:key="{{indx}}">
+            <view class="block-title">
+                <view></view>{{it.dateStr}}</view>
+            <view class="block-cell all-line all-line-bottom all-line-gray" wx:for="{{it.detailList}}" wx:key="{{index}}">
+                <view class="cell-info">
+                    <view class="cell-title">{{item.taskTitle?item.taskTitle:''}}</view>
+                    <view class="cell-time">{{item.createTime}}</view>
+                </view>
+                <view class="cell-value {{item.symbol==1?'up':'down'}}">{{item.symbol==1?'+'+item.delta:'-'+item.delta}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="empty-box" wx:else>
+        <image mode="widthFix" src="/images/me/grow_empty.png"></image>
+        <view>近3个月没有成长值记录哦</view>
+    </view>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

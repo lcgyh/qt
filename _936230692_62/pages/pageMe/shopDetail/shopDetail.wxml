@@ -1,0 +1,33 @@
+<view wx:if="{{showMask}}">
+    <view class="address-box">
+        <view class="store-name">Qtools中国 | {{shopInfo.name}}</view>
+        <view class="store-address-box">
+            <view style="flex: 1;">
+                <view class="store-address">{{shopInfo.address}}</view>
+                <view class="store-distance">
+                    <text>距离：</text>{{shopInfo.shopDistance}}</view>
+            </view>
+            <view bindtap="goShopAddress" class="gostore">
+                <image src="/images/location.png"></image>
+                <text>去这里</text>
+            </view>
+        </view>
+        <view class="call-box">
+            <view style="flex: 1;display: flex;align-items: center;">
+                <view class="store-phone">{{shopInfo.telephone}}</view>
+            </view>
+            <view bindtap="connect" class="contact">
+                <image src="/images/call.png"></image>
+                <text>联系一下</text>
+            </view>
+        </view>
+        <view class="store-time">
+            营业时间：{{shopInfo.openTime?shopInfo.openTime:'10:00 - 22:00'}}
+        </view>
+    </view>
+    <view class="corporation">
+        <navigator hoverClass="none" url="/pages/pageMe/shopList/shopList?from=shopDetail">更换门店</navigator>
+    </view>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

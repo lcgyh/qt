@@ -1,0 +1,118 @@
+.i-sticky-item {
+    background: #FFFFFF;
+    margin-bottom: 32rpx;
+    position: relative;
+}
+
+.i-sticky-item-header {
+    font-size: 14px;
+    width: 100%;
+    height: 90rpx;
+    background-color: #fff;
+}
+
+.i-sticky-item-content {
+    font-size: 14px;
+}
+
+.i-sticky-title {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+}
+
+.i-sticky-fixed .i-sticky-title {
+    position: fixed;
+    top: 0;
+}
+
+.i-sticky-bottom-fixed .i-sticky-title {
+    position: absolute;
+    bottom: 100rpx;
+}
+
+.foot-fixed-title {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+}
+
+.foot-sticky-fixed .foot-fixed-title {
+    position: fixed;
+    border-top-color: rgba(226,226,226,0.5);
+    border-top-style: solid;
+}
+
+.footer-position,.header-position {
+    width: 100%;
+    height: 1px;
+}
+
+.itemIndex0 {
+    z-index: 100;
+}
+
+.itemIndex1 {
+    z-index: 90;
+}
+
+.itemIndex2 {
+    z-index: 80;
+}
+
+.itemIndex3 {
+    z-index: 70;
+}
+
+.itemIndex4 {
+    z-index: 60;
+}
+
+.itemIndex5 {
+    z-index: 50;
+}
+
+.itemIndex6 {
+    z-index: 40;
+}
+
+.itemIndex7 {
+    z-index: 30;
+}
+
+.index0 {
+    z-index: 102;
+}
+
+.index1 {
+    z-index: 92;
+}
+
+.index2 {
+    z-index: 82;
+}
+
+.index3 {
+    z-index: 72;
+}
+
+.index4 {
+    z-index: 62;
+}
+
+.index5 {
+    z-index: 52;
+}
+
+.index6 {
+    z-index: 42;
+}
+
+.index7 {
+    z-index: 32;
+}

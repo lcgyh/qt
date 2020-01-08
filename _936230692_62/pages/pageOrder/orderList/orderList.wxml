@@ -1,0 +1,105 @@
+<navigationBar backHome="{{false}}" bindgoBack="goBack" statusBarHeight="{{statusBarHeight}}" title="{{titleName}}" windowWidth="{{windowWidth}}"></navigationBar>
+<view style="padding-top: {{statusBarHeight+37}}px;" wx:if="{{showMask}}">
+    <block wx:if="{{active==-1}}">
+        <view class="order-list" wx:if="{{orderList.length>0}}">
+            <view bindtap="goReturnDetail" class="order-box" data-orderReturnId="{{item.orderReturnId}}" wx:for="{{orderList}}" wx:key="item.orderId">
+                <view class="order-title">
+                    <view class="order-store">{{item.wareHouseName}}</view>
+                    <view class="order-status" style="color:{{item.color}}">
+                        <image class="order-pay-img" mode="widthFix" src="{{item.iconPath}}"></image>{{item.statusText}}</view>
+                </view>
+                <view class="order-detail" style="border-bottom: none;">
+                    <scroll-view scrollX class="goods-img-list" wx:if="{{item.pdSpuInfos.length>1}}">
+                        <view style="width: {{item.pdSpuInfos.length*204}}rpx;height: 100%;display: flex;flex-direction: row;">
+                            <view class="goods-img-list-item" wx:for="{{item.pdSpuInfos}}" wx:for-index="valueIndex" wx:for-item="value" wx:key="value.pdSkuId">
+                                <image lazyLoad="{{true}}" mode="aspectFit" src="{{fileDomain}}{{value.mainPicUrl}}?x-oss-process=image/resize,m_lfit,w_600,h_0/quality,q_100"></image>
+                            </view>
+                        </view>
+                    </scroll-view>
+                    <view class="order-de-wrap" style="display: flex;width: 100%;" wx:else>
+                        <view class="goods-img">
+                            <image lazyLoad="{{true}}" mode="aspectFit" src="{{fileDomain}}{{item.pdSpuInfos[0].mainPicUrl}}?x-oss-process=image/resize,m_lfit,w_600,h_0/quality,q_100"></image>
+                        </view>
+                        <view class="order-content">
+                            <view>
+                                <view class="goods-title">{{item.pdSpuInfos[0].name}}</view>
+                                <view class="goods-tpye">{{item.pdSpuInfos[0].displayName==''||item.pdSpuInfos[0].displayName==null?'':item.pdSpuInfos[0].displayName}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="empty-box" wx:else>
+            <view class="empty-image">
+                <image mode="aspectFit" src="/images/order_empty.png" style="width:300rpx;height: 300rpx;"></image>
+            </view>
+            <view class="empty-text">哎呦~ 一个订单都没有</view>
+            <view class="empty-navigator">
+                <navigator class="hangout" hoverClass="none" openType="switchTab" url="/pages/home/home">去逛逛看</navigator>
+            </view>
+        </view>
+    </block>
+    <van-tabs animated sticky swipeable active="{{active}}" bind:change="orderChange" border="{{false}}" lineWidth="20" offsetTop="{{statusBarHeight+37}}" swipeThreshold="5" wx:else>
+        <van-tab title="{{it}}" wx:for="{{tab}}" wx:for-index="indx" wx:for-item="it" wx:key="{{indx}}">
+            <view class="order-list" wx:if="{{orderList.length>0}}">
+                <view bindtap="goDetail" class="order-box" data-orderId="{{item.orderId}}" data-virtualNo="{{item.virtualOrderNo}}" wx:for="{{orderList}}" wx:key="item.orderId">
+                    <view class="order-title">
+                        <image class="selfpick" mode="aspectFit" src="/images/selfpick.png" wx:if="{{item.orderType==1}}"></image>
+                        <view class="order-store">{{item.wsName}}</view>
+                        <view class="order-status" style="color:{{item.color}}" wx:if="{{item.orderStatus==10}}">
+                            <view class="time-box" wx:if="{{item.timeColock>item.date}}">
+                                <image class="order-pay-img" mode="widthFix" src="{{item.iconPath}}"></image>
+                                <i-count-down bindcallback="timeLinsterner" clearTimer="{{item.clearTimer}}" countdownClass="countDown" data-index="{{index}}" style="height: 0;min-width: 70rpx;text-align: right;line-height: 0;" target="{{item.statusText}}"></i-count-down>
+                            </view>
+                            <view class="txt-box" wx:else>
+                                <image class="order-pay-img" mode="widthFix" src="{{item.iconPath}}"></image>{{item.statusText}}</view>
+                        </view>
+                        <view class="order-status" style="color:{{item.color}}" wx:else>
+                            <image class="order-pay-img" mode="widthFix" src="{{item.iconPath}}"></image>{{item.statusText}}</view>
+                    </view>
+                    <view class="order-detail">
+                        <scroll-view scrollX class="goods-img-list" wx:if="{{item.productListVo.length>1}}">
+                            <view style="width: {{item.productListVo.length*204}}rpx;height: 100%;display: flex;flex-direction: row;">
+                                <view class="goods-img-list-item" wx:for="{{item.productListVo}}" wx:for-index="valueIndex" wx:for-item="value" wx:key="value.pdSkuId">
+                                    <image lazyLoad="{{true}}" mode="aspectFit" src="{{fileDomain}}{{value.mainPicUrl}}?x-oss-process=image/resize,m_lfit,w_600,h_0/quality,q_100"></image>
+                                </view>
+                            </view>
+                        </scroll-view>
+                        <view class="order-de-wrap" style="display: flex;width: 100%;" wx:else>
+                            <view class="goods-img">
+                                <image lazyLoad="{{true}}" mode="aspectFit" src="{{fileDomain}}{{item.productListVo[0].mainPicUrl}}?x-oss-process=image/resize,m_lfit,w_600,h_0/quality,q_100"></image>
+                            </view>
+                            <view class="order-content">
+                                <view>
+                                    <view class="goods-title">{{item.productListVo[0].name}}</view>
+                                    <view class="goods-tpye">{{item.productListVo[0].displayName==''||item.productListVo[0].displayName==null?'':item.productListVo[0].displayName}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="order-corporation" wx:if="{{item.orderStatus==10&&item.showPay}}">
+                        <view class="view_detail">共{{item.qtySum}}件商品 合计：￥<text>{{item.payAmount}}</text>
+                        </view>
+                        <view catchtap="goPay" class="view_pay" data-orderId="{{item.orderId}}" data-virtualNo="{{item.virtualOrderNo}}">去支付</view>
+                    </view>
+                    <view class="order-corporation has-compeled" wx:else>
+                        <view class="view_detail" data-orderId="{{item.orderId}}">共{{item.qtySum}}件商品 合计：￥<text>{{item.payAmount}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="empty-box" wx:else>
+                <view class="empty-image">
+                    <image mode="aspectFit" src="/images/order_empty.png" style="width:300rpx;height: 300rpx;"></image>
+                </view>
+                <view class="empty-text">哎呦~ 一个订单都没有</view>
+                <view class="empty-navigator">
+                    <navigator class="hangout" hoverClass="none" openType="switchTab" url="/pages/home/home">去逛逛看</navigator>
+                </view>
+            </view>
+        </van-tab>
+    </van-tabs>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

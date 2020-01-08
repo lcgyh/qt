@@ -1,0 +1,41 @@
+.express-form {
+    display: block;
+    padding: 60rpx 40rpx 0;
+}
+
+.express-form .title {
+    font-family: PingFangHK-Light;
+    font-size: 28rpx;
+    color: #666666;
+    margin-bottom: 16rpx;
+}
+
+.express-form .input-box {
+    position: relative;
+    margin-bottom: 60rpx;
+}
+
+.express-form .input-box input {
+    font-family: PingFangHK-Regular;
+    font-size: 32rpx;
+    color: #464646;
+    padding: 10rpx 0;
+    border-bottom: 0.5px solid #C9C9C9;
+}
+
+.button {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 110rpx;
+    line-height: 110rpx;
+    text-align: center;
+    background-color: #464646;
+    color: #E1DCC7;
+    border-radius: 0;
+}
+
+.button::after {
+    border-radius: 0;
+}

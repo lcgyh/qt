@@ -1,0 +1,34 @@
+<view wx:if="{{showMask}}">
+    <view class="info-box" wx:if="{{addressList.length>0}}">
+        <view class="userInfo" wx:for="{{addressList}}" wx:key="{{item}}">
+            <view class="info">
+                <text class="name">{{item.receiveName}}</text>
+                <text>{{item.receiveMobile}}</text>
+            </view>
+            <view class="adres">{{item.addressDetail}}</view>
+            <view class="operate">
+                <view>
+                    <radio-group bindchange="radioChange" class="radio-group" data-id="{{item.receiveId}}">
+                        <radio checked="{{item.defaultFlg==0}}" class="radio" id="{{item.receiveId}}"></radio>
+                        <label class="label" for="{{item.receiveId}}">设为默认</label>
+                    </radio-group>
+                </view>
+                <view>
+                    <view bindtap="edit" class="btn edit" data-index="{{index}}">编辑</view>
+                    <view bindtap="delete" class="btn del" data-id="{{item.receiveId}}">删除</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="empty-box" wx:else>
+        <view class="empty-image">
+            <image mode="aspectFit" src="/images/address_empty.png" style="width:300rpx;height: 300rpx;"></image>
+        </view>
+        <view class="empty-text" style="margin: 30rpx 0 6rpx 0;">您没有收货地址</view>
+    </view>
+    <navigator class="button" hoverClass="none" openType="navigate" style="bottom: {{isIphoneX==1?34:0}}px" url="/pages/pageMe/addAddress/addAddress">
+        新建收货地址
+    </navigator>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

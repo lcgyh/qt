@@ -1,0 +1,84 @@
+page {
+    background-color: #f9faf9;
+}
+
+.cell {
+    position: relative;
+    padding: 24rpx 32rpx;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+}
+
+.cell::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 200%;
+    height: 200%;
+    transform: scale(.5);
+    transform-origin: 0 0;
+    pointer-events: none;
+    box-sizing: border-box;
+    border: 0 solid #e9eaec;
+    border-bottom-width: 1px;
+    left: 32rpx;
+    right: 0;
+    z-index: 1;
+}
+
+.last-cell:after {
+    display: none;
+}
+
+.cell input {
+    font-size: 28rpx;
+    color: #333333;
+    flex: 1;
+    margin-right: 30rpx;
+}
+
+.code {
+    display: flex;
+    align-items: center;
+}
+
+.getcode {
+    border: 0.5px solid #00C4B3;
+    border-radius: 100px;
+    font-size: 28rpx;
+    color: #00C4B3;
+    padding: 0 30rpx;
+    height: 60rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.countDown {
+    display: flex;
+    align-items: center;
+}
+
+.change-tips {
+    margin-top: 200rpx;
+    font-size: 28rpx;
+    color: #999999;
+    padding: 0 32rpx;
+    text-align: center;
+    letter-spacing: 2rpx;
+}
+
+.save {
+    padding: 32rpx 32rpx 40rpx;
+}
+
+.save>view {
+    background-color: #00C4B3;
+    color: #FFFFFF;
+    border-radius: 100px;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 32rpx;
+    text-align: center;
+}

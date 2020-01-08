@@ -1,0 +1,24 @@
+<view class="feedback-pages">
+    <form bindsubmit="formSubmit">
+        <view class="row-one">
+            <textarea autoHeight="{{true}}" bindinput="setFontLen" maxlength="{{max}}" name="opinionDescribe" placeholder="请输入文字"></textarea>
+            <text class="font-len">{{currentWordNumber}}/{{max}}</text>
+        </view>
+        <view class="upload-wrap">
+            <view class="file-list" wx:if="{{fileList.length>0}}" wx:for="{{fileList}}" wx:key="{{key}}">
+                <view class="file">
+                    <image mode="aspectFit" src="{{fileDomain+item}}"></image>
+                    <view bindtap="deleteFile" class="icon-close" id="{{index}}">
+                        <image class="icon-add" src="/images/feedback_delete.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view bindtap="uploadFile" class="upload" wx:if="{{fileList.length<5}}">
+                <image class="icon-add" src="/images/feedback_add.png"></image>
+            </view>
+        </view>
+        <button class="submit-btn" formType="submit" style="bottom: {{isIphoneX==1?34:0}}px">提交</button>
+    </form>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

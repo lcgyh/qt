@@ -1,3 +1,0 @@
-/* pages/manage/newlist/newlist.wxss */
-page{background: #fff;}
-.scroll_list{padding:0rpx 30rpx;box-sizing: border-box;}

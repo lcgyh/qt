@@ -1,0 +1,89 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/classify/classify",
+    "pages/login/login",
+    "pages/phoneLogin/phoneLogin",
+    "pages/cart/cart",
+    "pages/me/me",
+    "pages/webView/webView",
+    "pages/pageActivity/inviteUser/inviteUser",
+    "pages/pageActivity/exchange/exchange",
+    "pages/pageActivity/exchangeCheck/exchangeCheck",
+    "pages/pageActivity/exchangeDetail/exchangeDetail",
+    "pages/pageHome/goodsList/goodsList",
+    "pages/pageHome/activityList/activityList",
+    "pages/pageHome/themeList/themeList",
+    "pages/pageHome/bannerInfo/bannerInfo",
+    "pages/pageHome/goodsDetail/goodsDetail",
+    "pages/pageCart/cartList/cart",
+    "pages/pageOrder/orderList/orderList",
+    "pages/pageOrder/realName/realName",
+    "pages/pageOrder/checkExpress/checkExpress",
+    "pages/pageOrder/refundExpress/refundExpress",
+    "pages/pageOrder/afterSales/afterSales",
+    "pages/pageOrder/returnDetail/returnDetail",
+    "pages/pageOrder/refund/refund",
+    "pages/pageOrder/expressMap/expressMap",
+    "pages/pageOrder/chooseCoupon/chooseCoupon",
+    "pages/pageOrder/chooseAddress/chooseAddress",
+    "pages/pageOrder/orderComment/orderComment",
+    "pages/pageOrder/orderDetail/orderDetail",
+    "pages/pageOrder/orderConfirm/orderConfirm",
+    "pages/pageMe/addAddress/addAddress",
+    "pages/pageMe/grow/grow",
+    "pages/pageMe/growDetail/growDetail",
+    "pages/pageMe/memberCenter/memberCenter",
+    "pages/pageMe/address/address",
+    "pages/pageMe/coupon/coupon",
+    "pages/pageMe/couponDetail/couponDetail",
+    "pages/pageMe/shopDetail/shopDetail",
+    "pages/pageMe/babyInfo/babyInfo",
+    "pages/pageMe/babyInfoEdit/babyInfoEdit",
+    "pages/pageMe/feedback/feedback",
+    "pages/pageMe/collect/collect",
+    "pages/pageMe/meDetail/meDetail",
+    "pages/pageMe/changeMobile/changeMobile",
+    "pages/pageMe/shopList/shopList"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#c9c9c9",
+    "selectedColor": "#00C4B3",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home_light.png"
+      },
+      {
+        "pagePath": "pages/classify/classify",
+        "text": "分类",
+        "iconPath": "images/classify.png",
+        "selectedIconPath": "images/classify_light.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物袋",
+        "iconPath": "images/cart.png",
+        "selectedIconPath": "images/cart_light.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "images/me.png",
+        "selectedIconPath": "images/me_light.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 60000,
+    "downloadFile": 60000
+  },
+  "sitemapLocation": "sitemap92.json"
+}

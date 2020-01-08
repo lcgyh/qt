@@ -1,0 +1,11 @@
+{
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "van-tab": "../../components/tab/index",
+        "van-tabs": "../../components/tabs/index",
+        "good-block": "../../components/goodBlock/index",
+        "i-toast": "../../components/toast/index",
+        "i-loading": "../../components/loading/index",
+        "i-icon": "../../components/icon/index"
+    }
+}

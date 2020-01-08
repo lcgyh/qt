@@ -1,0 +1,5 @@
+<movable-area scaleArea class="scale-area">
+    <movable-view inertia scale class="scale-view" damping="50" direction="all" friction="5" scaleMax="5" scaleMin="1" scaleValue="{{scaleValue}}" style="margin-left: -{{windowWidth/2}}px;margin-top: -{{baseHeight/2}}px;">
+        <image bindload="load" catchtap="doubleClick" data-width="{{windowWidth}}" mode="widthFix" src="{{imgUrl}}" style="width: 100%;height: auto;"></image>
+    </movable-view>
+</movable-area>

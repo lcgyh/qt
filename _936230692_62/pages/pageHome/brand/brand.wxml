@@ -1,0 +1,26 @@
+<view wx:if="{{showMask}}">
+    <view class="head">
+        <view class="input-box unfocus">
+            <input bindconfirm="confirm" bindinput="searchinput" confirmType="done" cursorSpacing="100" focus="{{isfocus}}" type="text" value="{{searchValue}}"></input>
+            <view bindtap="clear" class="clear" wx:if="{{searchValue.length>0}}">清除</view>
+            <view class="input-back" wx:if="{{searchValue.length==0}}">
+                <i-icon class="search-icon" color="#e2e2e2" size="16" type="search"></i-icon>搜索你想要的品牌...</view>
+        </view>
+        <view bindtap="searchCancel" class="input-cancel" hidden="{{!isfocus}}">取消</view>
+        <view class="sort-type" hidden="{{isfocus}}">
+            <view bindtap="sortList" class="{{sortListType==1?'active':''}}" data-type="1">默认排序</view>
+            <view>|</view>
+            <view bindtap="sortList" class="{{sortListType==2?'active':''}}" data-type="2">字母排序</view>
+        </view>
+    </view>
+    <view class="brand-list">
+        <view bindtap="goBrandDetail" class="brand-block" data-name="{{item.name}}" data-pageCode="{{item.pageCode}}" data-pdBrandId="{{item.pdBrandId}}" wx:for="{{brandList}}" wx:key="{{item.name}}">
+            <view class="brand-img">
+                <image lazyLoad="{{true}}" mode="aspectFit" src="{{item.url}}"></image>
+            </view>
+            <view class="brand-name">{{item.name}}</view>
+        </view>
+    </view>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

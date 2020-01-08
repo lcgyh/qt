@@ -1,0 +1,65 @@
+<view wx:if="{{showMask}}">
+    <view bindtap="chooseAddress" class="tab-content-all" data-id="{{receiveAddressInfo.receiveId}}">
+        <view class="tab-content-info all-arrow all-arrow-black all-arrow-normal" wx:if="{{receiveAddressInfo}}">
+            <view class="address-content" style="color: #666666;">
+                <view style="display: flex;">
+                    <text class="name" style="margin-right: 40rpx;">{{receiveAddressInfo.receiveName}}</text>
+                    <text class="phone">{{receiveAddressInfo.receiveMobile}}</text>
+                </view>
+                <view class="address-name">{{receiveAddressInfo.addressDetail}}</view>
+            </view>
+        </view>
+        <view class="tab-content-noaddress" wx:else>
+            <image mode="aspectFit" src="/images/feedback_add.png"></image>
+            新增收货地址
+        </view>
+        <image mode="widthFix" src="/images/color_line.png" style="width: 100%;height: auto;"></image>
+    </view>
+    <view class="exchange-good-tips">兑换的礼品将在7个工作日内发货</view>
+    <view class="goods-list">
+        <view class="goods-block">
+            <view class="goods-img">
+                <image mode="aspectFit" src="{{fileDomain+item.picUrl}}"></image>
+            </view>
+            <view class="goods-content">
+                <view class="goods-titlle">{{item.name}}</view>
+                <view class="goods-exchange">{{item.valueQty}}阳光值</view>
+            </view>
+        </view>
+    </view>
+    <view class="confirm-button" style="padding-bottom: {{isIphoneX==1?34:0}}px">
+        <view style="height: 110rpx;display: flex;align-items: center;">
+            <view class="order-total">
+                <view>总计：</view>
+                <view>{{item.valueQty}}阳光值</view>
+            </view>
+            <form bindsubmit="createOrder" data-clickType="0" reportSubmit="{{true}}">
+                <button class="btn" formType="submit">
+                    <view class="aa {{isIphoneX==1?'bb':''}}">
+                        <form bindsubmit="createOrder" reportSubmit="{{true}}">
+                            <button class="btn" formType="submit">
+                                <view class="aa {{isIphoneX==1?'bb':''}}">
+                                    <form bindsubmit="createOrder" reportSubmit="{{true}}">
+                                        <button class="btn" formType="submit">
+                                            <view class="aa {{isIphoneX==1?'bb':''}}">确认兑换</view>
+                                        </button>
+                                    </form>
+                                </view>
+                            </button>
+                        </form>
+                    </view>
+                </button>
+            </form>
+        </view>
+    </view>
+</view>
+<van-popup bind:close="showSuccess" show="{{showSuccess}}">
+    <view bindtap="showSuccess" class="showSuccess-content">
+        <view class="success-title">兑换成功啦~</view>
+        <view class="success-tips">奖品即将就要与宝妈见面了</view>
+        <image class="success-img" mode="aspectFit" src="/images/activity/exchange_success.png"></image>
+        <view catchtap="goHome" class="success-button">再去主会场看看吧</view>
+    </view>
+</van-popup>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

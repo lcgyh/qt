@@ -1,0 +1,74 @@
+.address-box {
+    margin: 90rpx 20px 30rpx;
+}
+
+.store-name {
+    padding-bottom: 40rpx;
+    color: #464646;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: PingFangSC-Semibold;
+    font-size: 34rpx;
+    border-bottom: 0.5px solid #EEECEC;
+}
+
+.store-address-box,.call-box {
+    display: flex;
+    padding: 40rpx 0;
+    border-bottom: 0.5px solid #EEECEC;
+}
+
+.gostore,.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100rpx;
+    border-left: 0.5px solid #EEECEC;
+    font-family: PingFangSC-Regular;
+    font-size: 22rpx;
+    color: #464646;
+    padding-left: 30rpx;
+}
+
+.gostore image,.contact image {
+    width: 40rpx;
+    height: 40rpx;
+    margin-bottom: 10rpx;
+}
+
+.contact image {
+    margin-bottom: 8rpx!important;
+}
+
+.store-address,.store-distance,.store-phone {
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    color: #464646;
+    padding-right: 30rpx;
+}
+
+.store-address {
+    margin-bottom: 16rpx;
+}
+
+.store-time {
+    padding: 62rpx 0;
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    color: #464646;
+    border-bottom: 0.5px solid #EEECEC;
+}
+
+.corporation {
+    position: fixed;
+    height: 80rpx;
+    line-height: 80rpx;
+    bottom: 80rpx;
+    left: 0;
+    right: 0;
+    font-size: 26rpx;
+    color: #464646;
+    text-align: center;
+}

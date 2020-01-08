@@ -1,0 +1,53 @@
+.shareConent {
+    border-radius: 50rpx 50rpx 0 0;
+    height: 350rpx;
+    display: flex;
+    justify-content: center;
+}
+
+.shareConent .content {
+    width: 70%;
+    height: 200rpx;
+    display: flex;
+}
+
+.sharetouser,.shareimg {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: none;
+    border: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.sharetouser::after,.shareimg::after {
+    border: 0;
+}
+
+.sharetouser image,.shareimg image {
+    width: 100rpx;
+    height: auto;
+}
+
+.sharetouser text,.shareimg text {
+    font-size: 22rpx;
+    color: #FFFFFF;
+    margin-top: 18rpx;
+}
+
+.shareConent .close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    bottom: 80rpx;
+    transform: translate(-50%,0);
+    width: 300rpx;
+    height: 30rpx;
+}
+
+.mineCover {
+    z-index: 9;
+}

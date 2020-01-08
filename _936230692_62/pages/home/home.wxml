@@ -1,0 +1,164 @@
+<view wx:if="{{showMask}}">
+    <view class="search-wrap {{allInfo.search.backgroundPicUrl?'hasBg':'noBg'}}" style="background-image:url({{fileDomain+allInfo.search.backgroundPicUrl}});">
+        <view class="search">
+            <view bindtap="goSearch" class="search-text">
+                <image mode="aspectFit" src="/images/search.png"></image>
+                搜索你喜欢的…
+            </view>
+            <view bindtap="scan" class="scan">
+                <view class="scan-line"></view>
+                <image mode="widthFix" src="/images/scan.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="swiper-box" style="background-image:url({{fileDomain+allInfo.banner.backgroundPicUrl}});" wx:if="{{allInfo.banner.isDisplay==1}}">
+        <swiper autoplay="{{true}}" bindchange="swiperChange" circular="{{true}}" duration="{{200}}" indicatorDots="{{allInfo.banner.moduleContent.length>1?true:false}}" interval="{{5000}}" nextMargin="32rpx" previousMargin="32rpx">
+            <swiper-item bindtap="goEvent" data-linkInfo="{{item.linkInfo}}" data-linkType="{{item.linkInfoType}}" wx:for="{{allInfo.banner.moduleContent}}" wx:key="{{index}}">
+                <view>
+                    <image class="slide-image {{currentIndex==index?'active':''}}" mode="aspectFit" src="{{fileDomain+item.bannerPic}}"></image>
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="tips" wx:if="{{allInfo.brandDisplay.isDisplay==1&&allInfo.brandDisplay.contentPicUrl}}">
+        <image lazyLoad="{{true}}" mode="widthFix" src="{{fileDomain+allInfo.brandDisplay.contentPicUrl}}"></image>
+    </view>
+    <view class="classify {{allInfo.icon.titleColor==1?'white':'dark'}}" style="background-color: {{allInfo.icon.moduleBackColor}};" wx:if="{{allInfo.icon.isDisplay==1&&allInfo.icon.moduleContent.length>0}}">
+        <view bindtap="goEvent" data-linkInfo="{{item.linkInfo}}" data-linkType="{{item.linkInfoType}}" wx:for="{{allInfo.icon.moduleContent}}" wx:key="{{index}}">
+            <image lazyLoad="{{true}}" mode="aspectFit" src="{{fileDomain+item.iconPic}}"></image>
+            <text>{{item.iconName}}</text>
+        </view>
+    </view>
+    <view bindtap="getNewUserCoupon" class="new-gift" style="background-color: {{allInfo.coupon.moduleBackColor}};" wx:if="{{allInfo.coupon.isDisplay==1}}">
+        <image lazyLoad="{{true}}" mode="widthFix" src="{{fileDomain+allInfo.coupon.newComerPicUrl}}"></image>
+    </view>
+    <view bindtap="goInvite" class="new-gift" style="padding: 32rpx 0!important;" wx:if="{{allInfo.inviteNewUser.isDisplay==1}}">
+        <image lazyLoad="{{true}}" mode="widthFix" src="{{allInfo.inviteNewUser.contentPicUrl}}"></image>
+    </view>
+    <view bindtap="goActivity" class="new-gift" data-id="{{allInfo.activityModule.linkInfo}}" style="padding: 32rpx 0!important;" wx:if="{{allInfo.activityModule.isDisplay==1}}">
+        <image lazyLoad="{{true}}" mode="widthFix" src="{{allInfo.activityModule.contentPicUrl}}"></image>
+    </view>
+    <view class="homn-line" wx:if="{{allInfo.icon.isDisplaySplitLine==1}}"></view>
+    <view class="discount {{allInfo.productDisplay.titleColor==1?'white':'dark'}}" style="background-color: {{allInfo.productDisplay.moduleBackColor}};" wx:if="{{allInfo.productDisplay.isDisplay==1&&allInfo.productDisplay.moduleContent.length>0}}">
+        <view class="discount-head">
+            <view style="flex:1;display: flex;">
+                <view class="discount-title" wx:if="{{allInfo.productDisplay.title}}">{{allInfo.productDisplay.title}}</view>
+                <view class="discount-time discount-txt" wx:if="{{allInfo.productDisplay.preheatIcon}}">{{allInfo.productDisplay.preheatIcon}}</view>
+                <view class="discount-time" wx:elif="{{allInfo.productDisplay.isDisplayCountdown==1&&!allInfo.productDisplay.preheatIcon}}">
+                    <home-count-down bindcallback="productEnd" clearTimer="" color="{{allInfo.productDisplay.moduleBackColor}}" nowTime="{{allInfo.productDisplay.nowTime}}" target="{{allInfo.productDisplay.endTime}}" theme="{{allInfo.productDisplay.titleColor==1?'white':'dark'}}"></home-count-down>
+                </view>
+            </view>
+            <view bindtap="goEvent" class="discount-more all-arrow all-arrow-normal {{allInfo.productDisplay.titleColor==1?'all-arrow-white':'all-arrow-black'}}" data-linkInfo="{{allInfo.productDisplay.moreLinkInfo}}" data-linkType="{{allInfo.productDisplay.moreLinkType}}" wx:if="{{allInfo.productDisplay.isDisplayMore==1}}">查看更多</view>
+        </view>
+        <scroll-view class="discount-content" scrollX="{{true}}">
+            <view class="discount-list" style="width: {{270*allInfo.productDisplay.moduleContent.length}}rpx;">
+                <view bindtap="goGoodDetail" class="discount-block" data-pdSpuId="{{item.pdSpuId}}" wx:for="{{allInfo.productDisplay.moduleContent}}" wx:key="{{index}}">
+                    <view class="discount-block-img">
+                        <image class="discount-block-mainImg" lazyLoad="{{true}}" mode="aspectFit" src="{{fileDomain+item.mainPicUrl}}?x-oss-process=image/resize,m_lfit,w_800,h_0/quality,q_100"></image>
+                        <image class="activity-float" lazyLoad="{{true}}" mode="widthFix" src="{{fileDomain+item.floatPic}}" wx:if="{{item.floatPic}}"></image>
+                    </view>
+                    <view class="discount-block-tag">
+                        <view wx:if="{{item.tags}}">{{item.tags}}</view>
+                    </view>
+                    <view class="discount-block-name">{{item.sellingPoints}}</view>
+                    <view class="discount-block-price">￥{{item.showPrice}}<text wx:if="{{item.hiddenPrice}}">￥{{item.hiddenPrice}}</text>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="homn-line" wx:if="{{allInfo.productDisplay.isDisplaySplitLine==1&&allInfo.productDisplay.isDisplay==1&&allInfo.productDisplay.moduleContent.length>0}}"></view>
+    <view class="hot {{allInfo.picMix.titleColor==1?'white':'dark'}}" style="background-color: {{allInfo.picMix.moduleBackColor}};" wx:if="{{allInfo.picMix.isDisplay==1}}">
+        <view class="hot-head" wx:if="{{allInfo.picMix.title}}">{{allInfo.picMix.title}}</view>
+        <view class="hot-content">
+            <view bindtap="goEvent" class="hot-content-main" data-linkInfo="{{allInfo.picMix.moduleContent[0].linkInfo}}" data-linkType="{{allInfo.picMix.moduleContent[0].linkType}}">
+                <image lazyLoad="{{true}}" mode="scaleToFill" src="{{fileDomain+allInfo.picMix.moduleContent[0].picUrl}}"></image>
+            </view>
+            <view class="hot-content-side">
+                <view bindtap="goEvent" class="hot-content-side-top" data-linkInfo="{{allInfo.picMix.moduleContent[1].linkInfo}}" data-linkType="{{allInfo.picMix.moduleContent[1].linkType}}">
+                    <image lazyLoad="{{true}}" mode="scaleToFill" src="{{fileDomain+allInfo.picMix.moduleContent[1].picUrl}}"></image>
+                </view>
+                <view bindtap="goEvent" class="hot-content-side-bottom" data-linkInfo="{{allInfo.picMix.moduleContent[2].linkInfo}}" data-linkType="{{allInfo.picMix.moduleContent[2].linkType}}">
+                    <image lazyLoad="{{true}}" mode="scaleToFill" src="{{fileDomain+allInfo.picMix.moduleContent[2].picUrl}}"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="homn-line" wx:if="{{allInfo.picMix.isDisplaySplitLine==1&&allInfo.picMix.isDisplay==1&&allInfo.picMix.moduleContent.length>0}}"></view>
+    <view class="new {{allInfo.multilineProduct.titleColor==1?'white':'dark'}}" style="background-color: {{allInfo.multilineProduct.moduleBackColor}};" wx:if="{{allInfo.multilineProduct.isDisplay==1&&allInfo.multilineProduct.moduleContent.length>0}}">
+        <view class="new-head">
+            <view class="new-title" wx:if="{{allInfo.multilineProduct.title}}">{{allInfo.multilineProduct.title}}</view>
+            <view bindtap="goEvent" class="new-more all-arrow all-arrow-normal {{allInfo.multilineProduct.titleColor==1?'all-arrow-white':'all-arrow-black'}}" data-linkInfo="{{allInfo.multilineProduct.moreLinkInfo}}" data-linkType="{{allInfo.multilineProduct.moreLinkType}}" wx:if="{{allInfo.multilineProduct.isDisplayMore==1}}">查看更多</view>
+        </view>
+        <view class="new-content">
+            <view bindtap="goGoodDetail" class="new-block" data-pdSpuId="{{item.pdSpuId}}" wx:for="{{allInfo.multilineProduct.moduleContent}}" wx:key="{{index}}">
+                <view class="new-block-img">
+                    <image class="new-block-mainImg" lazyLoad="{{true}}" mode="aspectFit" src="{{fileDomain+item.mainPicUrl}}?x-oss-process=image/resize,m_lfit,w_800,h_0/quality,q_100"></image>
+                    <image class="activity-float" lazyLoad="{{true}}" mode="widthFix" src="{{fileDomain+item.floatPic}}" wx:if="{{item.floatPic}}"></image>
+                </view>
+                <view class="new-block-tag">
+                    <view wx:if="{{item.tags}}">{{item.tags}}</view>
+                </view>
+                <view class="new-block-name">{{item.sellingPoints}}</view>
+                <view class="new-block-price">￥{{item.showPrice}}<text wx:if="{{item.hiddenPrice}}">￥{{item.hiddenPrice}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="homn-line" wx:if="{{allInfo.multilineProduct.isDisplaySplitLine==1&&allInfo.multilineProduct.isDisplay==1&&allInfo.multilineProduct.moduleContent.length>0}}"></view>
+    <view class="theme {{allInfo.themeActivity.titleColor==1?'white':'dark'}}" style="background-color: {{allInfo.themeActivity.moduleBackColor}};">
+        <view class="theme-head">
+            <view class="theme-title" wx:if="{{allInfo.themeActivity.title}}">{{allInfo.themeActivity.title}}</view>
+            <view bindtap="goThemeList" class="theme-more all-arrow all-arrow-normal {{allInfo.themeActivity.titleColor==1?'all-arrow-white':'all-arrow-black'}}" wx:if="{{allInfo.themeActivity.isDisplayMore==1}}">查看更多</view>
+        </view>
+        <scroll-view class="theme-content" scrollX="{{true}}">
+            <view class="theme-list" style="width: {{383*allInfo.themeActivity.moduleContent.length}}rpx;">
+                <view bindtap="goEvent" class="theme-block" data-linkInfo="{{item.linkInfo}}" data-linkType="1" wx:for="{{allInfo.themeActivity.moduleContent}}" wx:key="{{index}}">
+                    <view class="theme-block-img">
+                        <image lazyLoad="{{true}}" mode="scaleToFill" src="{{fileDomain+item.themePic}}"></image>
+                    </view>
+                    <view class="theme-block-title">{{item.themeTitle}}</view>
+                    <view class="theme-block-subtitle">{{item.subtitle?item.subtitle:''}}</view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="tab" wx:if="{{tab.length>0}}">
+        <van-tabs animated sticky swipeable active="{{active}}" bind:change="tabChange" border="{{false}}" lineWidth="20" offsetTop="60">
+            <van-tab data-id="{{it.pdFlowTabId}}" title="{{it.tabName}}" wx:for="{{tab}}" wx:for-index="index" wx:for-item="it" wx:key="{{indx}}">
+                <good-block fileDomain="{{fileDomain}}" iClass="tab-list" list="{{tabList[indx]}}"></good-block>
+            </van-tab>
+        </van-tabs>
+    </view>
+</view>
+<van-popup bind:close="showCoupon" catchtouchmove="ture" show="{{showCoupon}}">
+    <view bindtap="showCoupon" class="coupon-pop-content">
+        <image class="home-coupon-bg" mode="aspectFit" src="{{fileDomain+allInfo.coupon.couponPopUpPicUrl}}" wx:if="{{allInfo.coupon.couponPopUpPicUrl}}"></image>
+        <scroll-view class="coupon-pop-list" scrollY="{{true}}">
+            <view class="coupon-pop-block" wx:for="{{couponList}}" wx:key="{{index}}">
+                <view class="coupon-value-box">
+                    <text>￥</text>
+                    <view class="coupon-value">{{item.couponMoney}}</view>
+                    <view class="coupon-limit">{{item.couponFullAmount==0?'无门槛优惠券':'满'+item.couponFullAmount+'减'+item.couponMoney}}</view>
+                </view>
+                <view class="coupon-info">
+                    <view class="coupon-name">{{item.couponName}}</view>
+                    <view class="coupon-date">{{item.couponStartValidity}} 至 {{item.couponEndValidity}}</view>
+                    <view class="coupon-intro">{{item.couponExplain}}</view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</van-popup>
+<van-popup bind:close="showHomePop" catchtouchmove="ture" show="{{item.showHomePop}}" zIndex="999999" wx:if="{{item.popupType!==31}}" wx:for="{{popList}}" wx:key="{{index}}">
+    <view bindtap="popEvent" class="home-pop-content" data-type="{{item.popupType}}">
+        <view class="content-img">
+            <image mode="widthFix" src="{{item.popupInfo}}"></image>
+        </view>
+        <view catchtap="showHomePop" class="content-close">
+            <i-icon color="#ffffff" size="24" type="delete"></i-icon>
+        </view>
+    </view>
+</van-popup>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

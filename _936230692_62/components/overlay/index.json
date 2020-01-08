@@ -1,0 +1,9 @@
+{
+    "component": true,
+    "usingComponents": {
+        "van-transition": "../transition/index",
+        "i-toast": "../toast/index",
+        "i-loading": "../loading/index",
+        "i-icon": "../icon/index"
+    }
+}

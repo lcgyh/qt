@@ -1,0 +1,10 @@
+{
+    "component": true,
+    "usingComponents": {
+        "picker-column": "../picker-column/index",
+        "loading": "../loading/index",
+        "i-toast": "../toast/index",
+        "i-loading": "../loading/index",
+        "i-icon": "../icon/index"
+    }
+}

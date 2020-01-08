@@ -1,0 +1,12 @@
+{
+    "disableSwipeBack": true,
+    "navigationBarTitleText": "登录",
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "van-popup": "../../components/popup/index",
+        "navigationBar": "../../components/navigationBar/index",
+        "i-toast": "../../components/toast/index",
+        "i-loading": "../../components/loading/index",
+        "i-icon": "../../components/icon/index"
+    }
+}

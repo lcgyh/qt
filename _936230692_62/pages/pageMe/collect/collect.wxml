@@ -1,0 +1,85 @@
+<view class="collect-pages-wrap" wx:if="{{loading}}">
+    <view class="collect-pages" wx:if="{{totalList.length>0}}">
+        <view class="handle-wrap">
+            <view class="handle-text" wx:if="{{isShow}}">请选择要删除的商品</view>
+            <view bindtap="onEdit" class="handle-text" wx:else>编辑</view>
+        </view>
+        <view class="lists" wx:if="{{lists.length>0}}">
+            <view class="item" wx:for="{{lists}}" wx:key="{{index}}">
+                <label class="check-l" for="{{item.userFavoriteId}}" wx:if="{{isShow}}">
+                    <checkbox-group bindchange="checkboxChange">
+                        <checkbox id="{{item.userFavoriteId}}" value="{{item.userFavoriteId}}"></checkbox>
+                    </checkbox-group>
+                </label>
+                <view class="check-l" wx:else></view>
+                <view style="display: flex;flex:1;border-bottom:0.5rpx solid #E2E2E2;padding-bottom: 30rpx;">
+                    <view class="pic-action">
+                        <image src="{{fileDomain+item.mainPicUrl}}?x-oss-process=image/resize,m_lfit,w_600,h_0/quality,q_100"></image>
+                    </view>
+                    <view catchtap="godetail" class="content-r" data-pdSpuId="{{item.pdSpuId}}">
+                        <view class="row-one">{{item.spuName}}</view>
+                        <view class="row-two">{{item.size}}</view>
+                        <view class="bond-logo">
+                            <view wx:if="{{it.isShow==1}}" wx:for="{{item.iconList}}" wx:for-index="indx" wx:for-item="it" wx:key="{{indx}}">{{it.iconName}}</view>
+                        </view>
+                        <view class="row-thr">
+                            <view class="pro-price">
+                                <text class="unit">￥</text>
+                                <text class="num">{{item.showPrice}}</text>
+                                <view class="cross-price" wx:if="{{item.hiddenPrice}}">{{item.hiddenPrice}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="lists stockout-lists" style="bottom: {{isIphoneX==1?188:120}}rpx" wx:if="{{shortageLists.length>0}}">
+            <view class="stockout-goods">下面的商品已失效</view>
+            <view class="item" wx:for="{{shortageLists}}" wx:key="{{index}}">
+                <view class="check-l" wx:if="{{isShow}}">
+                    <checkbox-group bindchange="checkboxChange" id="{{item.userFavoriteId}}">
+                        <checkbox value="{{item.userFavoriteId}}"></checkbox>
+                    </checkbox-group>
+                </view>
+                <view class="check-l" wx:else></view>
+                <view style="display: flex;flex:1;border-bottom:0.5rpx solid #E2E2E2;padding-bottom: 30rpx;">
+                    <view class="pic-action">
+                        <image src="{{fileDomain+item.mainPicUrl}}?x-oss-process=image/resize,m_lfit,w_600,h_0/quality,q_100"></image>
+                    </view>
+                    <view catchtap="godetail" class="content-r" data-pdSpuId="{{item.pdSpuId}}">
+                        <view class="row-one">{{item.spuName}}</view>
+                        <view class="row-two">{{item.size}}</view>
+                        <view class="bond-logo">
+                            <view wx:if="{{it.isShow==1}}" wx:for="{{item.iconList}}" wx:for-index="indx" wx:for-item="it" wx:key="{{indx}}">{{it.iconName}}</view>
+                        </view>
+                        <view class="row-thr">
+                            <view class="pro-price">
+                                <text class="unit">￥</text>
+                                <text class="num">{{item.showPrice}}</text>
+                                <view class="cross-price" wx:if="{{item.hiddenPrice}}">{{item.hiddenPrice}}</view>
+                            </view>
+                        </view>
+                        <image class="sellout" mode="widthFix" src="/images/collect_bh.png" wx:if="{{item.productState==1}}"></image>
+                        <image class="sellout" mode="widthFix" src="/images/goodsoff.png" wx:if="{{item.productState==2}}"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="btn-list" style="bottom: {{isIphoneX==1?34:0}}px" wx:if="{{isShow}}">
+            <view bindtap="onCancel" class="btn">取消</view>
+            <view class="btn line">/</view>
+            <view bindtap="onDelete" class="btn">删除</view>
+        </view>
+    </view>
+    <view class="empty-box" wx:else>
+        <view class="empty-image">
+            <image mode="widthFix" src="/images/collect_empty.png" style="width:300rpx; height: auto;"></image>
+        </view>
+        <view class="empty-text">哎呦~ 一个收藏商品都没有</view>
+        <view class="empty-navigator">
+            <navigator class="hangout" hoverClass="none" openType="switchTab" url="/pages/home/home">去逛逛看</navigator>
+        </view>
+    </view>
+    <i-toast id="toast"></i-toast>
+</view>
+<i-loading id="data-loading"></i-loading>

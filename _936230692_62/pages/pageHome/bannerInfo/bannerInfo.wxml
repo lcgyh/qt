@@ -1,0 +1,125 @@
+<navigationBar backHome="{{false}}" bindgoBack="goBack" statusBarHeight="{{statusBarHeight}}" title="{{titleName}}" windowWidth="{{windowWidth}}"></navigationBar>
+<view wx:if="{{showMask}}">
+    <view class="bannerInfo" style="margin-top: {{statusBarHeight+38+5}}px;">
+        <block wx:for="{{list}}" wx:key="{{item.pdBannerConfigId}}">
+            <view bindtap="godetail" class="bannerImg" data-pdSpuId="{{item.pdSpu.pdSpuId}}" wx:if="{{item.type==1}}">
+                <image mode="widthFix" src="{{fileDomain}}{{item.text}}"></image>
+            </view>
+            <view class="bannerGoods" wx:elif="{{item.type==2}}">
+                <view catchtap="godetail" class="goods-block" data-pdSpuId="{{item.pdSpu.pdSpuId}}" wx:if="{{item.template==1&&item.pdSpu}}">
+                    <view class="goods-img">
+                        <image mode="aspectFit" src="{{fileDomain+item.pdSpu.url}}?x-oss-process=image/resize,m_lfit,w_600,h_0/quality,q_100"></image>
+                        <image class="home_bh" mode="widthFix" src="/images/home_bh.png" wx:if="{{item.pdSpu.stockStatus<=0}}"></image>
+                        <image class="activity-float" mode="widthFix" src="{{fileDomain+item.pdSpu.floatPic}}" wx:if="{{item.pdSpu.stockStatus>0&&item.pdSpu.floatPic}}"></image>
+                    </view>
+                    <view class="order-content">
+                        <view style="flex:1;">
+                            <view class="goods-title">
+                                <image mode="widthFix" src="{{fileDomain+item.pdSpu.nationalflagPic}}"></image>{{item.pdSpu.name}}</view>
+                        </view>
+                        <view class="bond-logo">
+                            <view wx:if="{{it.isShow==1}}" wx:for="{{item.pdSpu.iconList}}" wx:for-index="indx" wx:for-item="it" wx:key="{{indx}}">{{it.iconName}}</view>
+                        </view>
+                        <view class="shopping-price-box">
+                            <view class="shopping-price">
+                                <text>￥</text>{{item.pdSpu.showPrice}}</view>
+                            <view class="shopping-cross-price" wx:if="{{item.pdSpu.hiddenPrice}}">{{item.pdSpu.hiddenPrice}}</view>
+                        </view>
+                    </view>
+                </view>
+                <block wx:elif="{{item.template==2}}">
+                    <view class="shopping-list" wx:if="{{item.rowPdSpu&&item.pdSpu}}">
+                        <view catchtap="godetail" class="shopping-block" data-pdSpuId="{{item.pdSpu.pdSpuId}}" wx:if="{{item.pdSpu}}">
+                            <view class="shopping-img">
+                                <image lazyLoad="{{true}}" src="{{fileDomain+item.pdSpu.url}}?x-oss-process=image/resize,m_lfit,w_600,h_0/quality,q_100"></image>
+                                <image class="home_bh" mode="widthFix" src="/images/home_bh.png" wx:if="{{item.pdSpu.stockStatus<=0}}"></image>
+                                <image class="activity-float" mode="widthFix" src="{{fileDomain+item.pdSpu.floatPic}}" wx:if="{{item.pdSpu.stockStatus>0&&item.pdSpu.floatPic}}"></image>
+                            </view>
+                            <view class="bond-logo">
+                                <view wx:if="{{it.isShow==1}}" wx:for="{{item.pdSpu.iconList}}" wx:for-index="indx" wx:for-item="it" wx:key="{{indx}}">{{it.iconName}}</view>
+                            </view>
+                            <view class="shopping-title">
+                                <image mode="widthFix" src="{{fileDomain+item.pdSpu.nationalflagPic}}"></image>{{item.pdSpu.name}}</view>
+                            <view class="shopping-price-box">
+                                <view class="shopping-price">
+                                    <text>￥</text>{{item.pdSpu.showPrice}}</view>
+                                <view class="shopping-cross-price" wx:if="{{item.pdSpu.hiddenPrice}}">{{item.pdSpu.hiddenPrice}}</view>
+                            </view>
+                        </view>
+                        <view catchtap="godetail" class="shopping-block" data-pdSpuId="{{item.rowPdSpu.pdSpuId}}" wx:if="{{item.rowPdSpu}}">
+                            <view class="shopping-img">
+                                <image lazyLoad="{{true}}" src="{{fileDomain+item.rowPdSpu.url}}?x-oss-process=image/resize,m_lfit,w_600,h_0/quality,q_100"></image>
+                                <image class="home_bh" mode="widthFix" src="/images/home_bh.png" wx:if="{{item.rowPdSpu.stockStatus<=0}}"></image>
+                                <image class="activity-float" mode="widthFix" src="{{fileDomain+item.rowPdSpu.floatPic}}" wx:if="{{item.rowPdSpu.stockStatus>0&&item.rowPdSpu.floatPic}}"></image>
+                            </view>
+                            <view class="bond-logo">
+                                <view wx:if="{{it.isShow==1}}" wx:for="{{item.rowPdSpu.iconList}}" wx:for-index="indx" wx:for-item="it" wx:key="{{indx}}">{{it.iconName}}</view>
+                            </view>
+                            <view class="shopping-title">
+                                <image mode="widthFix" src="{{fileDomain+item.rowPdSpu.nationalflagPic}}"></image>{{item.rowPdSpu.name}}</view>
+                            <view class="shopping-price-box">
+                                <view class="shopping-price">
+                                    <text>￥</text>{{item.rowPdSpu.showPrice}}</view>
+                                <view class="shopping-cross-price" wx:if="{{item.rowPdSpu.hiddenPrice}}">{{item.rowPdSpu.hiddenPrice}}</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view catchtap="godetail" class="goods-block" data-pdSpuId="{{item.pdSpu.pdSpuId}}" wx:elif="{{item.pdSpu&&!item.rowPdSpu}}">
+                        <view class="goods-img">
+                            <image mode="aspectFit" src="{{fileDomain+item.pdSpu.url}}?x-oss-process=image/resize,m_lfit,w_600,h_0/quality,q_100"></image>
+                            <image class="home_bh" mode="widthFix" src="/images/home_bh.png" wx:if="{{item.pdSpu.stockStatus<=0}}"></image>
+                            <image class="activity-float" mode="widthFix" src="{{fileDomain+item.pdSpu.floatPic}}" wx:if="{{item.pdSpu.stockStatus>0&&item.pdSpu.floatPic}}"></image>
+                        </view>
+                        <view class="order-content">
+                            <view style="flex:1;">
+                                <view class="goods-title">
+                                    <image mode="widthFix" src="{{fileDomain+item.pdSpu.nationalflagPic}}"></image>{{item.pdSpu.name}}</view>
+                            </view>
+                            <view class="bond-logo">
+                                <view wx:if="{{it.isShow==1}}" wx:for="{{item.pdSpu.iconList}}" wx:for-index="indx" wx:for-item="it" wx:key="{{indx}}">{{it.iconName}}</view>
+                            </view>
+                            <view class="shopping-price-box">
+                                <view class="shopping-price">
+                                    <text>￥</text>{{item.pdSpu.showPrice}}</view>
+                                <view class="shopping-cross-price" wx:if="{{item.pdSpu.hiddenPrice}}">{{item.pdSpu.hiddenPrice}}</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view catchtap="godetail" class="goods-block" data-pdSpuId="{{item.rowPdSpu.pdSpuId}}" wx:elif="{{!item.pdSpu&&item.rowPdSpu}}">
+                        <view class="goods-img">
+                            <image mode="aspectFit" src="{{fileDomain+item.rowPdSpu.url}}?x-oss-process=image/resize,m_lfit,w_600,h_0/quality,q_100"></image>
+                            <image class="home_bh" mode="widthFix" src="/images/home_bh.png" wx:if="{{item.rowPdSpu.stockStatus<=0}}"></image>
+                            <image class="activity-float" mode="widthFix" src="{{fileDomain+item.rowPdSpu.floatPic}}" wx:if="{{item.rowPdSpu.stockStatus>0&&item.rowPdSpu.floatPic}}"></image>
+                        </view>
+                        <view class="order-content">
+                            <view style="flex:1;">
+                                <view class="goods-title">
+                                    <image mode="widthFix" src="{{fileDomain+item.rowPdSpu.nationalflagPic}}"></image>{{item.rowPdSpu.name}}</view>
+                            </view>
+                            <view class="bond-logo">
+                                <view wx:if="{{it.isShow==1}}" wx:for="{{item.rowPdSpu.iconList}}" wx:for-index="indx" wx:for-item="it" wx:key="{{indx}}">{{it.iconName}}</view>
+                            </view>
+                            <view class="shopping-price-box">
+                                <view class="shopping-price">
+                                    <text>￥</text>{{item.rowPdSpu.showPrice}}</view>
+                                <view class="shopping-cross-price" wx:if="{{item.rowPdSpu.hiddenPrice}}">{{item.rowPdSpu.hiddenPrice}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </view>
+            <view class="bannerTxt" wx:elif="{{item.type==3}}">{{item.text}}</view>
+            <view class="bannerRule-wrap" wx:elif="{{item.type==4}}">
+                <view class="bannerRule">活动规范明细</view>
+                <view class="bannerRuleTxt">{{item.text}}</view>
+            </view>
+        </block>
+    </view>
+    <view bindtap="showDetailShare" class="share-button" wx:if="{{shareInfo.isShowShare==0}}">
+        <image mode="widthFix" src="/images/banner_share.png"></image>
+    </view>
+</view>
+<i-share bind:close="showDetailShare" bind:drawSharePic="drawSharePic" show="{{showShare}}"></i-share>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>
+<canvas canvasId="shareCanvas" style="position: absolute;left: -999999999px;top: 0; width: 420px; height: 2000px"></canvas>

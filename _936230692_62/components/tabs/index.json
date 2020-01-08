@@ -1,0 +1,9 @@
+{
+    "component": true,
+    "usingComponents": {
+        "van-info": "../info/index",
+        "i-toast": "../toast/index",
+        "i-loading": "../loading/index",
+        "i-icon": "../icon/index"
+    }
+}

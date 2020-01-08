@@ -1,0 +1,19 @@
+<view class="i-good-list i-class" style="{{customStyle}}">
+    <view bindtap="goGoodDetail" class="i-good-block" data-pdSpuId="{{item.pdSpuId}}" wx:for="{{list}}" wx:key="{{index}}">
+        <view class="i-good-block-img-box">
+            <image class="i-good-block-img" lazyLoad="{{true}}" mode="aspectFit" src="{{fileDomain+item.mainPicUrl}}?x-oss-process=image/resize,m_lfit,w_800,h_0/quality,q_100"></image>
+            <image class="i-good-block-noQty" lazyLoad="{{true}}" mode="widthFix" src="/images/home_bh.png" wx:if="{{item.stockStatus<=0}}"></image>
+            <image class="i-good-block-float" lazyLoad="{{true}}" mode="widthFix" src="{{fileDomain+item.floatPic}}" wx:if="{{item.floatPic}}"></image>
+        </view>
+        <view class="i-good-block-name">
+            <image mode="widthFix" src="{{fileDomain+item.nationalflagPic}}"></image>{{item.name}}
+        </view>
+        <view class="i-good-block-tag">
+            <view wx:for="{{item.iconList}}" wx:key="{{index}}">{{item.iconName}}</view>
+        </view>
+        <view class="i-good-block-price-box">
+            <view class="i-good-block-price">￥{{item.showPrice}}<text wx:if="{{item.hiddenPrice}}">￥{{item.hiddenPrice}}</text>
+            </view>
+        </view>
+    </view>
+</view>

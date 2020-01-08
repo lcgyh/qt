@@ -1,6 +1,0 @@
-<scroll-view class='record_list'>
-  <view class='item_block' wx:for="{{companyList}}" data-id="{{item.companyId}}" catchtap='switchCompany' wx:key='index'>
-    <text>{{item.companyName}}</text>
-    <text class='opt-text'>切换</text>
-  </view>
-</scroll-view>

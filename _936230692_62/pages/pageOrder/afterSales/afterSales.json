@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "售后申请",
+    "usingComponents": {
+        "i-cell": "../../../components/cell/index",
+        "i-input-number": "../../../components/setNumber/index",
+        "i-toast": "../../../components/toast/index",
+        "i-loading": "../../../components/loading/index",
+        "i-icon": "../../../components/icon/index"
+    }
+}

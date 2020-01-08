@@ -1,0 +1,19 @@
+{
+    "onReachBottomDistance": 50,
+    "enablePullDownRefresh": true,
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "i-rate": "../../../components/rate/index",
+        "i-input-number": "../../../components/detailNumber/index",
+        "van-popup": "../../../components/popup/index",
+        "van-tab": "../../../components/tab/index",
+        "van-tabs": "../../../components/tabs/index",
+        "i-share": "../../../components/share/index",
+        "i-count-down": "../../../components/time-count-down/index",
+        "scaleImg": "../../../components/scaleImg/index",
+        "navigationBar": "../../../components/navigationBar/index",
+        "i-toast": "../../../components/toast/index",
+        "i-loading": "../../../components/loading/index",
+        "i-icon": "../../../components/icon/index"
+    }
+}

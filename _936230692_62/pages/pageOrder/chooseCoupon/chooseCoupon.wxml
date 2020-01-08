@@ -1,0 +1,25 @@
+<view wx:if="{{showMask}}">
+    <view class="coupon-list" wx:if="{{couponList.length>0}}">
+        <view bindtap="useCoupon" class="coupon-block" data-item="{{item}}" wx:for="{{couponList}}" wx:key="{{index}}">
+            <view class="coupon-block-top-left">
+                <view class="coupon-title">{{item.couponName}}</view>
+                <view class="coupon-time">有效期：{{item.couponStartValidity}} - {{item.couponEndValidity}}</view>
+                <view class="coupon-tips">{{item.couponExplain}}</view>
+                <view class="circle circle-top"></view>
+                <view class="circle circle-bottom"></view>
+            </view>
+            <view class="coupon-block-top-right">
+                <view class="coupon-value">{{item.couponMoney}}<view class="coupon-unit">￥</view>
+                </view>
+                <view class="coupon-rule">{{item.couponFullAmount==0?'无门槛优惠券':'满'+item.couponFullAmount+'可用'}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="empty-box" wx:else>
+        <image class="empty-icon" mode="widthFix" src="/images/coupon_empty.png"></image>
+        <view>哎哟~一个优惠券都没有</view>
+        <view bindtap="goHome" class="tips-text">去逛逛看</view>
+    </view>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

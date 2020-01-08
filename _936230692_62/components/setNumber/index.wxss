@@ -1,0 +1,41 @@
+.i-input-number {
+    color: #495060;
+    display: flex;
+}
+
+.i-input-number view {
+    text-align: center;
+    width: 42rpx;
+    height: 42rpx;
+    line-height: 42rpx;
+    box-sizing: border-box;
+    vertical-align: middle;
+    font-size: 12px;
+    border: 1px solid #dddee1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.i-input-number-minus {
+    border-right: none;
+    border-radius: 50%;
+}
+
+.i-input-number-plus {
+    border-left: none;
+    border-radius: 50%;
+}
+
+.i-input-number-text {
+    font-size: 22rpx!important;
+    color: #464646;
+    margin: 0 4rpx;
+    border: none!important;
+}
+
+.i-input-number-disabled {
+    border-color: #dddee1;
+    color: #bbbec4;
+    background: #f7f7f7;
+}

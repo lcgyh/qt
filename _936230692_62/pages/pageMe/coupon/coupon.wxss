@@ -1,0 +1,264 @@
+page {
+    background-color: #f8f9f8;
+}
+
+.tab-box .van-tab {
+    font-size: 28rpx!important;
+    color: #666666;
+    background-color: transparent!important;
+    overflow: hidden;
+    line-height: 40px!important;
+}
+
+.tab-box .van-tabs--line .van-tabs__wrap {
+    height: 40px!important;
+}
+
+.tab-box .van-tabs--line {
+    padding-top: 40px!important;
+}
+
+.tab-box .van-tab.van-tab--active {
+    color: #333333;
+}
+
+.van-tabs__line {
+    background-color: #333333!important;
+}
+
+.coupon-list {
+    padding: 0 32rpx 60rpx;
+    min-height: 600rpx;
+}
+
+.coupon-block {
+    background: #FFFFFF;
+    margin-top: 24rpx;
+    overflow: hidden;
+}
+
+.coupon-block-top {
+    padding: 32rpx 32rpx 26rpx;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border: 0.5px solid rgba(153,153,153,0.3);
+    border-bottom: none;
+    border-radius: 16rpx 16rpx 0 0;
+}
+
+.circle {
+    width: 20rpx;
+    height: 20rpx;
+    border-radius: 50%;
+    border: 0.5px solid rgba(153,153,153,0.3);
+    background-color: #f8f9f8;
+    position: absolute;
+    bottom: -10rpx;
+    z-index: 10;
+}
+
+.circle-left {
+    left: -10rpx;
+}
+
+.circle-right {
+    right: -10rpx;
+}
+
+.coupon-block-top-left {
+    flex: 1;
+}
+
+.coupon-title {
+    font-size: 32rpx;
+    font-weight: bold;
+}
+
+.can-use .coupon-title {
+    color: #333333;
+}
+
+.cannot-use .coupon-title {
+    color: #999999;
+}
+
+.coupon-info {
+    margin-top: 6rpx;
+    display: flex;
+    align-items: center;
+    min-height: 30rpx;
+}
+
+.coupon-info>view {
+    padding: 2rpx 10rpx;
+    border-style: solid;
+    border-width: 0.5px;
+    border-radius: 6rpx;
+    font-size: 18rpx;
+    margin-right: 10rpx;
+}
+
+.can-use .coupon-info>view {
+    border-color: #EC7A7F;
+    color: #EC7A7F;
+}
+
+.cannot-use .coupon-info>view {
+    color: #999999;
+    border-color: #999999;
+}
+
+.coupon-time {
+    font-size: 22rpx;
+    color: #999999;
+    margin-top: 14rpx;
+}
+
+.coupon-block-top-right {
+    margin-left: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.coupon-unit {
+    font-size: 30rpx;
+    font-weight: normal;
+    position: absolute;
+    left: -30rpx;
+    top: 2rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+}
+
+.coupon-value {
+    font-size: 90rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-weight: bold;
+    position: relative;
+}
+
+.can-use .coupon-unit,.can-use .coupon-value {
+    color: #EC7A7F;
+}
+
+.cannot-use .coupon-unit,.cannot-use .coupon-value {
+    color: #999999;
+}
+
+.coupon-rule {
+    font-size: 22rpx;
+    text-align: center;
+    margin-top: 10rpx;
+}
+
+.can-use .coupon-rule {
+    color: #666666;
+}
+
+.cannot-use .coupon-rule {
+    color: #999999;
+}
+
+.coupon-block-bottom {
+    padding: 22rpx 32rpx;
+    display: flex;
+    align-items: center;
+    background-color: #FAFAFA;
+    position: relative;
+    border: 0.5px solid rgba(153,153,153,0.3);
+    border-top: none;
+    border-radius: 0 0 16rpx 16rpx;
+}
+
+.coupon-block-bottom::after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    content: " ";
+    border-top: 1px dashed rgba(153,153,153,0.3);
+}
+
+@media (-webkit-min-device-pixel-ratio:1.5),(min-device-pixel-ratio:1.5) {
+    .coupon-block-bottom::after {
+        transform: scaleY(0.5);
+    }
+}
+
+@media (-webkit-min-device-pixel-ratio:2),(min-device-pixel-ratio:2) {
+    .coupon-block-bottom::after {
+        transform: scaleY(0.5);
+    }
+}
+
+.coupon-tips {
+    font-size: 18rpx;
+    color: #999999;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.coupon-button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.coupon-button>view {
+    border-radius: 100rpx;
+    padding: 2rpx 16rpx;
+    font-size: 22rpx;
+    margin-left: 20rpx;
+    border-style: solid;
+    border-width: 0.5px;
+}
+
+.can-use .coupon-button>view {
+    border-color: #EC7A7F;
+}
+
+.cannot-use .coupon-button>view {
+    border-color: #999999;
+}
+
+.can-use .go-detail {
+    color: #EC7A7F;
+}
+
+.cannot-use .go-detail {
+    color: #999999;
+}
+
+.go-use {
+    background-color: #EC7A7F;
+    color: #FFFFFF;
+}
+
+.empty-box {
+    margin-top: 200rpx;
+    text-align: center;
+    font-size: 28rpx;
+    color: rgba(70,70,70,.5);
+}
+
+.empty-box .empty-icon {
+    width: 310rpx;
+    margin-bottom: 40rpx;
+}
+
+.empty-box .tips-text {
+    display: inline-block;
+    font-size: 26rpx;
+    color: #00C4B3;
+    margin-top: 40rpx;
+    border-radius: 100rpx;
+    padding: 10rpx 40rpx;
+    border: 0.5px solid #00C4B3;
+}

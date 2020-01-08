@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "优惠券",
+    "usingComponents": {
+        "van-tab": "../../../components/tab/index",
+        "van-tabs": "../../../components/tabs/index",
+        "i-toast": "../../../components/toast/index",
+        "i-loading": "../../../components/loading/index",
+        "i-icon": "../../../components/icon/index"
+    }
+}

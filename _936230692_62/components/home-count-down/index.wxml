@@ -1,0 +1,7 @@
+<view class="countdown-class home-count-down {{theme}}" style="color:{{color=='#FFFFFF'?'#FFFFFF':color}}">
+    <view>{{hour}}</view>
+    <text>:</text>
+    <view>{{minute}}</view>
+    <text>:</text>
+    <view>{{second}}</view>
+</view>

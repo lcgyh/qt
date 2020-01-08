@@ -1,0 +1,12 @@
+{
+    "navigationBarTitleText": "订单确认",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "van-popup": "../../../components/popup/index",
+        "van-tab": "../../../components/tab/index",
+        "van-tabs": "../../../components/tabs/index",
+        "i-toast": "../../../components/toast/index",
+        "i-loading": "../../../components/loading/index",
+        "i-icon": "../../../components/icon/index"
+    }
+}

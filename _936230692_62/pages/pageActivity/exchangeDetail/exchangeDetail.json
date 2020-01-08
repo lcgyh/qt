@@ -1,0 +1,11 @@
+{
+    "disableSwipeBack": true,
+    "navigationStyle": "custom",
+    "navigationBarTitleText": "兑换详情",
+    "usingComponents": {
+        "i-loading": "../../../components/loading/index",
+        "navigationBar": "../../../components/navigationBar/index",
+        "i-toast": "../../../components/toast/index",
+        "i-icon": "../../../components/icon/index"
+    }
+}

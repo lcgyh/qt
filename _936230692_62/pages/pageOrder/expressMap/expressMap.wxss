@@ -1,0 +1,84 @@
+.map-box {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.map-box>map {
+    width: 100%;
+    height: 100%;
+}
+
+.refreshButton {
+    width: 60rpx;
+    height: 60rpx;
+    position: absolute;
+    right: 40rpx;
+    bottom: 380rpx;
+    z-index: 2;
+}
+
+.refreshButton>image {
+    width: 100%;
+    height: 100%;
+}
+
+.info-block {
+    position: absolute;
+    left: 40rpx;
+    right: 40rpx;
+    bottom: 60rpx;
+    height: 220rpx;
+    padding: 40rpx;
+    background-color: #fff;
+    box-shadow: 0 10rpx 30rpx 0 rgba(0,0,0,0.05);
+    border-radius: 12rpx;
+    z-index: 2;
+}
+
+.stateText {
+    font-family: PingFangSC-Semibold;
+    font-size: 42rpx;
+    color: #4A4A4A;
+}
+
+.orderMark {
+    font-family: PingFangHK-Light;
+    font-size: 28rpx;
+    color: #666666;
+    margin-top: 4rpx;
+}
+
+.express-man {
+    display: flex;
+    align-items: center;
+    height: 60rpx;
+}
+
+.express-man-name {
+    flex: 1;
+    font-family: PingFangHK-Light;
+    font-size: 28rpx;
+    color: #666666;
+}
+
+.express-man-button {
+    width: 140rpx;
+    height: 50rpx;
+    border: 0.5px solid #c9c9c9;
+    border-radius: 100rpx;
+    text-align: center;
+    line-height: 50rpx;
+    font-family: PingFangHK-Light;
+    font-size: 24rpx;
+    color: #333333;
+}
+
+.no-rider-infomation {
+    margin-top: 200rpx;
+    padding: 0 40rpx;
+    font-size: 14px;
+}

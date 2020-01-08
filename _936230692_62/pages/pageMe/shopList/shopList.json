@@ -1,0 +1,11 @@
+{
+    "navigationBarTitleText": "选择服务门店",
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "van-popup": "../../../components/popup/index",
+        "navigationBar": "../../../components/navigationBar/index",
+        "i-toast": "../../../components/toast/index",
+        "i-loading": "../../../components/loading/index",
+        "i-icon": "../../../components/icon/index"
+    }
+}

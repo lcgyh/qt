@@ -1,0 +1,47 @@
+page {
+    background-color: #F9F9F9;
+}
+
+.themeList {
+    padding: 32rpx;
+}
+
+.theme-block {
+    width: 100%;
+    height: auto;
+    background-color: #FFFFFF;
+    border-radius: 12rpx;
+    overflow: hidden;
+    font-size: 0;
+    margin-bottom: 32rpx;
+}
+
+.theme-img,.theme-img>image {
+    width: 100%;
+    height: auto;
+}
+
+.theme-text {
+    padding: 24rpx;
+}
+
+.theme-title {
+    font-family: PingFangSC-Medium;
+    font-size: 28rpx;
+    color: #464646;
+    margin-bottom: 16rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.theme-subtitle {
+    font-family: PingFangSC-Regular;
+    font-size: 22rpx;
+    color: #9B9B9B;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

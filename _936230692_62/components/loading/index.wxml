@@ -1,0 +1,5 @@
+<cover-view catchtouchmove="ture" class="data-loading {{mask?'loading-mask':''}}" wx:if="{{showLoading}}">
+    <cover-view class="data-loading-wrap">
+        <cover-image class="data-loading-img {{stopLoading?'stopLoading':''}}" mode="aspectFit" src="/images/loading.png" style="width: 50rpx;height: 50rpx"></cover-image>
+    </cover-view>
+</cover-view>

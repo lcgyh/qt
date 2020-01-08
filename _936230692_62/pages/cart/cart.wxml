@@ -1,0 +1,160 @@
+<view wx:if="{{showMask}}">
+    <i-sticky iClass="cart-list" random="{{random}}" refresh="{{refresh}}" scrollTop="{{scrollTop}}" wx:if="{{cartList.length>0}}">
+        <i-sticky-item noTitle="{{it.type==3?true:false}}" windowHeight="{{windowHeight}}" wx:if="{{it.promotion.length>0}}" wx:for="{{cartList}}" wx:for-index="indx" wx:for-item="it" wx:key="{{indx}}">
+            <view class="noTitle" slot="noTitle">
+                <view>失效商品{{it.goodArray.length}}件</view>
+                <view bindtap="clearInvalid">清空失效商品</view>
+            </view>
+            <view class="cart-head" slot="title">
+                <view class="cart-head-title" wx:if="{{it.type==0}}">国内现货</view>
+                <view class="cart-head-title" wx:elif="{{it.type==1}}">保税仓直发</view>
+                <view class="cart-head-title" wx:elif="{{it.type==2}}">品牌直供</view>
+                <view class="express-tip">
+                    <text wx:if="{{it.type==1}}">包税包邮</text>
+                    <text wx:if="{{it.type==2}}">包邮</text>
+                </view>
+                <view class="edit-box">
+                    <view bindtap="editCompele" data-type="{{it.type}}" wx:if="{{it.editStatus}}">完成</view>
+                    <view bindtap="edit" data-type="{{it.type}}" wx:else>编辑</view>
+                </view>
+            </view>
+            <view slot="content">
+                <view class="cart-good-warp" style="border-bottom-width: {{it.type==3?0:0.5}}px;" wx:for="{{it.promotion}}" wx:for-index="indx" wx:for-item="itm" wx:key="{{indx}}">
+                    <view class="second-head" wx:if="{{itm.pdType==1&&itm.promotionId!=-1&&it.type!=3}}">
+                        <view class="second-head-name">{{itm.promotionDetail.promotionTheme}}</view>
+                        <view class="second-head-rules">{{itm.promotionDetail.promotionThemeDesc}}</view>
+                        <view bindtap="showGift" class="second-head-more" data-id="{{itm.promotionId}}" data-type="{{it.type}}" wx:if="{{itm.promotionDetail.promotionType==20||itm.promotionDetail.promotionType==21}}">查看赠品</view>
+                        <view bindtap="goActivity" class="second-head-more" data-id="{{itm.promotionId}}" wx:elif="{{itm.promotionDetail.promotionType==22||itm.promotionDetail.promotionType==23}}">查看活动</view>
+                    </view>
+                    <view class="swipeout-content" wx:for="{{itm.shoppingCartVos}}" wx:key="{{item.pdSpuId}}">
+                        <view class="cart-good-detail">
+                            <view class="check-box" wx:if="{{item.productState==1||item.productState==2}}">失效</view>
+                            <view bindtap="handleAnimalChange" class="check-box" data-cartInfoId="{{item.cartInfoId}}" data-check="{{item.checkStatus}}" data-promotionId="{{itm.promotionId}}" data-type="{{it.type}}" wx:else>
+                                <image src="{{item.checkStatus==1?'/images/checkbox_fill.png':'/images/checkbox.png'}}"></image>
+                            </view>
+                            <view class="goods-content-wrap">
+                                <label bindtap="handleAnimalChange" class="i-swipeout-image" data-cartInfoId="{{item.cartInfoId}}" data-check="{{item.checkStatus}}" data-promotionId="{{itm.promotionId}}" data-type="{{it.type}}">
+                                    <image lazyLoad="{{true}}" mode="aspectFit" src="{{fileDomain+item.mainPicUrl}}?x-oss-process=image/resize,m_lfit,w_600,h_0/quality,q_100"></image>
+                                </label>
+                                <view class="goods-content-right">
+                                    <view class="i-swipeout-des">
+                                        <view bindtap="goDetail" class="des-box" data-pdSpuId="{{item.pdSpuId}}">
+                                            <view class="i-swipeout-des-h2">
+                                                <text wx:if="{{item.label1}}">{{item.label1}}</text>
+                                                <text wx:if="{{item.label2}}">{{item.label2}}</text>{{item.name}}</view>
+                                            <view class="i-swipeout-des-detail" wx:if="{{item.displayName}}">{{item.displayName?item.displayName:''}}</view>
+                                        </view>
+                                        <view class="i-swipeout-sign">
+                                            <view wx:if="{{it.isShow==1&&indx<1}}" wx:for="{{item.iconList}}" wx:for-index="indx" wx:for-item="it" wx:key="{{indx}}">{{it.iconName}}</view>
+                                        </view>
+                                        <view class="price-box">
+                                            <view class="price">
+                                                <text>￥</text>{{item.showPrice}}</view>
+                                            <view style="position: relative;top:-8rpx;" wx:if="{{item.qtyTotal>0&&!it.editStatus}}">
+                                                <i-input-number bind:change="handleChange" data-itit="{{item}}" data-pdType="{{itm.pdType}}" data-promotionId="{{itm.promotionId}}" data-type="{{it.type}}" iClass="number" max="{{item.qtyTotal}}" min="1" size="small" step="1" value="{{item.qty>item.qtyTotal&&item.qtyTotal>0?item.qtyTotal:item.qty}}"></i-input-number>
+                                            </view>
+                                        </view>
+                                        <view catchtap="deleteGoods" class="delete-goods" data-cartId="{{item.cartInfoId}}" data-promotionId="{{itm.promotionId}}" data-type="{{it.type}}" wx:if="{{it.editStatus}}">
+                                            <image mode="aspectFit" src="/images/delete.png"></image>
+                                        </view>
+                                        <view class="out-number" wx:if="{{item.qty>item.qtyTotal&&item.qtyTotal>0&&!it.editStatus}}">数量不足{{item.qty}}，已自动默认最大数量</view>
+                                        <view class="out-number" wx:elif="{{item.promotionRemainQty>0&&item.promotionRemainQty<=item.qtyTotal&&item.qty>item.promotionRemainQty&&!it.editStatus}}">活动仅剩{{item.promotionRemainQty}}件，超数量原价购买</view>
+                                        <image class="sellout" mode="widthFix" src="/images/collect_bh.png" wx:if="{{item.productState==1}}"></image>
+                                        <image class="sellout" mode="widthFix" src="/images/goodsoff.png" wx:elif="{{item.productState==2}}"></image>
+                                    </view>
+                                    <view class="cart-good-gift" wx:if="{{it.type!=3}}">
+                                        <view class="first-line">
+                                            <view class="buyLimit" wx:if="{{item.buyLimit==1}}">每单限购{{item.buyLimitQty}}件</view>
+                                            <block wx:if="{{it.type==0}}">
+                                                <view class="goods-enough" wx:if="{{item.qtyStore>0&&item.qty<=item.qtyStore}}">可门店自提或及时配送</view>
+                                                <view class="goods-enough" wx:if="{{item.qty>item.qtyStore||item.qtyStore<=0}}">国内仓邮寄</view>
+                                            </block>
+                                            <block wx:if="{{it.type==1}}"></block>
+                                            <block wx:if="{{it.type==2}}">
+                                                <view class="goods-enough" wx:if="{{item.qtyStore<=0||item.qty>item.qtyStore}}">品牌方直邮</view>
+                                            </block>
+                                        </view>
+                                        <block wx:if="{{item.giftList.length>0}}">
+                                            <view class="second-line" wx:if="{{item.singlePromotionDetail.promotionId!=-1}}">
+                                                <view class="good-gift-name">{{item.singlePromotionDetail.promotionLabel}}</view>
+                                                <view class="good-gift-type">{{item.singlePromotionDetail.promotionTheme}}</view>
+                                            </view>
+                                            <view class="third-line">
+                                                <view class="gift-title">赠品</view>
+                                                <view class="gift-name">
+                                                    <view wx:for="{{item.giftList}}" wx:for-index="inex" wx:for-item="iem" wx:key="{{inex}}">
+                                                        <text class="single-gift-name">{{iem.pdName}}</text>
+                                                        <text class="single-gift-qty">x{{iem.giftQty}}</text>
+                                                    </view>
+                                                </view>
+                                            </view>
+                                        </block>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="cart-foot" data-type="{{it.type}}" slot="footBottom" wx:if="{{it.type!=3}}">
+                <view bindtap="selectAll" class="checkbox-all" data-check="{{it.checkStatus}}" data-type="{{it.type}}">
+                    <image src="{{it.checkStatus==1?'/images/checkbox_fill.png':'/images/checkbox.png'}}"></image>全选
+                </view>
+                <view class="priceTotal">
+                    <view class="priceTotal-text">
+                        <text class="free-tips">（{{it.type==0?'不包含邮费':'免邮费'}}）</text>合计：<text class="priceTotal-lastPrice">￥{{it.promotionAmount}}</text>
+                    </view>
+                    <view class="free-price" wx:if="{{it.promotionDiscountAmount>0}}">
+                        <text>已优惠：</text>￥{{it.promotionDiscountAmount}}</view>
+                </view>
+                <view bindtap="createOrder" class="createOrder {{it.promotionAmount>0?'':'disabled'}}" data-editStatus="{{it.editStatus}}" data-promotionAmount="{{it.promotionAmount}}" data-type="{{it.type}}">
+                    <view wx:if="{{it.type==0}}">结算国内仓</view>
+                    <view wx:elif="{{it.type==1}}">结算保税仓</view>
+                    <view wx:elif="{{it.type==2}}">结算品牌仓</view>
+                </view>
+            </view>
+        </i-sticky-item>
+    </i-sticky>
+    <view class="empty-box" wx:else>
+        <view class="empty-image">
+            <image mode="aspectFit" src="/images/cart_empty.png" style="width:300rpx;height: 300rpx;"></image>
+        </view>
+        <view class="empty-text" style="margin: 30rpx 0 6rpx 0;">购物袋就像生活一样</view>
+        <view class="empty-text">爱生活就要空荡荡</view>
+        <view class="empty-navigator">
+            <navigator class="hangout" hoverClass="none" openType="switchTab" url="/pages/home/home">去逛逛看</navigator>
+        </view>
+    </view>
+</view>
+<login bindcallback="loginCallBack" show="{{showLogin}}"></login>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>
+<van-popup bind:close="hideGift" catchtouchmove="ture" position="bottom" show="{{showGift}}">
+    <view class="gift-content-wrap">
+        <view catchtap="hideGift" class="gift-content-close">
+            <image mode="aspectFit" src="/images/share_close.png"></image>
+        </view>
+        <view class="gift-content-title">赠品信息</view>
+        <view class="gift-content-list">
+            <scroll-view scrollY="{{true}}" style="height: 600rpx;">
+                <view class="gift-content-block" wx:for="{{showGiftList}}" wx:for-index="indx" wx:for-item="it" wx:key="{{index}}">
+                    <view class="gift-content-block-title">{{it.promotionRule}}</view>
+                    <view class="gift-content-block-list">
+                        <view class="gift-content-list-content" wx:for="{{it.gifts}}" wx:key="{{index}}">
+                            <view class="gift-img">
+                                <image src="{{fileDomain+item.giftPicUrl}}"></image>
+                            </view>
+                            <view class="gift-info">
+                                <view style="flex: 1;">
+                                    <view class="gift-info-title">{{item.pdName}}</view>
+                                    <view class="gift-info-display">{{item.giftDisplayName?item.giftDisplayName:''}}</view>
+                                </view>
+                                <view class="gift-info-qty {{item.giftRemainQty>0?'':'noQty'}}">{{item.giftRemainQty>0?'x'+item.giftQty:'已赠完'}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</van-popup>

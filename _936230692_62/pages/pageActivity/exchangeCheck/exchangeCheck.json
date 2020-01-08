@@ -1,0 +1,10 @@
+{
+    "disableSwipeBack": true,
+    "navigationBarTitleText": "订单确认",
+    "usingComponents": {
+        "van-popup": "../../../components/popup/index",
+        "i-toast": "../../../components/toast/index",
+        "i-loading": "../../../components/loading/index",
+        "i-icon": "../../../components/icon/index"
+    }
+}

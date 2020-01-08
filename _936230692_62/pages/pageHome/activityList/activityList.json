@@ -1,0 +1,16 @@
+{
+    "navigationBarBackgroundColor": "#F9F9F9",
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "van-popup": "../../../components/popup/index",
+        "i-input-number": "../../../components/setNumber/index",
+        "van-tab": "../../../components/tab/index",
+        "van-tabs": "../../../components/tabs/index",
+        "good-block": "../../../components/goodBlock/index",
+        "i-share": "../../../components/share/index",
+        "navigationBar": "../../../components/navigationBar/index",
+        "i-toast": "../../../components/toast/index",
+        "i-loading": "../../../components/loading/index",
+        "i-icon": "../../../components/icon/index"
+    }
+}

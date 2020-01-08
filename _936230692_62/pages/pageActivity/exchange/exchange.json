@@ -1,0 +1,11 @@
+{
+    "disableSwipeBack": true,
+    "navigationBarTitleText": "兑换好礼",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "van-popup": "../../../components/popup/index",
+        "i-toast": "../../../components/toast/index",
+        "i-loading": "../../../components/loading/index",
+        "i-icon": "../../../components/icon/index"
+    }
+}

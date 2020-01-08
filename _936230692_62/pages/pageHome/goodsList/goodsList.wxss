@@ -1,0 +1,117 @@
+page {
+    background-color: #F9F9F9;
+}
+
+.search-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0 40rpx;
+    background-color: #fff;
+    z-index: 1;
+}
+
+.search-input-box {
+    padding: 20rpx 200rpx 20rpx 0;
+    font-family: PingFangSC-Regular;
+    border-bottom-width: 0.5px;
+    border-bottom-style: solid;
+}
+
+.search-box input {
+    width: 100%;
+    font-size: 34rpx;
+}
+
+.focus {
+    color: #464646;
+    border-bottom-color: #464646;
+}
+
+.unfocus {
+    color: #9B9B9B;
+    border-bottom-color: #E2E2E2;
+}
+
+.search-icon {
+    position: absolute;
+    right: 40rpx;
+    top: 0;
+    bottom: 0;
+    width: 80rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.clear {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 120rpx;
+    width: 120rpx;
+    font-size: 30rpx;
+    color: #464646;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.classify-title {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 15px;
+    height: 50px;
+    background-color: #fff;
+    z-index: 1;
+}
+
+.classify-title .van-tab {
+    font-size: 30rpx!important;
+    height: 44px;
+    overflow: hidden;
+}
+
+.classify-title .van-tab.van-tab--active {
+    color: #00C4B3;
+    font-weight: bold;
+}
+
+.van-tabs__line {
+    background-color: #00C4B3!important;
+}
+
+.shopping-list {
+    padding: 0 32rpx 60rpx;
+    min-height: 100rpx;
+}
+
+.footer {
+    text-align: center;
+    font-family: PingFangHK-Regular;
+    font-size: 28rpx;
+    color: #C9C9C9;
+    padding: 40rpx 0 80rpx 0;
+}
+
+.empty-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 300rpx;
+}
+
+.empty-image {
+    margin-bottom: 15rpx;
+}
+
+.empty-text {
+    font-size: 26rpx;
+    color: rgba(70,70,70,.5);
+    text-align: center;
+}

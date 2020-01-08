@@ -1,0 +1,55 @@
+.data-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+.loading-mask {
+    background-color: rgba(0,0,0,0.2);
+}
+
+.data-loading-wrap {
+    width: 100rpx;
+    height: 100rpx;
+    background-color: #FFFFFF;
+    border-radius: 10rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@-webkit-keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+.data-loading-img {
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+.stopLoading {
+    animation-fill-mode: forwards;
+}

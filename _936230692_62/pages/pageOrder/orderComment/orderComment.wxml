@@ -1,0 +1,37 @@
+<view>
+    <view class="detail-box">
+        <view class="goods-list">
+            <block wx:for="{{goodsList}}" wx:key="{{item.orderId}}">
+                <view class="goods-block">
+                    <view class="goods-img">
+                        <image lazyLoad="{{true}}" mode="aspectFit" src="{{fileDomain}}{{item.mainPicUrl}}?x-oss-process=image/resize,m_lfit,w_600,h_0/quality,q_100"></image>
+                    </view>
+                    <view class="order-content">
+                        <view style="flex:1;">
+                            <view class="goods-title">{{item.name}}</view>
+                            <view class="goods-tpye">{{item.displayName==''||item.displayName==null?'':item.displayName}}</view>
+                        </view>
+                        <view class="rate">
+                            <i-rate bind:change="onChange" class="myrate" data-index="{{index}}" iClass="rate-number" size="26" value="{{item.starRank}}"></i-rate>
+                        </view>
+                    </view>
+                </view>
+                <view class="textarea-box">
+                    <textarea bindinput="getValue" class="allTextarea" data-index="{{index}}" maxlength="300" placeholder="写你想说的，聊你想聊的…" placeholderStyle="font-size: 22rpx;color: #9B9B9B;" value="{{item.comment}}"></textarea>
+                    <view class="textarea-length" style="color: {{item.len>300?'#DD8282':'#333333'}};">{{item.len}}/300</view>
+                </view>
+            </block>
+        </view>
+    </view>
+    <view class="store-box">
+        <view class="store-name">{{shopInfo.name}}</view>
+        <i-rate bind:change="shopChange" iClass="rate-number" size="26" value="{{shopInfo.starRank}}"></i-rate>
+        <view class="textarea-box">
+            <textarea bindinput="getStoreValue" class="allTextarea" maxlength="300" placeholder="写你想说的，聊你想聊的…" placeholderStyle="font-size: 22rpx;color: #9B9B9B;" value="{{shopInfo.comment}}"></textarea>
+            <view class="textarea-length" style="color: {{shopInfo.len>300?'#DD8282':'#333333'}};">{{shopInfo.len}}/300</view>
+        </view>
+    </view>
+    <view bindtap="putInfo" class="commentButton">提交</view>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

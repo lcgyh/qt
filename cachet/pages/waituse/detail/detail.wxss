@@ -1,6 +1,0 @@
-/* pages/usecach/usecach.wxss */
-.qrcode_box{width: 670rpx;height: 850rpx;margin:0rpx 40rpx;background: #fff;border-radius: 6rpx;box-shadow: 0rpx 0rpx 1px 3rpx rgba(6,0,1,.1)}
-.qrcode_box .title{text-align: center;font-size: 36rpx;color: #fff;background: #e9221f;height: 100rpx;line-height: 100rpx;border-radius: 6rpx 6rpx 0 0;}
-.ewm_content{width: 400rpx;height: 400rpx;margin: 90rpx 138rpx 80rpx;}
-.qrcode_box .line{width: 90%;height: 1rpx;background: #dedede;margin: auto 5% 40rpx;}
-.qrcode_box .text{color: #666;font-size: 30rpx;width: 500rpx;margin: 20rpx 95rpx;}

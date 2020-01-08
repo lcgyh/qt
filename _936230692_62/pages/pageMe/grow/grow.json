@@ -1,0 +1,12 @@
+{
+    "navigationBarTitleText": "我的成长值",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "van-tab": "../../../components/tab/index",
+        "van-tabs": "../../../components/tabs/index",
+        "van-popup": "../../../components/popup/index",
+        "i-toast": "../../../components/toast/index",
+        "i-loading": "../../../components/loading/index",
+        "i-icon": "../../../components/icon/index"
+    }
+}

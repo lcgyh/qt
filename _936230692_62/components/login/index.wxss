@@ -1,0 +1,32 @@
+.login-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200rpx;
+}
+
+.login-wrap>image {
+    width: 400rpx;
+    height: auto;
+}
+
+.login-wrap-tips {
+    font-family: PingFang-SC-Medium;
+    font-size: 28rpx;
+    color: #999999;
+    text-align: center;
+    margin: 30rpx 0 60rpx 0;
+}
+
+.login-wrap-btn {
+    width: 200rpx;
+    height: 64rpx;
+    text-align: center;
+    line-height: 64rpx;
+    color: #FFFFFF;
+    background: #00C4B3;
+    border-radius: 32rpx;
+    font-family: PingFangSC-Medium;
+    font-size: 28rpx;
+}

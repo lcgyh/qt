@@ -1,0 +1,32 @@
+<view>
+    <view class="tips">温馨提示：请填写真实的收件人姓名，否则可能无法收货</view>
+    <view class="form">
+        <view class="title">收件人</view>
+        <view class="field">
+            <input bindinput="bindinput" maxlength="8" placeholder="收件人姓名" value="{{receiveName}}"></input>
+            <view class="len">
+                <text>{{len}}</text>/<text>8</text>
+            </view>
+        </view>
+        <view class="title">电话</view>
+        <view class="field">
+            <input bindinput="mobileinput" maxlength="11" placeholder="手机号码" type="number" value="{{receiveMobile}}"></input>
+        </view>
+        <view class="title">所在地区</view>
+        <view class="field">
+            <i-cell isLink bind:click="chooseLive" iClass="cell-wrap" title="{{region}}" wx:if="{{region}}"></i-cell>
+            <i-cell isLink bind:click="chooseLive" iClass="place-holder-text" title="选择收货地址" wx:else></i-cell>
+        </view>
+        <view class="title">详细地址</view>
+        <view class="field">
+            <view class="complement-address" wx:if="{{showComplementAddressTxt}}">{{complementAddress?complementAddress:'例：街道名称、小区名称、门牌号'}}</view>
+            <textarea autoHeight="{{true}}" bindinput="detailinput" cursorSpacing="100" placeholder="例：街道名称、小区名称、门牌号" value="{{complementAddress}}" wx:else></textarea>
+        </view>
+        <view bindtap="formSubmit" class="btn" style="bottom: {{isIphoneX==1?34:0}}px">保存</view>
+    </view>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>
+<van-popup bind:click-overlay="chooseClose" catchtouchmove="ture" position="bottom" show="{{showChoose}}">
+    <van-area areaList="{{areaList}}" bind:cancel="chooseClose" bind:confirm="chooseSure" value="{{resetValue}}"></van-area>
+</van-popup>

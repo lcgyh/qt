@@ -1,0 +1,8 @@
+{
+    "component": true,
+    "usingComponents": {
+        "i-icon": "../icon/index",
+        "i-toast": "index",
+        "i-loading": "../loading/index"
+    }
+}

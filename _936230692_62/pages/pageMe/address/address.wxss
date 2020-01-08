@@ -1,0 +1,103 @@
+.info-box {
+    font-size: 28rpx;
+    padding: 0 40rpx 180rpx;
+}
+
+.userInfo {
+    padding: 62rpx 0 28rpx 0;
+    border-bottom: 1px solid #EEECEC;
+}
+
+.userInfo:last-child {
+    border-bottom: none;
+}
+
+.info {
+    font-family: PingFangHK-Medium;
+    font-size: 28rpx;
+    color: #666666;
+}
+
+.name {
+    margin-right: 80rpx;
+}
+
+.label {
+    font-family: PingFangHK-Light;
+    font-size: 24rpx;
+    color: #333333;
+}
+
+.adres {
+    font-family: PingFangHK-Regular;
+    font-size: 28rpx;
+    margin: 10rpx 0 50rpx 0;
+}
+
+.empty-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 200rpx;
+}
+
+.empty-image {
+    margin-bottom: 15rpx;
+}
+
+.empty-text {
+    font-size: 26rpx;
+    color: rgba(70,70,70,.5);
+    text-align: center;
+}
+
+radio {
+    background: none;
+}
+
+radio .wx-radio-input.wx-radio-input-checked {
+    background-color: #00C4B3!important;
+    border-color: #00C4B3!important;
+}
+
+.radio {
+    transform: scale(0.6);
+    margin-left: -15rpx;
+    border-radius: 23rpx;
+}
+
+.operate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn {
+    color: #333;
+    text-align: center;
+    display: inline-block;
+    width: 140rpx;
+    height: 52rpx;
+    line-height: 52rpx;
+    font-size: 24rpx;
+    border: 0.5px solid #C9C9C9;
+    border-radius: 100rpx;
+}
+
+.edit {
+    margin-right: 20rpx;
+}
+
+.button {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 110rpx;
+    line-height: 110rpx;
+    background-color: #464646;
+    font-size: 40rpx;
+    color: #E1DCC7;
+    text-align: center;
+}

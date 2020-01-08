@@ -1,0 +1,73 @@
+<navigationBar backHome="{{false}}" bindgoBack="goBack" statusBarHeight="{{statusBarHeight}}" title="兑换详情" windowWidth="{{windowWidth}}"></navigationBar>
+<view wx:if="{{showMask}}">
+    <view class="good-detail" style="margin-top: {{statusBarHeight+38+30}}px;" wx:if="{{type==1}}">
+        <view class="express-box">
+            <view class="express">
+                <view class="title">物流信息</view>
+                <view wx:if="{{product.logisticsNo}}">{{product.logisticsName}}<text>{{product.logisticsNo}}</text>
+                </view>
+                <view wx:else>礼品将尽快为您发出</view>
+            </view>
+            <view class="receive">
+                <view class="title">{{receive.receiveName}}<text>{{receive.receiveMobile}}</text>
+                </view>
+                <view>{{receive.addressDetail}}</view>
+            </view>
+            <image mode="widthFix" src="/images/color_line.png" style="width: 100%;height: auto;"></image>
+        </view>
+        <view class="goods-box">
+            <view class="goods-title">商品信息</view>
+            <view class="goods-block">
+                <view class="goods-img">
+                    <image mode="aspectFit" src="{{fileDomain+product.picUrl}}"></image>
+                </view>
+                <view class="goods-content">
+                    <view class="goods-titlle">{{product.name}}</view>
+                    <view class="goods-exchange">{{product.valueQty}}阳光值</view>
+                </view>
+            </view>
+        </view>
+        <view class="total-box">
+            <view class="summary">
+                <view class="summary-title">总计</view>
+                <view class="summary-value">{{product.valueQty}}阳光值</view>
+            </view>
+            <view class="summary">
+                <view class="summary-title">兑换时间</view>
+                <view class="summary-value">{{product.createTime}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="coupon-detail" wx:elif="{{type==2}}">
+        <view class="goods-box">
+            <view class="goods-title">商品信息</view>
+            <view class="goods-block">
+                <view class="goods-img">
+                    <view class="goods-img-title">
+                        <text>￥</text>{{coupon.couponMoney}}</view>
+                    <view class="goods-img-subtitle">满{{coupon.couponFullAmount}}减{{coupon.couponMoney}}</view>
+                </view>
+                <view class="goods-content">
+                    <view class="goods-titlle">{{coupon.name}}</view>
+                    <view class="goods-price">{{coupon.couponValidDate}}</view>
+                    <view class="goods-intro">{{item.couponExplain}}</view>
+                    <view class="goods-exchange">{{coupon.valueQty}}阳光值</view>
+                    <view bindtap="goHome" class="goods-button">
+                        <text>去使用</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="total-box">
+            <view class="summary">
+                <view class="summary-title">总计</view>
+                <view class="summary-value">{{coupon.valueQty}}阳光值</view>
+            </view>
+            <view class="summary">
+                <view class="summary-title">兑换时间</view>
+                <view class="summary-value">{{coupon.createTime}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+<i-loading id="data-loading"></i-loading>

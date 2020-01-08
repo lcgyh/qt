@@ -1,0 +1,108 @@
+<view wx:if="{{showMask}}">
+    <view class="tab-box">
+        <van-tabs animated sticky swipeable border="{{false}}">
+            <van-tab title="未使用({{couponUnusedList.length}})">
+                <view class="coupon-list" wx:if="{{couponUnusedList.length>0}}">
+                    <view bindtap="goDetail" class="coupon-block can-use" data-item="{{item}}" wx:for="{{couponUnusedList}}" wx:key="{{index}}">
+                        <view class="coupon-block-top">
+                            <view class="coupon-block-top-left">
+                                <view class="coupon-title">{{item.couponName}}</view>
+                                <view class="coupon-info">
+                                    <view wx:if="{{item.platform==1}}">仅线上可用</view>
+                                    <view wx:elif="{{item.platform==2}}">线上线下可用</view>
+                                </view>
+                                <view class="coupon-time">有效期：{{item.couponStartValidity}} - {{item.couponEndValidity}}</view>
+                            </view>
+                            <view class="coupon-block-top-right">
+                                <view class="coupon-value">{{item.couponMoney}}<view class="coupon-unit">￥</view>
+                                </view>
+                                <view class="coupon-rule">{{item.couponFullAmount==0?'无门槛优惠券':'满'+item.couponFullAmount+'可用'}}</view>
+                            </view>
+                            <view class="circle circle-left"></view>
+                            <view class="circle circle-right"></view>
+                        </view>
+                        <view class="coupon-block-bottom">
+                            <view class="coupon-tips" style="width: 350rpx;">{{item.couponExplain}}</view>
+                            <view class="coupon-button">
+                                <view class="go-detail">查看详情</view>
+                                <view catchtap="goUse" class="go-use" data-brandId="{{item.brandId}}" data-brandName="{{item.brandName}}" data-couponUseScope="{{item.couponUseScope}}">去使用</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="empty-box" wx:else>
+                    <image class="empty-icon" mode="widthFix" src="/images/coupon_empty.png"></image>
+                    <view>哎哟~一个优惠券都没有</view>
+                    <view bindtap="goHome" class="tips-text">去逛逛看</view>
+                </view>
+            </van-tab>
+            <van-tab title="已使用">
+                <view class="coupon-list" wx:if="{{couponUserdList.length>0}}">
+                    <view bindtap="goDetail" class="coupon-block cannot-use" data-item="{{item}}" wx:for="{{couponUserdList}}" wx:key="{{index}}">
+                        <view class="coupon-block-top">
+                            <view class="coupon-block-top-left">
+                                <view class="coupon-title">{{item.couponName}}</view>
+                                <view class="coupon-info">
+                                    <view wx:if="{{item.platform==1}}">仅线上可用</view>
+                                    <view wx:elif="{{item.platform==2}}">线上线下可用</view>
+                                </view>
+                                <view class="coupon-time">有效期：{{item.couponStartValidity}} - {{item.couponEndValidity}}</view>
+                            </view>
+                            <view class="coupon-block-top-right">
+                                <view class="coupon-value">{{item.couponMoney}}<view class="coupon-unit">￥</view>
+                                </view>
+                                <view class="coupon-rule">{{item.couponFullAmount==0?'无门槛优惠券':'满'+item.couponFullAmount+'可用'}}</view>
+                            </view>
+                        </view>
+                        <view class="coupon-block-bottom">
+                            <view class="coupon-tips" style="width: 450rpx;">{{item.couponExplain}}</view>
+                            <view class="coupon-button">
+                                <view class="go-detail">查看详情</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="empty-box" wx:else>
+                    <image class="empty-icon" mode="widthFix" src="/images/coupon_empty.png"></image>
+                    <view>哎哟~一个优惠券都没有</view>
+                    <view bindtap="goHome" class="tips-text">去逛逛看</view>
+                </view>
+            </van-tab>
+            <van-tab title="已过期">
+                <view class="coupon-list" wx:if="{{couponExpiredList.length>0}}">
+                    <view bindtap="goDetail" class="coupon-block cannot-use" data-item="{{item}}" wx:for="{{couponExpiredList}}" wx:key="{{index}}">
+                        <view class="coupon-block-top">
+                            <view class="coupon-block-top-left">
+                                <view class="coupon-title">{{item.couponName}}</view>
+                                <view class="coupon-info">
+                                    <view wx:if="{{item.platform==1}}">仅线上可用</view>
+                                    <view wx:elif="{{item.platform==2}}">线上线下可用</view>
+                                </view>
+                                <view class="coupon-time">有效期：{{item.couponStartValidity}} - {{item.couponEndValidity}}</view>
+                            </view>
+                            <view class="coupon-block-top-right">
+                                <view class="coupon-value">{{item.couponMoney}}<view class="coupon-unit">￥</view>
+                                </view>
+                                <view class="coupon-rule">{{item.couponFullAmount==0?'无门槛优惠券':'满'+item.couponFullAmount+'可用'}}</view>
+                            </view>
+                        </view>
+                        <view class="coupon-block-bottom">
+                            <view class="coupon-tips" style="width: 450rpx;">{{item.couponExplain}}</view>
+                            <view class="coupon-button">
+                                <view class="go-detail">查看详情</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="empty-box" wx:else>
+                    <image class="empty-icon" mode="widthFix" src="/images/coupon_empty.png"></image>
+                    <view>哎哟~一个优惠券都没有</view>
+                    <view bindtap="goHome" class="tips-text">去逛逛看</view>
+                </view>
+            </van-tab>
+        </van-tabs>
+    </view>
+    <view></view>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

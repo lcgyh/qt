@@ -1,0 +1,10 @@
+<navigationBar backHome="{{false}}" bindgoBack="goBack" statusBarHeight="{{statusBarHeight}}" title="登录" windowWidth="{{windowWidth}}"></navigationBar>
+<view class="login-box">
+    <image class="logo" mode="widthFix" src="/images/wx_logo.png"></image>
+    <view class="button-box">
+        <button bindgetphonenumber="getPhoneNumber" class="message-pop-btn" openType="getPhoneNumber">微信授权手机号登录</button>
+        <button bindtap="showPhoneLogin">手机号登录/注册</button>
+    </view>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

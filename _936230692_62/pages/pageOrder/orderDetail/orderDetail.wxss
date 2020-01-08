@@ -1,0 +1,489 @@
+.status-box {
+    padding: 140rpx 32rpx 60rpx 32rpx;
+    min-height: 110rpx;
+}
+
+.status-content {
+    display: flex;
+    height: 54rpx;
+    width: 100%;
+    align-items: center;
+}
+
+.status-text {
+    flex: 1;
+    font-family: PingFangSC-Semibold;
+    font-size: 42rpx;
+    color: #FFFFFF;
+}
+
+.status-remark {
+    margin-top: 20rpx;
+    font-family: PingFangHK-Light;
+    font-size: 28rpx;
+    color: #FFFFFF;
+}
+
+.status-pickCode {
+    font-family: PingFangSC-Semibold;
+    font-size: 40rpx;
+    color: #fff;
+}
+
+.express-line {
+    width: 100%;
+    height: 0;
+    border-bottom: 0.5px solid #e2e1e1;
+    margin: 30rpx 0;
+}
+
+.user-address-box {
+    margin-top: 90rpx;
+    padding: 0 32rpx;
+}
+
+.user-address-title {
+    font-family: PingFangHK-Medium;
+    font-size: 32rpx;
+    color: #333333;
+    margin-bottom: 40rpx;
+}
+
+.user-address-content {
+    display: flex;
+    font-family: PingFangHK-Regular;
+    font-size: 28rpx;
+    position: relative;
+    color: #666666;
+}
+
+.user-address-icon,.express-icon {
+    width: 36rpx;
+    height: 36rpx;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -18rpx;
+}
+
+.user-address-name {
+    margin-right: 40rpx;
+}
+
+.user-address {
+    margin-top: 10rpx;
+    font-family: PingFangHK-Regular;
+    font-size: 28rpx;
+    color: #666666;
+}
+
+.address-box {
+    margin-top: 90rpx;
+    padding: 0 32rpx;
+}
+
+.address-box-title {
+    display: flex;
+}
+
+.address-title {
+    flex: 1;
+    font-family: PingFangHK-Medium;
+    font-size: 32rpx;
+    color: #333333;
+    margin-bottom: 40rpx;
+}
+
+.address-box-button {
+    display: flex;
+}
+
+.address-box-button>view {
+    width: 140rpx;
+    height: 50rpx;
+    border: 0.5px solid #c9c9c9;
+    border-radius: 100rpx;
+    text-align: center;
+    line-height: 50rpx;
+    font-family: PingFangHK-Regular;
+    font-size: 24rpx;
+    color: #333333;
+}
+
+.address-box-button>view.contact {
+    margin-right: 20rpx;
+}
+
+.expressContext {
+    font-family: PingFangHK-Regular;
+    font-size: 28rpx;
+    color: #666666;
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.expressContext::after {
+    content: " ";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    top: 50%;
+    right: 2px;
+    border-width: 1px 1px 0 0;
+    border-color: #c9c9c9;
+    border-style: solid;
+    transform: translateY(-50%) matrix(.71,.71,-.71,.71,0,0);
+}
+
+.expressContext>text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 6rpx;
+}
+
+.express-man {
+    display: flex;
+    position: relative;
+}
+
+.express-man-name {
+    flex: 1;
+    font-family: PingFangHK-Regular;
+    font-size: 28rpx;
+    color: #666666;
+}
+
+.express-man-button {
+    display: flex;
+}
+
+.express-man-button>view {
+    width: 140rpx;
+    height: 50rpx;
+    border: 0.5px solid #c9c9c9;
+    border-radius: 100rpx;
+    text-align: center;
+    line-height: 50rpx;
+    font-family: PingFangHK-Light;
+    font-size: 24rpx;
+    color: #333333;
+}
+
+.express-man-button>view:nth-child(1) {
+    margin-right: 20rpx;
+}
+
+.store-name,.store-time,.store-address {
+    font-family: PingFangHK-Regular;
+    font-size: 24rpx;
+    color: #666666;
+}
+
+.store-name,.store-time {
+    margin-bottom: 30rpx;
+}
+
+.summary-orderNo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.summary-orderNo text {
+    margin-left: 16rpx;
+    color: #00C4B3;
+}
+
+.detail-box {
+    padding: 0 32rpx;
+}
+
+.detail-box-title {
+    display: flex;
+    padding-bottom: 30rpx;
+    border-bottom: 0.5px solid #E3E1E1;
+}
+
+.detail-title {
+    flex: 1;
+    font-family: PingFangHK-Medium;
+    font-size: 32rpx;
+    color: #333333;
+}
+
+.detail-box-button {
+    display: flex;
+}
+
+.detail-box-button>view,.detail-box-button>.customer-talk {
+    width: 140rpx;
+    height: 50rpx;
+    border: 0.5px solid #c9c9c9;
+    border-radius: 100rpx;
+    text-align: center;
+    line-height: 50rpx;
+    font-family: PingFangHK-Regular;
+    font-size: 24rpx;
+    color: #333333;
+    padding: 0;
+    background-color: transparent!important;
+}
+
+.customer-talk::after {
+    background-color: transparent!important;
+    box-sizing: unset!important;
+    padding: 0;
+    box-shadow: none;
+    border: none!important;
+}
+
+.goods-list {
+    margin: 40rpx 0;
+}
+
+.goods-block {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30rpx;
+}
+
+.goods-img {
+    width: 180rpx;
+    height: 180rpx;
+    border: 0.5px solid #EEECEC;
+    border-radius: 10rpx;
+    margin-right: 20rpx;
+    box-shadow: 0 10rpx 10rpx 0 #F9F9F9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.goods-img image {
+    width: 95%;
+    height: 95%;
+    border-radius: 10rpx;
+}
+
+.order-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.goods-title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 24rpx;
+    color: #333333;
+}
+
+.goods-tpye {
+    margin-top: 10rpx;
+    font-size: 24rpx;
+    color: #9B9B9B;
+}
+
+.price-number {
+    display: flex;
+}
+
+.goods-price {
+    font-family: PingFangHK-Regular;
+    flex: 1;
+    font-size: 28rpx;
+    color: #333333;
+}
+
+.goods-number {
+    flex: 1;
+    height: 40rpx;
+    text-align: right;
+    line-height: 40rpx;
+    font-family: PingFangHK-Regular;
+}
+
+.goods-number>text:first-child {
+    font-size: 24rpx;
+    color: #C9C9C9;
+}
+
+.goods-number>text:last-child {
+    font-size: 28rpx!important;
+    color: #333333!important;
+}
+
+.afterSale-box {
+    margin-top: 2rpx;
+    height: 60rpx;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.return-tips {
+    font-size: 24rpx;
+    color: #00C4B3;
+}
+
+.afterSale {
+    width: 140rpx;
+    height: 50rpx;
+    border: 0.5px solid #c9c9c9;
+    border-radius: 100rpx;
+    text-align: center;
+    line-height: 50rpx;
+    font-family: PingFangHK-Regular;
+    font-size: 24rpx;
+    margin-left: 20rpx;
+}
+
+.detail-summary {
+    margin-top: 50rpx;
+    padding: 0 32rpx;
+}
+
+.detail-summary-title {
+    display: flex;
+    margin-bottom: 40rpx;
+}
+
+.summary {
+    display: flex;
+}
+
+.summary.middle {
+    margin: 30rpx 0;
+}
+
+.summary-title,.summary-value {
+    font-family: PingFangHK-Regular;
+    font-size: 24rpx;
+    color: #464646;
+}
+
+.summary-title {
+    flex: 1;
+}
+
+.send-price {
+    margin-bottom: 30rpx;
+}
+
+.total {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-top: 0.5px solid #E3E1E1;
+    padding-top: 16rpx;
+}
+
+.total>text:nth-child(1) {
+    font-family: PingFangHK-Regular;
+    font-size: 24rpx;
+    color: #464646;
+    margin-right: 8rpx;
+}
+
+.total>text:nth-child(2) {
+    font-family: PingFangHK-Medium;
+    font-size: 32rpx;
+    color: #DD8282;
+}
+
+.express-box {
+    margin-top: 90rpx;
+    padding: 0 32rpx 130rpx;
+}
+
+.express-box-title {
+    display: flex;
+    margin-bottom: 40rpx;
+}
+
+.express-block {
+    margin-bottom: 50rpx;
+}
+
+.express-title {
+    position: relative;
+    font-family: PingFangHK-Regular;
+    font-size: 24rpx;
+    color: #464646;
+    padding-left: 28rpx;
+    height: 28rpx;
+    line-height: 28rpx;
+}
+
+.express-title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8rpx;
+    width: 12rpx;
+    height: 12rpx;
+    border-radius: 50%;
+    background-color: #000;
+}
+
+.express-content {
+    display: flex;
+    padding-left: 28rpx;
+    margin-top: 4rpx;
+}
+
+.express-info,.express-time {
+    font-family: PingFangSC-Regular;
+    font-size: 20rpx;
+    color: #9B9B9B;
+}
+
+.express-time {
+    margin-left: 20rpx;
+}
+
+.express-info {
+    flex: 1;
+}
+
+.status-button {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100rpx;
+    background-color: #fff;
+    padding: 0 32rpx;
+    justify-content: flex-end;
+    align-items: center;
+    border-top: 0.5px solid #d9d9d9;
+}
+
+.status-button>view {
+    width: 140rpx;
+    height: 50rpx;
+    border: 0.5px solid #c9c9c9;
+    border-radius: 100rpx;
+    text-align: center;
+    line-height: 50rpx;
+    font-family: PingFangHK-Regular;
+    font-size: 24rpx;
+}
+
+.status-button>view.left-button {
+    color: #464646;
+}
+
+.status-button>view.right-button {
+    margin-left: 20rpx;
+    color: #00C4B3;
+    border-color: #00C4B3!important;
+}

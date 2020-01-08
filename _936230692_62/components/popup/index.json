@@ -1,0 +1,9 @@
+{
+    "component": true,
+    "usingComponents": {
+        "van-overlay": "../overlay/index",
+        "i-toast": "../toast/index",
+        "i-loading": "../loading/index",
+        "i-icon": "../icon/index"
+    }
+}

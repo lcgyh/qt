@@ -1,0 +1,11 @@
+<view wx:if="{{showMask}}">
+    <van-tabs sticky active="{{classify_active}}" bind:change="tabChange" border="{{false}}" lineWidth="20" wx:if="{{classifyList.length>0}}">
+        <van-tab title="{{item.categoryName}}" wx:for="{{classifyList}}" wx:key="{{index}}"></van-tab>
+    </van-tabs>
+    <block wx:if="{{goodsList.length>0}}">
+        <good-block fileDomain="{{fileDomain}}" iClass="shopping-list" list="{{goodsList}}"></good-block>
+        <view class="footer" wx:if="{{isShowSlogin}}">没有更多商品了</view>
+    </block>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

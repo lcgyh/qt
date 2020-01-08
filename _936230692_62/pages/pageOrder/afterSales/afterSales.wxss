@@ -1,0 +1,335 @@
+.after-sales-wrap {
+    padding: 0 40rpx 150rpx;
+}
+
+.goods-list {
+    margin-top: 60rpx;
+    padding-bottom: 40rpx;
+    border-bottom: 0.5px solid #c9c9c9;
+}
+
+.goods-block {
+    display: flex;
+    overflow: hidden;
+}
+
+.goods-img {
+    width: 180rpx;
+    height: 180rpx;
+    border: 1px solid #EEECEC;
+    border-radius: 10rpx;
+    margin-right: 20rpx;
+    box-shadow: 0 10rpx 10rpx 0 #F9F9F9;
+}
+
+.goods-img image {
+    width: 100%;
+    height: 100%;
+    border-radius: 10rpx;
+}
+
+.order-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.goods-title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 24rpx;
+    color: #333333;
+}
+
+.goods-tpye {
+    margin-top: 10rpx;
+    font-size: 24rpx;
+    color: #9B9B9B;
+}
+
+.price-number {
+    display: flex;
+}
+
+.goods-price {
+    font-family: PingFangHK-Regular;
+    flex: 1;
+    font-size: 28rpx;
+    color: #333333;
+}
+
+.goods-number {
+    width: 40rpx;
+    height: 40rpx;
+    text-align: center;
+    line-height: 40rpx;
+    color: #333333;
+    font-size: 28rpx;
+    flex: 1;
+    text-align: right;
+}
+
+.choose-box {
+    margin-top: 30rpx;
+    padding-bottom: 30rpx;
+    border-bottom: 0.5px solid #c9c9c9;
+}
+
+.refund-number {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-top: 10rpx;
+}
+
+.refund-number-title {
+    flex: 1;
+}
+
+.refund-number-title>text {
+    font-family: PingFangHK-Regular;
+    color: #BABABB;
+    margin-left: 40rpx;
+}
+
+.mineClass {
+    padding: 4px 0!important;
+}
+
+.refund-back-box {
+    margin-top: 30rpx;
+    padding-bottom: 30rpx;
+    border-bottom: 0.5px solid #c9c9c9;
+}
+
+.refund-back {
+    font-family: PingFangHK-Regular;
+    font-size: 28rpx;
+    color: #464646;
+    display: flex;
+    align-items: center;
+    margin-bottom: 24rpx;
+}
+
+.refund-back>view:first-child {
+    flex: 1;
+}
+
+.refund-back-tips {
+    font-family: PingFangHK-Regular;
+    font-size: 22rpx;
+    color: #BABABB;
+}
+
+.reason-detail-box {
+    margin-top: 30rpx;
+}
+
+.reason-detail-title {
+    margin-bottom: 10rpx;
+    font-family: PingFangHK-Regular;
+    font-size: 28rpx;
+    color: #464646;
+}
+
+.reason-detail {
+    font-family: PingFangHK-Regular;
+    font-size: 24rpx;
+    color: #464646;
+    width: 100%;
+    padding-bottom: 40rpx;
+    text-align: justify;
+    text-align-last: left;
+    border-bottom: 0.5px solid #c9c9c9;
+    min-height: 200rpx;
+    height: auto;
+}
+
+.reason-detail-number {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    font-family: PingFangHK-Regular;
+    font-size: 22rpx;
+    color: #BABABB;
+    height: 40rpx;
+    line-height: 40rpx;
+}
+
+.upload-wrap {
+    margin-top: 40rpx;
+}
+
+.upload-title {
+    font-family: PingFangHK-Regular;
+    font-size: 28rpx;
+    color: #464646;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40rpx;
+}
+
+.upload-title>text {
+    font-size: 22rpx;
+    color: #C9C9C9;
+}
+
+.file-list,.upload {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.upload {
+    width: 174rpx;
+    height: 174rpx;
+    background: #FFFFFF;
+    border: 0.5px solid #9B9B9B;
+    box-shadow: 0 20rpx 30rpx 0 #F9F9F9;
+    border-radius: 24rpx;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.upload .icon-add {
+    width: 52rpx;
+    height: 52rpx;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.file-list .file {
+    width: 154rpx;
+    height: 154rpx;
+    background: rgba(19,19,19,0.50);
+    position: relative;
+    margin: 0 30rpx 30rpx 0;
+    padding: 10rpx;
+    border-radius: 24rpx;
+}
+
+.file-list .file>image {
+    width: 100%;
+    height: 100%;
+}
+
+.file-list .file .icon-close {
+    width: 40rpx;
+    height: 40rpx;
+    position: absolute;
+    right: -14rpx;
+    top: -14rpx;
+    display: flex;
+    justify-content: center;
+}
+
+.file-list .file .icon-close image {
+    vertical-align: top;
+    width: 32rpx;
+    height: 32rpx;
+}
+
+.button {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 110rpx;
+    background-color: #fff;
+}
+
+.btn {
+    width: 1rpx;
+    height: 1rpx;
+    margin: 0;
+    padding: 0;
+    border-color: transparent;
+    border: none;
+    background-color: transparent;
+}
+
+.aa {
+    height: 110rpx;
+    line-height: 110rpx;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    color: #E1DCC7;
+    font-size: 42rpx;
+    background-color: #464646;
+    font-family: PingFangSC-Semibold;
+}
+
+.bb {
+    bottom: 34px!important;
+}
+
+button::after {
+    border: none;
+}
+
+.statusContent {
+    background-color: #fff;
+    padding: 40rpx;
+    border-radius: 50rpx 50rpx 0 0;
+    position: relative;
+}
+
+.statusClose {
+    position: absolute;
+    right: 40rpx;
+    top: 40rpx;
+    width: 50rpx;
+    height: 50rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.statusClose image {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.statusTitle {
+    font-family: PingFangSC-Semibold;
+    font-size: 34rpx;
+    color: #464646;
+    text-align: center;
+    margin-bottom: 30rpx;
+}
+
+.radio-group>view {
+    display: flex;
+    align-items: center;
+    font-family: PingFangHK-Regular;
+    font-size: 26rpx;
+    color: #464646;
+}
+
+.radio-group>view>label {
+    flex: 1;
+    padding: 16rpx 0;
+}
+
+radio {
+    background: none;
+}
+
+radio .wx-radio-input.wx-radio-input-checked {
+    background-color: #00C4B3!important;
+    border-color: #00C4B3!important;
+}
+
+.radio {
+    transform: scale(0.6);
+    margin-left: -15rpx;
+    border-radius: 23rpx;
+}

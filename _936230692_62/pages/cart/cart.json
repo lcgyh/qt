@@ -1,0 +1,14 @@
+{
+    "navigationBarTitleText": "购物袋",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "i-input-number": "../../components/setNumber/index",
+        "van-popup": "../../components/popup/index",
+        "i-sticky": "../../components/cartSticky/index",
+        "i-sticky-item": "../../components/cartStickyItem/index",
+        "login": "../../components/login/index",
+        "i-toast": "../../components/toast/index",
+        "i-loading": "../../components/loading/index",
+        "i-icon": "../../components/icon/index"
+    }
+}

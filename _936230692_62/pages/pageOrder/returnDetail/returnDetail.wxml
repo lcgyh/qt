@@ -1,0 +1,83 @@
+<view wx:if="{{showMask}}">
+    <view class="status-box" style="background-color: #DD8282;">
+        <view class="status-content">
+            <view class="status-text">{{orderInfo.returnStatusStr}}</view>
+        </view>
+        <view class="status-remark" wx:if="{{orderInfo.remark}}">{{orderInfo.remark}}</view>
+    </view>
+    <view class="detail-box" wx:if="{{orderInfo.receiveAddressVo}}">
+        <view class="receive">
+            <view class="receive-icon">
+                <image mode="aspectFit" src="/images/oval.png"></image>
+            </view>
+            <view style="flex: 1;">
+                <view>
+                    <text style="margin-right: 40rpx;">{{orderInfo.receiveAddressVo.userName}}</text>
+                    <text>{{orderInfo.receiveAddressVo.userMobile}}</text>
+                </view>
+                <view>{{orderInfo.receiveAddressVo.userAddressStr}}</view>
+            </view>
+        </view>
+        <image mode="widthFix" src="/images/color_line.png" style="width: 100%;height: auto;"></image>
+    </view>
+    <view class="detail-box">
+        <view class="detail-box-title">
+            <view class="detail-title">退货说明</view>
+        </view>
+        <view class="refundDesc-box">
+            <view class="refundDesc" wx:for="{{orderInfo.refundDesc}}" wx:key="{{index}}">{{item}}</view>
+        </view>
+    </view>
+    <view class="detail-box">
+        <view class="detail-box-title">
+            <view class="detail-title">退款信息</view>
+        </view>
+        <view class="goods-list">
+            <view class="goods-block" data-pdSpuId="{{item.pdSpuId}}" wx:for="{{orderInfo.orderReturnDetails}}" wx:key="{{item.orderId}}">
+                <view class="goods-img">
+                    <image mode="aspectFit" src="{{fileDomain}}{{item.mainPicUrl}}?x-oss-process=image/resize,m_lfit,w_600,h_0/quality,q_100"></image>
+                </view>
+                <view class="order-content">
+                    <view style="flex:1;">
+                        <view class="goods-title">{{item.spuName}}</view>
+                        <view class="goods-tpye">{{item.displayName==''||item.displayName==null?'':item.displayName}}</view>
+                    </view>
+                    <view class="price-number">
+                        <view class="goods-price">
+                            <text>￥</text>{{item.price}}</view>
+                        <view class="goods-number">×{{item.qty}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="detail-box" style="padding-bottom: 160rpx;">
+        <view class="summary">
+            <view class="summary-title">退货原因</view>
+            <view class="summary-value">{{orderInfo.returnReason}}</view>
+        </view>
+        <view class="summary">
+            <view class="summary-title">退货件数</view>
+            <view class="summary-value">{{orderInfo.qtySum}}</view>
+        </view>
+        <view class="summary">
+            <view class="summary-title">预计退款金额</view>
+            <view class="summary-value">{{orderInfo.expectAmount}}</view>
+        </view>
+        <view class="summary">
+            <view class="summary-title">退款时间</view>
+            <view class="summary-value">{{orderInfo.createTime}}</view>
+        </view>
+        <view class="summary">
+            <view class="summary-title">退款编号</view>
+            <view class="summary-value">{{orderInfo.orderReturnNo}}</view>
+        </view>
+    </view>
+    <view class="status-button" wx:if="{{statusBox}}">
+        <view bindtap="returnCancel" class="left-button" data-orderReturnId="{{orderInfo.orderReturnId}}" wx:if="{{statusOne}}">撤销申请</view>
+        <view bindtap="writeExpress" class="right-button" data-orderReturnId="{{orderInfo.orderReturnId}}" wx:if="{{statusTwo}}">填写单号</view>
+    </view>
+</view>
+<login customStyle="margin-top: 140px;" show="{{showLogin}}"></login>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

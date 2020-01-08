@@ -1,0 +1,52 @@
+<view>
+    <view class="coupon-block can-use">
+        <view class="coupon-block-top">
+            <view class="coupon-block-top-left">
+                <view class="coupon-title">{{item.couponName}}</view>
+                <view class="coupon-info">
+                    <view wx:if="{{item.platform==1}}">仅线上可用</view>
+                    <view wx:elif="{{item.platform==2}}">线上线下可用</view>
+                </view>
+                <view class="coupon-time">有效期：{{item.couponStartValidity}} - {{item.couponEndValidity}}</view>
+            </view>
+            <view class="coupon-block-top-right">
+                <view class="coupon-value">{{item.couponMoney}}<view class="coupon-unit">￥</view>
+                </view>
+                <view class="coupon-rule">{{item.couponFullAmount==0?'无门槛优惠券':'满'+item.couponFullAmount+'可用'}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="barcode-box" wx:if="{{couponDetailCode}}">
+        <view class="barcode-title">出示条形码给店员，POS结账时可使用</view>
+        <canvas canvasId="barcode" class="barcode"></canvas>
+        <view class="barcode-subtitle">券编码：{{couponDetailCode}}</view>
+    </view>
+    <view class="coupon-txt">
+        <view class="txt-title">优惠券使用说明</view>
+        <view style="margin-bottom: 30rpx;">
+            <view class="txt-subtitle">
+                <view></view>适用商品范围</view>
+            <view class="txt-content">{{spuScope}}</view>
+        </view>
+        <view style="margin-bottom: 30rpx;" wx:if="{{couponRemark.length>0}}">
+            <view class="txt-subtitle">
+                <view></view>使用备注</view>
+            <view class="txt-content">
+                <view wx:for="{{couponRemark}}" wx:key="{{index}}">{{item}}</view>
+            </view>
+        </view>
+        <view>
+            <view class="txt-subtitle">
+                <view></view>其他说明</view>
+            <view class="txt-content">
+                <view>1、Qtools优惠券仅限在Qtools APP/小程序/线下门店中使用，优惠券所提供的各项服务的所有权和运作权均归苏州蔻兔科技有限公司（以下简称“蔻兔”）所有。</view>
+                <view>2、优惠券应在劵面规定的有效期内使用，过期作废。</view>
+                <view>3、如蔻兔已发放的优惠券存在有失公平等不符合运营目的的情形（包括但不限于发劵类别失误、价格配置失误），蔻兔有权将优惠券或使用优惠券的订单进行冻结或关闭。已领取未使用的券将进行冻结；已使用优惠券并支付成功的订单将按交易失败处理，已实际支付的款项将按原支付路径进行退款，优惠券不予退回。</view>
+                <view>4、优惠券对同一用户领取、使用优惠券有规定时，如违反规则使用蔻兔有权将已使用优惠券的订单做关闭并按交易失败处理。已实际支付的款项将按原支付路径进行退款，优惠券不予退回。同一用户指的是：根据用户登录或使用的Qtools账号，蔻兔根据其关联信息判断实际为同一使用者。关联信息包括但不限于：同一手机号、同一支付账号、同一身份证号、同一设备号。</view>
+                <view>5、根据不同活动规则，更多优惠券使用细则将根据实际使用条件与环境在券面进行备注说明。</view>
+                <view>6、对于因电信系统或互联网网络故障、计算机故障或病毒、信息损坏或丢失、计算机系统问题或其它任何不可抗力原因而产生损失，蔻兔不承担任何责任，但尽力减少因此而给用户造成的影响。</view>
+            </view>
+        </view>
+    </view>
+</view>
+<i-toast id="toast"></i-toast>

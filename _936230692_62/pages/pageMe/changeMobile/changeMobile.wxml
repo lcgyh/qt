@@ -1,0 +1,21 @@
+<view>
+    <view class="cell">
+        <input bindinput="mobileInput" maxlength="13" placeholder="请输入新的手机号码" placeholderClass="input-holder" type="number" value="{{mobile}}"></input>
+    </view>
+    <view class="cell last-cell">
+        <input bindinput="codeInput" maxlength="4" placeholder="输入验证码" placeholderClass="input-holder" type="number" value="{{identifyCode}}"></input>
+        <view bindtap="getCode" class="code">
+            <view class="getcode">
+                <i-count-down bindcallback="countFinish" clearTimer="{{clearTimer}}" countdownClass="countDown" target="{{targetTime}}" wx:if="{{showCountDown}}"></i-count-down>{{getCodeTxt}}</view>
+        </view>
+    </view>
+    <view class="change-tips">
+        <view>手机修改后，登录手机号将同步更换</view>
+        <view>请确保授权手机号与更改后的手机号一致</view>
+    </view>
+    <view bindtap="save" class="save">
+        <view>确定</view>
+    </view>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

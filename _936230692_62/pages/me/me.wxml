@@ -1,0 +1,124 @@
+<navigationBar hideBack="{{true}}" statusBarHeight="{{statusBarHeight}}" title="我的" windowWidth="{{windowWidth}}" wx:if="{{scrollTop>50}}"></navigationBar>
+<view wx:if="{{showMask}}">
+    <view class="me-header" style="padding-top:{{statusBarHeight+42}}px">
+        <view class="message"></view>
+        <view bindtap="goJump" class="me-info" data-url="/pages/pageMe/meDetail/meDetail">
+            <view class="me-avatar">
+                <image src="{{userPic?userPic:'/images/loading.png'}}"></image>
+            </view>
+            <view class="me-detail">
+                <block wx:if="{{userInfo}}">
+                    <view class="me-detail-name">{{userInfo.name?userInfo.name:''}}</view>
+                    <view catchtap="goJump" class="me-detail-info" data-url="/pages/pageMe/grow/grow" wx:if="{{memberControl==1}}">
+                        <view class="me-info-level">
+                            <image mode="widthFix" src="/images/me/member{{userInfo.level?userInfo.level:1}}.png"></image>{{levelName}}</view>
+                        <view class="me-info-grow">
+                            <text class="all-arrow all-arrow-little all-arrow-white">成长值：{{userInfo.growthValue?userInfo.growthValue:0}}</text>
+                        </view>
+                    </view>
+                </block>
+                <block wx:else>登录/注册</block>
+            </view>
+        </view>
+        <view class="me-special">
+            <view bindtap="goJump" class="me-special-cell" data-url="/pages/pageMe/coupon/coupon">
+                <view>{{userInfo?userInfo.couponNum:'—'}}</view>
+                <view>优惠券</view>
+            </view>
+            <view bindtap="goWeb" class="me-special-cell" wx:if="{{memberControl==1}}">
+                <view>{{userInfo?userInfo.privilegeNum:'—'}}</view>
+                <view>免邮特权</view>
+            </view>
+            <view bindtap="goJump" class="me-special-cell" data-url="/pages/pageMe/collect/collect">
+                <view>{{userInfo?userInfo.collectNum:'—'}}</view>
+                <view>收藏</view>
+            </view>
+        </view>
+        <view catchtap="goJump" class="me-member" data-url="/pages/pageMe/memberCenter/memberCenter" wx:if="{{memberControl==1}}">
+            <image mode="widthFix" src="/images/me/go_member.png"></image>
+        </view>
+    </view>
+    <view class="me-order-box">
+        <view class="me-order">
+            <view bindtap="goJump" class="me-order-title" data-url="/pages/pageOrder/orderList/orderList?index=0">我的订单<view class="all-arrow all-arrow-small all-arrow-gray">全部订单</view>
+            </view>
+            <view class="me-order-content">
+                <view bindtap="goJump" data-url="/pages/pageOrder/orderList/orderList?index=1">
+                    <image class="me-order-icon" mode="widthFix" src="/images/me/order1.png"></image>
+                    <text class="me-order-text">待付款</text>
+                    <view class="me-order-dot" wx:if="{{orderInfo&&orderInfo.waitPayNum>0}}">{{orderInfo.waitPayNum>=999?'···':orderInfo.waitPayNum}}</view>
+                </view>
+                <view bindtap="goJump" data-url="/pages/pageOrder/orderList/orderList?index=2">
+                    <image class="me-order-icon" mode="widthFix" src="/images/me/order2.png"></image>
+                    <text class="me-order-text">待发货</text>
+                    <view class="me-order-dot" wx:if="{{orderInfo&&orderInfo.waitDeliveryNum>0}}">{{orderInfo.waitDeliveryNum>=999?'···':orderInfo.waitDeliveryNum}}</view>
+                </view>
+                <view bindtap="goJump" data-url="/pages/pageOrder/orderList/orderList?index=3">
+                    <image class="me-order-icon" mode="widthFix" src="/images/me/order3.png"></image>
+                    <text class="me-order-text">待收货</text>
+                    <view class="me-order-dot" wx:if="{{orderInfo&&orderInfo.waitReceiveNum>0}}">{{orderInfo.waitReceiveNum>=999?'···':orderInfo.waitReceiveNum}}</view>
+                </view>
+                <view bindtap="goJump" data-url="/pages/pageOrder/orderList/orderList?index=4">
+                    <image class="me-order-icon" mode="widthFix" src="/images/me/order4.png"></image>
+                    <text class="me-order-text">待评价</text>
+                    <view class="me-order-dot" wx:if="{{orderInfo&&orderInfo.waitAppraiseNum>0}}">{{orderInfo.waitAppraiseNum>=999?'···':orderInfo.waitAppraiseNum}}</view>
+                </view>
+                <view bindtap="goJump" data-url="/pages/pageOrder/orderList/orderList?index=-1">
+                    <image class="me-order-icon" mode="widthFix" src="/images/me/order5.png"></image>
+                    <text class="me-order-text">售后/退款</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="goActivity" class="me-ad" wx:if="{{memberControl==1&&activityModule}}">
+        <image mode="widthFix" src="{{activityModule.activityModulePic}}"></image>
+    </view>
+    <view class="me-function-box">
+        <view class="me-function">
+            <view class="me-function-title">服务中心</view>
+            <view class="me-function-content">
+                <view bindtap="goShop">
+                    <image class="me-function-icon" mode="widthFix" src="/images/me/shop.png"></image>
+                    <view class="me-function-text">我的门店</view>
+                    <view class="me-function-dot" wx:if="{{shopName}}">
+                        <view class="me-function-dot-name">{{shopName}}</view>
+                        <view class="sjx"></view>
+                    </view>
+                </view>
+                <view bindtap="goJump" data-url="/pages/pageMe/address/address">
+                    <image class="me-function-icon" mode="widthFix" src="/images/me/address.png"></image>
+                    <view class="me-function-text">收货地址</view>
+                </view>
+                <view bindtap="callPhone" data-phone="400-7766-999">
+                    <image class="me-function-icon" mode="widthFix" src="/images/me/phone.png"></image>
+                    <view class="me-function-text">客服电话</view>
+                </view>
+                <view>
+                    <button bindcontact="handleContact" class="customer-talk" hoverClass="none" openType="contact" sessionFrom="udesk|{{name}}|{{pic}}|customer^{{customer_info_str}}">
+                        <image class="me-function-icon" mode="widthFix" src="/images/me/service.png"></image>
+                        <text>联系客服</text>
+                    </button>
+                </view>
+                <view bindtap="goJump" data-url="/pages/pageMe/feedback/feedback">
+                    <image class="me-function-icon" mode="widthFix" src="/images/me/feedback.png"></image>
+                    <view class="me-function-text">意见反馈</view>
+                </view>
+                <view bindtap="logout" wx:if="{{userInfo}}">
+                    <image class="me-function-icon" mode="widthFix" src="/images/me/logout.png"></image>
+                    <view class="me-function-text">退出登录</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="me-version">
+        <view>Design By Qtools V{{version}}</view>
+    </view>
+</view>
+<i-share bind:close="showShare" hideImg="{{false}}" show="{{showShare}}"></i-share>
+<view class="tips-cover" wx:if="{{memberControl==1&&showMeTips}}">
+    <image mode="widthFix" src="/images/me/me_new_tips.jpg"></image>
+    <view bindtap="hideMeTips">知道了</view>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>
+<canvas canvasId="shareCanvas" style="position: absolute;left: -999999rpx;top: 0; width: 400px; height: 9999px"></canvas>

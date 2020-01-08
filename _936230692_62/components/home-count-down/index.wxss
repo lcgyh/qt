@@ -1,0 +1,37 @@
+.home-count-down {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.home-count-down>view {
+    width: 32rpx;
+    height: 32rpx;
+    text-align: center;
+    line-height: 32rpx;
+    border-radius: 50%;
+    font-family: PingFangSC-Regular;
+    font-size: 18rpx;
+}
+
+.home-count-down>text {
+    font-size: 20rpx;
+    margin: 0 4rpx;
+}
+
+.dark>view {
+    background-color: #4A4A4A;
+    color: #FFFFFF;
+}
+
+.dark>text {
+    color: #333333;
+}
+
+.white>view {
+    background-color: #FFFFFF;
+}
+
+.white>text {
+    color: #FFFFFF;
+}

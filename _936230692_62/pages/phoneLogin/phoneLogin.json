@@ -1,0 +1,11 @@
+{
+    "disableSwipeBack": true,
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "i-count-down": "../../components/count-down/index",
+        "navigationBar": "../../components/navigationBar/index",
+        "i-toast": "../../components/toast/index",
+        "i-loading": "../../components/loading/index",
+        "i-icon": "../../components/icon/index"
+    }
+}

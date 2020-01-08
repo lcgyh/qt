@@ -1,0 +1,41 @@
+<navigationBar backHome="{{false}}" bindgoBack="goBack" hideBack="{{from=='bannerInfo'||from=='home'}}" statusBarHeight="{{statusBarHeight}}" title="选择服务门店" windowWidth="{{windowWidth}}"></navigationBar>
+<view wx:if="{{showMask}}">
+    <view class="search-box" style="top: {{statusBarHeight+38+5}}px;">
+        <input bindinput="searchinput" cursorSpacing="100" placeholder="搜索您要选择的门店" type="text" value="{{searchValue}}"></input>
+    </view>
+    <block wx:if="{{storeList.length>0}}">
+        <view class="store-list" style="padding-top: {{statusBarHeight+38+55}}px;">
+            <view class="store-wrap" wx:for="{{storeList}}" wx:key="item.spShopId">
+                <view class="store-name">
+                    <text>Qtools中国 | {{item.name}}</text>
+                </view>
+                <view class="store-address">
+                    <text>{{item.address?item.address:''}}</text>
+                </view>
+                <view class="store-distance ">距离：<text>{{item.shopDistance>0?item.shopDistance+'Km':'未知'}}</text>
+                </view>
+                <view class="store-ontime">营业时间：<text>{{item.openTime?item.openTime:'10:00 - 22:00'}}</text>
+                </view>
+                <view bindtap="chooseStore" class="store-pick" data-name="{{item.name}}" data-spShopId="{{item.spShopId}}">选择<i-icon color="#00C4B3" size="20" type="enter"></i-icon>
+                </view>
+            </view>
+        </view>
+        <view class="more-tips" style="padding-bottom: {{isIphoneX==1?240:180}}rpx">更多线下服务门店开通中</view>
+        <view bindtap="showTips" class="why-button" style="padding-bottom: {{isIphoneX==1?34:0}}px">
+            <view>为什么要选择线下服务门店</view>
+        </view>
+    </block>
+    <view class="store-empty" wx:else>
+        <view class="store-empty-img">
+            <image mode="widthFix" src="/images/store_empty.png"></image>
+        </view>
+        <view class="store-empty-txt">您搜索的服务门店不存在</view>
+    </view>
+</view>
+<van-popup bind:close="showTips" position="bottom" show="{{showTips}}">
+    <view bindtap="showTips" class="content">
+        <image mode="widthFix" src="/images/pickStore_tips.png"></image>
+    </view>
+</van-popup>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

@@ -1,0 +1,81 @@
+<view style="margin: 0 40rpx;" wx:if="{{showMask}}">
+    <view class="sign-number">当前阳光值：{{signNumber}}</view>
+    <view class="goods-list">
+        <view class="goods-block" wx:for="{{exchangeList}}" wx:key="{{index}}">
+            <view bindtap="showPreviewImg" class="goods-img" data-imgUrl="{{fileDomain+item.picUrl}}" data-type="{{item.type}}">
+                <image mode="aspectFit" src="{{fileDomain+item.picUrl}}" wx:if="{{item.type==1}}"></image>
+                <block wx:elif="{{item.type==2}}">
+                    <view class="title">
+                        <text>￥</text>{{item.couponMoney}}</view>
+                    <view class="subtitle">{{item.couponFullAmount==0?'无门槛优惠券':'满'+item.couponFullAmount+'减'+item.couponMoney}}</view>
+                </block>
+            </view>
+            <view class="goods-content">
+                <view class="goods-titlle">{{item.name}}</view>
+                <view class="goods-price" wx:if="{{item.type==1}}">{{item.describe}}</view>
+                <view class="goods-price" wx:elif="{{item.type==2}}">有效期至{{item.couponValidDate}}</view>
+                <view class="goods-price priceType">￥{{item.price}}</view>
+                <view class="goods-intro" wx:if="{{item.couponExplain}}">{{item.couponExplain}}</view>
+                <view class="goods-exchange">{{item.valueQty}}阳光值</view>
+                <view bindtap="exchangeEvent" class="goods-button {{item.presentStatus==0?'noExchange':'hasExchange'}}" data-index="{{index}}" data-presentStatus="{{item.presentStatus}}">
+                    <text wx:if="{{item.presentStatus==0}}">已兑完</text>
+                    <text wx:elif="{{item.presentStatus==1}}">查看兑换详情</text>
+                    <text wx:elif="{{item.presentStatus==2}}">兑换</text>
+                    <text wx:elif="{{item.presentStatus==3}}">阳光值不足</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="exchange-rule">
+        <view class="rule-title">兑换规则</view>
+        <view class="rule-content">
+            <view>
+                <text>1、</text>
+                <view>阳光值兑换时间：2019.10.17 10:00 - 2019.11.17 24:00，请赢取阳光值用户务必在该周期内填写信息兑换，否则过期阳光值失效</view>
+            </view>
+            <view>
+                <text>2、</text>
+                <view>每种奖品只可兑换一次，请根据实际阳光值进行合理选择</view>
+            </view>
+            <view>
+                <text>3、</text>
+                <view>优惠券兑换后即可下单时使用；不可与其他优惠券叠加使用、不可兑现、不找零</view>
+            </view>
+            <view>
+                <text>4、</text>
+                <view>实物礼品将在7个工作日内寄出</view>
+            </view>
+            <view>
+                <text>5、</text>
+                <view>实物礼品如非质量问题不接受退换货，非质量问题产生的运费由兑奖者自行承担</view>
+            </view>
+            <view>
+                <text>6、</text>
+                <view>阳光值一旦消耗不可再退还，兑换时请慎重考虑</view>
+            </view>
+            <view>
+                <text>7、</text>
+                <view>奖品数量有限，先到先得</view>
+            </view>
+            <view>
+                <text>8、</text>
+                <view>若发现人为刷单/作弊情况，Qtools将终止/取消兑奖资格</view>
+            </view>
+            <view>本活动解释权归Qtools所有</view>
+        </view>
+    </view>
+</view>
+<i-loading id="data-loading"></i-loading>
+<van-popup bind:close="showSuccess" catchtouchmove="ture" show="{{showSuccess}}">
+    <view bindtap="showSuccess" class="showSuccess-content">
+        <view class="success-title">兑换成功</view>
+        <view class="success-tips">您已成功兑换“{{couponSuccessName}}”优惠券，赶快去使用吧</view>
+        <image class="success-img" mode="aspectFit" src="/images/activity/exchange_success.png"></image>
+        <view catchtap="goHome" class="success-button">去使用</view>
+    </view>
+</van-popup>
+<van-popup bind:close="hidePreviewImg" catchtouchmove="ture" customClass="showPreviewImg" position="bottom" show="{{showPreviewImg}}">
+    <view bindtap="hidePreviewImg" class="previewImg">
+        <image class="slide-image" mode="aspectFit" src="{{previewImgUrl}}"></image>
+    </view>
+</van-popup>

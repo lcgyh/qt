@@ -1,0 +1,37 @@
+<view class="baby-info-pages">
+    <view class="baby-photo-action">
+        <view bindtap="uploadFile" class="photos">
+            <image class="photo-baby" src="{{fileDomain+photo}}" wx:if="{{photo!=''}}"></image>
+            <image class="icon-camera" src="/images/babyInfo_camera.png"></image>
+        </view>
+        <view class="tips">点击上传宝宝头像</view>
+    </view>
+    <form bindsubmit="formSubmit" class="form-action">
+        <view class="row">
+            <view class="row-title">宝宝昵称</view>
+            <view class="info-wrap">
+                <input bindinput="setFontLen" maxlength="10" name="name" placeholder="请输入10字内的昵称" type="text" value="{{name}}"></input>
+                <text class="font-len">{{currentWordNumber}}/10</text>
+            </view>
+        </view>
+        <view class="row row-sex">
+            <view class="row-title">宝宝性别</view>
+            <picker bindchange="bindPickerChange" range="{{array}}" value="{{sexIndex}}">
+                <view class="info-wrap all-arrow all-arrow-normal all-arrow-black">
+          {{sexIndex!=''?array[sexIndex]:'点击选择宝宝的性别'}}
+        </view>
+            </picker>
+        </view>
+        <view class="row">
+            <view class="row-title">宝宝生日</view>
+            <picker bindchange="bindDateChange" end="{{endTime}}" mode="date" start="{{startTime}}" value="{{date}}">
+                <view class="info-wrap all-arrow all-arrow-normal all-arrow-black">
+          {{dateStr?dateStr:'点击选择宝宝的生日'}}
+        </view>
+            </picker>
+        </view>
+        <button class="submit-btn" formType="submit" loading="{{loading}}" style="bottom: {{isIphoneX==1?34:0}}px">保存</button>
+    </form>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

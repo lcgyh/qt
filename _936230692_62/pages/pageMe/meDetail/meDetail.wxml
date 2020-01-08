@@ -1,0 +1,34 @@
+<view class="container" wx:if="{{showMask}}">
+    <view style="margin-bottom: 30rpx;">
+        <i-cell-group>
+            <i-cell isLink bind:click="onChoose" iClass="me-cell" title="我的头像" valueStyle="font-size:0;">
+                <image class="avatar-img" slot="footer" src="{{avatar}}"></image>
+            </i-cell>
+            <i-cell iClass="me-cell" title="我的昵称">
+                <input bindinput="nameInput" class="nameInput" maxlength="10" placeholder="请输入10字内的昵称" slot="footer" type="text" value="{{nickname}}"></input>
+            </i-cell>
+            <picker catchchange="bindDateChange" end="{{endTime}}" mode="date" start="{{startTime}}" value="{{birthday}}">
+                <view class="me-cell i-cell i-cell-access">
+                    <view class="i-cell-bd">
+                        <view class="i-cell-text">我的生日</view>
+                    </view>
+                    <view class="i-cell-ft" style="font-size:24rpx;color:#999999;">{{birthdayStr?birthdayStr:'点击选择自己生日'}}</view>
+                </view>
+            </picker>
+            <i-cell isLink iClass="me-cell" title="绑定手机号" url="/pages/pageMe/changeMobile/changeMobile" value="{{mobile?mobile:'绑定手机号'}}" valueStyle="font-size:24rpx;color:#999999;"></i-cell>
+            <i-cell isLink bind:click="chooseLive" iClass="me-cell" title="居住城市" value="{{cityShowVal?cityShowVal:'选择地区'}}" valueStyle="font-size:24rpx;color:#999999;"></i-cell>
+        </i-cell-group>
+    </view>
+    <view class="baby-list" wx:if="{{babyList.length>0}}">
+        <i-cell-group>
+            <i-cell isLink bind:click="goBabyInfo" data-index="{{index}}" iClass="me-cell" title="宝宝名称" value="{{item.name}}" valueStyle="font-size:24rpx;color:#999999;" wx:for="{{babyList}}" wx:key="{{index}}"></i-cell>
+        </i-cell-group>
+    </view>
+    <view bindtap="goBabyInfo" class="add-baby" data-index="-1" wx:if="{{babyList.length<5}}">添加宝宝</view>
+    <view bindtap="savePersonInfo" class="save" style="bottom: {{isIphoneX==1?34:0}}px">保存</view>
+</view>
+<van-popup bind:click-overlay="chooseClose" catchtouchmove="ture" position="bottom" show="{{showChoose}}">
+    <van-area areaList="{{areaList}}" bind:cancel="chooseClose" bind:confirm="chooseSure" value="{{resetValue}}"></van-area>
+</van-popup>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

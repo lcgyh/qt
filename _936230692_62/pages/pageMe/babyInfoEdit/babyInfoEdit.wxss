@@ -1,0 +1,128 @@
+.baby-info-pages {
+    padding: 120rpx 40rpx 0;
+    font-size: 22rpx;
+    color: #9B9B9B;
+}
+
+.baby-info-pages .baby-photo-action {
+    text-align: center;
+    margin-bottom: 70rpx;
+}
+
+.baby-info-pages .baby-photo-action .photos {
+    display: inline-block;
+    width: 176rpx;
+    height: 176rpx;
+    border: 1px solid #EEECEC;
+    box-shadow: 0 19rpx 25rpx 0 rgba(0,0,0,0.05);
+    border-radius: 50%;
+    margin-bottom: 30rpx;
+    position: relative;
+    overflow: hidden;
+}
+
+.baby-info-pages .baby-photo-action .icon-camera {
+    width: 42rpx;
+    height: 36rpx;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.baby-info-pages .baby-photo-action .photo-baby {
+    width: 100%;
+    height: 100%;
+}
+
+.baby-info-pages .form-action .row {
+    border-bottom: 1px solid #9B9B9B;
+    margin-bottom: 40rpx;
+}
+
+.baby-info-pages .row .row-title {
+    line-height: 40rpx;
+    margin-bottom: 10rpx;
+}
+
+.baby-info-pages .row .info-wrap {
+    height: 78rpx;
+    line-height: 78rpx;
+    font-size: 32rpx;
+    position: relative;
+    color: #9B9B9B;
+}
+
+.baby-info-pages .row input {
+    height: 100%;
+    color: #464646;
+    font-family: PingFangSC-Semibold;
+    font-size: 32rpx;
+}
+
+.baby-info-pages .row .font-len {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20rpx;
+    color: #464646;
+}
+
+.baby-info-pages .row .icon-arrow {
+    width: 20rpx;
+    height: 20rpx;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20rpx;
+    color: #464646;
+}
+
+.baby-info-pages .van-tabs--line {
+    padding-top: 50rpx;
+}
+
+.baby-info-pages .van-tabs--line .van-tabs__wrap {
+    height: auto;
+}
+
+.baby-info-pages .van-tab {
+    font-size: 22rpx;
+    line-height: 40rpx;
+    padding: 0;
+    color: #000000;
+}
+
+.van-tabs__nav {
+    padding-bottom: 8rpx;
+}
+
+.baby-info-pages .van-tab--active {
+    color: #00C4B3;
+}
+
+.baby-info-pages .van-tabs__line {
+    width: 40rpx!important;
+    height: 4rpx!important;
+    background: #00C4B3;
+}
+
+.baby-info-pages .submit-btn {
+    width: 100%;
+    border-radius: 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    font-size: 40rpx;
+    color: #E1DCC7;
+    height: 110rpx;
+    line-height: 110rpx;
+    background: #464646;
+}
+
+.form-action {
+    font-size: 22rpx;
+    color: #9B9B9B;
+}

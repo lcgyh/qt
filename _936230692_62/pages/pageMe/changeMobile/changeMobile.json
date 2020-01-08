@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "修改手机号",
+    "usingComponents": {
+        "i-count-down": "../../../components/count-down/index",
+        "i-toast": "../../../components/toast/index",
+        "i-loading": "../../../components/loading/index",
+        "i-icon": "../../../components/icon/index"
+    }
+}

@@ -1,0 +1,237 @@
+<view wx:if="{{showMask}}">
+    <view class="status-box" style="background-color: {{backgroundColor}};">
+        <view class="status-content">
+            <view class="status-text">{{orderInfo.orderTitleDesc}}</view>
+            <view class="status-pickCode" wx:if="{{(orderInfo.orderStatus==45||orderInfo.orderStatus==46)&&orderInfo.orderType==1}}">取货码 {{orderInfo.pickUpCode}}</view>
+        </view>
+        <view class="status-remark" wx:if="{{orderInfo.remark}}">{{orderInfo.remark}}</view>
+    </view>
+    <view class="user-address-box" wx:if="{{orderInfo.orderType!=1}}">
+        <view bindtap="checkExpress" class="expressContext" data-expressDetailContext="{{orderInfo.expressDetailContext}}" wx:if="{{orderInfo.expressContext}}">
+            <image class="express-icon" mode="aspectFit" src="/images/express.png"></image>
+            <view style="flex: 1;padding:0 20rpx 0 66rpx;">
+                <view>{{orderInfo.expressContext}}</view>
+                <view wx:if="{{orderInfo.expressDetailContext}}">{{orderInfo.expressDetailContext}}</view>
+            </view>
+        </view>
+        <view class="express-man" wx:if="{{orderInfo.showMiniRider}}">
+            <image class="express-icon" mode="aspectFit" src="/images/rider.png"></image>
+            <view style="flex: 1;padding:0 20rpx 0 66rpx;display: flex;align-items: center;">
+                <view class="express-man-name" wx:if="{{orderInfo.orderStatus==62}}">{{orderInfo.miniRiderText1}}<text bindtap="contact" data-mobile="{{orderInfo.shopVo.telephone}}" style="color:#00C4B3;">联系门店</text>{{orderInfo.miniRiderText2}}</view>
+                <view class="express-man-name" wx:else>{{orderInfo.miniRiderText}}</view>
+                <view class="express-man-button" wx:if="{{orderInfo.showMiniRiderButton}}">
+                    <view bindtap="contact" data-mobile="{{orderInfo.expressManMobile}}">呼叫</view>
+                    <view bindtap="checkPosition">查看位置</view>
+                </view>
+            </view>
+        </view>
+        <view class="express-line" wx:if="{{orderInfo.showMiniRider||orderInfo.expressContext}}"></view>
+        <view class="user-address-content">
+            <image class="user-address-icon" mode="aspectFit" src="/images/oval.png"></image>
+            <view style="flex: 1;padding-left: 66rpx;">
+                <view style="display: flex;">
+                    <view class="user-address-name">{{orderInfo.receiveAddressVo.receiveName}}</view>
+                    <view class="user-address-phone">{{orderInfo.receiveAddressVo.receiveMobile}}</view>
+                </view>
+                <view class="user-address">{{orderInfo.receiveAddressVo.addressDetail}}</view>
+            </view>
+        </view>
+        <image mode="widthFix" src="/images/color_line.png" style="width: 100%;height: auto;"></image>
+    </view>
+    <view class="address-box" wx:if="{{orderInfo.orderType==1}}">
+        <view class="address-box-title">
+            <view class="address-title">自提地址</view>
+            <view class="address-box-button">
+                <view bindtap="contact" class="contact" data-mobile="{{orderInfo.shopVo.telephone}}">联系门店</view>
+                <view bindtap="goStore" class="gostore" data-address="{{orderInfo.shopVo.address}}" data-lat="{{orderInfo.shopVo.lat}}" data-lng="{{orderInfo.shopVo.lng}}" data-name="{{orderInfo.shopVo.name}}">前往门店</view>
+            </view>
+        </view>
+        <view class="store-time">营业时间：{{orderInfo.shopVo.openTime}}</view>
+        <view class="store-name">服务门店：{{orderInfo.shopVo.name}}</view>
+        <view class="store-address">门店地址：{{orderInfo.shopVo.address}}</view>
+        <image mode="widthFix" src="/images/color_line.png" style="width: 100%;height: auto;"></image>
+    </view>
+    <view style="background-color: #F9F9F9;width:100%;height: 20rpx;margin: 30rpx 0;"></view>
+    <view class="detail-box" wx:if="{{orderInfo.productListVo.length>0}}">
+        <view class="detail-box-title">
+            <view class="detail-title">商品信息</view>
+            <view class="detail-box-button">
+                <button bindcontact="handleContact" class="customer-talk" openType="contact" sessionFrom="udesk|{{userName}}|{{userPic}}|customer^{{customer_info_str}}|note^{{note_info_str}}">联系客服</button>
+            </view>
+        </view>
+        <view class="goods-list">
+            <view bindtap="godetail" class="goods-block" data-pdSpuId="{{item.pdSpuId}}" wx:for="{{orderInfo.productListVo}}" wx:key="{{item.orderId}}">
+                <view style="display: flex;">
+                    <view class="goods-img">
+                        <image mode="aspectFit" src="{{fileDomain}}{{item.mainPicUrl}}?x-oss-process=image/resize,m_lfit,w_600,h_0/quality,q_100"></image>
+                    </view>
+                    <view class="order-content">
+                        <view style="flex:1;">
+                            <view class="goods-title">{{item.name}}</view>
+                            <view class="goods-tpye">{{item.displayName==''||item.displayName==null?'':item.displayName}}</view>
+                        </view>
+                        <view class="price-number">
+                            <view class="goods-price">
+                                <text>￥</text>{{item.price}}</view>
+                            <view class="goods-number">
+                                <text wx:if="{{item.giftQty>0}}">（含赠品{{item.giftQty}}件）</text>
+                                <text>×{{item.qty}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="afterSale-box" wx:if="{{item.showAfterButton||item.orderReturnQty>0}}">
+                    <view class="return-tips" wx:if="{{item.orderReturnQty>0}}">退款{{item.orderReturnQty}}件</view>
+                    <view catchtap="{{item.event}}" class="afterSale" data-item="{{item}}" data-orderReturnId="{{item.refundId}}" wx:if="{{item.showAfterButton}}">{{item.refundText}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="detail-box" wx:if="{{orderInfo.orderProductListVo.length>0}}" wx:for="{{orderInfo.orderProductListVo}}" wx:for-index="idx" wx:for-item="it" wx:key="{{index}}">
+        <view class="detail-box-title">
+            <view class="detail-title">{{it.wsName}}</view>
+            <view class="detail-box-button">
+                <button bindcontact="handleContact" class="customer-talk" openType="contact" sessionFrom="udesk|{{userName}}|{{userPic}}|customer^{{customer_info_str}}|note^{{note_info_str}}">联系客服</button>
+            </view>
+        </view>
+        <view class="goods-list">
+            <view bindtap="godetail" class="goods-block" data-pdSpuId="{{item.pdSpuId}}" wx:for="{{it.productListVo}}" wx:key="{{item.orderId}}">
+                <view style="display: flex;">
+                    <view class="goods-img">
+                        <image mode="aspectFit" src="{{fileDomain}}{{item.mainPicUrl}}?x-oss-process=image/resize,m_lfit,w_600,h_0/quality,q_100"></image>
+                    </view>
+                    <view class="order-content">
+                        <view style="flex:1;">
+                            <view class="goods-title">{{item.name}}</view>
+                            <view class="goods-tpye">{{item.displayName==''||item.displayName==null?'':item.displayName}}</view>
+                        </view>
+                        <view class="price-number">
+                            <view class="goods-price">
+                                <text>￥</text>{{item.price}}</view>
+                            <view class="goods-number">
+                                <text wx:if="{{item.giftQty>0}}">（含赠品{{item.giftQty}}件）</text>
+                                <text>×{{item.qty}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="afterSale-box" wx:if="{{item.showAfterButton||item.orderReturnQty>0}}">
+                    <view class="return-tips" wx:if="{{item.orderReturnQty>0}}">退款{{item.orderReturnQty}}件</view>
+                    <view catchtap="{{item.event}}" class="afterSale" data-item="{{item}}" data-orderReturnId="{{item.refundId}}" wx:if="{{item.showAfterButton}}">{{item.refundText}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view style="background-color: #F9F9F9;width:100%;height: 20rpx;margin: 30rpx 0;"></view>
+    <block wx:if="{{orderInfo.giftProductList.length>0}}">
+        <view class="detail-box">
+            <view class="detail-box-title">
+                <view class="detail-title">赠品信息</view>
+            </view>
+            <view class="goods-list">
+                <view class="goods-block" wx:for="{{orderInfo.giftProductList}}" wx:key="{{index}}">
+                    <view style="display: flex;">
+                        <view class="goods-img">
+                            <image mode="aspectFit" src="{{fileDomain}}{{item.mainPicUrl}}?x-oss-process=image/resize,m_lfit,w_600,h_0/quality,q_100"></image>
+                        </view>
+                        <view class="order-content">
+                            <view style="flex:1;">
+                                <view class="goods-title">{{item.name?item.name:''}}</view>
+                            </view>
+                            <view class="price-number">
+                                <view class="goods-price">赠品</view>
+                                <view class="goods-number">
+                                    <text>×{{item.qty}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="afterSale-box" wx:if="{{item.showAfterButton||item.orderReturnQty>0}}">
+                        <view class="return-tips" wx:if="{{item.orderReturnQty>0}}">退款{{item.orderReturnQty}}件</view>
+                        <view catchtap="{{item.event}}" class="afterSale" data-item="{{item}}" data-orderReturnId="{{item.refundId}}" wx:if="{{item.showAfterButton}}">{{item.refundText}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view style="background-color: #F9F9F9;width:100%;height: 20rpx;margin: 30rpx 0;"></view>
+    </block>
+    <view class="detail-summary">
+        <view class="detail-summary-title">
+            <view class="detail-title">结算信息</view>
+        </view>
+        <view class="summary">
+            <view class="summary-title">商品原价</view>
+            <view class="summary-value">￥{{orderInfo.amount}}</view>
+        </view>
+        <view class="summary" style="margin-top: 30rpx;" wx:if="{{orderInfo.promotionDeductAmount>0}}">
+            <view class="summary-title">活动优惠</view>
+            <view class="summary-value">-￥{{orderInfo.promotionDeductAmount}}</view>
+        </view>
+        <view class="summary middle">
+            <view class="summary-title">优惠券抵扣</view>
+            <view class="summary-value">{{orderInfo.deductionAmount==0?'未使用优惠券':'-￥'+orderInfo.deductionAmount}}</view>
+        </view>
+        <view class="summary send-price" wx:if="{{orderInfo.orderType==5}}">
+            <view class="summary-title">税费</view>
+            <view class="summary-value">已包税</view>
+        </view>
+        <view class="summary send-price" wx:if="{{orderInfo.orderType!=1}}">
+            <view class="summary-title">邮费</view>
+            <view class="summary-value" wx:if="{{orderInfo.expressType==3}}">邮费到付</view>
+            <view class="summary-value" wx:else>{{orderInfo.standardExpressAmount==0?'包邮':'￥'+orderInfo.standardExpressAmount}}</view>
+        </view>
+        <view class="summary send-price" wx:if="{{orderInfo.freeExpressCardDesc}}">
+            <view class="summary-title">免邮特权卡</view>
+            <view class="summary-value">{{orderInfo.freeExpressCardDesc}}</view>
+        </view>
+        <view class="total">
+            <text>实际支付</text>
+            <text>￥{{orderInfo.payAmount}}</text>
+        </view>
+    </view>
+    <view class="address-box" wx:if="{{orderInfo.orderType==2||orderInfo.orderType==3}}">
+        <view class="address-box-title">
+            <view class="address-title">门店信息</view>
+            <view class="address-box-button">
+                <view bindtap="contact" class="contact" data-mobile="{{orderInfo.shopVo.telephone}}">联系门店</view>
+                <view bindtap="goStore" class="gostore" data-address="{{orderInfo.shopVo.address}}" data-lat="{{orderInfo.shopVo.lat}}" data-lng="{{orderInfo.shopVo.lng}}" data-name="{{orderInfo.shopVo.name}}">前往门店</view>
+            </view>
+        </view>
+        <view class="store-time">营业时间：{{orderInfo.shopVo.openTime}}</view>
+        <view class="store-name">服务门店：{{orderInfo.shopVo.name}}</view>
+        <view class="store-address">门店地址：{{orderInfo.shopVo.address}}</view>
+    </view>
+    <view style="background-color: #F9F9F9;width:100%;height: 20rpx;margin: 30rpx 0;"></view>
+    <view class="detail-summary" style="padding-bottom: 240rpx;">
+        <view class="detail-summary-title">
+            <view class="detail-title">订单信息</view>
+        </view>
+        <view bindtap="copyOrderNo" class="summary">
+            <view class="summary-title">订单编号</view>
+            <view class="summary-value summary-orderNo">{{orderInfo.orderNo}}<text>复制</text>
+            </view>
+        </view>
+        <view class="summary middle">
+            <view class="summary-title">配送方式</view>
+            <view class="summary-value" wx:if="{{orderInfo.orderType==1}}">门店自提</view>
+            <view class="summary-value" wx:elif="{{orderInfo.orderType==2}}">即时配送</view>
+            <view class="summary-value" wx:else>快递邮寄</view>
+        </view>
+        <view class="summary send-price">
+            <view class="summary-title">支付方式</view>
+            <view class="summary-value" wx:if="{{orderInfo.paymentType==31}}">支付宝支付</view>
+            <view class="summary-value" wx:elif="{{orderInfo.paymentType==41||orderInfo.paymentType==51}}">微信支付</view>
+            <view class="summary-value" wx:else>未支付</view>
+        </view>
+        <view class="summary">
+            <view class="summary-title">下单时间</view>
+            <view class="summary-value">{{orderInfo.createtime}}</view>
+        </view>
+    </view>
+    <view class="status-button" wx:if="{{statusBox}}">
+        <view bindtap="{{leftEvent}}" class="left-button" data-orderId="{{orderInfo.orderId}}" wx:if="{{statusOne}}">{{leftText}}</view>
+        <view bindtap="{{rightEvent}}" class="right-button" data-orderId="{{orderInfo.orderId}}" wx:if="{{statusTwo}}">{{rightText}}</view>
+    </view>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>

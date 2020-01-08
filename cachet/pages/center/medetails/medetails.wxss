@@ -1,3 +1,0 @@
-/* pages/center/medetails/medetails.wxss */
-.name{text-align: right;}
-.hearderimg{width:90rpx;height:90rpx;border-radius: 50%;overflow: hidden;}

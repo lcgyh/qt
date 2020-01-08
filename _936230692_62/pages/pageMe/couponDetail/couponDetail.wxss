@@ -1,0 +1,178 @@
+page {
+    background-color: #f8f9f8;
+}
+
+.coupon-block {
+    background: #FFFFFF;
+    border-radius: 16rpx;
+    overflow: hidden;
+    margin: 24rpx 32rpx;
+}
+
+.coupon-block-top {
+    padding: 32rpx 32rpx 26rpx;
+    display: flex;
+    align-items: center;
+}
+
+.coupon-block-top-left {
+    flex: 1;
+}
+
+.coupon-title {
+    font-size: 32rpx;
+    font-weight: bold;
+}
+
+.can-use .coupon-title {
+    color: #333333;
+}
+
+.cannot-use .coupon-title {
+    color: #999999;
+}
+
+.coupon-info {
+    margin-top: 6rpx;
+    display: flex;
+    align-items: center;
+    min-height: 30rpx;
+}
+
+.coupon-info>view {
+    padding: 2rpx 10rpx;
+    border-style: solid;
+    border-width: 0.5px;
+    border-radius: 6rpx;
+    font-size: 18rpx;
+    margin-right: 10rpx;
+}
+
+.can-use .coupon-info>view {
+    border-color: #EC7A7F;
+    color: #EC7A7F;
+}
+
+.cannot-use .coupon-info>view {
+    color: #999999;
+    border-color: #999999;
+}
+
+.coupon-time {
+    font-size: 22rpx;
+    color: #999999;
+    margin-top: 14rpx;
+}
+
+.coupon-block-top-right {
+    margin-left: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.coupon-unit {
+    font-size: 30rpx;
+    font-weight: normal;
+    position: absolute;
+    left: -30rpx;
+    top: 2rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+}
+
+.coupon-value {
+    font-size: 90rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-weight: bold;
+    position: relative;
+}
+
+.can-use .coupon-unit,.can-use .coupon-value {
+    color: #EC7A7F;
+}
+
+.cannot-use .coupon-unit,.cannot-use .coupon-value {
+    color: #999999;
+}
+
+.coupon-rule {
+    font-size: 22rpx;
+    text-align: center;
+    margin-top: 10rpx;
+}
+
+.can-use .coupon-rule {
+    color: #666666;
+}
+
+.cannot-use .coupon-rule {
+    color: #999999;
+}
+
+.barcode-box {
+    margin: 0 32rpx;
+    background-color: #FFFFFF;
+    border-radius: 16rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24rpx 0;
+}
+
+.barcode-title {
+    font-size: 24rpx;
+    color: #999999;
+}
+
+.barcode {
+    width: 640rpx;
+    height: 300rpx;
+    margin: 14rpx 0;
+}
+
+.barcode-subtitle {
+    font-size: 20rpx;
+    color: #333333;
+}
+
+.coupon-txt {
+    margin-top: 24rpx;
+    padding: 32rpx;
+    background-color: #FFFFFF;
+}
+
+.txt-title {
+    text-align: center;
+    font-size: 32rpx;
+    color: #333333;
+    margin-bottom: 24rpx;
+}
+
+.txt-subtitle {
+    display: flex;
+    align-items: center;
+    font-size: 30rpx;
+    color: #333333;
+    margin-bottom: 16rpx;
+}
+
+.txt-subtitle>view {
+    width: 10rpx;
+    height: 10rpx;
+    background-color: #333;
+    border-radius: 50%;
+    margin-right: 4rpx;
+}
+
+.txt-content {
+    font-size: 24rpx;
+    color: #666666;
+    padding-left: 14rpx;
+    line-height: 46rpx;
+    text-align: justify;
+    text-align-last: left;
+}

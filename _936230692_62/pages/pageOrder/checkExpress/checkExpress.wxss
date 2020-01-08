@@ -1,0 +1,142 @@
+.noticebar {
+    font-family: PingFangHK-Regular;
+    font-size: 22rpx;
+    color: #FBC23B;
+    height: 50rpx;
+    line-height: 50rpx;
+    padding: 0 40rpx;
+    background-color: rgba(254,240,197,.57);
+}
+
+.tab-box {
+    width: 100%;
+    height: 100rpx;
+    background-color: #fff;
+    margin-bottom: 30rpx;
+}
+
+.tab-box .van-tab {
+    color: #464646;
+    font-size: 32rpx!important;
+    height: 44px;
+    overflow: hidden;
+}
+
+.tab-box .van-tab.van-tab--active {
+    color: #00C4B3;
+}
+
+.van-tabs__line {
+    background-color: #00C4B3!important;
+}
+
+.express-list-block {
+    padding: 0 40rpx 20rpx;
+}
+
+.express-number {
+    font-family: PingFangHK-Regular;
+    font-size: 32rpx;
+    color: #333333;
+}
+
+.express-company {
+    font-family: PingFangHK-Regular;
+    font-size: 28rpx;
+    color: #333333;
+    margin-top: 20rpx;
+    padding-bottom: 20rpx;
+    border-bottom: 1px solid #E2E2E2;
+}
+
+.express-list {
+    margin-top: 40rpx;
+    padding: 20rpx 0;
+    position: relative;
+}
+
+.express-list>view.line {
+    height: 100%;
+    border-right: 1px dashed #c9c9c9;
+    position: absolute;
+    left: 100rpx;
+    top: 0;
+}
+
+.express-list>.express-block:last-child {
+    padding-bottom: 0;
+}
+
+.express-block {
+    display: flex;
+    padding-bottom: 40rpx;
+    position: relative;
+}
+
+.express-block>.block {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #d8d8d8;
+    position: absolute;
+    top: 10rpx;
+    left: 100rpx;
+    z-index: 2;
+    margin-left: -3.5px;
+}
+
+.left-block {
+    width: 100rpx;
+}
+
+.left-block>text {
+    display: block;
+    width: 70rpx;
+    font-family: PingFangHK-Regular;
+    font-size: 24rpx;
+    color: #C9C9C9;
+    text-align: center;
+}
+
+.middle-block {
+    width: 1px;
+    border-right: 1px dashed #c9c9c9;
+}
+
+.middle-block>view.block {
+    width: 10rpx;
+    height: 10rpx;
+    border-radius: 50%;
+    background-color: #d8d8d8;
+}
+
+.right-block {
+    flex: 1;
+    margin-left: 40rpx;
+    overflow: hidden;
+}
+
+.express-title {
+    font-family: PingFangHK-Medium;
+    font-size: 24rpx;
+    color: #464646;
+}
+
+.express-new-title {
+    font-family: PingFangHK-Regular;
+    font-size: 28rpx;
+    color: #333333;
+}
+
+.express-new {
+    font-family: PingFangHK-Regular;
+    font-size: 24rpx;
+    color: #8E8E93;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: justify;
+    text-align-last: left;
+}

@@ -1,4 +1,0 @@
-<!--pages/center/contactUs/contactUs.wxml-->
-<view class="centerView text">
-  <view bindtap="callPhone">有问题请点击拨打电话:<text style="color:green">18888888888</text> </view>
-</view>

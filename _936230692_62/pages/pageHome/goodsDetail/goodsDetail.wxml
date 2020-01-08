@@ -1,0 +1,355 @@
+<navigationBar backHome="{{currentPage===1}}" bindgoBack="goBack" bindgoHome="goHome" statusBarHeight="{{statusBarHeight}}" title="{{titleName}}" windowWidth="{{windowWidth}}"></navigationBar>
+<view class="goods-detail-wrap" wx:if="{{showMask}}">
+    <view class="goods-detail" style="padding-bottom: {{isIphoneX==1?190:160}}rpx;padding-top: {{32+statusBarHeight+5}}px">
+        <view class="swiper-box">
+            <image class="activity_float_detail" mode="widthFix" src="{{fileDomain+goodsInfo.floatPic}}" wx:if="{{goodsInfo.floatPic}}"></image>
+            <swiper autoplay="{{false}}" bindchange="slideChange" duration="{{200}}" indicatorDots="{{false}}" interval="{{5000}}">
+                <swiper-item wx:for="{{goodsInfo.pic}}" wx:key="{{item}}">
+                    <image catchtap="previewImg" class="slide-image" data-index="{{index}}" mode="aspectFit" src="{{fileDomain+item}}?x-oss-process=image/resize,m_lfit,w_600,h_0/quality,q_100"></image>
+                </swiper-item>
+            </swiper>
+            <view class="swiper-text">{{current+1}}/{{goodsInfo.pic.length}}</view>
+        </view>
+        <view class="activity-box" wx:if="{{goodsInfo.activityBackgroundPic}}">
+            <image class="activity-bg" src="{{fileDomain+goodsInfo.activityBackgroundPic}}"></image>
+            <view class="activity-price" wx:if="{{goodsInfo.discountPriceStr}}">低至<text>￥{{goodsInfo.discountPriceStr}}</text>
+            </view>
+            <view class="activity-title-content" wx:else>
+                <view>{{goodsInfo.bannerTitle}}</view>
+                <view>{{goodsInfo.bannerSubtitle}}</view>
+            </view>
+            <view class="activity-time" wx:if="{{goodsInfo.activeStartTime&&!goodsInfo.activeEndTime}}">{{goodsInfo.activeStartTime}}开抢</view>
+            <view class="activity-time" wx:elif="{{!goodsInfo.activeStartTime&&goodsInfo.activeEndTime||goodsInfo.activeStartTime&&goodsInfo.activeEndTime}}">{{goodsInfo.activeEndTime}}结束</view>
+        </view>
+        <view class="info-box">
+            <view class="info-box-detail">
+                <view class="goods-name">{{goodsInfo.name}}</view>
+                <view class="goods-info">
+                    <view class="goods-price-box">
+                        <view wx:if="{{priceType==1}}">
+                            <view class="after-price">
+                                <text class="currency">￥</text>{{price}}</view>
+                        </view>
+                        <view style="display: flex;" wx:elif="{{priceType==2}}">
+                            <view class="after-price">
+                                <text class="currency">￥</text>{{afterPrice}}</view>
+                            <view class="before-price" wx:if="{{beforePrice!=''}}">
+                                <text class="currency" style="text-decoration: none!important;">￥</text>{{beforePrice}}</view>
+                        </view>
+                    </view>
+                    <view class="country-box">
+                        <image class="flag" mode="widthFix" src="{{fileDomain}}{{goodsInfo.pdCountry.url}}"></image>
+                        <view class="country">{{goodsInfo.pdCountry.name}}</view>
+                    </view>
+                </view>
+            </view>
+            <view bindtap="showDetailShare" class="share-box">
+                <image mode="widthFix" src="/images/share.png"></image>
+            </view>
+        </view>
+        <view class="description-box">
+            <view bindtap="showActivity" class="description-container activityList" wx:if="{{goodsInfo.iconList.length>0}}">
+                <view class="description-title">优惠</view>
+                <view class="description-content">
+                    <view class="description-content-title">
+                        <view class="description-content-activity" wx:if="{{item.isShow==1}}" wx:for="{{goodsInfo.iconList}}" wx:key="{{index}}">
+                            <text class="icon">{{item.iconName}}</text>
+                            <text class="text">{{item.iconText?item.iconText:''}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="description-line"></view>
+            <view bindtap="showDeliveryExplain" class="description-container right-arrow">
+                <view class="description-title">配送</view>
+                <view class="description-content">
+                    <view class="description-content-title">{{goodsInfo.deliveryExplain}}</view>
+                </view>
+            </view>
+            <view class="description-line"></view>
+            <view bindtap="showBondNotice" class="description-container right-arrow" wx:if="{{goodsInfo.warehouseId!=0}}">
+                <view class="description-title">税费</view>
+                <view class="description-content">
+                    <view class="description-content-title">已包税</view>
+                </view>
+            </view>
+            <view class="description-line"></view>
+            <view bindtap="showProductNotice" class="description-container right-arrow">
+                <view class="description-title">说明</view>
+                <view class="description-content">
+                    <view class="description-content-tag" style="height: 100%">
+                        <view wx:if="{{item.status==1}}" wx:for="{{goodsInfo.pdExplain}}" wx:key="{{item.pdExplainId}}">{{item.name}}</view>
+                        <view wx:if="{{goodsInfo.productShopQty>0&&goodsInfo.warehouseId==0}}">可当天自提</view>
+                        <view wx:if="{{goodsInfo.isInstantDelivery==1&&goodsInfo.productShopQty>0&&goodsInfo.warehouseId==0}}">可即时配送</view>
+                    </view>
+                </view>
+            </view>
+            <view class="description-line"></view>
+            <view bindtap="showBondProductNotice" class="description-container right-arrow" wx:if="{{goodsInfo.warehouseId!=0}}">
+                <view class="description-title">须知</view>
+                <view class="description-content">
+                    <view class="description-content-title">保税商品须知</view>
+                </view>
+            </view>
+            <view class="description-line"></view>
+        </view>
+        <view class="tab-wrap">
+            <view class="info-tab-title swiper-tab" style="position: {{setTitleToFixed?'fixed':'relative'}};top:{{setTitleToFixed?statusBarHeight+38:0}}px;">
+                <view>
+                    <van-tabs active="{{content_active}}" bind:change="contentChange" border="{{false}}" lineWidth="20">
+                        <van-tab title="详情"></van-tab>
+                        <van-tab title="评价"></van-tab>
+                    </van-tabs>
+                </view>
+            </view>
+        </view>
+        <view class="tab-content" wx:if="{{content_active==0}}">
+            <view class="goods-detail-list" id="detail">
+                <view wx:for="{{goodsInfo.spSpuInfos.ccontent}}" wx:key="{{item.type}}">
+                    <text class="ccontent" data-type="{{item.type}}" wx:if="{{item.type==1}}">{{item.content}}</text>
+                    <image bindtap="previewImgEvent" data-Imgurl="{{fileDomain+item.content}}" lazyLoad="{{true}}" mode="widthFix" src="{{fileDomain+item.content}}" wx:else></image>
+                </view>
+            </view>
+        </view>
+        <view class="tab-content" wx:elif="{{content_active==1}}">
+            <view class="rates">
+                <view wx:if="{{commentList.length>0}}">
+                    <view class="total-rates">{{commit.count}}条评价 / 好评率{{commit.percent}}%</view>
+                    <view class="rate-block" wx:for="{{commentList}}" wx:key="{{item.nickname}}">
+                        <view class="name-rate">
+                            <view class="name">{{item.nickname}}</view>
+                            <view class="rate">
+                                <i-rate class="myrate" disabled="{{true}}" iClass="rate-number" size="16" value="{{item.starRank}}"></i-rate>
+                            </view>
+                        </view>
+                        <view class="detail">{{item.comment?item.comment:'用户没有做详细评价'}}</view>
+                    </view>
+                    <view class="footer" wx:if="{{isShowSlogin}}">没有更多评价了</view>
+                </view>
+                <view class="commentEmpty" wx:else>
+                    <view>
+                        <image mode="widthFix" src="/images/comment_empty.png" style="width: 300rpx;height: auto;"></image>
+                    </view>
+                    <view style="margin: 40rpx 0 6rpx 0">此商品还没有评价</view>
+                    <view>购买成为第一个评价人吧</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="button-box" style="padding-bottom: {{isIphoneX==1?34:0}}px">
+        <button bindcontact="bindcontact" class="contact" openType="contact" sessionFrom="udesk|{{userName}}|{{userPic}}|customer^{{customer_info_str}}|note^{{note_info_str}}">
+            <view>
+                <image mode="aspectFit" src="/images/contact.png"></image>
+            </view>
+            <text>联系客服</text>
+        </button>
+        <view bindtap="collect" class="collect">
+            <view>
+                <image mode="aspectFit" src="{{goodsInfo.favoritesFlg==1?'/images/collect_light.png':'/images/collect.png'}}"></image>
+            </view>
+            <text>收藏</text>
+        </view>
+        <view bindtap="goCart" class="goCart">
+            <view>
+                <image mode="aspectFit" src="/images/cart_btn.png"></image>
+            </view>
+            <text>购物袋</text>
+        </view>
+        <block wx:if="{{goodsInfo.cstatus==10}}">
+            <view class="other" wx:if="{{goodsInfo.qtyLeft>0}}">
+                <view bindtap="add_buy" class="addCart" data-type="1">加入购物袋</view>
+                <view bindtap="add_buy" class="buy" data-type="2">立即购买</view>
+            </view>
+            <view class="backup" wx:else>正在补货中</view>
+        </block>
+        <view class="backup" wx:else>商品已下架</view>
+    </view>
+</view>
+<i-share bind:close="showDetailShare" bind:drawSharePic="drawSharePic" show="{{showShare}}"></i-share>
+<van-popup bind:close="showActivity" catchtouchmove="ture" position="bottom" show="{{showActivity}}">
+    <view class="activity-content-wrap">
+        <view catchtap="showActivity" class="activity-content-close">
+            <image mode="aspectFit" src="/images/share_close.png"></image>
+        </view>
+        <view class="activity-content-title">优惠活动</view>
+        <view class="activity-content-list">
+            <scroll-view scrollY="{{true}}" style="height: 800rpx;">
+                <view class="activity-content-block" wx:for="{{promotionList}}" wx:for-index="indx" wx:for-item="it" wx:key="{{index}}">
+                    <view class="activity-content-icon">{{it.promotionIcon}}</view>
+                    <view style="flex: 1;">
+                        <view class="activity-content-text" wx:if="{{it.giftContent.length>0}}" wx:for="{{it.giftContent}}" wx:for-index="idx" wx:for-item="itm" wx:key="{{idx}}">
+                            <view class="activity-content-text-title">{{itm.promotionLevelDescribe}}</view>
+                            <view class="activity-content-text-list">
+                                <view class="activity-content-text-content" wx:for="{{itm.gifts}}" wx:key="{{index}}">
+                                    <view class="activity-img">
+                                        <image src="{{fileDomain+item.giftPic}}"></image>
+                                    </view>
+                                    <view class="activity-info">{{item.giftName}}</view>
+                                </view>
+                            </view>
+                        </view>
+                        <view wx:if="{{!it.giftContent}}">
+                            <view class="activity-content-text-title">{{it.promotionDescribe}}</view>
+                        </view>
+                        <view class="activity-content-time">{{it.promotionTime}}</view>
+                    </view>
+                    <view bindtap="goActivity" class="go-activity" data-id="{{it.promotionId}}">查看活动</view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</van-popup>
+<van-popup bind:close="buyClose" catchtouchmove="ture" position="bottom" show="{{showBuy}}">
+    <view class="buyConent">
+        <view class="buy-goods">
+            <view bindtap="previewImgEvent" class="buy-goods-img" data-Imgurl="{{lastPic}}">
+                <image mode="aspectFit" src="{{lastPic}}"></image>
+            </view>
+            <view class="buy-goods-info">
+                <view class="buy-goods-name">{{goodsInfo.name}}</view>
+                <view class="buy-goods-icon">
+                    <view wx:if="{{item.isShow&&index<=1}}" wx:for="{{lastIcon}}" wx:key="{{index}}">{{item.iconName}}</view>
+                </view>
+                <view class="buy-goods-price">
+                    <view wx:if="{{lastPriceType==1}}">
+                        <view class="after-price">
+                            <text class="currency">￥</text>{{lastPrice}}</view>
+                    </view>
+                    <view style="display: flex;" wx:elif="{{lastPriceType==2}}">
+                        <view class="after-price">
+                            <text class="currency">￥</text>{{lastAfterPrice}}</view>
+                        <view class="before-price">{{lastBeforePrice}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <scroll-view class="chooseType" scrollY="{{true}}" style="padding-bottom: {{isIphoneX==1?220:160}}rpx;">
+            <view class="type-block" wx:if="{{typeList.length>0}}" wx:for="{{typeList}}" wx:key="item.title">
+                <view class="type-title">选择{{item.title}}</view>
+                <view class="type-choose">
+                    <view bindtap="chooseType" class="{{it.disabled?'disabled':''}} {{it.active==it.valId?'active':''}}" data-active="{{it.active}}" data-disabled="{{it.disabled}}" data-index="{{index}}" data-pdTypeValId="{{it.valId}}" wx:for="{{item.values}}" wx:for-index="indx" wx:for-item="it" wx:key="it.valId">{{it.name}}</view>
+                </view>
+            </view>
+            <view class="type-block">
+                <view class="type-title">选择数量</view>
+                <view class="choose-number">
+                    <i-input-number bindchange="handleChange" max="{{stock}}" min="1" value="{{goodsNumber}}"></i-input-number>
+                </view>
+            </view>
+        </scroll-view>
+        <view class="sure" style="padding-bottom: {{isIphoneX==1?44:10}}px">
+            <view class="skuRemind" wx:if="{{remind}}">{{remind}}</view>
+            <view bindtap="buy_add" class="goods-settle">
+                <view>确定</view>
+            </view>
+        </view>
+    </view>
+</van-popup>
+<van-popup bind:close="hideShareImg" catchtouchmove="ture" position="bottom" show="{{showShareImg}}">
+    <view catchtap="hideShareImg" class="shareImgContent">
+        <image id="shareImage" mode="aspectFit" src="{{shareImage}}"></image>
+        <view>
+            <i-icon color="#fff" size="20" type="close"></i-icon>
+        </view>
+    </view>
+</van-popup>
+<van-popup bind:close="hidePreviewImg" catchtouchmove="ture" customClass="showPreviewImg" overlay="{{false}}" position="bottom" show="{{showPreviewImg}}" zIndex="10000">
+    <view class="previewImg">
+        <view catchtap="hidePreviewImg" class="previewImg-turn" style="height:32px;padding-top: {{statusBarHeight+6}}px;">
+            <image mode="widthFix" src="/images/return_white.png"></image>
+        </view>
+        <block wx:if="{{previewImgList.length>1}}">
+            <view class="previewImg-swiper" style="top: {{statusBarHeight+38+20}}px;">
+                <swiper autoplay="{{false}}" bindchange="popSwiperChange" current="{{current}}" duration="{{200}}" indicatorDots="{{false}}">
+                    <swiper-item wx:for="{{previewImgList}}" wx:key="{{item}}">
+                        <scaleImg imgUrl="{{fileDomain+item}}" windowWidth="{{windowWidth}}"></scaleImg>
+                    </swiper-item>
+                </swiper>
+            </view>
+            <view class="previewImg-text">{{popCurrent+1}}/{{previewImgList.length}}</view>
+        </block>
+        <view class="previewImg-swiper" style="top: {{statusBarHeight+38+20}}px;" wx:else>
+            <scaleImg imgUrl="{{previewImgList[0]}}" windowWidth="{{windowWidth}}"></scaleImg>
+        </view>
+    </view>
+</van-popup>
+<van-popup bind:close="showDeliveryExplain" catchtouchmove="ture" position="bottom" show="{{showDeliveryExplain}}">
+    <view class="descriptionContent">
+        <view catchtap="showDeliveryExplain" class="descriptionClose">
+            <image mode="aspectFit" src="/images/share_close.png"></image>
+        </view>
+        <view class="descriptionTitle">配送说明</view>
+        <scroll-view class="description-conent" scrollY="{{true}}" style="height: 300rpx;">
+            <view class="description-conent-content" wx:if="{{brandDirectMail==0&&warehouseId!=0}}">见下方说明</view>
+            <view class="description-conent-content" wx:if="{{brandDirectMail==0&&warehouseId==0}}">见下方普通商品配送说明</view>
+            <view class="description-conent-content">{{goodsInfo.deliveryExplain}}</view>
+            <view class="description-conent-content" wx:if="{{goodsInfo.productShopQty>0&&goodsInfo.warehouseId==0}}">在订单商品数量满足门店库存的前提下支持门店自提</view>
+            <view class="description-conent-content" wx:if="{{goodsInfo.isInstantDelivery==1&&goodsInfo.productShopQty>0&&goodsInfo.warehouseId==0}}">收货地址若在门店配送范围内可支持即时配送</view>
+        </scroll-view>
+    </view>
+</van-popup>
+<van-popup bind:close="showBondNotice" catchtouchmove="ture" position="bottom" show="{{showBondNotice}}">
+    <view class="descriptionContent">
+        <view catchtap="showBondNotice" class="descriptionClose">
+            <image mode="aspectFit" src="/images/share_close.png"></image>
+        </view>
+        <view class="descriptionTitle">税费说明</view>
+        <scroll-view class="description-conent" scrollY="{{true}}" style="height: 400rpx;">
+            <view class="description-conent-content">
+                <view class="before-ball" wx:for="{{goodsInfo.bondedProductTaxationExplain}}" wx:key="{{index}}">{{item}}</view>
+            </view>
+        </scroll-view>
+    </view>
+</van-popup>
+<van-popup bind:close="showProductNotice" catchtouchmove="ture" position="bottom" show="{{showProductNotice}}">
+    <view class="descriptionContent">
+        <view catchtap="showProductNotice" class="descriptionClose">
+            <image mode="aspectFit" src="/images/share_close.png"></image>
+        </view>
+        <view class="descriptionTitle">商品说明</view>
+        <scroll-view class="description-conent" scrollY="{{true}}" style="height: 400rpx;">
+            <view class="description-conent-content">
+                <block wx:if="{{goodsInfo.productShopQty>0&&goodsInfo.warehouseId==0}}">
+                    <view class="description-conent-content-title">支持自提</view>
+                    <view class="description-conent-content-detail">该商品为国内仓/门店发货，若门店有货则支持门店自提。</view>
+                </block>
+                <block wx:if="{{goodsInfo.isInstantDelivery==1&&goodsInfo.productShopQty>0&&goodsInfo.warehouseId==0}}">
+                    <view class="description-conent-content-title">支持配送</view>
+                    <view class="description-conent-content-detail">该商品为国内仓/门店发货，若门店有货则支持顺丰配送当天送达。</view>
+                </block>
+                <block wx:if="{{item.status==1}}" wx:for="{{goodsInfo.pdExplain}}" wx:key="{{item.pdExplainId}}">
+                    <view class="description-conent-content-title">{{item.name}}</view>
+                    <view class="description-conent-content-detail">{{item.text}}</view>
+                </block>
+            </view>
+        </scroll-view>
+    </view>
+</van-popup>
+<van-popup bind:close="showBondProductNotice" catchtouchmove="ture" position="bottom" show="{{showBondProductNotice}}">
+    <view class="descriptionContent">
+        <view catchtap="showBondProductNotice" class="descriptionClose">
+            <image mode="aspectFit" src="/images/share_close.png"></image>
+        </view>
+        <view class="descriptionTitle">保税商品须知</view>
+        <scroll-view class="description-conent" scrollY="{{true}}" style="height: 600rpx;">
+            <view class="description-conent-title">消费者告知书</view>
+            <view class="description-conent-content">
+                <view style="margin-bottom: 20rpx">为帮助您更好地选购境外商品，以下内容请您详细阅读：</view>
+                <view style="margin-bottom: 20rpx">1.您在Qtools平台上购买的境外商品等同于原产地直接销售商品，因此商品本身可能无中文标签，如果需要您可以通过网站查看相关商品标签中文翻译或联系客服。</view>
+                <view style="margin-bottom: 20rpx">2.根据相关法律政策，您选购的境外商品仅限于个人自用，不得进行再次销售。</view>
+                <view style="margin-bottom: 20rpx">3.您购买的境外商品符合原产地有关品质、健康、标识的相关标准，与我国产品标准或有所不同，由此可能造成的危害、损失或者其他风险，由您个人承担。</view>
+                <view style="margin-bottom: 20rpx">4.Qtools平台跨境购商品均为海外商品，均无法开具国内发票。</view>
+                <view style="margin-bottom: 20rpx">5.由于部分海外商品包装更换较为频繁，页面图片来不及更新，因此您收到的货物可能与图片页面不完全一致，页面图片及描述仅提供参考，请以实物为准。</view>
+            </view>
+            <view class="description-conent-title" style="margin-top: 20rpx;padding-top: 20rpx;border-top: 0.5px solid #E2E2E2;">跨境相关政策说明</view>
+            <view class="description-conent-content">
+                <view style="margin-bottom: 20rpx">1.根据《关于跨境电子商务零售进口税收政策的通知》，跨境电子商务进口商品的单次交易限额为人民币2000元，个人年度交易限额为人民币20000元。（2019年1月1日起，调整为单次人民币5000，年度额度为26000元）</view>
+                <view style="margin-bottom: 20rpx">2.在限值以内进口的跨境电子商务零售进口商品，关税税率暂设为0%；进口环节增值税、消费税取消免征税额，暂按法定应纳税额的70%征收。超过单次限值、累加后超过个人年度的单次交易，以及完税价格超过2000元限值的单个不可分割商品，均按照一般贸易方式全额征收税额。（2019年1月1日起，调整为5000元）</view>
+                <view style="margin-bottom: 20rpx">3.根据海关总署公告2016年第26号（关于跨境电子商务零售进出口商品有关监管事宜的公告），电子商务企业应当对购买跨境电子商务零售进口商品的个人（订购人）身份进行核实，并向海关提供由国家主管部门认证的身份有效信息。无法提供或者无法核实订购人身份信息的，订购人与支付人应当为同一个人。</view>
+            </view>
+        </scroll-view>
+    </view>
+</van-popup>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>
+<canvas canvasId="shareCanvas" style="position: absolute;left: -99999999px;top: 0; width: 420px; height: 2000px"></canvas>

@@ -1,6 +1,0 @@
-<!--pages/device/deviceInstall/deviceInstall.wxml-->
-<view class="centerView">
-<view class="btBtn" bindtap="openBt">连一下蓝牙</view>
-蓝牙名字是：{{name}}
-蓝牙ID是：{{btID}}
-</view>

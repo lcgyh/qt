@@ -1,0 +1,20 @@
+<view class="menu-button" style="padding-top: {{statusBarHeight+6}}px;background-color: {{backgroundColor}};color:{{color}};">
+    <block wx:if="{{!hideBack}}">
+        <view class="menu-left-button-home" wx:if="{{backHome}}">
+            <view bindtap="goBack" class="goBack">
+                <image mode="widthFix" src="{{navImg?navImg:'/images/return.png'}}"></image>
+            </view>
+            <view class="menu-line"></view>
+            <view bindtap="goHome" class="goHome">
+                <image mode="widthFix" src="/images/return_home.png"></image>
+            </view>
+        </view>
+        <view bindtap="goBack" class="menu-left-button" wx:else>
+            <image mode="widthFix" src="{{navImg?navImg:'/images/return.png'}}"></image>
+        </view>
+    </block>
+    <view class="menu-left-button" wx:else></view>
+    <view class="menu-title" style="width: {{windowWidth-194}}px;">
+        <text>{{title}}</text>
+    </view>
+</view>

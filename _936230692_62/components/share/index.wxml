@@ -1,0 +1,17 @@
+<van-popup bind:close="close" overlayStyle="mineCover" position="bottom" show="{{show}}" zIndex="99999">
+    <view class="shareConent">
+        <view class="content">
+            <button class="sharetouser" openType="share">
+                <image mode="widthFix" src="/images/sharetouser.png"></image>
+                <text>微信好友</text>
+            </button>
+            <button bindtap="drawSharePic" class="shareimg" wx:if="{{hideImg}}">
+                <image mode="widthFix" src="/images/shareimg.png"></image>
+                <text>图片分享</text>
+            </button>
+        </view>
+        <view bindtap="close" class="close">
+            <i-icon color="#fff" size="32" type="delete"></i-icon>
+        </view>
+    </view>
+</van-popup>

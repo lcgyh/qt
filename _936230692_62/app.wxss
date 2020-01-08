@@ -1,0 +1,101 @@
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+
+.all-arrow:after {
+    content: " ";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    top: 50%;
+    right: 2px;
+    border-width: 1px 1px 0 0;
+    border-style: solid;
+    transform: translateY(-50%) matrix(.71,.71,-.71,.71,0,0);
+}
+
+.all-arrow-big:after {
+    width: 8px;
+    height: 8px;
+}
+
+.all-arrow-normal:after {
+    width: 6px;
+    height: 6px;
+}
+
+.all-arrow-small:after {
+    width: 4px;
+    height: 4px;
+}
+
+.all-arrow-little:after {
+    width: 2px;
+    height: 2px;
+}
+
+.all-arrow-black:after {
+    border-color: #464646;
+}
+
+.all-arrow-gray:after {
+    border-color: #999999;
+}
+
+.all-arrow-white:after {
+    border-color: #FFFFFF;
+}
+
+.all-arrow-main:after {
+    border-color: #00C4B3;
+}
+
+.all-line::after {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    content: " ";
+    border-width: 1px;
+}
+
+.all-line-top:after {
+    top: 0;
+    border-top-style: solid;
+}
+
+.all-line-bottom:after {
+    bottom: 0;
+    border-bottom-style: solid;
+}
+
+.all-line-main:after {
+    border-color: #00C4B3;
+}
+
+.all-line-white:after {
+    border-color: #FFFFFF;
+}
+
+.all-line-black:after {
+    border-color: #464646;
+}
+
+.all-line-gray:after {
+    border-color: #E2E2E2;
+}
+
+@media (-webkit-min-device-pixel-ratio:1.5),(min-device-pixel-ratio:1.5) {
+    .all-line::after {
+        transform: scaleY(0.5);
+    }
+}
+
+@media (-webkit-min-device-pixel-ratio:2),(min-device-pixel-ratio:2) {
+    .all-line::after {
+        transform: scaleY(0.5);
+    }
+}

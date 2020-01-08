@@ -1,0 +1,106 @@
+<view>
+    <view class="swiper-box">
+        <swiper bindchange="bgChange" class="container-bg" current="{{index}}" nextMargin="32rpx" previousMargin="32rpx">
+            <swiper-item wx:for="{{list}}" wx:key="{{index}}">
+                <view class="member-main" style="width: {{bgIndex===index?'100%':'95%'}};height: {{bgIndex===index?'100%':'92%'}};background-image: url('https://qcampfile.oss-cn-shanghai.aliyuncs.com/qtoolsapp/membershop/member_bg{{item.memberLevel}}.png');">
+                    <view class="main-level">{{item.levelName}}</view>
+                    <view class="main-name">{{item.memberLevelInfo.nickName}}</view>
+                    <view class="slider" wx:if="{{item.memberLevel===memberCurrentLevel}}">
+                        <view class="slider-value" style="width: {{sliderWidth}}%;"></view>
+                    </view>
+                    <view class="slider-bg" wx:else></view>
+                    <view bindtap="goGrow" class="slider-txt">成长值进度：{{item.memberLevel===1?item.memberLevelInfo.userGrowthValue+'/无门槛':item.memberLevelInfo.userGrowthValue+'/'+item.memberLevelInfo.growthThreshold}}<image class="slider-arrow" mode="widthFix" src="/images/me/member_arrow_{{item.memberLevel}}.png" wx:if="{{item.memberLevel}}"></image>
+                    </view>
+                    <view class="slider-next">
+                        <view>{{item.memberLevelInfo.upgradeTipsStr}}</view>
+                        <view class="next-time">{{item.memberLevel===memberCurrentLevel?'当前等级有效期至月底':'等级更新时间每月1号'}}</view>
+                    </view>
+                    <view class="member-now" style="color: {{item.fontColor}};" wx:if="{{item.memberLevel===memberCurrentLevel}}">当前等级</view>
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="tab-box">
+        <view class="tab" hidden="{{bgIndex!==index}}" wx:for="{{list}}" wx:key="{{index}}">
+            <view class="member-right-box">
+                <view bindtap="goWeb" class="head" data-url="{{ruleUrl}}">
+                    <view class="title">LV{{item.memberLevel}}等级权益</view>
+                    <view class="more all-arrow all-arrow-gray all-arrow-small">等级规则</view>
+                </view>
+                <view class="member-right">
+                    <view class="right-block">
+                        <image class="right-icon" mode="widthFix" src="{{fileDomain+item.privilegeInfo.birthdayCouponIcon}}"></image>
+                        <view class="right-txt">
+                            <view>{{item.privilegeInfo.birthdayCouponAmount}}</view>
+                            <view>{{item.privilegeInfo.birthdayCouponText}}</view>
+                        </view>
+                    </view>
+                    <view class="right-block">
+                        <image class="right-icon" mode="widthFix" src="{{fileDomain+item.privilegeInfo.freeExpressIcon}}"></image>
+                        <view class="right-txt">
+                            <view>{{item.privilegeInfo.freeExpressTimes}}</view>
+                            <view>{{item.privilegeInfo.freeExpressText}}</view>
+                        </view>
+                    </view>
+                    <view class="right-block">
+                        <image class="right-icon" mode="widthFix" src="{{fileDomain+item.privilegeInfo.levelCouponIcon}}"></image>
+                        <view class="right-txt">
+                            <view>{{item.privilegeInfo.levelCouponAmount}}</view>
+                            <view>{{item.privilegeInfo.levelCouponText}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="exclusive-box" wx:if="{{item.levelCoupon}}">
+                <view bindtap="goWeb" class="head" data-type="level" data-url="{{item.levelCoupon.viewRights}}">
+                    <view class="title">{{item.levelCoupon.rightsTheme}}<text>{{item.levelCoupon.rightsExplain}}</text>
+                    </view>
+                    <view class="more all-arrow all-arrow-gray all-arrow-small">查看权益</view>
+                </view>
+                <view class="content">
+                    <view class="content-block" wx:for="{{item.levelCoupon.rightsList}}" wx:for-index="indx" wx:for-item="it" wx:key="{{indx}}">
+                        <view class="content-block-coupon">
+                            <view class="content-block-left">优惠券</view>
+                            <view class="content-block-right">
+                                <view class="coupon-money">
+                                    <text>￥</text>{{it.couponMoney}}</view>
+                            </view>
+                        </view>
+                        <view class="coupon-rule">满{{it.couponFullAmount}}元使用</view>
+                        <view class="coupon-time">领取后{{it.couponValidDay}}天有效</view>
+                        <view bindtap="couponEvent" class="coupon-button {{it.goType==1||it.goType==3?'has-receive':'no-receive'}}" data-couponId="{{it.couponId}}" data-gotype="{{it.goType}}" data-rightsId="{{it.rightsId}}">{{it.receiveCouponText}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="free-express-box" wx:if="{{item.freeExpress}}">
+                <view bindtap="goWeb" class="head" data-type="free" data-url="{{item.freeExpress.viewRights}}">
+                    <view class="title">{{item.freeExpress.rightsTheme}}<text>{{item.freeExpress.rightsExplain}}</text>
+                    </view>
+                    <view class="more all-arrow all-arrow-gray all-arrow-small">查看权益</view>
+                </view>
+                <view class="content">
+                    <view class="free-express-txt">
+                        <view>免邮特权卡</view>
+                        <view wx:if="{{item.memberLevel===memberCurrentLevel}}">本月还可享{{item.freeExpress.freeExpressRemainTimes}}次免邮</view>
+                        <view wx:else>每月可享{{item.freeExpress.freeExpressRemainTimes}}次免邮</view>
+                    </view>
+                    <image class="content-img" mode="widthFix" src="{{item.freeExpress.backPicUrl}}"></image>
+                </view>
+                <view class="foot">*偏远收货地区不可使用免邮特权</view>
+            </view>
+            <view class="birthday-box" wx:if="{{item.birthdayCoupon}}">
+                <view class="head">
+                    <view class="title">{{item.birthdayCoupon.rightsTheme}}<text>{{item.birthdayCoupon.rightsExplain}}</text>
+                    </view>
+                    <view bindtap="goWeb" class="more all-arrow all-arrow-gray all-arrow-small" data-type="birth" data-url="{{item.birthdayCoupon.viewRights}}">查看权益</view>
+                </view>
+                <view class="content">
+                    <image class="content-img" mode="widthFix" src="{{item.birthdayCoupon.backPicUrl}}"></image>
+                </view>
+                <view class="foot">*生日周的周一发放，发放后15天内有效</view>
+            </view>
+        </view>
+    </view>
+</view>
+<i-toast id="toast"></i-toast>
+<i-loading id="data-loading"></i-loading>
