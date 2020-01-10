@@ -48,7 +48,7 @@ Page({
     searchinput: function(t) {
         var e = t.detail, a = this.data.saveList, s = e.value.trim(), o = [];
         "" == s || null == s ? o = a : a.forEach(function(t) {
-            t.address ? (t.name.indexOf(s) > -1 || t.address.indexOf(s) > -1) && o.push(t) : t.name.indexOf(s) > -1 && o.push(t);
+            t ? (t.name.indexOf(s) > -1 || t.address.indexOf(s) > -1) && o.push(t) : t.name.indexOf(s) > -1 && o.push(t);
         }), this.setData({
             storeList: o,
             searchValue: e.value
