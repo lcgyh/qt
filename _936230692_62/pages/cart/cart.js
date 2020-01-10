@@ -1,4 +1,4 @@
-var t = require("../../481D43C1B878E4CF2E7B2BC653496783.js"), o = require("../../75C41DA1B878E4CF13A275A6DCF86783.js"), a = require("../../18B8A9E0B878E4CF7EDEC1E7E0186783.js"), n = require("../../AD0111C0B878E4CFCB6779C705596783.js"), r = getApp();
+var t = require("../../481D43C1B878E4CF2E7B2BC653496783.js"), o = require("../../75C41DA1B878E4CF13A275A6DCF86783.js"), a = require("../../utils/loading.js"), n = require("../../AD0111C0B878E4CFCB6779C705596783.js"), r = getApp();
 
 Page({
     data: {

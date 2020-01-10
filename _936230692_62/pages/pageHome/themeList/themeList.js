@@ -1,4 +1,4 @@
-var e = require("../../../167BC423B878E4CF701DAC2479196783.js"), o = require("../../../18B8A9E0B878E4CF7EDEC1E7E0186783.js"), t = require("../../../AD0111C0B878E4CFCB6779C705596783.js");
+var e = require("../../../167BC423B878E4CF701DAC2479196783.js"), o = require("../../../utils/loading.js"), t = require("../../../AD0111C0B878E4CFCB6779C705596783.js");
 
 Page({
     data: {

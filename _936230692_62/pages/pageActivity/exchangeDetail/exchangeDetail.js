@@ -1,4 +1,4 @@
-var e = require("../../../@babel/runtime/helpers/interopRequireDefault"), t = require("../../../3AB1A716B878E4CF5CD7CF11DFE86783.js"), a = e(require("../../../481D43C1B878E4CF2E7B2BC653496783.js")), i = require("../../../AD0111C0B878E4CFCB6779C705596783.js"), r = require("../../../18B8A9E0B878E4CF7EDEC1E7E0186783.js"), o = getApp();
+var e = require("../../../@babel/runtime/helpers/interopRequireDefault"), t = require("../../../3AB1A716B878E4CF5CD7CF11DFE86783.js"), a = e(require("../../../481D43C1B878E4CF2E7B2BC653496783.js")), i = require("../../../AD0111C0B878E4CFCB6779C705596783.js"), r = require("../../../utils/loading.js"), o = getApp();
 
 Page({
     data: {

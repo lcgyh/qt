@@ -6,6 +6,13 @@ const getSoreList = (data) => {
   return request('sso', '/shops', 'get',data)
 }
 
+//获取门店信息
+const getSoresIn = (data, successCall, failCall) => {
+  return request('sso', '/shops', 'post', data,successCall, failCall)
+}
+
+
 module.exports = {
-  getSoreList
+  getSoreList,
+  getSoresIn
 }

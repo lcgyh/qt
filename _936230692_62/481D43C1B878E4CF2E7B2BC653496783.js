@@ -1,4 +1,4 @@
-var e = require("18B8A9E0B878E4CF7EDEC1E7E0186783.js"), t = "";
+var e = require("./utils/loading.js"), t = "";
 
 t = "https://qtoolsapp.qtoolsbaby.cn";
 

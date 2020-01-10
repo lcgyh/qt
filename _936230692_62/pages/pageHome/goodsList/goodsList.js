@@ -1,4 +1,4 @@
-var a = require("../../../@babel/runtime/helpers/interopRequireDefault")(require("../../../@babel/runtime/helpers/toConsumableArray")), e = require("../../../C4DDA123B878E4CFA2BBC924B8096783.js"), t = require("../../../481D43C1B878E4CF2E7B2BC653496783.js"), i = require("../../../AD0111C0B878E4CFCB6779C705596783.js"), s = require("../../../18B8A9E0B878E4CF7EDEC1E7E0186783.js");
+var a = require("../../../@babel/runtime/helpers/interopRequireDefault")(require("../../../@babel/runtime/helpers/toConsumableArray")), e = require("../../../C4DDA123B878E4CFA2BBC924B8096783.js"), t = require("../../../481D43C1B878E4CF2E7B2BC653496783.js"), i = require("../../../AD0111C0B878E4CFCB6779C705596783.js"), s = require("../../../utils/loading.js");
 
 Page({
     data: {

@@ -1,5 +1,10 @@
-var t = require("../../../B20FF1E6B878E4CFD46999E127296783.js"), e = require("../../../18B8A9E0B878E4CF7EDEC1E7E0186783.js"), a = require("../../../AD0111C0B878E4CFCB6779C705596783.js"), s = getApp();
+var t = require("../../../B20FF1E6B878E4CFD46999E127296783.js"), e = require("../../../utils/loading.js"), a = require("../../../AD0111C0B878E4CFCB6779C705596783.js"), s = getApp();
 
+const { $Toast,
+  $Toast_hide,
+  $Message,
+  $Loading,
+  $Loading_hide } = require('../../../utils/loading.js')
 Page({
     data: {
         storeList: [],
@@ -8,7 +13,7 @@ Page({
         searchValue: ""
     },
     onLoad: function(t) {
-        console.log(t), (0, e.$Loading)();
+        console.log(t), (0, $Loading)();
         var a = this;
         this.setData({
             statusBarHeight: s.globalData.statusBarHeight,
@@ -41,7 +46,7 @@ Page({
                 storeList: i,
                 saveList: i
             }, function() {
-                e.$Loading.hide();
+              $Loading_hide();
             });
         });
     },
@@ -64,12 +69,12 @@ Page({
             confirmColor: "#464646",
             cancelColor: "#969696",
             success: function(a) {
-                a.confirm && ((0, e.$Loading)(), (0, t.pickStore)({
+                a.confirm && ((0, $Loading)(), (0, t.pickStore)({
                     spShopId: s
                 }, function(t) {
                     i.setspShopId(s);
                 }, function(t, a) {
-                    e.$Loading.hide(), "E_300" == t && (0, e.$Toast)({
+                  $Loading_hide(), "E_300" == t && (0, $Toast)({
                         content: a.data.message,
                         duration: 1,
                         mask: !1

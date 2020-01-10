@@ -1,4 +1,4 @@
-var a = require("../../../C4DDA123B878E4CFA2BBC924B8096783.js"), e = require("../../../AD0111C0B878E4CFCB6779C705596783.js"), t = require("../../../18B8A9E0B878E4CF7EDEC1E7E0186783.js");
+var a = require("../../../C4DDA123B878E4CFA2BBC924B8096783.js"), e = require("../../../AD0111C0B878E4CFCB6779C705596783.js"), t = require("../../../utils/loading.js");
 
 Page({
     data: {

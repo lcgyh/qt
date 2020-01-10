@@ -1,4 +1,4 @@
-var e = require("../../../@babel/runtime/helpers/interopRequireDefault"), t = e(require("../../../@babel/runtime/helpers/toConsumableArray")), a = require("../../../C4DDA123B878E4CFA2BBC924B8096783.js"), i = e(require("../../../481D43C1B878E4CF2E7B2BC653496783.js")), o = require("../../../18B8A9E0B878E4CF7EDEC1E7E0186783.js"), s = require("../../../B20FF1E6B878E4CFD46999E127296783.js"), n = getApp();
+var e = require("../../../@babel/runtime/helpers/interopRequireDefault"), t = e(require("../../../@babel/runtime/helpers/toConsumableArray")), a = require("../../../C4DDA123B878E4CFA2BBC924B8096783.js"), i = e(require("../../../481D43C1B878E4CF2E7B2BC653496783.js")), o = require("../../../utils/loading.js"), s = require("../../../B20FF1E6B878E4CFD46999E127296783.js"), n = getApp();
 
 Page({
     data: {

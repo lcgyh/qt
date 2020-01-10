@@ -1,4 +1,4 @@
-var t = require("../../../@babel/runtime/helpers/interopRequireWildcard"), e = require("../../../@babel/runtime/helpers/interopRequireDefault")(require("../../../@babel/runtime/helpers/toConsumableArray")), a = require("../../../167BC423B878E4CF701DAC2479196783.js"), i = require("../../../75C41DA1B878E4CF13A275A6DCF86783.js"), o = t(require("../../../481D43C1B878E4CF2E7B2BC653496783.js")), n = require("../../../18B8A9E0B878E4CF7EDEC1E7E0186783.js"), s = require("../../../B20FF1E6B878E4CFD46999E127296783.js"), r = getApp();
+var t = require("../../../@babel/runtime/helpers/interopRequireWildcard"), e = require("../../../@babel/runtime/helpers/interopRequireDefault")(require("../../../@babel/runtime/helpers/toConsumableArray")), a = require("../../../167BC423B878E4CF701DAC2479196783.js"), i = require("../../../75C41DA1B878E4CF13A275A6DCF86783.js"), o = t(require("../../../481D43C1B878E4CF2E7B2BC653496783.js")), n = require("../../../utils/loading.js"), s = require("../../../B20FF1E6B878E4CFD46999E127296783.js"), r = getApp();
 
 Page({
     data: {
